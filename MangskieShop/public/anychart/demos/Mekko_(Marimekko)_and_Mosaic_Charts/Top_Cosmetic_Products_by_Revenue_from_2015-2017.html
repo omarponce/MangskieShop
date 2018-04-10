@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-mekko.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Top Cosmetic Products by Revenue from 2015-2017</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = {
+    title: 'Top Cosmetic Products by Revenue from 2015-2017',
+    header: ['#', '2015', '2016', '2017'],
+    rows: [
+        ['Rouge', 80540, 73251, 120154],
+        ['Foundation', 64190, 90541, 75465],
+        ['Mascara', 102610, 97546, 101154],
+        ['Lip gloss', 110430, 120454, 152454],
+        ['Lipstick', 158000, 219454, 186454],
+        ['Nail polish', 143760, 141254, 175458],
+        ['Eyebrow pencil', 170670, 110254, 164548],
+        ['Eyeliner', 213210, 204549, 250154],
+        ['Eyeshadows', 249980, 275458, 315124]
+    ]
+};
+
+chart = anychart.barmekko();
+// set chart data
+chart.data(data);
+// set stack mode
+chart.yAxis().labels().format('${%Value}{scale:(1000)|(k)}');
+// set tooltip format settings
+chart.tooltip()
+        .titleFormat('{%X}')
+        .format('{%SeriesName}: ${%Value}{scale:(1000)|(k)}');
+// set chart labels settings
+chart.labels()
+        .enabled(true)
+        .position('center')
+        .fontColor('#fff')
+        .format('${%Value}{scale:(1000)|(k)}');
+// enabled legend
+chart.legend(true);
+// set union tooltip
+chart.tooltip().displayMode('union');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Column Chart using Google Spreadsheet</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             // https://docs.google.com/spreadsheets/d/1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk/
+    anychart.data.loadGoogleSpreadsheet({
+key: '1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk',
+sheet: 4
+    }, function (data) {
+// create data tables on loaded data
+var msftDataTable = anychart.data.table();
+msftDataTable.addData(data.rows);
+
+var mapping = msftDataTable.mapAs({'value': 1});
+
+// create stock chart
+chart = anychart.stock();
+
+// create first plot on the chart with column series
+var plot = chart.plot(0);
+// create area series on the first plot
+plot.column()
+        .name('MSFT')
+        .data(mapping)
+        .fill('#a9e1d4 0.85');
+plot.xAxis().background().enabled(true);
+
+// set chart selected date/time range
+chart.selectRange('2005-01-03', '2006-08-20');
+
+// create scroller series with mapped data
+chart.scroller().column(mapping);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// create range picker
+rangePicker = anychart.ui.rangePicker();
+// init range picker
+rangePicker.render(chart);
+
+// create range selector
+rangeSelector = anychart.ui.rangeSelector();
+// init range selector
+rangeSelector.render(chart);
+    });
+        </script>
+    </body>
+</html>

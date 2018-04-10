@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Combination of Bar and LED Pointers</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// set theme
+anychart.appendTheme({
+    linearGauge: {
+        defaultPointerSettings: {
+            led: {
+                // darken the color value
+                // exceeds the value of Pointer
+                dimmer: function () {
+                    return '#e65100';
+                },
+                // pointer width as a percentage
+                // of the width gauge
+                width: '15%',
+                // set color pointer led
+                colorScale: {
+                    type: 'linear-color',
+                    colors: '#57a7b1'
+                },
+                // the distance between the "tiles"
+                // pointer to a percentage of the pointer height
+                gap: '0.5%',
+                // set size "tiles" null
+                size: null
+            },
+            bar: {
+                // enable hover labels
+                hovered: {
+                    label: {
+                        enabled: true,
+                        fontColor: anychart.color.lighten('#455a64', 0.1)
+                    }
+                },
+                // enable select labels
+                selected: {
+                    label: {
+                        enabled: true,
+                        fontColor: anychart.color.darken('#455a64', 0.5)
+                    }
+                },
+                color: '#455a64',
+                // pointer width as a percentage
+                // of the width gauge
+                width: '1%',
+                // set label settings
+                label: {
+                    enabled: true,
+                    fontSize: '21px',
+                    fontColor: '#455a64',
+                    position: 'center',
+                    offsetY: '-3%'
+                }
+            }
+        },
+        defaultAxisSettings: {
+            // set axis width
+            width: '1%',
+            // set label settings
+            labels: {
+                fontColor: '#96a6a6',
+                fontSize: '21px',
+                fontWeight: 700
+            },
+            // set for axis orientation
+            orientation: 'bottom'
+        }
+    }
+});
+
+// create data
+var data = [17.15, 14.55, 11.53, 5.35];
+
+// gauge type
+var gauge = anychart.gauges.linear();
+// create data set on our data
+gauge.data(data);
+// set global offset
+gauge.globalOffset('-5%')
+        // set gauge padding
+        .padding([35, 150, 50, 150])
+        // set position gauge
+        .layout('horizontal');
+
+// sets Chart Title
+gauge.title()
+        .text('Combination of Bar and LED Pointers')
+        .enabled(true)
+        .padding([0, 0, 75, 0]);
+
+// create scale (0-30)
+var scaleFirst = anychart.scales.linear();
+// set scale minimum
+scaleFirst.minimum(0)
+        // set scale maximum
+        .maximum(30)
+        // set interval major axis ticks
+        .ticks({'interval': 5});
+
+// create scale (0-24)
+var scaleSecond = anychart.scales.linear();
+// set scale minimum
+scaleSecond.minimum(0)
+        // set scale maximum
+        .maximum(24)
+        // set interval major axis ticks
+        .ticks({'interval': 3});
+
+// create led pointer of the data index zero
+gauge.led(0)
+        // pointer offset as a percentage of the width gauge
+        .offset('10%')
+        // set pointer name
+        .name('LED Pointer First')
+        // count "tiles"
+        .count('6')
+        // set scale
+        .scale(scaleFirst);
+
+// create led pointer of the data index one
+gauge.led(1)
+        // pointer offset as a percentage of the width gauge
+        .offset('45%')
+        // set pointer name
+        .name('LED Pointer Second')
+        // count "tiles"
+        .count('8')
+        // set scale
+        .scale(scaleSecond);
+
+// create bar pointer of the data index two
+gauge.bar(2)
+        // set pointer name
+        .name('Bar Pointer First')
+        // pointer offset as a percentage of the width gauge
+        .offset('7%')
+        // set scale
+        .scale(scaleFirst);
+
+// create bar pointer of the data index three
+gauge.bar(3)
+        // set pointer name
+        .name('Bar Pointer Second')
+        // pointer offset as a percentage of the width gauge
+        .offset('42%')
+        // set scale
+        .scale(scaleSecond);
+
+gauge.axis(0)
+        // axis offset as a percentage of the width gauge
+        .offset('27%')
+        // set axis scale
+        .scale(scaleFirst);
+
+gauge.axis(1)
+        // axis offset as a percentage of the width gauge
+        .offset('62%')
+        // set axis scale
+        .scale(scaleSecond);
+
+// set container id for the gauge
+gauge.container('container');
+
+// initiate gauge drawing
+gauge.draw();
+    });
+        </script>
+    </body>
+</html>

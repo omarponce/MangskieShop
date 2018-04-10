@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Box and Whisker Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/box-chart/box-and-whisker-chart/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/box-chart/box-and-whisker-chart/data.json', function (data) {
+    // create box chart
+    chart = anychart.box();
+
+    // set chart title text settings
+    chart.title('Top 10 Jobs Salaries Grades Per Year Calisota, USA');
+
+    // set axes settings
+    chart.xAxis().staggerMode(true);
+
+    // create box chart series
+    var series = chart.box(data);
+    series.whiskerWidth('20%');
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

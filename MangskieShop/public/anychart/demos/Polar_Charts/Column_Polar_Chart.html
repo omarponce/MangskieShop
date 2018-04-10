@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Column Polar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create polar chart
+chart = anychart.polar();
+
+var columnSeries = chart.column([
+    {x: 'Rouge', value: 80540},
+    {x: 'Foundation', value: 94190},
+    {x: 'Mascara', value: 102610},
+    {x: 'Lip gloss', value: 110430},
+    {x: 'Lipstick', value: 128000},
+    {x: 'Nail polish', value: 143760},
+    {x: 'Eyebrow pencil', value: 170670},
+    {x: 'Eyeliner', value: 213210},
+    {x: 'Eyeshadows', value: 249980}
+]);
+
+// set series name
+columnSeries.name('Nevada');
+
+// set title settings
+chart.title()
+        .enabled(true)
+        .text('Cosmetic Products by Revenue')
+        .padding({bottom: 20});
+
+// disable y-axis
+chart.yAxis(false);
+
+// set value prefix for tooltip
+chart.tooltip().valuePrefix('$');
+
+// set x-scale
+chart.xScale('ordinal');
+
+// set chart container id
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

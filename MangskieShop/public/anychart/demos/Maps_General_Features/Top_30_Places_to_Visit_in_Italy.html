@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/maps-data/Top_30_Places_to_Visit_in_Italy_cititesData.js"></script>
+        
+        <script src="https://cdn.anychart.com/maps-data/Top_30_Places_to_Visit_in_Italy_sightsData.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/italy/italy.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/maps_general_features/top_30_places_to_visit/style.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Top 30 Places to Visit in Italy</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             // Variables to use in this sample
+    var image_link = "https://cdn.anychart.com/images/italy/";
+
+    anychart.onDocumentReady(function () {
+// Cities data for the sample
+var citiesData = getCitiesData();
+
+// Sights data for the Sample
+var sightsData = getSightsData();
+
+var container = document.getElementById('container');
+container.innerHTML = '<h1>Top 30 Places to Visit in Italy<br/><span class="text">According to <a href="https://www.tripadvisor.com/Attractions-g187768-Activities-Italy.html">Tripadvisor.com</a><br/>(Pictures and description were taken from <a href="https://wikipedia.org">Wikipedia.org</a>)</span></h1><div class="line"><div id="map-container"></div><div id="info"><h2 id="sight-title"></h2><img id="sight-image"/><p class="important"> Number <b id="sight-number"></b> to visit in Italy<br/>Rating <b id="sight-rating"></b> by <b id="sight-reviews"></b> reviews </p><p class="text" id="sight-description"></p></div></div>';
+
+// helper function - puts data about the sigh to the div
+var showSightData = function (index, series_index) {
+    var item_data = sightsData[series_index].sights[index];
+    if (item_data) {
+        document.getElementById('sight-image').setAttribute("src", image_link + item_data['id'] + '.jpg');
+        document.getElementById('sight-image').setAttribute("alt", item_data['name']);
+        document.getElementById('sight-title').innerHTML = item_data['name'];
+        document.getElementById('sight-number').innerHTML = item_data['id'];
+        document.getElementById('sight-rating').innerHTML = item_data['rating'];
+        document.getElementById('sight-reviews').innerHTML = item_data['reviews'];
+        document.getElementById('sight-description').innerHTML = item_data['desc'];
+    }
+};
+
+// draw map chart of Italy
+
+// create map chart
+var map = anychart.map();
+map.padding(10, 0, 20, 0);
+// set geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/italy/italy.js
+map.geoData('anychart.maps.italy');
+map.interactivity().selectionMode('single-select');
+map.scale().gap(0.05);
+
+map.unboundRegions()
+        .enabled(true)
+        .fill('#E1E1E1')
+        .stroke('#D2D2D2');
+
+// helper function - creates point series for different type of sights
+var createSightSeries = function (data, type, name) {
+    map.marker()
+            .data(anychart.data.set(data))
+            .name(name)
+            .size(5)
+            .type(type)
+            .legendItem({'iconType': type});
+};
+
+map.labels(false);
+map.tooltip()
+        .useHtml(true)
+        .padding([8, 13, 10, 13])
+        .title(false)
+        .separator(false)
+        .fontSize(14)
+        .format(function () {
+            return '<span>' + this.getData('name') + '</span><br/>' +
+                    '<span style="font-size: 12px; color: #E1E1E1">Rating <b>' +
+                    this.getData('rating') + '</b> by <b>' +
+                    this.getData('reviews').toLocaleString() + '</b> reviews</span>';
+        });
+
+//create point series for sights
+createSightSeries(sightsData[0].sights, 'star5', 'City Architecture');
+createSightSeries(sightsData[1].sights, 'triangle-up', 'Parks and landscapes');
+createSightSeries(sightsData[2].sights, 'star4', 'Museums and Galleries');
+createSightSeries(sightsData[3].sights, 'diamond', 'Religious sites');
+
+//create marker series for cities
+var series_cities = map.marker(anychart.data.set(citiesData));
+series_cities.name('Cities');
+series_cities.labels()
+        .enabled(true)
+        .anchor('left-center')
+        .position('right')
+        .offsetX(5)
+        .format(function () {
+            return this.getData('name');
+        });
+
+//hide markers for this series and this series from legend, leave only labels on map
+series_cities.size(0)
+        .selectionMode('none')
+        .tooltip(false)
+        .legendItem(false);
+
+series_cities.hovered().size(0);
+
+map.legend()
+        .enabled(true)
+        .padding(0, 0, 20, 0);
+
+map.listen('pointsSelect', function (evt) {
+    if (!evt.currentPoint.selected) return;
+    if (evt.currentPoint.series != series_cities) {
+        showSightData(evt.currentPoint.index, evt.currentPoint.series.getIndex());
+    }
+});
+
+// create zoom controls
+var zoomController = anychart.ui.zoom();
+zoomController.render(map);
+
+map.getSeries(0).select(0);
+showSightData(0, 0);
+
+// set container id for the chart
+map.container('map-container');
+// initiate chart drawing
+map.draw();
+    });
+        </script>
+    </body>
+</html>

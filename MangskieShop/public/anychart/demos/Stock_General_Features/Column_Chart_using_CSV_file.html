@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Column Chart using CSV file</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+// https://cdn.anychart.com/js/8.0.1/data-adapter.min.js
+
+// Load CSV data and create a chart by CSV data
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/stock-general-features/load-csv-data/data.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/samples-data/stock-general-features/load-csv-data/data.csv', function (data) {
+    // create stock chart
+    chart = anychart.stock();
+
+    // create plot
+    var plot = chart.plot(0);
+
+    // create column series on the first plot
+    var column = plot.column(data);
+    column.name('MSFT');
+
+    // set chart selected date/time range
+    chart.selectRange('2004-04-15', '2005-10-27');
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+});
+    });
+        </script>
+    </body>
+</html>

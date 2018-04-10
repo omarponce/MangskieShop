@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/united_states_of_america/united_states_of_america.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/maps_bubble/USA_nationals_park/style.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>USA National Parks</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-bubble/usa-national-parks/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-bubble/usa-national-parks/data.json', function (data) {
+    var img_link = 'https://cdn.anychart.com/images/usa_national_parks/';
+    // add html elements in div#container
+    var container = document.getElementById('container');
+    container.innerHTML = '<div id="map-container"></div><div id="map_tooltip"></div>';
+    var $custom_tooltip = $('#map_tooltip');
+    // The data used in this sample can be obtained from the CDN
+    // https://cdn.anychart.com/samples-data/maps-bubble/usa-national-parks/data.js
+    var parksData = data;
+
+    // Creates map chart
+    var map = anychart.map();
+
+    // define settings for maps regions (regions bounds are not relevant for this data, so let's make it less contrast)
+    map.unboundRegions()
+            .enabled(true)
+            .fill('#E1E1E1')
+            .stroke('#D2D2D2');
+
+    map.credits()
+            .enabled(true)
+            .url('https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States')
+            .text('Data source: https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States')
+            .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+    // Sets geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/united_states_of_america/united_states_of_america.js
+    map.geoData('anychart.maps.united_states_of_america');
+
+    // Sets bubble min/max size settings
+    map.minBubbleSize('0.5%')
+            .maxBubbleSize('3%');
+
+    // Sets Chart Title
+    map.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([0, 0, 10, 0])
+            .text('USA National Parks<br/><span style="color:#929292; font-size: 12px;">' +
+                    'Bubble size is defined by amount of visitors in 2014.<br/>According to Wikipedia.org</span>');
+
+    var series = map.bubble(anychart.data.set(parksData).mapAs({'size': 'visitors'}));
+    series.tooltip(false)
+            .stroke('2 #E1E1E1')
+            .fill('#1976d2')
+            .selectionMode('none');
+    series.labels()
+            .enabled(true)
+            .anchor('left-center')
+            .position('right')
+            .fontSize(11)
+            .offsetX(5);
+
+    map.listen('pointsHover', function (evt) {
+        var isHovered = evt.seriesStatus.length && evt.seriesStatus[0].points.length;
+        if (!isHovered) {
+            $custom_tooltip.hide();
+            return;
+        }
+        var data = parksData[evt.point.index];
+        $custom_tooltip.html('<h3>' + data.name + '</h3>' +
+                '<h5> Established since <b>' + data.date + '</b></h5> ' +
+                '<h5> Area: <b>' + data.area + '</b></h5> ' +
+                '<h5> Visitors in 2014: <b>' + parseInt(data.visitors).toLocaleString() + '</b></h5> ' +
+                '<p> <img src="' + img_link + data.id + '.jpg"/>' + data.description).show();
+    });
+    map.listen('mouseMove', function (evt) {
+        var clientX = evt.clientX;
+        var clientY = evt.clientY;
+
+        var container = $(this.container().getStage().container());
+        var containerOffset = container.offset();
+        var scrollLeft = $(document).scrollLeft();
+        var scrollTop = $(document).scrollTop();
+
+        var x = clientX - (containerOffset.left - scrollLeft);
+        var y = clientY - (containerOffset.top - scrollTop);
+
+        $custom_tooltip
+                .css('top', y - 10 - ($('#map_tooltip').height() / 2))
+                .css('left', x + 10)
+    });
+
+    // create zoom controls
+    var zoomController = anychart.ui.zoom();
+    zoomController.render(map);
+
+    // Sets container id for the chart
+    map.container('map-container');
+    // Initiates chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

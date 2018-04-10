@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-mekko.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Projected Annual Growth in Federal Budget Spending</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {x: 'Health Care', value: 37},
+    {x: 'Education', value: 31},
+    {x: 'Pensions', value: 23},
+    {x: 'General Government', value: 21},
+    {x: 'Transportation', value: 9},
+    {x: 'Defense', value: -5},
+    {x: 'Welfare', value: -15},
+    {x: 'Other Spending', value: -27}
+];
+
+var weights = [9, 25, 10, 8, 12, 19, 11, 6];
+
+// create barmekko chart with data
+chart = anychart.barmekko(data);
+// set chart title text settings
+chart.title('Projected Annual Growth in Federal Budget Spending 2014-2018');
+
+// set labels settings
+chart.labels()
+        .enabled(true)
+        .fontColor('#fff')
+        .position('center')
+        .format(function () {
+            if (this.value > 0) {
+                return '+' + this.value + '%'
+            } else {
+                return this.value + '%'
+            }
+        });
+
+// set weights
+chart.xScale().weights(weights);
+// format y-axis labels
+chart.yAxis().labels().format('{%Value}%');
+// set tooltip settings
+chart.tooltip().format('Value: {%Value}%');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

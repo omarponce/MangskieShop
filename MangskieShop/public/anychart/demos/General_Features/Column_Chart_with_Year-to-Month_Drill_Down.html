@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Column Chart with Year-to-Month Drill Down</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             // The data used in this sample can be obtained from the CDN
+    // https://cdn.anychart.com/samples-data/general-features/column-chart-with-drill-down/data.json
+    anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/general-features/column-chart-with-drill-down/data.json', function (data) {
+// create column chart
+chart = anychart.column();
+
+// set chart title
+chart.title('Column Chart with Year-to-Month Drill Down');
+
+// create column series and set data
+var series = chart.column(data);
+
+// set yAxis settings
+chart.xAxis().staggerMode(true);
+// set yAxis settings
+chart.yAxis().labels().format('{%Value}{groupsSeparator:.}$');
+
+// set tooltip settings
+chart.tooltip().format('Revenue: {%Value}{groupsSeparator:.}$');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// create label
+var label = chart.label(0);
+label.enabled(false)
+        .text('Back to Years')
+        .background('#9E9E9E')
+        .fontColor('#fff')
+        .padding(5)
+        .anchor('center-top')
+        .position('center-top')
+        .offsetY(45);
+
+label.listen('click', function () {
+    label.enabled(false);
+    series.unselect();
+    series.data(data);
+});
+
+label.listen('mouseOver', function () {
+    this.background(anychart.color.darken('#9E9E9E', 0.35));
+});
+
+label.listen('mouseOut', function () {
+    this.background('#9E9E9E');
+});
+
+// event for point select
+chart.listen('pointClick', function (event) {
+    if (!label.enabled()) {
+        var monthsData = event.point.get('months');
+
+        label.enabled(true);
+        series.unselect();
+        series.data(monthsData);
+    }
+});
+    });
+        </script>
+    </body>
+</html>

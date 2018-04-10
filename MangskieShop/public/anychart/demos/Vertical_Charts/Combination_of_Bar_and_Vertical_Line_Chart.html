@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Combination of Bar and Vertical Line Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+var dataSet = anychart.data.set([
+    ['20-25', 0.59, 0.77],
+    ['25-30', 0.91, 0.77],
+    ['30-35', 0.86, 0.85],
+    ['35-40', 0.76, 0.79],
+    ['40-45', 0.82, 0.77],
+    ['50-55', 0.73, 0.75],
+    ['55-60', 0.71, 0.67],
+    ['60-65', 0.67, 0.65]
+]);
+
+// create bar chart
+chart = anychart.bar();
+// set chart padding
+chart.padding([10, 40, 5, 20])
+        // set chart title text settings
+        .title('Productivity by Age');
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var seriesBarData = dataSet.mapAs({'x': 0, 'value': 1});
+// create bar series with passed data
+chart.bar(seriesBarData).name('Actual');
+
+// map data for the second series, take x from the zero column and value from the second column of data set
+var seriesLineData = dataSet.mapAs({'x': 0, 'value': 2});
+// create line series with passed data
+var seriesLine = chart.line()
+        .name('Optimal')
+        .data(seriesLineData)
+        .stroke('3 #f18126');
+// set markers settings
+seriesLine.markers()
+        .enabled(true)
+        .size(5);
+
+// set titles for axises
+chart.xAxis().title('Age Ranges');
+chart.yAxis().title('Actual / Optimal');
+chart.interactivity().hoverMode('by-x');
+chart.tooltip()
+        .position('right')
+        .anchor('left-top')
+        .displayMode('union')
+        .titleFormat(function () {
+            return this.points[0]['x'] + ' age'
+        })
+        .unionFormat(function () {
+            var result = '';
+
+            for (var i = 0; i < this.points.length; i++) {
+                result += this.points[i]['seriesName'] + ': ' + this.points[i]['value'];
+                if (i < this.points.length - 1) {
+                    result += '\n';
+                }
+            }
+
+            return result
+        });
+
+// set scale minimum/maximum
+chart.yScale().minimum(0);
+chart.yScale().maximum(1);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

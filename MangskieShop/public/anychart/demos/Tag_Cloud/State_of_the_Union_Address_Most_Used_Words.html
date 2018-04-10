@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/tag-cloud/most-frequent-words-us-presidents/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-tag-cloud.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>State of the Union Address Most Used Words</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var stage = acgraph.create('container');
+
+// creates standalones title
+var title = anychart.standalones.title();
+title.padding(10)
+        .text('State of the Union Address Most Used Words');
+
+// create tag cloud with Barack Obama data
+chartFirst = anychart.tagCloud();
+chartFirst.data(anychart.data.parseText(getDataFirst()))
+        // set color scale
+        .colorScale(anychart.scales.ordinalColor().colors(['#60727b']))
+        // set starting angle for automatic angle availability calculation
+        .fromAngle(-45)
+        // set finishing angle for automatic angle availability calculation
+        .toAngle(45)
+        // set number of angles for automatic calculation of available angles
+        .anglesCount(3)
+        // additional empty space in all directions from the text, only in pixels
+        .textSpacing(5)
+        // set chart bounds
+        .bounds(0, '5%', '33%', '95%')
+        // enabled legend
+        .legend(true);
+
+// create tag cloud with George Bush data
+chartSecond = anychart.tagCloud();
+chartSecond.data(anychart.data.parseText(getDataSecond()))
+        // set color scale
+        .colorScale(anychart.scales.ordinalColor().colors(['#f18126']))
+        // set starting angle for automatic angle availability calculation
+        .fromAngle(-45)
+        // set finishing angle for automatic angle availability calculation
+        .toAngle(45)
+        // set number of angles for automatic calculation of available angles
+        .anglesCount(3)
+        // additional empty space in all directions from the text, only in pixels
+        .textSpacing(5)
+        // set chart bounds
+        .bounds('33%', '5%', '33%', '95%')
+        // enabled legend
+        .legend(true);
+
+// create tag cloud with Ronald Reagan data
+chartThird = anychart.tagCloud();
+chartThird.data(anychart.data.parseText(getDataThird()))
+        // set color scale
+        .colorScale(anychart.scales.ordinalColor().colors(['#3b8ad8']))
+        // set starting angle for automatic angle availability calculation
+        .fromAngle(-45)
+        // set finishing angle for automatic angle availability calculation
+        .toAngle(45)
+        // set number of angles for automatic calculation of available angles
+        .anglesCount(3)
+        // additional empty space in all directions from the text, only in pixels
+        .textSpacing(5)
+        // set chart bounds
+        .bounds('66%', '5%', '33%', '95%')
+        // enabled legend
+        .legend(true);
+
+// set stage for the title
+title.container(stage);
+// initiate title drawing
+title.draw();
+
+// set stage for the chart
+chartFirst.container(stage);
+// initiate chart drawing
+chartFirst.draw();
+
+// set stage for the chart
+chartSecond.container(stage);
+// initiate chart drawing
+chartSecond.draw();
+
+// set stage for the chart
+chartThird.container(stage);
+// initiate chart drawing
+chartThird.draw();
+    });
+        </script>
+    </body>
+</html>

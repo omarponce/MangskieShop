@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Vertical Line Chart with Logarithmic Scale</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data,also we can pud data directly to series
+var dataSet = anychart.data.set([
+    ['Monday', '550', '2530', '8500'],
+    ['Tuesday', '790', '4010', '7500'],
+    ['Wednesday', '980', '4540', '12500'],
+    ['Thursday', '500', '3030', '9850'],
+    ['Friday', '150', '1250', '13000'],
+    ['Saturday', '100', '450', '5340'],
+    ['Sunday', '70', '610', '3430']
+]);
+
+// create vertical line chart
+chart = anychart.verticalLine();
+
+// turn on chart animation
+chart.animation(true)
+        // turn on the crosshair
+        .crosshair(true)
+        .padding([10, 20, 5, 20]);
+
+// set chart title text settings
+chart.title()
+        .enabled(true)
+        .padding([0, 0, 5, 0])
+        .text('Customers Activity during the Week');
+
+// set y axis title
+chart.yAxis().title('Activity occurences');
+
+// create logarithmic scale
+var logScale = anychart.scales.log();
+logScale.minimum(40)
+        .maximum(50000);
+
+// set scale for the chart, this scale will be used in all scale dependent entries such axes, grids, etc
+chart.yScale(logScale);
+
+// map data for the first series,take value from first column of data set
+var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
+
+// map data for the second series,take value from second column of data set
+var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+// map data for the third series, take x from the zero column and value from the third column of data set
+var seriesData_3 = dataSet.mapAs({'x': 0, 'value': 3});
+
+// setup first series
+chart.line()
+        .name('Review about the product')
+        .data(seriesData_1)
+        // enable series markers
+        .markers(true);
+
+// setup second series
+chart.line()
+        .name('Comment blog posts')
+        .data(seriesData_2)
+        // enable series markers
+        .markers(true);
+
+// setup third series
+chart.line()
+        .name('Email delivery support')
+        .data(seriesData_3)
+        // enable series markers
+        .markers(true);
+
+chart.labels()
+        .enabled(true)
+        .anchor('left-bottom')
+        .padding(5);
+
+// turn the legend on
+chart.legend()
+        .enabled(true)
+        .padding([5, 0, 5, 0]);
+
+// set container for the chart and define padding
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

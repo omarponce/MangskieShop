@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-waterfall.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Income Statement for ACME Corp</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {x: 'Net Sales', value: 5085000},
+    {x: 'Cost of Sales', value: -1250450},
+    {x: 'Gross Income', isTotal: true},
+    {x: 'Operating Expenses', value: -2350050},
+    {x: 'Operating Income', isTotal: true},
+    {x: 'Other Income', value: 750000},
+    {x: 'Extraordinary Gain', value: -230050},
+    {x: 'Interest Expense', value: -500000},
+    {x: 'Net Profit Before Taxes', isTotal: true},
+    {x: 'Taxes', value: 490000},
+    {x: 'Net Income', isTotal: true}
+];
+
+// create waterfall chart with our data
+chart = anychart.waterfall(data);
+
+// set chart title
+chart.title('Income Statement for ACME Corp.');
+
+// set connector stroke settings
+chart.connectorStroke('#e96a26', 1, '5 2');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// format y-axis labels
+chart.yAxis().labels().format('${%Value}{scale:(1000000)(1)|( mln)}');
+
+// set x-axis labels settings
+chart.xAxis().labels().rotation(-90);
+
+// set labels settings
+chart.labels()
+        .enabled(true)
+        .format(function () {
+            if (this['isTotal']) {
+                return anychart.format.number(this.absolute, {scale: true})
+            }
+
+            return anychart.format.number(this.value, {scale: true})
+        });
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/quadrant-charts/quadrant-motion/style.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Quadrant Motion</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/quadrant-charts/quadrant-motion/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/quadrant-charts/quadrant-motion/data.json', function (data) {
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Nov', 'Des', 'Jan'];
+
+    $('#container').append(
+            '<div class="control-container"><span class="edge left">2015 Jan ' +
+            '<button id="playButton"><i class="ac ac-play" aria-hidden="true"></i></button></span>' +
+            '<input id="rangeInput" name="rangeInput" type="range" min="1" max="12" step="1" value="1">' +
+            '<span class="edge right">2016 Jan</span></div>'
+    );
+    var ri = $('#rangeInput');
+    var currentMonth = +ri[0].value;
+    ri.on('change', function (e) {
+        changeValue();
+    });
+
+    var blogger_data = anychart.data.set(data);
+
+    var lineMapping = [];
+    var markerMapping = [];
+    var NAMES = ['John', 'Jane', 'Mary', 'Angel', 'July', 'Rodrigo'];
+
+    // create dataset
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'John';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'John';
+    }));
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'Jane';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'Jane';
+    }));
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'Mary';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'Mary';
+    }));
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'Angel';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'Angel';
+    }));
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'July';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'July';
+    }));
+    lineMapping.push(blogger_data.mapAs().filter('name', function (val) {
+        return val == 'Rodrigo';
+    }));
+    markerMapping.push(blogger_data.mapAs({
+        value: 'y',
+        fill: 'mfill',
+        stroke: 'mstroke',
+        label: 'mlabel'
+    }).filter('name', function (val) {
+        return val == 'Rodrigo';
+    }));
+
+    // create quadrant chart
+    chart = anychart.quadrant();
+    // set chart padding
+    chart.padding([10, 30, 70, 30]);
+
+    // set chart title text settings
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .text('Blogger\'s Popularity Growth in 2015');
+    chart.legend(true);
+
+    // set scales settings
+    chart.yScale()
+            .minimum(0)
+            .maximum(5000);
+    chart.xScale()
+            .minimum(0)
+            .maximum(5000);
+
+    // set quarters settings
+    chart.quarters(
+            {
+                rightTop: {
+                    fill: '#fff',
+                    title: {
+                        useHtml: true,
+                        fontSize: 12,
+                        lineHeight: 1.2,
+                        text: 'Good for advertising<br><span style="color: #2d4053;">REALLY POPULAR</span>',
+                        padding: 10
+                    }
+                },
+                rightBottom: {
+                    title: {
+                        useHtml: true,
+                        fontSize: 12,
+                        lineHeight: 1.2,
+                        text: 'Popular in particular group<br><span style="color: #2d4053;">LOCAL</span>',
+                        padding: 10
+                    }
+                },
+                leftTop: {
+                    title: {
+                        useHtml: true,
+                        fontSize: 12,
+                        lineHeight: 1.2,
+                        text: 'Popular, but not interesting enough<br><span style="color: #2d4053;">ACTIVITY NEEDED</span>',
+                        padding: 10
+                    }
+                },
+                leftBottom: {
+                    fill: '#fff',
+                    title: {
+                        useHtml: true,
+                        fontSize: 12,
+                        lineHeight: 1.2,
+                        text: 'Bad for advertising<br><span style="color: #2d4053;">STARTERS</span>',
+                        padding: 10
+                    }
+                }
+            }
+    );
+
+    // create first label in the upper-left quarter
+    chart.quarters().leftTop().label(0)
+            .enabled(true)
+            .useHtml(true)
+            .position('left-top')
+            .anchor('left-center')
+            .offsetY(-15)
+            .text('COMMENTS &#8594;');
+
+    // create first label in the lower-right quarter
+    chart.quarters().rightBottom().label(0)
+            .enabled(true)
+            .useHtml(true)
+            .rotation(90)
+            .position('right-bottom')
+            .anchor('right-center')
+            .offsetX(-15)
+            .text('&#8592; FOLLOWERS');
+
+    // create  series with data
+    var colors = '#f8bbd0 #f48fb1 #d4e157 #f2d1be #ffab00 #e1bee7'.split(' ');
+    for (var i = 0; i < 6; i++) {
+        chart.line()
+                .data(lineMapping[i])
+                .labels(false)
+                .markers(false)
+                .tooltip(false)
+                .stroke('#CECECE')
+                .legendItem(null)
+                .hovered({stroke: null})
+                .selected({stroke: null});
+
+        chart.marker()
+                .data(markerMapping[i])
+                .name(NAMES[i])
+                .zIndex(99)
+                .fill(colors[i])
+                .stroke('2 #fff')
+                .type('circle')
+                .size(4)
+                .selectionMode('none')
+                .legendItem({iconType: 'circle'});
+    }
+
+    chart.labels()
+            .fontFamily('Arial')
+            .position('right')
+            .fontColor('#0288d1')
+            .anchor('left-center')
+            .offsetX(5)
+            .offsetY(0)
+            .format(function () {
+                return MONTHS[this.getData('month') - 1];
+            });
+
+    chart.tooltip()
+            .useHtml(true)
+            .titleFormat('{%Name}')
+            .format(function () {
+                var year = '2015 ';
+                if (this.getData('month') == 12) year = '2016 ';
+                return year + MONTHS[this.getData('month') - 1] + '<br/><span style="color: #cecece; font-size: 11px">' +
+                        'Comments: </span>' + this.getData('x') + '<br/><span style="color: #cecece; font-size: 11px">' +
+                        'Followers: </span>' + this.getData('y')
+            });
+
+    // set chart container id
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    var if_playing = false;
+    var monthPlaying = 2;
+    var interval;
+    $('#playButton').click(function () {
+        var $element = $('#playButton .ac');
+        if (if_playing) {
+            $element.prop('class', 'ac ac-play');
+            if_playing = false;
+            clearInterval(interval);
+        }
+        else {
+            $element.prop('class', 'ac ac-stop');
+            if_playing = true;
+            interval = setInterval(
+                    function () {
+                        $('#rangeInput').val(monthPlaying);
+                        changeValue();
+                        if (monthPlaying < 12) {
+                            monthPlaying += 1;
+                        }
+                        else {
+                            monthPlaying = 1;
+                        }
+                    }, 500);
+        }
+    });
+
+    function changeValue() {
+        var newMonth = ri[0].value;
+        var mapping = blogger_data.mapAs();
+        var iter = mapping.getIterator();
+        while (iter.advance()) {
+            var month = iter.get('month');
+            if (month == currentMonth) {
+                mapping.set(iter.getIndex(), 'mfill', undefined);
+                mapping.set(iter.getIndex(), 'mstroke', undefined);
+                mapping.set(iter.getIndex(), 'mlabel', undefined);
+            } else if (month == newMonth) {
+                mapping.set(iter.getIndex(), 'mfill', '#0288d1');
+                mapping.set(iter.getIndex(), 'mstroke', '#0288d1');
+                mapping.set(iter.getIndex(), 'mlabel', {enabled: true});
+            }
+        }
+        currentMonth = newMonth;
+        chart.getSeriesAt(0).data(null).data(lineMapping[0]);
+    }
+});
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-venn.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Number of Records in Radio Station by Artist</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/venn-charts/number-of-records-in-radio-station-by-artist/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/venn-charts/number-of-records-in-radio-station-by-artist/data.json', function (data) {
+    // create venn diagram
+    chart = anychart.venn(data);
+
+    // set chart title
+    chart.title()
+            .enabled(true)
+            .padding({bottom: 35})
+            .text('Number of Records in Radio Station by Artist');
+
+    // set labels settings
+    chart.labels()
+            .fontSize(12)
+            .fontColor('#60727b')
+            .format('{%Name}');
+
+    // set select labels settings
+    chart.selected().labels()
+            .enabled(true)
+            .fontColor('#fff');
+
+    // set intersections labels settings
+    chart.intersections()
+            .labels(false)
+            // disable intersections fill
+            .fill('none');
+
+    // set tooltip format settings
+    chart.tooltip()
+            .titleFormat('{%Name}')
+            .format(function () {
+                // if Radio Station, see data
+                if (this.x === 'A') {
+                    return 'Total Records: ' + this.value
+                } else {
+                    return 'Album: ' + this.getData('album') + '\n' +
+                            'Records: ' + this.value
+                }
+            });
+
+    // disable legend
+    chart.legend(false);
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Range Step-Area Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create column chart
+chart = anychart.area();
+
+// set chart title text settings
+chart.title('Min and Max Connection Timeout');
+
+// create area series with passed data
+var data = anychart.data.set(getRangesData());
+
+// create series
+var series = chart.rangeStepArea(data);
+series.stroke(false);
+// disable hover markers
+series.hovered().markers(false);
+// disable selected markers
+series.selected().markers(false);
+
+// name the axes
+chart.xAxis().title('Day hours');
+chart.yAxis().title('ms');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getRangesData() {
+return [
+    {x: '0', low: 232, high: 542},
+    {x: '1', low: 393, high: 522},
+    {x: '2', low: 368, high: 602},
+    {x: '3', low: 419, high: 612},
+    {x: '4', low: 194, high: 1052},
+    {x: '5', low: 379, high: 639},
+    {x: '6', low: 332, high: 712},
+    {x: '7', low: 457, high: 622},
+    {x: '8', low: 493, high: 692},
+    {x: '9', low: 468, high: 802},
+    {x: '10', low: 419, high: 612},
+    {x: '11', low: 194, high: 1052},
+    {x: '12', low: 579, high: 839},
+    {x: '13', low: 532, high: 812},
+    {x: '14', low: 579, high: 839},
+    {x: '15', low: 532, high: 812},
+    {x: '16', low: 557, high: 922},
+    {x: '17', low: 593, high: 822},
+    {x: '18', low: 668, high: 902},
+    {x: '19', low: 619, high: 712},
+    {x: '20', low: 694, high: 952},
+    {x: '21', low: 679, high: 1039},
+    {x: '22', low: 632, high: 912},
+    {x: '23', low: 432, high: 712}
+]
+    }
+        </script>
+    </body>
+</html>

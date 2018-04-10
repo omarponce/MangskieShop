@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Single Series Polar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/polar-charts/single-series-polar-chart/data.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/samples-data/polar-charts/single-series-polar-chart/data.csv', function (data) {
+    // create polar chart
+    chart = anychart.polar();
+
+    // create series line series
+    chart.line(data);
+
+    // set chart yScale settings
+    chart.yScale().stackMode('value');
+    chart.yScale().ticks().interval(.3);
+    chart.startAngle(90);
+
+    // set chart xScale settings
+    chart.xScale().maximum(360);
+    chart.xScale().ticks().interval(30);
+
+    // set xAxis formatting settings
+    chart.xAxis().labels().format('{%Value}?');
+
+    // enabled y-grid and create palette for grid rows
+    chart.yGrid().palette(['lightgray 0.3', 'white 0.9']);
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

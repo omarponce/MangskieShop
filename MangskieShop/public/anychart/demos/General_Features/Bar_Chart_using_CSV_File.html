@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Bar Chart using CSV File</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+// https://cdn.anychart.com/js/8.0.1/data-adapter.min.js
+
+// Load CSV data and create a chart by CSV data
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/general-features/load-csv-data/data.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/samples-data/general-features/load-csv-data/data.csv', function (data) {
+    // create bar chart
+    chart = anychart.bar();
+
+    // set chart title
+    chart.title('Top 10 Cosmetic Products by Revenue');
+
+    // create data set on our data
+    var dataSet = anychart.data.set(data);
+    // map mapping
+    var mapping = dataSet.mapAs({'x': 0, 'value': 1});
+
+    // create bar series
+    var series = chart.bar();
+    // set chart data
+    series.data(mapping);
+
+    // set tooltip settings
+    series.tooltip()
+            .titleFormat('{%X}')
+            .format('Revenue: ${%Value}');
+
+    // set yAxis labels formatter
+    chart.yAxis().labels().format('{%Value}{groupsSeparator: }');
+
+    // set titles for axises
+    chart.xAxis().title('Products by Revenue');
+    chart.yAxis().title('Revenue in Dollars');
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

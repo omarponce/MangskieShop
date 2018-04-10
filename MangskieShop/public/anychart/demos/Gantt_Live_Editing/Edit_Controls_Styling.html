@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Edit Controls Styling</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-live-editing/edit-controls-styling/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-live-editing/edit-controls-styling/data.json', function (data) {
+    // create data tree on raw data
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create project gantt chart
+    chart = anychart.ganttProject();
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // make chart editable
+    chart.editing(true);
+
+    // set pixel position of the main splitter
+    chart.splitterPosition(220);
+
+    // coloring the data grid's edit controls
+    chart.dataGrid()
+            .editStructurePreviewFill('red 0.3')
+            .editStructurePreviewStroke('red')
+            .editStructurePreviewDashStroke({
+                color: 'red',
+                dash: '5 2',
+                thickness: 2
+            });
+
+    // set timeline settings
+    chart.getTimeline()
+            // coloring the timeline's edit controls
+            .connectorPreviewStroke('3 green 0.3')
+            .editPreviewFill('black 0.2')
+            .editPreviewStroke('3 blue 0.8')
+            .editProgressFill('yellow')
+            .editProgressStroke('2 black')
+            .editIntervalThumbFill('red')
+            .editIntervalThumbStroke('black')
+            .editConnectorThumbFill('#9f9')
+            .editConnectorThumbStroke('#090')
+            // set the appearance control edit to start connector
+            .editStartConnectorMarkerType('triangleleft')
+            // set marker size
+            .editStartConnectorMarkerSize(15)
+            // set horizontal offset
+            .editStartConnectorMarkerHorizontalOffset(1)
+            // set the appearance control edit to finish connector
+            .editFinishConnectorMarkerType('triangleright')
+            // set marker size
+            .editFinishConnectorMarkerSize(15)
+            // set horizontal offset
+            .editFinishConnectorMarkerHorizontalOffset(-1)
+            // set width of the intervals editing controls
+            .editIntervalWidth(10);
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+});
+    });
+        </script>
+    </body>
+</html>

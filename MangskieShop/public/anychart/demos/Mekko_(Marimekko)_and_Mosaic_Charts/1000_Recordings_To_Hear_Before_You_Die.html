@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-mekko.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>1000 Recordings To Hear Before You Die</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = {
+    title: '1,000 Recordings To Hear Before You Die',
+    header: ['#', 'Heartbreak', 'Life and Death', 'Love', 'Party Songs', 'People and Places', 'Politics and Protest', 'Sex'],
+    rows: [
+        ['1910-1950s', 5, 12, 13, 3, 27, 27, 11],
+        ['1960s', 26, 26, 50, 15, 64, 27, 21],
+        ['1970s', 26, 32, 41, 45, 28, 36, 27],
+        ['1980s', 24, 19, 11, 43, 19, 34, 34],
+        ['1990s', 20, 23, 10, 18, 6, 9, 32],
+        ['2000s', 23, 18, 9, 24, 9, 21, 32]
+    ]
+};
+
+// create mosaic chart
+chart = anychart.mosaic();
+// set chart data
+chart.data(data);
+// set union tooltip
+chart.tooltip().displayMode('union');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

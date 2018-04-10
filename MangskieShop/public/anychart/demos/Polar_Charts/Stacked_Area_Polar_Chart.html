@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Stacked Area Polar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// generate data
+var rawData = [];
+for (x = -180; x < 180; x++) {
+    rawData.push([x, -12.6 * (1 - Math.cos(x * 1.14 / 180)), -12.6 * (1 - Math.cos(x * 2.14 / 180)), -12.6 * (1 - Math.cos(x * 3.14 / 180))]);
+}
+
+// create a data set
+var series = anychart.data.mapAsTable(rawData, 'area');
+
+// create polar chart
+chart = anychart.polar();
+
+// set chart title
+chart.title('Microphones Sensitivity Polar Pattern');
+
+// add series
+chart.defaultSeriesType('area');
+chart.addSeries(series[0], series[1], series[2]);
+
+// set series names
+chart.getSeries(0).name('SMM58');
+chart.getSeries(1).name('NTT1A');
+chart.getSeries(2).name('sE4400a IV');
+
+// set chart yScale settings
+chart.yScale().ticks().interval(5);
+chart.yScale()
+        .minimum(-25)
+        .maximum(0);
+chart.startAngle(180);
+
+// set chart xScale settings
+chart.xScale()
+        .minimum(-180)
+        .maximum(180);
+chart.xScale().ticks().interval(30);
+
+// set xAxis formatting settings
+chart.xAxis().labels().format(function () {
+    return Math.abs(this['value']) + '?';
+});
+
+// enabled y-grid and create palette for grid rows
+chart.yGrid().palette(['lightgray 0.3', 'white 0.9']);
+
+// set legend settings
+chart.legend()
+        .enabled(true)
+        .position('center-bottom');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

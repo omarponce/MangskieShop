@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/maps-general-features/map-with-nepal-localization/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/nepal/nepal.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/locales/ne-np.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Map with Nepal Localization</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// set output locale
+anychart.format.outputLocale('ne-np');
+anychart.format.outputDateTimeFormat('dd MMMM yyyy'); // Like '01 January 2015'
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-general-features/map-with-nepal-localization/data.js
+// create data set
+var dataSet = anychart.data.set(getData());
+
+// create map chart
+var map = anychart.map();
+
+map.unboundRegions()
+        .enabled(true)
+        .fill('#E1E1E1')
+        .stroke('#D2D2D2');
+
+// set geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/australia/australia.js
+map.geoData('anychart.maps.nepal');
+map.title()
+        .enabled(true)
+        .useHtml(true)
+        .padding([20, 0, 0, 0])
+        .text('Eight-thousanders of ' +
+                'Nepal with first-ascent date. <br/> ????? ???? ?? ???? ??? ??-??????');
+
+map.padding([0, 30])
+        // set chart bubble settings
+        .maxBubbleSize(7)
+        .minBubbleSize(3);
+
+//create bubble series
+var series = map.bubble(dataSet);
+series.selectionMode('none')
+        .fill('#1976d2 0.6')
+        .stroke('1 #1976d2 0.9');
+series.labels()
+        .enabled(true)
+        .anchor('right-center')
+        .position('left')
+        .offsetX(3)
+        .padding(0)
+        .fontColor('#212121')
+        .useHtml(true)
+        .format(function () {
+            return anychart.format.dateTime(this.getData('ascent'));
+        });
+series.hovered().labels().fontWeight('bold');
+
+// set series tooltip settings
+series.tooltip()
+        .useHtml(true)
+        .fontColor('#7c868e')
+        .width(250)
+        .padding([8, 13, 10, 13])
+        .titleFormat(function () {
+            var span_for_value = ' (<span style="color: #545f69; font-size: 12px; font-weight: bold">';
+            return this.getData('name') + span_for_value + this.getData('size') + '</span>m</strong>)';
+        })
+        .format(function () {
+            return 'First Ascent: <span style="color: #545f69; font-size: 12px">' +
+                    anychart.format.dateTime(this.getData('ascent')) + '</span></strong><br/>' +
+                    'First Summiters: <span style="color: #545f69; font-size: 12px">' +
+                    this.getData('summiters') + '</span></strong>';
+        });
+
+series.tooltip().background()
+        .enabled(true)
+        .fill('#fff')
+        .stroke('#c1c1c1')
+        .corners(3)
+        .cornerType('ROUND');
+
+series.tooltip().title()
+        .useHtml(true)
+        .fontColor('#7c868e');
+
+//set series geo id field settings
+series.geoIdField('code_hasc');
+
+// create zoom controls
+var zoomController = anychart.ui.zoom();
+zoomController.render(map);
+
+// set container id for the chart
+map.container('container');
+
+// initiate chart drawing
+map.draw();
+    });
+        </script>
+    </body>
+</html>

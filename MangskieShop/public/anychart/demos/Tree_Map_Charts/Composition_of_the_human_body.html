@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-treemap.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Composition of the human body</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/tree-map-charts/composition-of-the-human-body/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/tree-map-charts/composition-of-the-human-body/data.json', function (data) {
+    // makes tree from the data for the sample
+    var dataTree = anychart.data.tree(data, 'as-table');
+    chart = anychart.treeMap(dataTree);
+
+    // sets credits for this sample
+    chart.credits()
+            .enabled(true)
+            .url('https://en.wikipedia.org/wiki/Composition_of_the_human_body')
+            .text('Data source: https://en.wikipedia.org/wiki/Composition_of_the_human_body')
+            .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+    // sets chart settings
+    chart.selectionMode('none')
+            .stroke('#bdc8ce')
+            // set colorScale with colors
+            .colorScale(anychart.scales.linearColor('#ffe082', '#f06292'))
+            // setting the number of levels shown
+            .hintDepth(1)
+            // hintOpacity setting
+            .hintOpacity(0.5);
+
+    chart.headers().background()
+            .fill('#eceff1')
+            .stroke('#bdc8ce');
+
+    // sets title for chart and customizes it
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([0, 0, 20, 0])
+            .text(
+                    'Composition of Human Body<br/>' +
+                    '<span style="color:#212121; font-size: 13px;">' +
+                    'Mass from the average adult human body 70 kg.</span>'
+            );
+
+    // sets settings for labels
+    chart.labels()
+            .useHtml(true)
+            .fontColor('#212121')
+            .fontSize(12)
+            .format(function () {
+                return this.getData('name') + '<br/><span style="font-size: 11px; font-weight: bold">' +
+                        parseFloat(this.value).toLocaleString() + '</span> kg';
+            });
+
+    // sets settings for tooltips
+    chart.tooltip()
+            .useHtml(true)
+            .titleFormat(function () {
+                return this.getData('name') + ' (' +
+                        parseFloat(this.value).toLocaleString() + ' kg)';
+            })
+            .format(function () {
+                var positive = '';
+                var negative = '';
+
+                if (this.getData('positive')) {
+                    positive = '<span style="color: #ccc">Essential in humans:<br/></span>' +
+                            this.getData('positive');
+                }
+                if (this.getData('negative')) {
+                    negative = '<span style="color: #ccc">Negative effect of excess:<br/></span>' +
+                            this.getData('negative');
+                }
+                if (positive + negative == '') {
+                    return '<span style="font-size: 11px;">Click to see more</span>';
+                }
+                if (positive == '') {
+                    return '<span style="font-size: 11px;">' + negative + '</span>';
+                }
+                if (negative == '') {
+                    return '<span style="font-size: 11px;">' + positive + '</span>';
+                }
+
+                return '<span style="font-size: 11px;">' + positive + '<br/>' + negative + '</span>';
+            });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

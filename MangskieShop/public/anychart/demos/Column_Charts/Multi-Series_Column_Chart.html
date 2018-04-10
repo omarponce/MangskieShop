@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Multi-Series Column Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+chartData = {
+    title: 'Top 3 Products with Region Sales Data',
+    header: ['#', 'Florida', 'Texas', 'Arizona', 'Nevada'],
+    rows: [
+        ['Nail polish', 6814, 3054, 4376, 4229],
+        ['Eyebrow pencil', 7012, 5067, 8987, 3932],
+        ['Lipstick', 8814, 9054, 4376, 9256]
+    ]
+};
+
+// create column chart
+chart = anychart.column();
+
+// set chart data
+chart.data(chartData);
+
+// turn on chart animation
+chart.animation(true);
+
+chart.yAxis().labels().format('${%Value}{groupsSeparator: }');
+
+// set titles for Y-axis
+chart.yAxis().title('Revenue');
+
+chart.labels()
+        .enabled(true)
+        .position('center-top')
+        .anchor('center-bottom')
+        .format('${%Value}{groupsSeparator: }');
+chart.hovered().labels(false);
+
+// turn on legend and tune it
+chart.legend()
+        .enabled(true)
+        .fontSize(13)
+        .padding([0, 0, 20, 0]);
+
+// interactivity settings and tooltip position
+chart.interactivity().hoverMode('single');
+
+chart.tooltip()
+        .positionMode('point')
+        .position('center-top')
+        .anchor('center-bottom')
+        .offsetX(0)
+        .offsetY(5)
+        .titleFormat('{%X}')
+        .format('{%SeriesName} : ${%Value}{groupsSeparator: }');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

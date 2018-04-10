@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/scatter-charts/scatter-chart-with-axis-ranges/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Scatter Chart with Axis Ranges</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create scatter chart
+chart = anychart.scatter();
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/scatter-charts/scatter-chart-with-axis-ranges/data.js
+chart.line()
+        .data(getObserverData())
+        .name('Observed')
+        .stroke('2 #64b5f6')
+        .legendItem({
+            iconStroke: 'none',
+            iconFill: '#64b5f6'
+        });
+chart.line()
+        .data(getForecastData())
+        .name('Forecast')
+        .stroke('2 #1976d2')
+        .legendItem({
+            iconStroke: 'none',
+            iconFill: '#1976d2'
+        });
+
+chart.xScale(anychart.scales.dateTime());
+
+chart.xScale()
+        .minimum(Date.UTC(2015, 05, 21, 23, 00))
+        .maximum(Date.UTC(2015, 05, 27, 12, 00));
+chart.xScale().ticks().interval(0, 0, 1);
+
+chart.yScale().maximum(34);
+
+chart.xAxis().labels()
+        .hAlign('center')
+        .format(function () {
+            var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            var date = new Date(this.tickValue);
+            return weekdays[date.getUTCDay()] + '\n' + date.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                    });
+        });
+
+chart.lineMarker()
+        .value(Date.UTC(2015, 05, 22, 11, 32))
+        .layout('vertical')
+        .scale(chart.xScale())
+        .stroke({
+            color: '#212121',
+            dash: '5 3',
+            thickness: 2
+        });
+
+chart.legend()
+        .enabled(true)
+        .itemsFormatter(function (items) {
+            var date = new Date(chart.lineMarker(0).value());
+            items.unshift({
+                text: 'Graph Created ' + date.toLocaleTimeString() + ' ' + date.toDateString(),
+                iconType: 'line',
+                iconStroke: {color: '#212121', dash: '5 3', thickness: 2}
+            });
+            return items
+        });
+
+chart.rangeMarker(0)
+        .from(15)
+        .to(21)
+        .fill('#ffe082 0.8');
+
+chart.rangeMarker(1)
+        .from(21)
+        .to(22)
+        .fill('#ffb300 0.6');
+
+chart.rangeMarker(2)
+        .from(22)
+        .to(26)
+        .fill('#ff6e40 0.6');
+
+chart.rangeMarker(3)
+        .from(26)
+        .to(34)
+        .fill('#f48fb1 0.6');
+
+chart.textMarker(0)
+        .value(15)
+        .offsetX(10)
+        .text('Action: 15.0')
+        .anchor('left-bottom')
+        .align('left')
+        .fontColor('#212121');
+
+chart.textMarker(1)
+        .value(21)
+        .offsetX(10)
+        .text('Minor: 21.0')
+        .anchor('left-bottom')
+        .align('left')
+        .fontColor('#212121');
+
+chart.textMarker(2)
+        .value(22)
+        .offsetX(10)
+        .text('Moderate: 22.0')
+        .anchor('left-bottom')
+        .align('left')
+        .fontColor('#212121');
+
+chart.textMarker(3)
+        .value(26)
+        .offsetX(10)
+        .text('Major: 26.0')
+        .anchor('left-bottom')
+        .align('left')
+        .fontColor('#212121');
+
+chart.textMarker(4)
+        .value(30.7)
+        .offsetX(10)
+        .offsetY(5)
+        .text('Record: 30.7')
+        .anchor('right-bottom')
+        .align('right')
+        .fontColor('#212121');
+
+chart.lineMarker(1)
+        .value(30.7)
+        .stroke('1.5 #212121');
+
+var scale = anychart.scales.log();
+scale.minimum(0.4)
+        .maximum(45);
+
+chart.yAxis(1).scale(scale).orientation('right');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

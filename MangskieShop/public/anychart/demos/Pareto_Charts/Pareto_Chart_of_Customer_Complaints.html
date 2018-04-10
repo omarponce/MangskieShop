@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pareto.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Pareto Chart of Customer Complaints</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {x: 'Parking Difficult', value: 95},
+    {x: 'Sales Rep was Rude', value: 60},
+    {x: 'Poor Lighting', value: 45},
+    {x: 'Layout Confusing', value: 37},
+    {x: 'Sizes Limited', value: 30},
+    {x: 'Clothing Faded', value: 27},
+    {x: 'Clothing Shrank', value: 18}
+];
+
+// create pareto chart with data
+chart = anychart.pareto(data);
+// set chart title text settings
+chart.title('Pareto Chart of Customer Complaints');
+// set measure y axis title
+chart.yAxis(0).title('Defect frequency');
+// cumulative percentage y axis title
+chart.yAxis(1).title('Cumulative Percentage');
+// set interval
+chart.yAxis(1).scale().ticks().interval(10);
+
+// get pareto column series and set settings
+var column = chart.getSeriesAt(0);
+column.fill(function () {
+    if (this.rf < 10) {
+        return '#E24B26'
+    } else {
+        return this.sourceColor;
+    }
+});
+column.stroke(function () {
+    if (this.rf < 10) {
+        return '#60727B'
+    } else {
+        return this.sourceColor;
+    }
+});
+column.labels().enabled(true).format('{%RF}%');
+column.tooltip().format('Value: {%Value}');
+
+// get pareto line series and set settings
+var line = chart.getSeriesAt(1);
+line.tooltip().format('Cumulative Frequency: {%CF}% \n Relative Frequency: {%RF}%');
+
+// create first horizontal line marker
+chart.lineMarker(0)
+        .axis(chart.yAxis(1))
+        .value(10)
+        .stroke('#A5B3B3', 1, '10 2', 'round'); // sets stroke
+
+// create second horizontal line marker
+chart.lineMarker(1)
+        .axis(chart.yAxis(1))
+        .value(60)
+        .stroke('#A5B3B3', 1, '10 2', 'round'); // sets stroke
+
+// turn on the crosshair and set settings
+chart.crosshair()
+        .enabled(true)
+        .xLabel(false);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

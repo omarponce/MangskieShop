@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>3D Column Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create column chart
+chart = anychart.column3d();
+
+// turn on chart animation
+chart.animation(true);
+
+// set chart title text settings
+chart.title('Top 10 Cosmetic Products by Revenue');
+
+// create area series with passed data
+chart.column([
+    ['Rouge', '80540'],
+    ['Foundation', '94190'],
+    ['Mascara', '102610'],
+    ['Lip gloss', '110430'],
+    ['Lipstick', '128000'],
+    ['Nail polish', '143760'],
+    ['Eyebrow pencil', '170670'],
+    ['Eyeliner', '213210'],
+    ['Eyeshadows', '249980']
+]);
+
+chart.tooltip()
+        .position('center-top')
+        .anchor('center-bottom')
+        .offsetX(0)
+        .offsetY(5)
+        .format('${%Value}');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// set yAxis labels formatter
+chart.yAxis().labels().format('{%Value}{groupsSeparator: }');
+
+chart.tooltip().positionMode('point');
+chart.interactivity().hoverMode('by-x');
+
+chart.xAxis().title('Products by Revenue');
+chart.yAxis().title('Revenue in Dollars');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

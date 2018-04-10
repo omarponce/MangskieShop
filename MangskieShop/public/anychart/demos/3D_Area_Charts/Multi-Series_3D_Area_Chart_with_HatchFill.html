@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Multi-Series 3D Area Chart with HatchFill</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+var dataSet = anychart.data.set(getData());
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var seriesData = dataSet.mapAs({'x': 0, 'value': 1});
+
+// map data for the second series, take x from the zero column and value from the second column of data set
+var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+// create line chart
+chart = anychart.area3d();
+
+// adding dollar symbols to yAxis labels
+chart.yAxis().labels().format('${%Value}');
+
+// turn on chart animation
+chart.animation(true);
+
+// set chart axes settings
+chart.yAxis().title('The Share Price');
+chart.xAxis().title('Year/Month/Day');
+chart.xAxis().labels().padding([5, 5, 0, 5]);
+
+// set chart title text settings
+chart.title('The cost of ACME\'s shares<br/>' +
+        '<span style="color:#212121; font-size: 13px;">Statistics was collected from site N during September</span>');
+chart.title()
+        .useHtml(true)
+        .padding([0, 0, 20, 0]);
+
+// create first series with mapped data
+var series = chart.area(seriesData);
+series.name('ACME Share Price');
+series.hovered().markers(false);
+series.hatchFill('diagonal');
+
+// create second series with mapped data
+var series_2 = chart.area(seriesData_2);
+series_2.name('The Competitor\'s Share Price');
+series_2.hovered().markers(false);
+series_2.hatchFill('diagonal-brick');
+
+// set chart tooltip settings
+var toolitp = chart.tooltip();
+toolitp.position('center-top')
+        .positionMode('point')
+        .anchor('left-bottom')
+        .offsetX(5)
+        .offsetY(5);
+
+chart.interactivity().hoverMode('by-x');
+chart.zAspect('100%');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getData() {
+return [
+    ['1986', 162, 42],
+    ['1987', 134, 54],
+    ['1988', 116, 26],
+    ['1989', 122, 32],
+    ['1990', 178, 68],
+    ['1991', 144, 54],
+    ['1992', 125, 35],
+    ['1993', 176, 66],
+    ['1994', 156, 80],
+    ['1995', 195, 120],
+    ['1996', 215, 115],
+    ['1997', 176, 36],
+    ['1998', 167, 47],
+    ['1999', 142, 72],
+    ['2000', 117, 37],
+    ['2001', 113, 23],
+    ['2002', 132, 30],
+    ['2003', 146, 46],
+    ['2004', 169, 59],
+    ['2005', 184, 44]
+]
+    }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Using SVG as GeoData</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var stage = acgraph.create('container');
+
+// The data that have been used for this sample can be taken from the CDN
+// https://cdn.anychart.com/svg-data/seat-map/zimbabwe_with_flag.svg
+$('#container').append('<div class="seat-map-title">' +
+        '<h1>Using SVG as GeoData</h1>' +
+        '<p>(draw chart in <a href="https://cdn.anychart.com/svg-data/seat-map/zimbabwe_with_flag.svg"' +
+        'target="_blank">SVG data</a>)</p>' + '</div>');
+
+$.ajax({
+    type: 'GET',
+    url: 'https://cdn.anychart.com/svg-data/seat-map/' +
+    'zimbabwe_with_flag.svg',
+    success: function (data) {
+
+        var dataSet = anychart.data.set([
+            {id: 'ZW.MC', value: 9},
+            {id: 'ZW.HA', value: 25},
+            {id: 'ZW.MN', value: 43},
+            {id: 'ZW.MI', value: 7},
+            {id: 'ZW.ME', value: 23},
+            {id: 'ZW.MA', value: 59},
+            {id: 'ZW.MS', value: 11},
+            {id: 'ZW.BU', value: 22},
+            {id: 'ZW.MV', value: 17},
+            {id: 'ZW.MW', value: 12}
+        ]);
+
+        var mapping = dataSet.mapAs({'id': 'id'});
+
+        // create map
+        map = anychart.map();
+        // set svg data
+        map.geoData(data)
+                .padding([105, 0, 20, 0])
+                // load svg-file how it looked(colors stroke/fill except
+                // for elements of series)
+                .unboundRegions('as-is');
+
+        // create choropleth series for map
+        var series = map.choropleth(mapping);
+
+        var scale = anychart.scales.ordinalColor([
+            {less: 10},
+            {from: 10, to: 20},
+            {from: 20, to: 50},
+            {greater: 50}
+        ]);
+        scale.colors(['#81d4fa', '#29b6f6', '#0288d1', '#01579b']);
+
+        // set color for choropleth series for map
+        series.colorScale(scale);
+
+        // set container for the chart
+        map.container(stage);
+        // initiate chart drawing
+        map.draw();
+    }
+});
+    });
+        </script>
+    </body>
+</html>

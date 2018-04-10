@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Annotated Scatter Chart with Trend Channel</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+chart = anychart.scatter();
+
+chart.marker(getRandomArbitrary(10, 50, 100));
+chart.marker(getRandomArbitrary(150, 200, 100));
+
+// create annotation
+var annotation = chart.annotations();
+annotation.zIndex(10);
+// create annotation trendChannel
+annotation.trendChannel({
+    // X - part of the first anchor
+    xAnchor: '4',
+    // Y - part of the first anchor
+    valueAnchor: 0,
+    // X - part of the second anchor
+    secondXAnchor: '110',
+    // Y - part of the second anchor
+    secondValueAnchor: 105,
+    // X - part of the third anchor
+    thirdXAnchor: '80',
+    // Y - part of the third anchor
+    thirdValueAnchor: 135,
+    // set stroke settings
+    stroke: '2 #6E9C4E',
+    // set fill settings
+    fill: '#6E9C4E 0.3',
+    // set hover fill/stroke settings
+    hovered: {
+        fill: '#6E9C4E 0.3',
+        stroke: '2 #6E9C4E'
+    }
+});
+// create annotation trendChannel
+annotation.trendChannel({
+    // X - part of the first anchor
+    xAnchor: '4',
+    // Y - part of the first anchor
+    valueAnchor: 145,
+    // X - part of the second anchor
+    secondXAnchor: '100',
+    // Y - part of the second anchor
+    secondValueAnchor: 235,
+    // X - part of the third anchor
+    thirdXAnchor: '100',
+    // Y - part of the third anchor
+    thirdValueAnchor: 300,
+    // set stroke settings
+    stroke: '2 #e06666',
+    // set fill settings
+    fill: '#e06666 0.3',
+    // set hover fill/stroke settings
+    hovered: {
+        fill: '#e06666 0.3',
+        stroke: '2 #e06666'
+    }
+});
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getRandomArbitrary(min, max, count) {
+var result = [];
+for (var i = 5; i < count; i++) {
+    min++;
+    max++;
+    result.push([i, Math.ceil(Math.random() * (max - min) + min)]);
+}
+return result
+    }
+        </script>
+    </body>
+</html>

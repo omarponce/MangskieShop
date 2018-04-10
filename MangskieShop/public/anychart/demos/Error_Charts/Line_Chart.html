@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Line Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create line chart
+chart = anychart.line();
+
+// set chart padding
+chart.padding([10, 20, 0, 10]);
+
+// set chart title text settings
+chart.title('The Duration of Work Process on the Project by Month');
+
+// create data set on our data
+var data = anychart.data.set([
+    ['Jan', 31.34, 14, 9],
+    ['Feb', 49.76, 8, 6],
+    ['Mar', 87.43, 8, 12],
+    ['Apr', 100.67, 7, 8],
+    ['May', 88.19, 10, 6],
+    ['June', 103.54, 8.3, 6],
+    ['July', 120.98, 9, 11],
+    ['Aug', 203.21, 16, 15],
+    ['Sep', 201.61, 10, 8],
+    ['Oct', 261.14, 13, 7],
+    ['Nov', 181.43, 9, 11],
+    ['Dec', 291.56, 13, 9]
+]).mapAs({'x': 0, 'value': 1, 'valueLowerError': 2, 'valueUpperError': 3});
+
+// create line series with data
+var series = chart.line(data);
+
+// turns off hover markers
+series.hovered().markers(false);
+
+// set tooltip formatter
+series.tooltip()
+        .fontColor('#E1E1E1')
+        .position('right')
+        .anchor('left-bottom')
+        .titleFormat('{%X}')
+        .format(function () {
+            return parseInt(this.value) + ' man-hours' + "\nMin: " +
+                    (parseInt(this.value - this.valueLowerError)) + "\nMax: " +
+                    (parseInt(this.value + this.valueUpperError));
+        });
+
+// set titles for axises
+chart.xAxis().title('2015');
+chart.yAxis().title('Average Duration in Man-hours');
+chart.interactivity().hoverMode('by-x');
+chart.tooltip().positionMode('point');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

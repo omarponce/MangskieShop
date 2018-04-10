@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Range Column Chart using JSON file</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+// https://cdn.anychart.com/js/8.0.1/data-adapter.min.js
+
+// Load JSON data and create a chart by JSON data
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/stock-general-features/load-json-data/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/stock-general-features/load-json-data/data.json', function (data) {
+    // create stock chart
+    chart = anychart.stock();
+
+    // create data table on loaded data
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    // map loaded data
+    var mapping = dataTable.mapAs({'low': 1, 'high': 2});
+
+    // create first plot on the chart with column series
+    var plot = chart.plot(0);
+
+    var series = plot.rangeColumn(mapping).name('Temperature');
+    series.tooltip()
+            .format(function () {
+                return this.seriesName +
+                        '<br/><span style="color: #ccc">Max</span>: ' + this.high + '&deg;' +
+                        '<br/><span style="color: #ccc">Min</span>: ' + this.low + '&deg;';
+            });
+
+    // set grid settings
+    plot.yGrid(true)
+            .xGrid(true)
+            .yMinorGrid(true)
+            .xMinorGrid(true);
+
+    // create scroller series with mapped data
+    chart.scroller().rangeColumn(mapping);
+
+    // set tooltip settings
+    chart.tooltip().useHtml(true);
+
+    // set chart selected date/time range
+    chart.selectRange('2007-01-07', '2008-01-06');
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+});
+    });
+        </script>
+    </body>
+</html>

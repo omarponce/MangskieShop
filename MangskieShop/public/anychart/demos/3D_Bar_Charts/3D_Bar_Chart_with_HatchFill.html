@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>3D Bar Chart with HatchFill</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create bar chart
+chart = anychart.bar3d();
+
+// turn on chart animation
+chart.animation(true);
+
+chart.padding([10, 40, 5, 20]);
+
+// set chart title text settings
+chart.title('Top 10 Cosmetic Products by Revenue');
+
+// create area series with passed data
+var series = chart.bar([
+    ['Eyeshadows', 249980],
+    ['Eyeliner', 213210],
+    ['Eyebrow pencil', 170670],
+    ['Nail polish', 143760],
+    ['Lipstick', 128000],
+    ['Lip gloss', 110430],
+    ['Mascara', 102610],
+    ['Foundation', 94190],
+    ['Rouge', 80540],
+    ['Powder', 53540]
+]);
+
+// set tooltip formatter
+series.tooltip()
+        .titleFormat('{%X}')
+        .format('${%Value}{groupsSeparator: }')
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(0);
+
+series.hatchFill('diagonal-cross');
+
+// set yAxis labels formatter
+chart.yAxis().labels().format('${%Value}{groupsSeparator: }');
+
+// set titles for axises
+chart.xAxis().title('Products by Revenue');
+chart.yAxis().title('Revenue in Dollars');
+chart.interactivity().hoverMode('by-x');
+chart.tooltip().positionMode('point');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

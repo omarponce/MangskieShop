@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pert.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>PC Card with PERT Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/pert-charts/pc-card-with-pert-chart/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/pert-charts/pc-card-with-pert-chart/data.json', function (data) {
+    // set filling method for tree
+    var treeData = anychart.data.tree(data, 'as-table');
+    // create PERT chart
+    chart = anychart.pert();
+    // set data
+    chart.data(treeData)
+            // set spacing between milestones
+            .horizontalSpacing('15.75%')
+            // set padding for chart
+            .padding([25, 50, 0, 50]);
+
+    // get duration project
+    var duration = Math.ceil(chart.getStat('pertChartProjectDuration'));
+    // get deviation project
+    var deviation = Math.ceil(chart.getStat('pertChartCriticalPathStandardDeviation'));
+
+    // set title text
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([0, 0, 35, 0])
+            .text(
+                    "PC Card with PERT Chart" +
+                    "<br>" + "Project duration: " +
+                    duration + '&plusmn;' +
+                    deviation + ' days'
+            );
+
+    // set settings for tasks
+    var tasks = chart.tasks();
+    // format upper label tasks
+    tasks.upperLabels().format(function () {
+        return this.item.get('fullName');
+    });
+    // format lower label tasks
+    tasks.lowerLabels().format(function () {
+        // format time for tasks
+        return timeTask(this.duration);
+    });
+
+    // create tasks tooltip
+    var tasksTooltip = tasks.tooltip();
+    // tooltip settings
+    tasksTooltip.separator(true)
+            .titleFormat(function () {
+                // return fullName from data
+                return this.item.get('fullName');
+            });
+
+    // set settings for critical tasks
+    chart.criticalPath().tasks()
+            .stroke('1 #D5A1DD')
+            .color('#9E44B6');
+
+    // set settings for milestones
+    var milestones = chart.milestones();
+    milestones.fill(function () {
+        return this['creator'] ? '#9DACFF' : this['isStart'] ? '#a5b3b3' : '#60727b';
+    });
+    // hover fill/stroke color for milestones item
+    milestones.hovered()
+            .fill(function () {
+                return this['creator'] ? anychart.color.lighten('#9DACFF', 0.25) : this['isStart'] ? '#60727b' : '#60727b';
+            })
+            .stroke(function () {
+                return this['creator'] ? '1.5 #9DACFF' : null;
+            });
+    milestones.labels().format(function () {
+        if (this['creator']) {
+            var name = this.creator.get('name');
+            return this['isStart'] ? ('S ' + name) : ('F ' + name);
+        } else {
+            return this['isStart'] ? 'Start' : 'Finish';
+        }
+    });
+    milestones.tooltip().format(defuaultMilesoneTooltipTextFormatter);
+
+    // set settings for critical milestones
+    var critMilestones = chart.criticalPath().milestones();
+    // fill color for critMilestones item
+    critMilestones.fill(function () {
+        return this['creator'] ? '#A489D4' : this['isStart'] ? '#60727b' : '#60727b';
+    });
+
+    // hover fill/stroke color for critMilestones item
+    critMilestones.hovered()
+            .fill(function () {
+                return this['creator'] ? anychart.color.lighten('#A489D4', 0.25) : this['isStart'] ? '#60727b' : '#60727b';
+            })
+            .stroke(function () {
+                return this['creator'] ? '1.5 #A489D4' : null;
+            });
+    // format labels
+    critMilestones.labels().format(function () {
+        if (this['creator']) {
+            var name = this.creator.get('name');
+            return this['isStart'] ? ('S ' + name) : ('F ' + name);
+        } else {
+            return '>>';
+        }
+    });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+
+    function timeTask(duration) {
+var days = Math.floor(duration);
+var hours = Math.ceil(24 * (duration - days));
+var daysPart = days != 0 ? 'd:' + days + ' ' : '';
+var hoursPart = hours != 0 ? 'h:' + hours + ' ' : '';
+
+return daysPart + hoursPart;
+    }
+
+    function defuaultMilesoneTooltipTextFormatter() {
+var result = '';
+var i = 0;
+if (this['successors'] && this['successors'].length) {
+    result += 'Successors:';
+    for (i = 0; i < this['successors'].length; i++) {
+        result += '\n - ' + this['successors'][i].get('fullName');
+    }
+    if (this['predecessors'] && this['predecessors'].length)
+        result += '\n\n';
+}
+if (this['predecessors'] && this['predecessors'].length) {
+    result += 'Predecessors:';
+    for (i = 0; i < this['predecessors'].length; i++) {
+        result += '\n - ' + this['predecessors'][i].get('fullName');
+    }
+}
+return result;
+    }
+        </script>
+    </body>
+</html>

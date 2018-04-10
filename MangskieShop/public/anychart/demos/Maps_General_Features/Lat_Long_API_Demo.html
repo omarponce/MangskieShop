@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/france/france.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Lat Long API Demo</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set
+var dataSet = anychart.data.set(getData());
+
+// create map chart
+var map = anychart.map();
+// set geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/france/france.js
+map.geoData('anychart.maps.france');
+map.padding(0);
+
+var lat_data, long_data, region_data;
+// create map title
+map.title().enabled(true).padding([20, 0, 20, 0]).text("Coordinates and the region name\nby moving the cursor over the map of France");
+
+var label = map.label();
+var labelFormat = "<span style='color: #545f69; font-size: 14px'><b>lat</b>: %s;<br/><b>long</b>: %s;<br/><b>region</b>: %s</span>";
+label.enabled(true)
+        .useHtml(true)
+        .padding(10)
+        .hAlign('left')
+        .position('right-top')
+        .anchor('right-top')
+        .offsetY(80)
+        .offsetX(20)
+        .width(280)
+        .text(anychart.format.subs(labelFormat, '', '', ''));
+label.background()
+        .fill('#FCFCFC')
+        .stroke('#E1E1E1')
+        .corners(3)
+        .cornerType('ROUND');
+
+//create choropleth series
+var series = map.choropleth(dataSet);
+series.tooltip()
+        .title(false)
+        .separator(false)
+        .format(function () {
+            return '<span>' + this.name + '</span><br/>' +
+                    '<span style="font-size: 14px; color: #E1E1E1">id: ' + this.id + '</span>';
+        });
+series.selectionMode('none')
+        .labels(false)
+        .fill('#F7F7F7')
+        .stroke('#B9B9B9')
+        .tooltip()
+        .useHtml(true)
+        .padding([8, 13, 10, 13])
+        .fontSize(16);
+
+series.hovered().fill('#64b5f6');
+
+//set series geo id field settings
+series.geoIdField('id');
+
+// add pointsHover listener to get hovered region
+map.listen('pointsHover', function (evt) {
+    if (evt.seriesStatus[0].points[0]) {
+        region_data = evt.seriesStatus[0].points[0].properties.name;
+    }
+    else region_data = undefined;
+});
+
+// add mouseMove listener to calc lat/long
+map.listen('mouseMove', function (evt) {
+    var localCord = map.globalToLocal(evt.clientX, evt.clientY);
+    var latLong = map.inverseTransform(localCord.x, localCord.y);
+    if (region_data) {
+        label.text(anychart.format.subs(labelFormat, latLong.lat, latLong.long, region_data));
+    }
+    else {
+        label.text(anychart.format.subs(labelFormat, latLong.lat, latLong.long, ''));
+    }
+});
+
+// set container id for the chart
+map.container('container');
+
+// initiate chart drawing
+map.draw();
+    });
+
+    function getData() {
+return [
+    {'id': 'FR.A'},
+    {'id': 'FR.B'},
+    {'id': 'FR.C'},
+    {'id': 'FR.P'},
+    {'id': 'FR.D'},
+    {'id': 'FR.E'},
+    {'id': 'FR.F'},
+    {'id': 'FR.G'},
+    {'id': 'FR.H'},
+    {'id': 'FR.I'},
+    {'id': 'FR.GP'},
+    {'id': 'FR.GF'},
+    {'id': 'FR.Q'},
+    {'id': 'FR.J'},
+    {'id': 'FR.K'},
+    {'id': 'FR.RE'},
+    {'id': 'FR.L'},
+    {'id': 'FR.M'},
+    {'id': 'FR.MQ'},
+    {'id': 'FR.YT'},
+    {'id': 'FR.N'},
+    {'id': 'FR.O'},
+    {'id': 'FR.R'},
+    {'id': 'FR.S'},
+    {'id': 'FR.T'},
+    {'id': 'FR.U'},
+    {'id': 'FR.V'}
+]
+    }
+        </script>
+    </body>
+</html>

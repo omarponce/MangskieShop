@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pyramid-funnel.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Interviewing and Recruiting</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// prepare data for the chart
+var data = [
+    {name: 'Application', value: 100},
+    {name: 'Brief Interview by HR', value: 70},
+    {name: 'Testing', value: 57},
+    {name: 'Revealing some other information', value: 38},
+    {name: 'Interview with the director', value: 15},
+    {name: 'Offer', value: 10}
+];
+
+// create funnel chart
+chart = anychart.funnel(data);
+
+// set chart background color
+chart.background('white');
+
+// set chart legend settings
+chart.legend(true)
+        .padding()
+        .top(20);
+
+// set chart title
+chart.title('Interviewing and recruiting')
+        // set chart base width settings
+        .baseWidth('70%')
+        // set the neck height
+        .neckHeight('0%');
+
+// set chart labels settings
+chart.labels()
+        .position('outside-left')
+        .format('{%Name} - {%Value}%');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

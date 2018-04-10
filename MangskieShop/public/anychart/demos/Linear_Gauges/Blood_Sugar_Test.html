@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-table.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Blood Sugar Test</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var normal_color = '#9ccc65';
+var warning_color = '#ffd54f';
+var danger_color = '#ef6c00';
+
+// Create and return simple linear gauge
+function drawGauge(title, value, ticks) {
+
+    // create gauge
+    var gauge = anychart.gauges.linear();
+    gauge.data([value])
+            .padding([10, 0, 0, 0])
+            .tooltip(false);
+
+    // sets gauge Title
+    gauge.title()
+            .enabled(true)
+            .text(title)
+            .padding([30, 0, 10, 0])
+            .orientation('bottom')
+            .fontColor('#212121')
+            .fontSize(18);
+
+    // sets scaleBars
+    gauge.scaleBar(0)
+            .width('8%')
+            .from(ticks[0])
+            .to(ticks[1])
+            .fill({
+                keys: [normal_color, normal_color, normal_color, normal_color, warning_color],
+                angle: 90
+            });
+
+    gauge.scaleBar(1)
+            .width('8%')
+            .from(ticks[1])
+            .to(ticks[2])
+            .fill(warning_color);
+
+    gauge.scaleBar(2)
+            .width('8%')
+            .from(ticks[2])
+            .to(ticks[3])
+            .fill({
+                keys: [warning_color, danger_color, danger_color, danger_color, danger_color],
+                angle: 90
+            });
+
+    // Set scale settings
+    var scale = gauge.scale();
+    scale.minimum(ticks[0])
+            .maximum(ticks[3])
+            .ticks(ticks);
+
+    // Set axis and axis settings
+    var axis = gauge.axis();
+    axis.width('0.5%')
+            .offset('-1%')
+            .scale(scale);
+    axis.labels()
+            .fontSize(16)
+            .format('{%Value} mmol/l');
+
+    // Set marker point
+    var marker = gauge.marker(0);
+    marker.color('#7c868e')
+            .offset('8.5%')
+            .type('triangle-left');
+
+    // Set label for marker point
+    marker.labels()
+            .enabled(true)
+            .position('right-center')
+            .offsetX(0)
+            .anchor('left-center')
+            .fontSize(18)
+            .fontColor('#212121');
+    marker.hovered().labels()
+            .enabled(true)
+            .fontColor('#212121');
+    marker.selected().labels()
+            .enabled(true)
+            .fontColor('#212121');
+
+    return gauge
+}
+
+// Create simple gauge
+var beforeGauge = drawGauge('Fasting Glucose Level', 5.7, [0, 5.6, 7.0, 15]);
+var afterGauge = drawGauge('2-hours after 75g Glucose Load', 7.9, [0, 7.8, 11.1, 15]);
+
+var legend = anychart.standalones.legend();
+legend.fontSize('15px')
+        .margin(5, 0, 5, 0)
+        .items([
+            {'text': 'Normal', 'iconFill': normal_color},
+            {'text': 'Impaired Glucose Tolerance', 'iconFill': warning_color},
+            {'text': 'Diabetes', 'iconFill': danger_color}
+        ]);
+
+// Create table to place thermometers
+var layoutTable = anychart.standalones.table();
+layoutTable.hAlign('center')
+        .vAlign('middle')
+        .useHtml(true)
+        .fontSize(16)
+        .cellBorder(null);
+
+// Put gauges into the layout table
+layoutTable.contents([
+    ['Blood Test Results for John Doe<br/><span style="color: #212121; font-size: 14px">(By glucose level, mmol/l)</span>', null],
+    [legend, null],
+    [beforeGauge, afterGauge]
+]);
+
+// Set height for first row in layout table
+layoutTable.getRow(0)
+        .height(70)
+        .fontSize(18);
+layoutTable.getRow(1)
+        .height(40)
+        .fontSize(14);
+
+// Merge cells in layout table where needed
+layoutTable.getCell(0, 0).colSpan(2);
+layoutTable.getCell(1, 0).colSpan(2);
+
+// Set container id and initiate drawing
+layoutTable.container('container');
+layoutTable.draw();
+    });
+        </script>
+    </body>
+</html>

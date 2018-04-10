@@ -1,0 +1,1266 @@
+<!doctype html>
+<html>
+<head>
+    <title>Advanced Coloring | AnyChart Documentation ver. 8.1.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="../../deps/i/anychart.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../../deps/main.css" />
+    <link rel="stylesheet" href="../../deps/fonts/2.7.0/anychart.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../../deps/icons/57.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../deps/icons/76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../../deps/icons/120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../../deps/icons/152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="../../deps/icons/167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../../deps/icons/180.png" />
+    <script id="anychart_script" src="../../deps/https___cdn_anychart_com_js_8_1_0_anychart-bundle_min_js.js" async="async"></script>
+</head>
+<body>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-22 col-lg-offset-1">
+                <a class="sidebar-switcher hidden-md hidden-lg"><i class="ac ac-bars"></i></a>
+                <a class="navbar-brand" href="http://anychart.com/" style="display: block;">
+                    <img src="../../deps/i/logo-empty.png" width="300" height="72" alt="AnyChart" />
+                    <span class="chart-row" style="display: block;">
+                        <span class="chart-col green"></span>
+                        <span class="chart-col orange"></span>
+                        <span class="chart-col red"></span>
+                    </span>
+                </a>
+
+                <a class="brand hidden-super-small"> Documentation</a>
+
+                <div class="pull-right helpers  hidden-xs">
+                    <div class="btn-group">
+                        <!--<button type="button" class="btn btn-default btn-blue dropdown-toggle" data-toggle="dropdown">-->
+                        <!--Version 8.1.0 <span class="caret"></span></button>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                        <!---->
+                        <!--<li><a href="/8.1.0/Maps/Seat_Maps/Advanced_Coloring">Version 8.1.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/8.0.1/Maps/Seat_Maps/Advanced_Coloring">Version 8.0.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/8.0.0/Maps/Seat_Maps/Advanced_Coloring">Version 8.0.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.4/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.4</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.3/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.3</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.13.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.13.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.13.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.13.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.12.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.12.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.11.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.11.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.11.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.11.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.10.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.10.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.10.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.10.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.9.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.9.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.9.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.9.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.8.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.8.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.7.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.7.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.6.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.6.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.5.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.5.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.5.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.5.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.4.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.4.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.4.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.4.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.3.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.3.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.3.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.3.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.2.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.2.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.1.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.1.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.1.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.1.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.0.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.0.0</a></li>-->
+                        <!---->
+                        <!--</ul>-->
+                        <span style="color: white; line-height: 30px;">Version 8.1.0</span>
+                    </div>
+                    <div class="text-muted questions">
+                        <a href="http://support.anychart.com/" class="text-support">
+                            <i class="ac ac-support"></i>
+                        </a>
+                        <span class="hidden-super-small">
+                            Still have questions?<br />
+                            <a href="http://anychart.com/support/"> Contact support</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="shadow" class=""></div>
+<div id="bar" class="">
+    <div class="helpers visible-xs bordered">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-blue dropdown-toggle" data-toggle="dropdown">Version
+                8.1.0 <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                
+                <li><a href="/8.1.0/Maps/Seat_Maps/Advanced_Coloring">Version 8.1.0</a></li>
+                
+                <li><a href="/8.0.1/Maps/Seat_Maps/Advanced_Coloring">Version 8.0.1</a></li>
+                
+                <li><a href="/8.0.0/Maps/Seat_Maps/Advanced_Coloring">Version 8.0.0</a></li>
+                
+                <li><a href="/7.14.4/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.4</a></li>
+                
+                <li><a href="/7.14.3/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.3</a></li>
+                
+                <li><a href="/7.14.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.14.0</a></li>
+                
+                <li><a href="/7.13.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.13.1</a></li>
+                
+                <li><a href="/7.13.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.13.0</a></li>
+                
+                <li><a href="/7.12.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.12.0</a></li>
+                
+                <li><a href="/7.11.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.11.1</a></li>
+                
+                <li><a href="/7.11.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.11.0</a></li>
+                
+                <li><a href="/7.10.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.10.1</a></li>
+                
+                <li><a href="/7.10.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.10.0</a></li>
+                
+                <li><a href="/7.9.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.9.1</a></li>
+                
+                <li><a href="/7.9.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.9.0</a></li>
+                
+                <li><a href="/7.8.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.8.0</a></li>
+                
+                <li><a href="/7.7.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.7.0</a></li>
+                
+                <li><a href="/7.6.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.6.0</a></li>
+                
+                <li><a href="/7.5.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.5.1</a></li>
+                
+                <li><a href="/7.5.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.5.0</a></li>
+                
+                <li><a href="/7.4.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.4.1</a></li>
+                
+                <li><a href="/7.4.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.4.0</a></li>
+                
+                <li><a href="/7.3.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.3.1</a></li>
+                
+                <li><a href="/7.3.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.3.0</a></li>
+                
+                <li><a href="/7.2.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.2.0</a></li>
+                
+                <li><a href="/7.1.1/Maps/Seat_Maps/Advanced_Coloring">Version 7.1.1</a></li>
+                
+                <li><a href="/7.1.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.1.0</a></li>
+                
+                <li><a href="/7.0.0/Maps/Seat_Maps/Advanced_Coloring">Version 7.0.0</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="text-muted questions">
+            <a href="http://support.anychart.com/" class="text-support"><i class="icon icon-ring icon-data"></i></a>
+            <span class="hidden-super-small"> Still have questions?<br /> <a href="http://anychart.com/support/"> Contact
+                support</a></span>
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li><a href="../../Quick_Start.html"><i class="ac ac-folder"></i> Quick Start</a><ul><li> <a href="../../Quick_Start/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Quick_Start/Downloading_AnyChart.html"><i class="ac ac-file-text"></i> Downloading AnyChart</a></li><li> <a href="../../Quick_Start/Supported_Charts_Types.html"><i class="ac ac-file-text"></i> Supported Charts Types</a></li><li> <a href="../../Quick_Start/Credits.html"><i class="ac ac-file-text"></i> Credits</a></li><li> <a href="../../Quick_Start/Modules.html"><i class="ac ac-file-text"></i> Modules</a></li></ul></li><li><a href="../../Working_with_Data.html"><i class="ac ac-folder"></i> Working with Data</a><ul><li> <a href="../../Working_with_Data/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Working_with_Data/Supported_Data_Formats.html"><i class="ac ac-file-text"></i> Supported Data Formats</a></li><li> <a href="../../Working_with_Data/Using_Data_Sets.html"><i class="ac ac-file-text"></i> Using Data Sets</a></li><li> <a href="../../Working_with_Data/Data_Manipulation.html"><i class="ac ac-file-text"></i> Data Manipulation</a></li><li> <a href="../../Working_with_Data/Series_Manipulation.html"><i class="ac ac-file-text"></i> Series Manipulation</a></li><li> <a href="../../Working_with_Data/Using_Data_Tree_Model.html"><i class="ac ac-file-text"></i> Using Data Tree Model</a></li><li> <a href="../../Working_with_Data/Using_Table_Data_Model.html"><i class="ac ac-file-text"></i> Using Table Data Model</a></li><li> <a href="../../Working_with_Data/Data_From_JSON.html"><i class="ac ac-file-text"></i> Data From JSON</a></li><li> <a href="../../Working_with_Data/Data_From_XML.html"><i class="ac ac-file-text"></i> Data From XML</a></li><li> <a href="../../Working_with_Data/Data_From_CSV.html"><i class="ac ac-file-text"></i> Data From CSV</a></li><li> <a href="../../Working_with_Data/Settings_from_Data.html"><i class="ac ac-file-text"></i> Settings from Data</a></li><li> <a href="../../Working_with_Data/No_Data_Label.html"><i class="ac ac-file-text"></i> No Data Label</a></li><li><a href="../../Working_with_Data/Data_Adapter.html"><i class="ac ac-folder"></i> Data Adapter</a><ul><li> <a href="../../Working_with_Data/Data_Adapter/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Parsing_HTML_Table.html"><i class="ac ac-file-text"></i> Parsing HTML Table</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_CSV_File.html"><i class="ac ac-file-text"></i> Loading CSV File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_JSON_File.html"><i class="ac ac-file-text"></i> Loading JSON File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_XML_File.html"><i class="ac ac-file-text"></i> Loading XML File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_Google_Spreadsheet.html"><i class="ac ac-file-text"></i> Loading Google Spreadsheet</a></li></ul></li></ul></li><li><a href="../../Basic_Charts.html"><i class="ac ac-folder"></i> Basic Charts</a><ul><li> <a href="../../Basic_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../../Basic_Charts/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../../Basic_Charts/Combining_Series.html"><i class="ac ac-file-text"></i> Combining Series</a></li><li> <a href="../../Basic_Charts/Custom_Drawing.html"><i class="ac ac-file-text"></i> Custom Drawing</a></li><li> <a href="../../Basic_Charts/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../../Basic_Charts/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Bullet_Chart.html"><i class="ac ac-file-text"></i> Bullet Chart</a></li><li> <a href="../../Basic_Charts/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li><a href="../../Basic_Charts/Error_Chart.html"><i class="ac ac-folder"></i> Error Chart</a><ul><li> <a href="../../Basic_Charts/Error_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Error_Chart/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Scatter_Line_Chart.html"><i class="ac ac-file-text"></i> Scatter Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Scatter_Marker_Chart.html"><i class="ac ac-file-text"></i> Scatter Marker Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Funnel_Chart.html"><i class="ac ac-file-text"></i> Funnel Chart</a></li><li> <a href="../../Basic_Charts/Heat_Map_Chart.html"><i class="ac ac-file-text"></i> Heat Map Chart</a></li><li> <a href="../../Basic_Charts/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../../Basic_Charts/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../../Basic_Charts/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li><a href="../../Basic_Charts/Marimekko_Chart.html"><i class="ac ac-folder"></i> Marimekko Chart</a><ul><li> <a href="../../Basic_Charts/Marimekko_Chart/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../../Basic_Charts/Marimekko_Chart/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../../Basic_Charts/Marimekko_Chart/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../../Basic_Charts/Pareto_Chart.html"><i class="ac ac-file-text"></i> Pareto Chart</a></li><li> <a href="../../Basic_Charts/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li><a href="../../Basic_Charts/Polar_Plot.html"><i class="ac ac-folder"></i> Polar Plot</a><ul><li> <a href="../../Basic_Charts/Polar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Polygon_Chart.html"><i class="ac ac-file-text"></i> Polygon Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Polyline_Chart.html"><i class="ac ac-file-text"></i> Polyline Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Pyramid_Chart.html"><i class="ac ac-file-text"></i> Pyramid Chart</a></li><li> <a href="../../Basic_Charts/Quadrant_Chart.html"><i class="ac ac-file-text"></i> Quadrant Chart</a></li><li><a href="../../Basic_Charts/Radar_Plot.html"><i class="ac ac-folder"></i> Radar Plot</a><ul><li> <a href="../../Basic_Charts/Radar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../../Basic_Charts/Range_Bar_Chart.html"><i class="ac ac-file-text"></i> Range Bar Chart</a></li><li> <a href="../../Basic_Charts/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li><li> <a href="../../Basic_Charts/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li><a href="../../Basic_Charts/Scatter_Plot.html"><i class="ac ac-folder"></i> Scatter Plot</a><ul><li> <a href="../../Basic_Charts/Scatter_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Sparkline_Chart.html"><i class="ac ac-file-text"></i> Sparkline Chart</a></li><li> <a href="../../Basic_Charts/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li><a href="../../Basic_Charts/Stacked.html"><i class="ac ac-folder"></i> Stacked</a><ul><li> <a href="../../Basic_Charts/Stacked/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li><a href="../../Basic_Charts/Stacked/Percent.html"><i class="ac ac-folder"></i> Percent</a><ul><li> <a href="../../Basic_Charts/Stacked/Percent/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li><li><a href="../../Basic_Charts/Stacked/Value.html"><i class="ac ac-folder"></i> Value</a><ul><li> <a href="../../Basic_Charts/Stacked/Value/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li></ul></li><li> <a href="../../Basic_Charts/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Tag_Cloud.html"><i class="ac ac-file-text"></i> Tag Cloud</a></li><li> <a href="../../Basic_Charts/Treemap_Chart.html"><i class="ac ac-file-text"></i> Treemap Chart</a></li><li> <a href="../../Basic_Charts/Venn_Diagram.html"><i class="ac ac-file-text"></i> Venn Diagram</a></li><li><a href="../../Basic_Charts/Vertical.html"><i class="ac ac-folder"></i> Vertical</a><ul><li> <a href="../../Basic_Charts/Vertical/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Vertical/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Vertical/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li><li> <a href="../../Basic_Charts/Vertical/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Waterfall_Chart.html"><i class="ac ac-file-text"></i> Waterfall Chart</a></li><li><a href="../../Basic_Charts/3D.html"><i class="ac ac-folder"></i> 3D</a><ul><li> <a href="../../Basic_Charts/3D/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/3D/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/3D/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/3D/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/3D/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li> <a href="../../Basic_Charts/3D/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li> <a href="../../Basic_Charts/3D/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/3D/2D_Line_Chart.html"><i class="ac ac-file-text"></i> 2D Line Chart</a></li></ul></li></ul></li><li><a href="../../Gantt_Chart.html"><i class="ac ac-folder"></i> Gantt Chart</a><ul><li> <a href="../../Gantt_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Gantt_Chart/Data_from_JSON,_XML,_CSV.html"><i class="ac ac-file-text"></i> Data from JSON, XML, CSV</a></li><li> <a href="../../Gantt_Chart/DataGrid_Column_Presets.html"><i class="ac ac-file-text"></i> DataGrid Column Presets</a></li><li> <a href="../../Gantt_Chart/DataGrid.html"><i class="ac ac-file-text"></i> DataGrid</a></li><li> <a href="../../Gantt_Chart/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../../Gantt_Chart/Gantt_Interactivity.html"><i class="ac ac-file-text"></i> Gantt Interactivity</a></li><li> <a href="../../Gantt_Chart/Live_Edit_UI_and_API.html"><i class="ac ac-file-text"></i> Live Edit UI and API</a></li><li> <a href="../../Gantt_Chart/Markers_(Multiple_Milestones).html"><i class="ac ac-file-text"></i> Markers (Multiple Milestones)</a></li><li> <a href="../../Gantt_Chart/Project_Chart.html"><i class="ac ac-file-text"></i> Project Chart</a></li><li> <a href="../../Gantt_Chart/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li><li> <a href="../../Gantt_Chart/Timeline.html"><i class="ac ac-file-text"></i> Timeline</a></li></ul></li><li><a href="../../PERT_Chart.html"><i class="ac ac-folder"></i> PERT Chart</a><ul><li> <a href="../../PERT_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../PERT_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../PERT_Chart/Terminology.html"><i class="ac ac-file-text"></i> Terminology</a></li><li> <a href="../../PERT_Chart/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../../PERT_Chart/Pert_Chart.html"><i class="ac ac-file-text"></i> Pert Chart</a></li></ul></li><li><a href="../../Axes_and_Grids.html"><i class="ac ac-folder"></i> Axes and Grids</a><ul><li> <a href="../../Axes_and_Grids/Axis_Basics.html"><i class="ac ac-file-text"></i> Axis Basics</a></li><li> <a href="../../Axes_and_Grids/Axis_Orientation.html"><i class="ac ac-file-text"></i> Axis Orientation</a></li><li> <a href="../../Axes_and_Grids/Axes_Labels_Formatting.html"><i class="ac ac-file-text"></i> Axes Labels Formatting</a></li><li> <a href="../../Axes_and_Grids/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../../Axes_and_Grids/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Axes_and_Grids/Date_Time_Axes.html"><i class="ac ac-file-text"></i> Date Time Axes</a></li><li> <a href="../../Axes_and_Grids/Line_Markers.html"><i class="ac ac-file-text"></i> Line Markers</a></li><li> <a href="../../Axes_and_Grids/Range_Markers.html"><i class="ac ac-file-text"></i> Range Markers</a></li><li> <a href="../../Axes_and_Grids/Text_Markers.html"><i class="ac ac-file-text"></i> Text Markers</a></li><li> <a href="../../Axes_and_Grids/Additional_Axes.html"><i class="ac ac-file-text"></i> Additional Axes</a></li></ul></li><li><a href="../../Appearance_Settings.html"><i class="ac ac-folder"></i> Appearance Settings</a><ul><li> <a href="../../Appearance_Settings/Background.html"><i class="ac ac-file-text"></i> Background</a></li><li> <a href="../../Appearance_Settings/Color_Management.html"><i class="ac ac-file-text"></i> Color Management</a></li><li> <a href="../../Appearance_Settings/Colors_Table.html"><i class="ac ac-file-text"></i> Colors Table</a></li><li> <a href="../../Appearance_Settings/Lines_Settings.html"><i class="ac ac-file-text"></i> Lines Settings</a></li><li> <a href="../../Appearance_Settings/Palettes.html"><i class="ac ac-file-text"></i> Palettes</a></li><li> <a href="../../Appearance_Settings/Text_Settings.html"><i class="ac ac-file-text"></i> Text Settings</a></li><li> <a href="../../Appearance_Settings/Themes.html"><i class="ac ac-file-text"></i> Themes</a></li></ul></li><li><a href="../../Common_Settings.html"><i class="ac ac-folder"></i> Common Settings</a><ul><li> <a href="../../Common_Settings/ASYNC_Rendering.html"><i class="ac ac-file-text"></i> ASYNC Rendering</a></li><li> <a href="../../Common_Settings/Exports.html"><i class="ac ac-file-text"></i> Exports</a></li><li> <a href="../../Common_Settings/Printing.html"><i class="ac ac-file-text"></i> Printing</a></li><li> <a href="../../Common_Settings/Sharing.html"><i class="ac ac-file-text"></i> Sharing</a></li><li> <a href="../../Common_Settings/Accessibility_(508_section).html"><i class="ac ac-file-text"></i> Accessibility (508 section)</a></li><li> <a href="../../Common_Settings/Localization.html"><i class="ac ac-file-text"></i> Localization</a></li><li> <a href="../../Common_Settings/Calendar.html"><i class="ac ac-file-text"></i> Calendar</a></li><li> <a href="../../Common_Settings/Chart_Labels.html"><i class="ac ac-file-text"></i> Chart Labels</a></li><li> <a href="../../Common_Settings/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li><a href="../../Common_Settings/Interactivity.html"><i class="ac ac-folder"></i> Interactivity</a><ul><li> <a href="../../Common_Settings/Interactivity/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Common_Settings/Interactivity/States.html"><i class="ac ac-file-text"></i> States</a></li></ul></li><li> <a href="../../Common_Settings/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../../Common_Settings/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Common_Settings/Point_Size.html"><i class="ac ac-file-text"></i> Point Size</a></li><li> <a href="../../Common_Settings/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../../Common_Settings/Server-side_Rendering.html"><i class="ac ac-file-text"></i> Server-side Rendering</a></li><li> <a href="../../Common_Settings/Statistics.html"><i class="ac ac-file-text"></i> Statistics</a></li><li> <a href="../../Common_Settings/Text_Formatters.html"><i class="ac ac-file-text"></i> Text Formatters</a></li><li> <a href="../../Common_Settings/Title.html"><i class="ac ac-file-text"></i> Title</a></li><li> <a href="../../Common_Settings/Tooltip.html"><i class="ac ac-file-text"></i> Tooltip</a></li><li><a href="../../Common_Settings/UI_Controls.html"><i class="ac ac-folder"></i> UI Controls</a><ul><li> <a href="../../Common_Settings/UI_Controls/Zoom_Controls.html"><i class="ac ac-file-text"></i> Zoom Controls</a></li><li> <a href="../../Common_Settings/UI_Controls/AnyChart_UI.html"><i class="ac ac-file-text"></i> AnyChart UI</a></li><li> <a href="../../Common_Settings/UI_Controls/Chart_Editor.html"><i class="ac ac-file-text"></i> Chart Editor</a></li><li> <a href="../../Common_Settings/UI_Controls/Context_Menu.html"><i class="ac ac-file-text"></i> Context Menu</a></li><li> <a href="../../Common_Settings/UI_Controls/Gantt_Toolbar.html"><i class="ac ac-file-text"></i> Gantt Toolbar</a></li><li> <a href="../../Common_Settings/UI_Controls/Preloader.html"><i class="ac ac-file-text"></i> Preloader</a></li></ul></li></ul></li><li><a href="../../Dashboards.html"><i class="ac ac-folder"></i> Dashboards</a><ul><li> <a href="../../Dashboards/Stage-Based_Layout.html"><i class="ac ac-file-text"></i> Stage-Based Layout</a></li><li> <a href="../../Dashboards/Table_Layout.html"><i class="ac ac-file-text"></i> Table Layout</a></li><li> <a href="../../Dashboards/Standalones.html"><i class="ac ac-file-text"></i> Standalones</a></li></ul></li><li><a href="../../Drilldown.html"><i class="ac ac-folder"></i> Drilldown</a><ul><li> <a href="../../Drilldown/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li></ul></li><li><a href="../../Gauges.html"><i class="ac ac-folder"></i> Gauges</a><ul><li> <a href="../../Gauges/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Gauges/Circular_Gauge.html"><i class="ac ac-file-text"></i> Circular Gauge</a></li><li> <a href="../../Gauges/Linear_Gauge.html"><i class="ac ac-file-text"></i> Linear Gauge</a></li><li> <a href="../../Gauges/Pointers_and_Data.html"><i class="ac ac-file-text"></i> Pointers and Data</a></li></ul></li><li><a href="../../Graphics.html"><i class="ac ac-folder"></i> Graphics</a><ul><li> <a href="../../Graphics/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Graphics/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Graphics/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../../Graphics/Virtual_DOM.html"><i class="ac ac-file-text"></i> Virtual DOM</a></li><li> <a href="../../Graphics/Events.html"><i class="ac ac-file-text"></i> Events</a></li><li> <a href="../../Graphics/Transformations.html"><i class="ac ac-file-text"></i> Transformations</a></li><li> <a href="../../Graphics/Layers.html"><i class="ac ac-file-text"></i> Layers</a></li><li> <a href="../../Graphics/Paths.html"><i class="ac ac-file-text"></i> Paths</a></li><li> <a href="../../Graphics/Shapes.html"><i class="ac ac-file-text"></i> Shapes</a></li><li> <a href="../../Graphics/Text_and_Fonts.html"><i class="ac ac-file-text"></i> Text and Fonts</a></li><li> <a href="../../Graphics/Fill_Settings.html"><i class="ac ac-file-text"></i> Fill Settings</a></li><li> <a href="../../Graphics/Hatch_Fill_Settings.html"><i class="ac ac-file-text"></i> Hatch Fill Settings</a></li><li> <a href="../../Graphics/Stroke_Settings.html"><i class="ac ac-file-text"></i> Stroke Settings</a></li><li> <a href="../../Graphics/Browser_Support.html"><i class="ac ac-file-text"></i> Browser Support</a></li><li> <a href="../../Graphics/Performance.html"><i class="ac ac-file-text"></i> Performance</a></li></ul></li><li><a href="../../Maps.html"><i class="ac ac-folder"></i> Maps</a><ul><li> <a href="../../Maps/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Maps/Architecture.html"><i class="ac ac-file-text"></i> Architecture</a></li><li> <a href="../../Maps/Maps_List.html"><i class="ac ac-file-text"></i> Maps List</a></li><li> <a href="../../Maps/Custom_GeoJson_Maps.html"><i class="ac ac-file-text"></i> Custom GeoJson Maps</a></li><li> <a href="../../Maps/Custom_SVG_Maps.html"><i class="ac ac-file-text"></i> Custom SVG Maps</a></li><li> <a href="../../Maps/Custom_TopoJSON.html"><i class="ac ac-file-text"></i> Custom TopoJSON</a></li><li> <a href="../../Maps/Amap_to_GeoJson.html"><i class="ac ac-file-text"></i> Amap to GeoJson</a></li><li> <a href="../../Maps/Choropleth_Map.html"><i class="ac ac-file-text"></i> Choropleth Map</a></li><li> <a href="../../Maps/Connector_Maps.html"><i class="ac ac-file-text"></i> Connector Maps</a></li><li> <a href="../../Maps/Dot_(Point)_Map.html"><i class="ac ac-file-text"></i> Dot (Point) Map</a></li><li> <a href="../../Maps/Proportional_Symbol_Map.html"><i class="ac ac-file-text"></i> Proportional Symbol Map</a></li><li><a href="../../Maps/Seat_Maps.html"><i class="ac ac-folder"></i> Seat Maps</a><ul><li> <a href="../../Maps/Seat_Maps/Seat_Map.html"><i class="ac ac-file-text"></i> Seat Map</a></li><li> <a href="../../Maps/Seat_Maps/Preparing_SVG_Image.html"><i class="ac ac-file-text"></i> Preparing SVG Image</a></li><li> <a href="../../Maps/Seat_Maps/Advanced_Coloring.html"><i class="ac ac-file-text"></i> Advanced Coloring</a></li></ul></li><li> <a href="../../Maps/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../../Maps/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Maps/ColorRange.html"><i class="ac ac-file-text"></i> ColorRange</a></li><li> <a href="../../Maps/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Maps/Map_Projections.html"><i class="ac ac-file-text"></i> Map Projections</a></li><li> <a href="../../Maps/Geo_Scale.html"><i class="ac ac-file-text"></i> Geo Scale</a></li><li> <a href="../../Maps/Map_Axes.html"><i class="ac ac-file-text"></i> Map Axes</a></li><li> <a href="../../Maps/Map_Grid.html"><i class="ac ac-file-text"></i> Map Grid</a></li><li> <a href="../../Maps/Map_Crosshair.html"><i class="ac ac-file-text"></i> Map Crosshair</a></li><li> <a href="../../Maps/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../../Maps/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../../Maps/Visualisation.html"><i class="ac ac-file-text"></i> Visualisation</a></li><li> <a href="../../Maps/Maps_and_Charts_in_one_Dashboard.html"><i class="ac ac-file-text"></i> Maps and Charts in one Dashboard</a></li><li> <a href="../../Maps/Move_and_Zoom.html"><i class="ac ac-file-text"></i> Move and Zoom</a></li><li><a href="../../Maps/Drill_Down_Maps.html"><i class="ac ac-folder"></i> Drill Down Maps</a><ul><li> <a href="../../Maps/Drill_Down_Maps/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Maps/Drill_Down_Maps/Methods.html"><i class="ac ac-file-text"></i> Methods</a></li><li> <a href="../../Maps/Drill_Down_Maps/Basic_Tutorial.html"><i class="ac ac-file-text"></i> Basic Tutorial</a></li><li> <a href="../../Maps/Drill_Down_Maps/AJAX_Tutorial.html"><i class="ac ac-file-text"></i> AJAX Tutorial</a></li><li> <a href="../../Maps/Drill_Down_Maps/Breadcrumbs.html"><i class="ac ac-file-text"></i> Breadcrumbs</a></li></ul></li></ul></li><li><a href="../../Stock_Charts.html"><i class="ac ac-folder"></i> Stock Charts</a><ul><li> <a href="../../Stock_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Stock_Charts/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../../Stock_Charts/Data_Grouping.html"><i class="ac ac-file-text"></i> Data Grouping</a></li><li> <a href="../../Stock_Charts/Axes.html"><i class="ac ac-file-text"></i> Axes</a></li><li> <a href="../../Stock_Charts/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Stock_Charts/Chart_Plots.html"><i class="ac ac-file-text"></i> Chart Plots</a></li><li> <a href="../../Stock_Charts/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Stock_Charts/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../../Stock_Charts/Price_Indicator.html"><i class="ac ac-file-text"></i> Price Indicator</a></li><li> <a href="../../Stock_Charts/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../../Stock_Charts/Range_Selection.html"><i class="ac ac-file-text"></i> Range Selection</a></li><li><a href="../../Stock_Charts/Series.html"><i class="ac ac-folder"></i> Series</a><ul><li> <a href="../../Stock_Charts/Series/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Series/Supported_Series.html"><i class="ac ac-file-text"></i> Supported Series</a></li><li> <a href="../../Stock_Charts/Series/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../../Stock_Charts/Series/Area.html"><i class="ac ac-file-text"></i> Area</a></li><li> <a href="../../Stock_Charts/Series/Column.html"><i class="ac ac-file-text"></i> Column</a></li><li> <a href="../../Stock_Charts/Series/HiLo.html"><i class="ac ac-file-text"></i> HiLo</a></li><li> <a href="../../Stock_Charts/Series/Japanese_Candlestick.html"><i class="ac ac-file-text"></i> Japanese Candlestick</a></li><li> <a href="../../Stock_Charts/Series/Jump_Line.html"><i class="ac ac-file-text"></i> Jump Line</a></li><li> <a href="../../Stock_Charts/Series/Line.html"><i class="ac ac-file-text"></i> Line</a></li><li> <a href="../../Stock_Charts/Series/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../../Stock_Charts/Series/OHLC.html"><i class="ac ac-file-text"></i> OHLC</a></li><li> <a href="../../Stock_Charts/Series/Range_Area.html"><i class="ac ac-file-text"></i> Range Area</a></li><li> <a href="../../Stock_Charts/Series/Range_Column.html"><i class="ac ac-file-text"></i> Range Column</a></li><li> <a href="../../Stock_Charts/Series/Range_Spline_Area.html"><i class="ac ac-file-text"></i> Range Spline Area</a></li><li> <a href="../../Stock_Charts/Series/Range_Step_Area.html"><i class="ac ac-file-text"></i> Range Step Area</a></li><li> <a href="../../Stock_Charts/Series/Spline.html"><i class="ac ac-file-text"></i> Spline</a></li><li> <a href="../../Stock_Charts/Series/Spline_Area.html"><i class="ac ac-file-text"></i> Spline Area</a></li><li> <a href="../../Stock_Charts/Series/Step_Area.html"><i class="ac ac-file-text"></i> Step Area</a></li><li> <a href="../../Stock_Charts/Series/Step_Line.html"><i class="ac ac-file-text"></i> Step Line</a></li><li> <a href="../../Stock_Charts/Series/Stick.html"><i class="ac ac-file-text"></i> Stick</a></li></ul></li><li><a href="../../Stock_Charts/Technical_Indicators.html"><i class="ac ac-folder"></i> Technical Indicators</a><ul><li> <a href="../../Stock_Charts/Technical_Indicators/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Supported_Technical_Indicators.html"><i class="ac ac-file-text"></i> Supported Technical Indicators</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Mathematical_Description.html"><i class="ac ac-file-text"></i> Mathematical Description</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Custom_Indicators.html"><i class="ac ac-file-text"></i> Custom Indicators</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Accumulation_Distribution_Line_(ADL).html"><i class="ac ac-file-text"></i> Accumulation Distribution Line (ADL)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Adaptive_Moving_Average_(AMA).html"><i class="ac ac-file-text"></i> Adaptive Moving Average (AMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Aroon.html"><i class="ac ac-file-text"></i> Aroon</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Average_True_Range_(ATR).html"><i class="ac ac-file-text"></i> Average True Range (ATR)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands.html"><i class="ac ac-file-text"></i> Bollinger Bands</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands_%B.html"><i class="ac ac-file-text"></i> Bollinger Bands %B</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands_Width.html"><i class="ac ac-file-text"></i> Bollinger Bands Width</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Chaikin_Money_Flow_(CMF).html"><i class="ac ac-file-text"></i> Chaikin Money Flow (CMF)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Chaikin_Oscillator_(CHO).html"><i class="ac ac-file-text"></i> Chaikin Oscillator (CHO)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Commodity_Channel_Index_(CCI).html"><i class="ac ac-file-text"></i> Commodity Channel Index (CCI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Directional_Movement_Index_(DMI).html"><i class="ac ac-file-text"></i> Directional Movement Index (DMI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Exponential_Moving_Average_(EMA).html"><i class="ac ac-file-text"></i> Exponential Moving Average (EMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/KDJ.html"><i class="ac ac-file-text"></i> KDJ</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Modified_Moving_Average_(MMA).html"><i class="ac ac-file-text"></i> Modified Moving Average (MMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Moving_Average_Convergence_Divergence_(MACD).html"><i class="ac ac-file-text"></i> Moving Average Convergence Divergence (MACD)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Rate_of_Change_(ROC).html"><i class="ac ac-file-text"></i> Rate of Change (ROC)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Relative_Strength_Index_(RSI).html"><i class="ac ac-file-text"></i> Relative Strength Index (RSI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Simple_Moving_Average_(SMA).html"><i class="ac ac-file-text"></i> Simple Moving Average (SMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Stochastic_Oscillator.html"><i class="ac ac-file-text"></i> Stochastic Oscillator</a></li></ul></li><li><a href="../../Stock_Charts/Event_Markers.html"><i class="ac ac-folder"></i> Event Markers</a><ul><li> <a href="../../Stock_Charts/Event_Markers/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Event_Markers/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../../Stock_Charts/Event_Markers/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../../Stock_Charts/Event_Markers/Events.html"><i class="ac ac-file-text"></i> Events</a></li></ul></li><li><a href="../../Stock_Charts/Drawing_Tools_and_Annotations.html"><i class="ac ac-folder"></i> Drawing Tools and Annotations</a><ul><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Drawing.html"><i class="ac ac-file-text"></i> Drawing</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Serializing_Deserializing.html"><i class="ac ac-file-text"></i> Serializing Deserializing</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Andrews_Pitchfork.html"><i class="ac ac-file-text"></i> Andrews Pitchfork</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Ellipse.html"><i class="ac ac-file-text"></i> Ellipse</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Arc.html"><i class="ac ac-file-text"></i> Fibonacci Arc</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Fan.html"><i class="ac ac-file-text"></i> Fibonacci Fan</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Retracement.html"><i class="ac ac-file-text"></i> Fibonacci Retracement</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Time_Zones.html"><i class="ac ac-file-text"></i> Fibonacci Time Zones</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Horizontal_Line.html"><i class="ac ac-file-text"></i> Horizontal Line</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Infinite_Line.html"><i class="ac ac-file-text"></i> Infinite Line</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Label.html"><i class="ac ac-file-text"></i> Label</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Line_Segment.html"><i class="ac ac-file-text"></i> Line Segment</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Ray.html"><i class="ac ac-file-text"></i> Ray</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Rectangle.html"><i class="ac ac-file-text"></i> Rectangle</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Trend_Channel.html"><i class="ac ac-file-text"></i> Trend Channel</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Triangle.html"><i class="ac ac-file-text"></i> Triangle</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Vertical_Line.html"><i class="ac ac-file-text"></i> Vertical Line</a></li></ul></li></ul></li><li><a href="../../beta.html"><i class="ac ac-folder"></i> beta</a><ul><li> <a href="../../beta/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li></ul></li>
+    </ul>
+    <div class="footer">
+        <div class="footer-inner">
+            <a href="https://www.facebook.com/AnyCharts" class="soc-network" target="_blank">
+                <span class="soc-network-icon fb"><i class="sn-mini-icon ac ac-facebook"></i></span>
+            </a>
+            <a href="https://twitter.com/AnyChart" class="soc-network" target="_blank">
+                <span class="soc-network-icon tw"><i class="sn-mini-icon ac ac-twitter"></i></span>
+            </a>
+            <a href="https://www.linkedin.com/company/386660" class="soc-network" target="_blank">
+                <span class="soc-network-icon in"><i class="sn-mini-icon ac ac-linkedin"></i></span>
+            </a>
+            <p> © 2015 AnyChart.Com All rights reserved.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-lg-5 col-lg-offset-1 hidden-xs hidden-sm" id="bar-side" style="top: 30px;">
+            <!--<div class="col-md-8 col-lg-5 col-lg-offset-1 hidden-xs hidden-sm" id="bar-side">-->
+
+            <ul class="menu"><li><a href="../../Quick_Start.html"><i class="ac ac-folder"></i> Quick Start</a><ul><li> <a href="../../Quick_Start/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Quick_Start/Downloading_AnyChart.html"><i class="ac ac-file-text"></i> Downloading AnyChart</a></li><li> <a href="../../Quick_Start/Supported_Charts_Types.html"><i class="ac ac-file-text"></i> Supported Charts Types</a></li><li> <a href="../../Quick_Start/Credits.html"><i class="ac ac-file-text"></i> Credits</a></li><li> <a href="../../Quick_Start/Modules.html"><i class="ac ac-file-text"></i> Modules</a></li></ul></li><li><a href="../../Working_with_Data.html"><i class="ac ac-folder"></i> Working with Data</a><ul><li> <a href="../../Working_with_Data/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Working_with_Data/Supported_Data_Formats.html"><i class="ac ac-file-text"></i> Supported Data Formats</a></li><li> <a href="../../Working_with_Data/Using_Data_Sets.html"><i class="ac ac-file-text"></i> Using Data Sets</a></li><li> <a href="../../Working_with_Data/Data_Manipulation.html"><i class="ac ac-file-text"></i> Data Manipulation</a></li><li> <a href="../../Working_with_Data/Series_Manipulation.html"><i class="ac ac-file-text"></i> Series Manipulation</a></li><li> <a href="../../Working_with_Data/Using_Data_Tree_Model.html"><i class="ac ac-file-text"></i> Using Data Tree Model</a></li><li> <a href="../../Working_with_Data/Using_Table_Data_Model.html"><i class="ac ac-file-text"></i> Using Table Data Model</a></li><li> <a href="../../Working_with_Data/Data_From_JSON.html"><i class="ac ac-file-text"></i> Data From JSON</a></li><li> <a href="../../Working_with_Data/Data_From_XML.html"><i class="ac ac-file-text"></i> Data From XML</a></li><li> <a href="../../Working_with_Data/Data_From_CSV.html"><i class="ac ac-file-text"></i> Data From CSV</a></li><li> <a href="../../Working_with_Data/Settings_from_Data.html"><i class="ac ac-file-text"></i> Settings from Data</a></li><li> <a href="../../Working_with_Data/No_Data_Label.html"><i class="ac ac-file-text"></i> No Data Label</a></li><li><a href="../../Working_with_Data/Data_Adapter.html"><i class="ac ac-folder"></i> Data Adapter</a><ul><li> <a href="../../Working_with_Data/Data_Adapter/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Parsing_HTML_Table.html"><i class="ac ac-file-text"></i> Parsing HTML Table</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_CSV_File.html"><i class="ac ac-file-text"></i> Loading CSV File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_JSON_File.html"><i class="ac ac-file-text"></i> Loading JSON File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_XML_File.html"><i class="ac ac-file-text"></i> Loading XML File</a></li><li> <a href="../../Working_with_Data/Data_Adapter/Loading_Google_Spreadsheet.html"><i class="ac ac-file-text"></i> Loading Google Spreadsheet</a></li></ul></li></ul></li><li><a href="../../Basic_Charts.html"><i class="ac ac-folder"></i> Basic Charts</a><ul><li> <a href="../../Basic_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../../Basic_Charts/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../../Basic_Charts/Combining_Series.html"><i class="ac ac-file-text"></i> Combining Series</a></li><li> <a href="../../Basic_Charts/Custom_Drawing.html"><i class="ac ac-file-text"></i> Custom Drawing</a></li><li> <a href="../../Basic_Charts/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../../Basic_Charts/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Bullet_Chart.html"><i class="ac ac-file-text"></i> Bullet Chart</a></li><li> <a href="../../Basic_Charts/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li><a href="../../Basic_Charts/Error_Chart.html"><i class="ac ac-folder"></i> Error Chart</a><ul><li> <a href="../../Basic_Charts/Error_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Error_Chart/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Scatter_Line_Chart.html"><i class="ac ac-file-text"></i> Scatter Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Scatter_Marker_Chart.html"><i class="ac ac-file-text"></i> Scatter Marker Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Error_Chart/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Funnel_Chart.html"><i class="ac ac-file-text"></i> Funnel Chart</a></li><li> <a href="../../Basic_Charts/Heat_Map_Chart.html"><i class="ac ac-file-text"></i> Heat Map Chart</a></li><li> <a href="../../Basic_Charts/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../../Basic_Charts/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../../Basic_Charts/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li><a href="../../Basic_Charts/Marimekko_Chart.html"><i class="ac ac-folder"></i> Marimekko Chart</a><ul><li> <a href="../../Basic_Charts/Marimekko_Chart/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../../Basic_Charts/Marimekko_Chart/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../../Basic_Charts/Marimekko_Chart/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../../Basic_Charts/Pareto_Chart.html"><i class="ac ac-file-text"></i> Pareto Chart</a></li><li> <a href="../../Basic_Charts/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li><a href="../../Basic_Charts/Polar_Plot.html"><i class="ac ac-folder"></i> Polar Plot</a><ul><li> <a href="../../Basic_Charts/Polar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Polygon_Chart.html"><i class="ac ac-file-text"></i> Polygon Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Polyline_Chart.html"><i class="ac ac-file-text"></i> Polyline Chart</a></li><li> <a href="../../Basic_Charts/Polar_Plot/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Pyramid_Chart.html"><i class="ac ac-file-text"></i> Pyramid Chart</a></li><li> <a href="../../Basic_Charts/Quadrant_Chart.html"><i class="ac ac-file-text"></i> Quadrant Chart</a></li><li><a href="../../Basic_Charts/Radar_Plot.html"><i class="ac ac-folder"></i> Radar Plot</a><ul><li> <a href="../../Basic_Charts/Radar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Radar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../../Basic_Charts/Range_Bar_Chart.html"><i class="ac ac-file-text"></i> Range Bar Chart</a></li><li> <a href="../../Basic_Charts/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li><li> <a href="../../Basic_Charts/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li><a href="../../Basic_Charts/Scatter_Plot.html"><i class="ac ac-folder"></i> Scatter Plot</a><ul><li> <a href="../../Basic_Charts/Scatter_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Scatter_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Sparkline_Chart.html"><i class="ac ac-file-text"></i> Sparkline Chart</a></li><li> <a href="../../Basic_Charts/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li><a href="../../Basic_Charts/Stacked.html"><i class="ac ac-folder"></i> Stacked</a><ul><li> <a href="../../Basic_Charts/Stacked/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li><a href="../../Basic_Charts/Stacked/Percent.html"><i class="ac ac-folder"></i> Percent</a><ul><li> <a href="../../Basic_Charts/Stacked/Percent/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Percent/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li><li><a href="../../Basic_Charts/Stacked/Value.html"><i class="ac ac-folder"></i> Value</a><ul><li> <a href="../../Basic_Charts/Stacked/Value/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../../Basic_Charts/Stacked/Value/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li></ul></li><li> <a href="../../Basic_Charts/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../../Basic_Charts/Tag_Cloud.html"><i class="ac ac-file-text"></i> Tag Cloud</a></li><li> <a href="../../Basic_Charts/Treemap_Chart.html"><i class="ac ac-file-text"></i> Treemap Chart</a></li><li> <a href="../../Basic_Charts/Venn_Diagram.html"><i class="ac ac-file-text"></i> Venn Diagram</a></li><li><a href="../../Basic_Charts/Vertical.html"><i class="ac ac-folder"></i> Vertical</a><ul><li> <a href="../../Basic_Charts/Vertical/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/Vertical/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../../Basic_Charts/Vertical/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li><li> <a href="../../Basic_Charts/Vertical/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../../Basic_Charts/Vertical/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../../Basic_Charts/Waterfall_Chart.html"><i class="ac ac-file-text"></i> Waterfall Chart</a></li><li><a href="../../Basic_Charts/3D.html"><i class="ac ac-folder"></i> 3D</a><ul><li> <a href="../../Basic_Charts/3D/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Basic_Charts/3D/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../../Basic_Charts/3D/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../../Basic_Charts/3D/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../../Basic_Charts/3D/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li> <a href="../../Basic_Charts/3D/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li> <a href="../../Basic_Charts/3D/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../../Basic_Charts/3D/2D_Line_Chart.html"><i class="ac ac-file-text"></i> 2D Line Chart</a></li></ul></li></ul></li><li><a href="../../Gantt_Chart.html"><i class="ac ac-folder"></i> Gantt Chart</a><ul><li> <a href="../../Gantt_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Gantt_Chart/Data_from_JSON,_XML,_CSV.html"><i class="ac ac-file-text"></i> Data from JSON, XML, CSV</a></li><li> <a href="../../Gantt_Chart/DataGrid_Column_Presets.html"><i class="ac ac-file-text"></i> DataGrid Column Presets</a></li><li> <a href="../../Gantt_Chart/DataGrid.html"><i class="ac ac-file-text"></i> DataGrid</a></li><li> <a href="../../Gantt_Chart/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../../Gantt_Chart/Gantt_Interactivity.html"><i class="ac ac-file-text"></i> Gantt Interactivity</a></li><li> <a href="../../Gantt_Chart/Live_Edit_UI_and_API.html"><i class="ac ac-file-text"></i> Live Edit UI and API</a></li><li> <a href="../../Gantt_Chart/Markers_(Multiple_Milestones).html"><i class="ac ac-file-text"></i> Markers (Multiple Milestones)</a></li><li> <a href="../../Gantt_Chart/Project_Chart.html"><i class="ac ac-file-text"></i> Project Chart</a></li><li> <a href="../../Gantt_Chart/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li><li> <a href="../../Gantt_Chart/Timeline.html"><i class="ac ac-file-text"></i> Timeline</a></li></ul></li><li><a href="../../PERT_Chart.html"><i class="ac ac-folder"></i> PERT Chart</a><ul><li> <a href="../../PERT_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../PERT_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../PERT_Chart/Terminology.html"><i class="ac ac-file-text"></i> Terminology</a></li><li> <a href="../../PERT_Chart/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../../PERT_Chart/Pert_Chart.html"><i class="ac ac-file-text"></i> Pert Chart</a></li></ul></li><li><a href="../../Axes_and_Grids.html"><i class="ac ac-folder"></i> Axes and Grids</a><ul><li> <a href="../../Axes_and_Grids/Axis_Basics.html"><i class="ac ac-file-text"></i> Axis Basics</a></li><li> <a href="../../Axes_and_Grids/Axis_Orientation.html"><i class="ac ac-file-text"></i> Axis Orientation</a></li><li> <a href="../../Axes_and_Grids/Axes_Labels_Formatting.html"><i class="ac ac-file-text"></i> Axes Labels Formatting</a></li><li> <a href="../../Axes_and_Grids/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../../Axes_and_Grids/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Axes_and_Grids/Date_Time_Axes.html"><i class="ac ac-file-text"></i> Date Time Axes</a></li><li> <a href="../../Axes_and_Grids/Line_Markers.html"><i class="ac ac-file-text"></i> Line Markers</a></li><li> <a href="../../Axes_and_Grids/Range_Markers.html"><i class="ac ac-file-text"></i> Range Markers</a></li><li> <a href="../../Axes_and_Grids/Text_Markers.html"><i class="ac ac-file-text"></i> Text Markers</a></li><li> <a href="../../Axes_and_Grids/Additional_Axes.html"><i class="ac ac-file-text"></i> Additional Axes</a></li></ul></li><li><a href="../../Appearance_Settings.html"><i class="ac ac-folder"></i> Appearance Settings</a><ul><li> <a href="../../Appearance_Settings/Background.html"><i class="ac ac-file-text"></i> Background</a></li><li> <a href="../../Appearance_Settings/Color_Management.html"><i class="ac ac-file-text"></i> Color Management</a></li><li> <a href="../../Appearance_Settings/Colors_Table.html"><i class="ac ac-file-text"></i> Colors Table</a></li><li> <a href="../../Appearance_Settings/Lines_Settings.html"><i class="ac ac-file-text"></i> Lines Settings</a></li><li> <a href="../../Appearance_Settings/Palettes.html"><i class="ac ac-file-text"></i> Palettes</a></li><li> <a href="../../Appearance_Settings/Text_Settings.html"><i class="ac ac-file-text"></i> Text Settings</a></li><li> <a href="../../Appearance_Settings/Themes.html"><i class="ac ac-file-text"></i> Themes</a></li></ul></li><li><a href="../../Common_Settings.html"><i class="ac ac-folder"></i> Common Settings</a><ul><li> <a href="../../Common_Settings/ASYNC_Rendering.html"><i class="ac ac-file-text"></i> ASYNC Rendering</a></li><li> <a href="../../Common_Settings/Exports.html"><i class="ac ac-file-text"></i> Exports</a></li><li> <a href="../../Common_Settings/Printing.html"><i class="ac ac-file-text"></i> Printing</a></li><li> <a href="../../Common_Settings/Sharing.html"><i class="ac ac-file-text"></i> Sharing</a></li><li> <a href="../../Common_Settings/Accessibility_(508_section).html"><i class="ac ac-file-text"></i> Accessibility (508 section)</a></li><li> <a href="../../Common_Settings/Localization.html"><i class="ac ac-file-text"></i> Localization</a></li><li> <a href="../../Common_Settings/Calendar.html"><i class="ac ac-file-text"></i> Calendar</a></li><li> <a href="../../Common_Settings/Chart_Labels.html"><i class="ac ac-file-text"></i> Chart Labels</a></li><li> <a href="../../Common_Settings/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li><a href="../../Common_Settings/Interactivity.html"><i class="ac ac-folder"></i> Interactivity</a><ul><li> <a href="../../Common_Settings/Interactivity/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Common_Settings/Interactivity/States.html"><i class="ac ac-file-text"></i> States</a></li></ul></li><li> <a href="../../Common_Settings/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../../Common_Settings/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Common_Settings/Point_Size.html"><i class="ac ac-file-text"></i> Point Size</a></li><li> <a href="../../Common_Settings/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../../Common_Settings/Server-side_Rendering.html"><i class="ac ac-file-text"></i> Server-side Rendering</a></li><li> <a href="../../Common_Settings/Statistics.html"><i class="ac ac-file-text"></i> Statistics</a></li><li> <a href="../../Common_Settings/Text_Formatters.html"><i class="ac ac-file-text"></i> Text Formatters</a></li><li> <a href="../../Common_Settings/Title.html"><i class="ac ac-file-text"></i> Title</a></li><li> <a href="../../Common_Settings/Tooltip.html"><i class="ac ac-file-text"></i> Tooltip</a></li><li><a href="../../Common_Settings/UI_Controls.html"><i class="ac ac-folder"></i> UI Controls</a><ul><li> <a href="../../Common_Settings/UI_Controls/Zoom_Controls.html"><i class="ac ac-file-text"></i> Zoom Controls</a></li><li> <a href="../../Common_Settings/UI_Controls/AnyChart_UI.html"><i class="ac ac-file-text"></i> AnyChart UI</a></li><li> <a href="../../Common_Settings/UI_Controls/Chart_Editor.html"><i class="ac ac-file-text"></i> Chart Editor</a></li><li> <a href="../../Common_Settings/UI_Controls/Context_Menu.html"><i class="ac ac-file-text"></i> Context Menu</a></li><li> <a href="../../Common_Settings/UI_Controls/Gantt_Toolbar.html"><i class="ac ac-file-text"></i> Gantt Toolbar</a></li><li> <a href="../../Common_Settings/UI_Controls/Preloader.html"><i class="ac ac-file-text"></i> Preloader</a></li></ul></li></ul></li><li><a href="../../Dashboards.html"><i class="ac ac-folder"></i> Dashboards</a><ul><li> <a href="../../Dashboards/Stage-Based_Layout.html"><i class="ac ac-file-text"></i> Stage-Based Layout</a></li><li> <a href="../../Dashboards/Table_Layout.html"><i class="ac ac-file-text"></i> Table Layout</a></li><li> <a href="../../Dashboards/Standalones.html"><i class="ac ac-file-text"></i> Standalones</a></li></ul></li><li><a href="../../Drilldown.html"><i class="ac ac-folder"></i> Drilldown</a><ul><li> <a href="../../Drilldown/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li></ul></li><li><a href="../../Gauges.html"><i class="ac ac-folder"></i> Gauges</a><ul><li> <a href="../../Gauges/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Gauges/Circular_Gauge.html"><i class="ac ac-file-text"></i> Circular Gauge</a></li><li> <a href="../../Gauges/Linear_Gauge.html"><i class="ac ac-file-text"></i> Linear Gauge</a></li><li> <a href="../../Gauges/Pointers_and_Data.html"><i class="ac ac-file-text"></i> Pointers and Data</a></li></ul></li><li><a href="../../Graphics.html"><i class="ac ac-folder"></i> Graphics</a><ul><li> <a href="../../Graphics/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Graphics/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Graphics/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../../Graphics/Virtual_DOM.html"><i class="ac ac-file-text"></i> Virtual DOM</a></li><li> <a href="../../Graphics/Events.html"><i class="ac ac-file-text"></i> Events</a></li><li> <a href="../../Graphics/Transformations.html"><i class="ac ac-file-text"></i> Transformations</a></li><li> <a href="../../Graphics/Layers.html"><i class="ac ac-file-text"></i> Layers</a></li><li> <a href="../../Graphics/Paths.html"><i class="ac ac-file-text"></i> Paths</a></li><li> <a href="../../Graphics/Shapes.html"><i class="ac ac-file-text"></i> Shapes</a></li><li> <a href="../../Graphics/Text_and_Fonts.html"><i class="ac ac-file-text"></i> Text and Fonts</a></li><li> <a href="../../Graphics/Fill_Settings.html"><i class="ac ac-file-text"></i> Fill Settings</a></li><li> <a href="../../Graphics/Hatch_Fill_Settings.html"><i class="ac ac-file-text"></i> Hatch Fill Settings</a></li><li> <a href="../../Graphics/Stroke_Settings.html"><i class="ac ac-file-text"></i> Stroke Settings</a></li><li> <a href="../../Graphics/Browser_Support.html"><i class="ac ac-file-text"></i> Browser Support</a></li><li> <a href="../../Graphics/Performance.html"><i class="ac ac-file-text"></i> Performance</a></li></ul></li><li><a href="../../Maps.html"><i class="ac ac-folder"></i> Maps</a><ul><li> <a href="../../Maps/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Maps/Architecture.html"><i class="ac ac-file-text"></i> Architecture</a></li><li> <a href="../../Maps/Maps_List.html"><i class="ac ac-file-text"></i> Maps List</a></li><li> <a href="../../Maps/Custom_GeoJson_Maps.html"><i class="ac ac-file-text"></i> Custom GeoJson Maps</a></li><li> <a href="../../Maps/Custom_SVG_Maps.html"><i class="ac ac-file-text"></i> Custom SVG Maps</a></li><li> <a href="../../Maps/Custom_TopoJSON.html"><i class="ac ac-file-text"></i> Custom TopoJSON</a></li><li> <a href="../../Maps/Amap_to_GeoJson.html"><i class="ac ac-file-text"></i> Amap to GeoJson</a></li><li> <a href="../../Maps/Choropleth_Map.html"><i class="ac ac-file-text"></i> Choropleth Map</a></li><li> <a href="../../Maps/Connector_Maps.html"><i class="ac ac-file-text"></i> Connector Maps</a></li><li> <a href="../../Maps/Dot_(Point)_Map.html"><i class="ac ac-file-text"></i> Dot (Point) Map</a></li><li> <a href="../../Maps/Proportional_Symbol_Map.html"><i class="ac ac-file-text"></i> Proportional Symbol Map</a></li><li><a href="../../Maps/Seat_Maps.html"><i class="ac ac-folder"></i> Seat Maps</a><ul><li> <a href="../../Maps/Seat_Maps/Seat_Map.html"><i class="ac ac-file-text"></i> Seat Map</a></li><li> <a href="../../Maps/Seat_Maps/Preparing_SVG_Image.html"><i class="ac ac-file-text"></i> Preparing SVG Image</a></li><li> <a href="../../Maps/Seat_Maps/Advanced_Coloring.html"><i class="ac ac-file-text"></i> Advanced Coloring</a></li></ul></li><li> <a href="../../Maps/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../../Maps/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Maps/ColorRange.html"><i class="ac ac-file-text"></i> ColorRange</a></li><li> <a href="../../Maps/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Maps/Map_Projections.html"><i class="ac ac-file-text"></i> Map Projections</a></li><li> <a href="../../Maps/Geo_Scale.html"><i class="ac ac-file-text"></i> Geo Scale</a></li><li> <a href="../../Maps/Map_Axes.html"><i class="ac ac-file-text"></i> Map Axes</a></li><li> <a href="../../Maps/Map_Grid.html"><i class="ac ac-file-text"></i> Map Grid</a></li><li> <a href="../../Maps/Map_Crosshair.html"><i class="ac ac-file-text"></i> Map Crosshair</a></li><li> <a href="../../Maps/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../../Maps/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../../Maps/Visualisation.html"><i class="ac ac-file-text"></i> Visualisation</a></li><li> <a href="../../Maps/Maps_and_Charts_in_one_Dashboard.html"><i class="ac ac-file-text"></i> Maps and Charts in one Dashboard</a></li><li> <a href="../../Maps/Move_and_Zoom.html"><i class="ac ac-file-text"></i> Move and Zoom</a></li><li><a href="../../Maps/Drill_Down_Maps.html"><i class="ac ac-folder"></i> Drill Down Maps</a><ul><li> <a href="../../Maps/Drill_Down_Maps/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Maps/Drill_Down_Maps/Methods.html"><i class="ac ac-file-text"></i> Methods</a></li><li> <a href="../../Maps/Drill_Down_Maps/Basic_Tutorial.html"><i class="ac ac-file-text"></i> Basic Tutorial</a></li><li> <a href="../../Maps/Drill_Down_Maps/AJAX_Tutorial.html"><i class="ac ac-file-text"></i> AJAX Tutorial</a></li><li> <a href="../../Maps/Drill_Down_Maps/Breadcrumbs.html"><i class="ac ac-file-text"></i> Breadcrumbs</a></li></ul></li></ul></li><li><a href="../../Stock_Charts.html"><i class="ac ac-folder"></i> Stock Charts</a><ul><li> <a href="../../Stock_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../../Stock_Charts/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../../Stock_Charts/Data_Grouping.html"><i class="ac ac-file-text"></i> Data Grouping</a></li><li> <a href="../../Stock_Charts/Axes.html"><i class="ac ac-file-text"></i> Axes</a></li><li> <a href="../../Stock_Charts/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../../Stock_Charts/Chart_Plots.html"><i class="ac ac-file-text"></i> Chart Plots</a></li><li> <a href="../../Stock_Charts/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../../Stock_Charts/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../../Stock_Charts/Price_Indicator.html"><i class="ac ac-file-text"></i> Price Indicator</a></li><li> <a href="../../Stock_Charts/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../../Stock_Charts/Range_Selection.html"><i class="ac ac-file-text"></i> Range Selection</a></li><li><a href="../../Stock_Charts/Series.html"><i class="ac ac-folder"></i> Series</a><ul><li> <a href="../../Stock_Charts/Series/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Series/Supported_Series.html"><i class="ac ac-file-text"></i> Supported Series</a></li><li> <a href="../../Stock_Charts/Series/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../../Stock_Charts/Series/Area.html"><i class="ac ac-file-text"></i> Area</a></li><li> <a href="../../Stock_Charts/Series/Column.html"><i class="ac ac-file-text"></i> Column</a></li><li> <a href="../../Stock_Charts/Series/HiLo.html"><i class="ac ac-file-text"></i> HiLo</a></li><li> <a href="../../Stock_Charts/Series/Japanese_Candlestick.html"><i class="ac ac-file-text"></i> Japanese Candlestick</a></li><li> <a href="../../Stock_Charts/Series/Jump_Line.html"><i class="ac ac-file-text"></i> Jump Line</a></li><li> <a href="../../Stock_Charts/Series/Line.html"><i class="ac ac-file-text"></i> Line</a></li><li> <a href="../../Stock_Charts/Series/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../../Stock_Charts/Series/OHLC.html"><i class="ac ac-file-text"></i> OHLC</a></li><li> <a href="../../Stock_Charts/Series/Range_Area.html"><i class="ac ac-file-text"></i> Range Area</a></li><li> <a href="../../Stock_Charts/Series/Range_Column.html"><i class="ac ac-file-text"></i> Range Column</a></li><li> <a href="../../Stock_Charts/Series/Range_Spline_Area.html"><i class="ac ac-file-text"></i> Range Spline Area</a></li><li> <a href="../../Stock_Charts/Series/Range_Step_Area.html"><i class="ac ac-file-text"></i> Range Step Area</a></li><li> <a href="../../Stock_Charts/Series/Spline.html"><i class="ac ac-file-text"></i> Spline</a></li><li> <a href="../../Stock_Charts/Series/Spline_Area.html"><i class="ac ac-file-text"></i> Spline Area</a></li><li> <a href="../../Stock_Charts/Series/Step_Area.html"><i class="ac ac-file-text"></i> Step Area</a></li><li> <a href="../../Stock_Charts/Series/Step_Line.html"><i class="ac ac-file-text"></i> Step Line</a></li><li> <a href="../../Stock_Charts/Series/Stick.html"><i class="ac ac-file-text"></i> Stick</a></li></ul></li><li><a href="../../Stock_Charts/Technical_Indicators.html"><i class="ac ac-folder"></i> Technical Indicators</a><ul><li> <a href="../../Stock_Charts/Technical_Indicators/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Supported_Technical_Indicators.html"><i class="ac ac-file-text"></i> Supported Technical Indicators</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Mathematical_Description.html"><i class="ac ac-file-text"></i> Mathematical Description</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Custom_Indicators.html"><i class="ac ac-file-text"></i> Custom Indicators</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Accumulation_Distribution_Line_(ADL).html"><i class="ac ac-file-text"></i> Accumulation Distribution Line (ADL)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Adaptive_Moving_Average_(AMA).html"><i class="ac ac-file-text"></i> Adaptive Moving Average (AMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Aroon.html"><i class="ac ac-file-text"></i> Aroon</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Average_True_Range_(ATR).html"><i class="ac ac-file-text"></i> Average True Range (ATR)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands.html"><i class="ac ac-file-text"></i> Bollinger Bands</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands_%B.html"><i class="ac ac-file-text"></i> Bollinger Bands %B</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Bollinger_Bands_Width.html"><i class="ac ac-file-text"></i> Bollinger Bands Width</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Chaikin_Money_Flow_(CMF).html"><i class="ac ac-file-text"></i> Chaikin Money Flow (CMF)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Chaikin_Oscillator_(CHO).html"><i class="ac ac-file-text"></i> Chaikin Oscillator (CHO)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Commodity_Channel_Index_(CCI).html"><i class="ac ac-file-text"></i> Commodity Channel Index (CCI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Directional_Movement_Index_(DMI).html"><i class="ac ac-file-text"></i> Directional Movement Index (DMI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Exponential_Moving_Average_(EMA).html"><i class="ac ac-file-text"></i> Exponential Moving Average (EMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/KDJ.html"><i class="ac ac-file-text"></i> KDJ</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Modified_Moving_Average_(MMA).html"><i class="ac ac-file-text"></i> Modified Moving Average (MMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Moving_Average_Convergence_Divergence_(MACD).html"><i class="ac ac-file-text"></i> Moving Average Convergence Divergence (MACD)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Rate_of_Change_(ROC).html"><i class="ac ac-file-text"></i> Rate of Change (ROC)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Relative_Strength_Index_(RSI).html"><i class="ac ac-file-text"></i> Relative Strength Index (RSI)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Simple_Moving_Average_(SMA).html"><i class="ac ac-file-text"></i> Simple Moving Average (SMA)</a></li><li> <a href="../../Stock_Charts/Technical_Indicators/Stochastic_Oscillator.html"><i class="ac ac-file-text"></i> Stochastic Oscillator</a></li></ul></li><li><a href="../../Stock_Charts/Event_Markers.html"><i class="ac ac-folder"></i> Event Markers</a><ul><li> <a href="../../Stock_Charts/Event_Markers/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Event_Markers/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../../Stock_Charts/Event_Markers/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../../Stock_Charts/Event_Markers/Events.html"><i class="ac ac-file-text"></i> Events</a></li></ul></li><li><a href="../../Stock_Charts/Drawing_Tools_and_Annotations.html"><i class="ac ac-folder"></i> Drawing Tools and Annotations</a><ul><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Drawing.html"><i class="ac ac-file-text"></i> Drawing</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Serializing_Deserializing.html"><i class="ac ac-file-text"></i> Serializing Deserializing</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Andrews_Pitchfork.html"><i class="ac ac-file-text"></i> Andrews Pitchfork</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Ellipse.html"><i class="ac ac-file-text"></i> Ellipse</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Arc.html"><i class="ac ac-file-text"></i> Fibonacci Arc</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Fan.html"><i class="ac ac-file-text"></i> Fibonacci Fan</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Retracement.html"><i class="ac ac-file-text"></i> Fibonacci Retracement</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Time_Zones.html"><i class="ac ac-file-text"></i> Fibonacci Time Zones</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Horizontal_Line.html"><i class="ac ac-file-text"></i> Horizontal Line</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Infinite_Line.html"><i class="ac ac-file-text"></i> Infinite Line</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Label.html"><i class="ac ac-file-text"></i> Label</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Line_Segment.html"><i class="ac ac-file-text"></i> Line Segment</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Ray.html"><i class="ac ac-file-text"></i> Ray</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Rectangle.html"><i class="ac ac-file-text"></i> Rectangle</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Trend_Channel.html"><i class="ac ac-file-text"></i> Trend Channel</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Triangle.html"><i class="ac ac-file-text"></i> Triangle</a></li><li> <a href="../../Stock_Charts/Drawing_Tools_and_Annotations/Vertical_Line.html"><i class="ac ac-file-text"></i> Vertical Line</a></li></ul></li></ul></li><li><a href="../../beta.html"><i class="ac ac-folder"></i> beta</a><ul><li> <a href="../../beta/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li></ul></li></ul>
+            <div class="footer">
+                <div class="footer-inner">
+                    <a href="https://www.facebook.com/AnyCharts" class="soc-network" target="_blank">
+                        <span class="soc-network-icon fb"><i class="sn-mini-icon ac ac-facebook"></i></span>
+                    </a>
+                    <a href="https://twitter.com/AnyChart" class="soc-network" target="_blank">
+                        <span class="soc-network-icon tw"><i class="sn-mini-icon ac ac-twitter"></i></span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/386660" class="soc-network" target="_blank">
+                        <span class="soc-network-icon in"><i class="sn-mini-icon ac ac-linkedin"></i></span>
+                    </a>
+                    <p> © 2015 AnyChart.Com All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row helpers hidden-lg hidden-md">
+            <div class="col-xs-24 col-sm-12">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="What are you looking for?" />
+                    <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="ac ac-search form-control-feedback"></span></button></span>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <section class="col-md-16 col-lg-18 col-lg-offset-6 col-md-offset-8" id="page-content" style="padding-top: 30px;">
+            <div id="table-of-content-small" class="hidden-lg"></div>
+            <div class="row">
+                <div class="col-lg-17" id="article-content">
+                    <h1 id="advanced_coloring">Advanced Coloring</h1><ul><li><a href="#overview">Overview</a></li><li><a href="#using_svg_image_colors">Using SVG Image Colors</a></li><li><a href="#selective_coloring">Selective Coloring</a></li><li><a href="#palette">Palette</a></li><li><a href="#color_scale_and_color_range">Color Scale and Color Range</a></li></ul><h2 id="overview">Overview</h2><p>There are several ways to color a seat map. The first way is to set colors <a href="Seat_Map.html#coloring">through the data set</a>. The second way is to set original or custom colors <a href="#using_svg_image_colors">through the coloring methods</a> like <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#fill">fill()</a> and <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#stroke">stroke()</a>: in this case it is possible to color all elements of a group differently, depending on the class set in the SVG code. You can also <a href="#palette">use AnyChart palette</a> or <a href="#color_scale_and_color_range">use Color Scale and Color Range</a>.</p><p>The sample below demonstrates how an SVG image looks like with the default AnyChart color palette (the SVG image used there is also used in some samples from the <a href="Seat_Map.html">Seat Map</a> and <a href="Preparing_SVG_Image.html">Preparing SVG Image</a> articles):</p><p></p><div id="iframe1" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container1" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit1 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+anychart.utils.hideTooltips(true);
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/house.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("SVG map with its original colors"); 
+    // create new series
+    seatMapSeries = chart.choropleth();
+    // load data
+    seatMapSeries.data([
+{id: "Hall", value: "720"},
+{id: "Room2", value: "165"},
+{id: "WC", value: "49"},
+{id: "Room1", value: "143"},
+{id: "Kitchen", value: "208"}
+    ]);
+    
+    // set container id for the chart
+    chart.container("container1");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_00">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="using_svg_image_colors">Using SVG Image Colors</h2><p>The colors in the sample picture are different from those defined in JavaScript (check out the <a href="https://static.anychart.com/images/docs/seat_map/house.svg">source SVG image</a> to see the original colors). Setting original colors used in the picture is considered in this section, as well as using these colors as a basis for hovering and selecting colors.</p><p>To set the colors of the original SVG image, or to set new custom colors, use the <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#fill">fill()</a> and <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#stroke">stroke()</a> methods. Though, it is important to remember that not all of the elements in SVG files have the <code>fill</code> attribute. Before setting the value to the <code>fill</code> field, it is necessary to check if the element has it, and if it does, you should set the fill color to this element. Setting colors through this methods looks like the following:</p><pre><code>// sets series fill 
+series.fill(function () {
+    var attrs = this.attributes;
+    if (attrs) return attrs.fill;
+});
+
+// sets series stroke
+series.stroke(function () {
+    var attrs = this.attributes;
+    // if the stroke attribute exists in the SVG file, then color it with a color set in the document
+    return attrs ? attrs.stroke : this.sourceColor;
+});
+</code></pre><p></p><div id="iframe2" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container2" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit2 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/house.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("Set the fill and stroke original colors through coloring methods"); 
+    // create new series
+    seatMapSeries = chart.choropleth();
+    // load data
+    seatMapSeries.data([
+{id: "Hall", value: "720"},
+{id: "Room2", value: "165"},
+{id: "WC", value: "49"},
+{id: "Room1", value: "143"},
+{id: "Kitchen", value: "208"}
+    ]);
+
+    // load svg-file how it looked(colors stroke/fill except for elements of series)
+    chart.unboundRegions("as-is");
+
+    // sets series fill 
+    seatMapSeries.fill(function () {
+var attrs = this.attributes;
+if (attrs) return attrs.fill;
+    });
+
+    // sets series stroke 
+    seatMapSeries.stroke(function () {
+var attrs = this.attributes;
+// if the stroke attribute exists in the SVG file then color it with a color set in the document
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+    
+    // set container id for the chart
+    chart.container("container2");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_01">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><p>You can also configure colors in three <a href="../../Common_Settings/Interactivity/States.html">states</a>: <strong>normal</strong>, <strong>hover</strong>, and <strong>selected</strong>. Use the <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#normal">normal()</a>, <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#hovered">hovered()</a>, and <a class="method" href="http://api.anychart.com/latest/anychart.core.map.series.Choropleth#selected">selected()</a> methods.</p><p>Combine them with <a class="method" href="http://api.anychart.com/latest/anychart.core.StateSettings#fill">fill()</a> and <a class="method" href="http://api.anychart.com/latest/anychart.core.StateSettings#stroke">stroke()</a>:</p><pre><code>// set the fill in the normal state
+seatMapSeries.normal().fill(function () {
+    var attrs = this.attributes;
+    if (attrs) return attrs.fill;
+});
+
+// set the fill in the hover state
+seatMapSeries.hovered().fill(function (){
+    var attrs = this.attributes;
+    return attrs ? anychart.color.lighten(attrs.fill, 0.5) : this.sourceColor;
+});
+
+// set the fill in the selected state
+seatMapSeries.selected().fill(function (){
+    var attrs = this.attributes;
+    return attrs ? anychart.color.darken(attrs.fill, 0.2) : this.sourceColor;
+});
+
+// set the stroke in the normal state 
+seatMapSeries.normal().stroke(function () {
+    var attrs = this.attributes;
+    return attrs ? attrs.stroke : this.sourceColor;
+});
+
+// set the stroke in the hover state
+seatMapSeries.hovered().stroke(function () {
+    var attrs = this.attributes;
+    return attrs ? attrs.stroke : this.sourceColor;
+});
+
+// set the stroke in the selected state
+seatMapSeries.selected().stroke(function () {
+    var attrs = this.attributes;
+    return attrs ? attrs.stroke : this.sourceColor;
+});
+</code></pre><p></p><div id="iframe3" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container3" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit3 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/house.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("Set colors using standard methods"); 
+    // create new series
+    seatMapSeries = chart.choropleth();
+    // load data
+    seatMapSeries.data([
+{id: "Hall", value: "720"},
+{id: "Room2", value: "165"},
+{id: "WC", value: "49"},
+{id: "Room1", value: "143"},
+{id: "Kitchen", value: "208"}
+    ]);
+
+    // load svg-file how it looked(colors stroke/fill except for elements of series)
+    chart.unboundRegions("as-is");
+
+    // set the fill in the normal state
+    seatMapSeries.normal().fill(function () {
+var attrs = this.attributes;
+if (attrs) return attrs.fill;
+    });
+
+    // set the fill in the hover state
+    seatMapSeries.hovered().fill(function (){
+var attrs = this.attributes;
+return attrs ? anychart.color.lighten(attrs.fill, 0.5) : this.sourceColor;
+    });
+
+    // set the fill in the selected state
+    seatMapSeries.selected().fill(function (){
+var attrs = this.attributes;
+return attrs ? anychart.color.darken(attrs.fill, 0.2) : this.sourceColor;
+    });
+
+    // set the stroke in the normal state 
+    seatMapSeries.normal().stroke(function () {
+var attrs = this.attributes;
+// if the stroke attribute exists in the SVG file then color it with a color set in the document
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+
+    // set the stroke in the hover state
+    seatMapSeries.hovered().stroke(function () {
+var attrs = this.attributes;
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+
+    // set the stroke in the selected state
+    seatMapSeries.selected().stroke(function () {
+var attrs = this.attributes;
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+    
+    // set container id for the chart
+    chart.container("container3");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_02">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="selective_coloring">Selective Coloring</h2><p>It is also possible to change the colors of separate elements or of parts of a group if there are any. However, it is necessary to know the group's structure and the classes set to those elements. In case no classes are set, it is necessary to set them, as the classes help to define the elements.</p><pre><code>&lt;g id="hotplate"&gt;
+    &lt;rect x="156.531" y="503.167" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="40" height="33"/&gt;
+    &lt;circle class="inner_elements"  fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="167.627" cy="513.097" r="4.929"/&gt;
+    &lt;circle class="inner_elements"  fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="186.149" cy="513.097" r="4.929"/&gt;
+    &lt;circle class="inner_elements"  fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="167.627" cy="527.477" r="4.929"/&gt;
+    &lt;circle class="inner_elements"  fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="186.149" cy="527.477" r="4.929"/&gt;
+&lt;/g&gt;
+</code></pre><pre><code>// set the fill in the hover state
+seatMapSeries.hovered().fill(function (){
+    var attrs = this.attributes;
+    if (attrs) {
+        // get the class
+        var clas = attrs.class;
+        switch (clas) {
+            case "inner_elements" :
+                return "red";
+            default:
+                return anychart.color.lighten(attrs.fill, 0.5);
+        }
+    } else {
+        return this.sourceColor;
+    }
+});
+</code></pre><p></p><div id="iframe4" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container4" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit4 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/house1.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("Coloring the attributes using classes"); 
+    // create new series
+    seatMapSeries = chart.choropleth();
+    // load data
+    seatMapSeries.data([
+{id: "Hall", value: "720"},
+{id: "Room2", value: "165"},
+{id: "WC", value: "49"},
+{id: "Room1", value: "143"},
+{id: "Kitchen", value: "208"}
+    ]);
+
+    // load svg-file how it looked(colors stroke/fill except for elements of series)
+    chart.unboundRegions("as-is");
+
+    // set the fill in the normal state
+    seatMapSeries.normal().fill(function () {
+var attrs = this.attributes;
+if (attrs) return attrs.fill;
+if (attrs) {
+    // get the class
+    var clas = attrs.class;
+    switch (clas) {
+case "inner_elements" :
+    return "red";
+default:
+    return "red";
+    }
+} else {
+    return this.sourceColor;
+}
+    });
+
+    // set the fill in the hover state
+    seatMapSeries.hovered().fill(function (){
+var attrs = this.attributes;
+if (attrs) {
+    // get the class
+    var clas = attrs.class;
+    switch (clas) {
+case "inner_elements" :
+    return "red";
+default:
+    return anychart.color.lighten(attrs.fill, 0.5);
+    }
+} else {
+    return this.sourceColor;
+}
+    });
+
+    // set the fill in the selected state
+    seatMapSeries.selected().fill(function (){
+var attrs = this.attributes;
+return attrs ? anychart.color.darken(attrs.fill, 0.2) : this.sourceColor;
+    });
+
+    // set the stroke in the normal state
+    seatMapSeries.normal().stroke(function () {
+var attrs = this.attributes;
+// if the stroke attribute exists in the SVG file then color it with a color set in the document
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+
+    // set the stroke in the hover state
+    seatMapSeries.hovered().stroke(function () {
+var attrs = this.attributes;
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+
+    // set the stroke in the selected state
+    seatMapSeries.selected().stroke(function () {
+var attrs = this.attributes;
+return attrs ? attrs.stroke : this.sourceColor;
+    });
+    
+    // set container id for the chart
+    chart.container("container4");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_03">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="palette">Palette</h2><p>Palette is a color scheme which is used to set colors to the series of a chart. Using the <a class="method" href="http://api.anychart.com/latest/anychart.charts.Map#palette">palette()</a> method, it is possible to set the default palette or to define custom colors. Note that this method is most useful when the SVG image contains several series.</p><p>In the next sample we group seats into several series to work with rows, each seat has its own ID. The palette is formed out of two different hues: the original and the resulting colors of the 8-step gradient</p><pre><code>palette = anychart.palettes.rangeColors();
+palette.items(["#F44336", "#FCEF86"]);
+palette.count(8);
+
+// setting custom colors to the chart palette
+chart.palette(palette);
+</code></pre><p></p><div id="iframe5" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container5" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit5 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/theatre_seating_plan.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("Chart palette"); 
+
+    palette = anychart.palettes.rangeColors();
+    palette.items(["#F44336", "#FCEF86"]);
+    palette.count(8);
+
+    // setting custom colors to the chart palette
+    chart.palette(palette);
+
+    // setting the data
+    chart.choropleth([            
+    {id: "r1s1", value: 12},
+    {id: "r1s2", value: 12},
+    {id: "r1s3", value: 12},
+    {id: "r1s4", value: 12},
+    {id: "r1s5", value: 12},
+    {id: "r1s6", value: 12}])
+.name("Row 1");
+
+    chart.choropleth([        
+    {id: "r2s1", value: 12},
+    {id: "r2s2", value: 12},
+    {id: "r2s3", value: 12},
+    {id: "r2s4", value: 12},
+    {id: "r2s5", value: 12},
+    {id: "r2s6", value: 12},
+    {id: "r2s7", value: 12},
+    {id: "r2s8", value: 12}])
+.name("Row 2");
+
+    chart.choropleth([  
+    {id: "r3s1", value: 5.5},
+    {id: "r3s2", value: 10},
+    {id: "r3s3", value: 10},
+    {id: "r3s4", value: 10},
+    {id: "r3s5", value: 10},
+    {id: "r3s6", value: 5.5}])
+.name("Row 3");
+
+    chart.choropleth([
+    {id: "r4s1", value: 5.5},
+    {id: "r4s2", value: 5.5},
+    {id: "r4s3", value: 10},
+    {id: "r4s4", value: 10},
+    {id: "r4s5", value: 10},
+    {id: "r4s6", value: 10},
+    {id: "r4s7", value: 5.5},
+    {id: "r4s8", value: 5.5}])
+.name("Row 4");
+
+    chart.choropleth([
+    {id: "r5s1", value: 5.5},
+    {id: "r5s2", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s3", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s4", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s3", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s4", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s5", value: 10},
+    {id: "r5s6", value: 10},
+    {id: "r5s7", value: 10},
+    {id: "r5s8", value: 10},
+    {id: "r5s9", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s10", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s11", value: 3.5, extra: "RESTRICTED VIEW"},
+    {id: "r5s12", value: 5.5}])
+.name("Row 5");
+
+    chart.choropleth([
+    {id: "r6s1", value: 5.5},
+    {id: "r6s2", value: 5.5},
+    {id: "r6s3", value: 7.5},
+    {id: "r6s4", value: 7.5},
+    {id: "r6s5", value: 10},
+    {id: "r6s6", value: 10},
+    {id: "r6s7", value: 10},
+    {id: "r6s8", value: 10},
+    {id: "r6s9", value: 7.5},
+    {id: "r6s10", value: 7.5},
+    {id: "r6s11", value: 5.5},
+    {id: "r6s12", value: 5.5}])
+.name("Row 6");
+
+    chart.choropleth([
+    {id: "r7s1", value: 5.5},
+    {id: "r7s2", value: 5.5},
+    {id: "r7s3", value: 7.5},
+    {id: "r7s4", value: 7.5},
+    {id: "r7s5", value: 10},
+    {id: "r7s6", value: 10},
+    {id: "r7s7", value: 10},
+    {id: "r7s8", value: 10},
+    {id: "r7s9", value: 7.5},
+    {id: "r7s10", value: 7.5},
+    {id: "r7s11", value: 5.5},
+    {id: "r7s12", value: 5.5}])
+.name("Row 7");
+
+    chart.choropleth([
+    {id: "r8s1", value: 5.5},
+    {id: "r8s2", value: 5.5},
+    {id: "r8s3", value: 7.5},
+    {id: "r8s4", value: 7.5},
+    {id: "r8s5", value: 10},
+    {id: "r8s6", value: 10},
+    {id: "r8s7", value: 10},
+    {id: "r8s8", value: 10},
+    {id: "r8s9", value: 7.5},
+    {id: "r8s10", value: 7.5},
+    {id: "r8s11", value: 5.5},
+    {id: "r8s12", value: 5.5}])
+.name("Row 8");
+
+    // set the tooltips
+    chart.tooltip().titleFormat("{%seriesName}");
+    chart.tooltip().format("${%value}");
+    
+    chart.legend().enabled(true).position("bottom").padding({top: 15});
+    
+    // set container id for the chart
+    chart.container("container5");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_04">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="color_scale_and_color_range">Color Scale and Color Range</h2><p>It is possible to add Color Range and use Color Scale in AnyChart Seat Maps. Color Range looks like a range bar, colored as a gradient or like a number of colored boxes, each presenting a range of values. It is rather useful in identifying the value that each point on a map represents.</p><p>To make it work properly, set the colors and the type of the Color Scale. You can find information about adjusting Color Scale in the <a href="../Scales.html">Color Scale</a> &amp; <a href="../ColorRange.html">Color Range</a> articles.</p><p>In the next sample, the ranges are set as an array. Each range has its own color defined in the data set. </p><pre><code>// set the ranges for the scale and corresponding colors
+colorScale = anychart.scales.ordinalColor();
+colorScale.ranges([
+    {from: 0, to: 3.5, color: "#FCEF86"},
+    {from: 4, to: 5.5, color: "#EC8A00"},
+    {from: 6, to: 7.5, color: "#1368C4"},
+    {from: 8, to: 12, color: "#9F0856"}
+]);
+</code></pre><p>After being created, a Color Scale should be bound to a series:</p><pre><code>// set color scale to a series 
+series.colorScale(colorScale);
+</code></pre><p>So, each series on a map is able to have its own Color Scale, which can be quite useful in some situations.</p><p>Color Scale and Color Range are different objects. Creating and enabling a Color Scale doesn't mean that a Color Range automatically appears in the chart. To add a Color Range, use the <a class="method" href="http://api.anychart.com/latest/anychart.charts.Map#colorRange">colorRange()</a> or <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.ColorRange#enabled">enabled()</a> method of a Color Range control.</p><pre><code>// create and enable the colorRange
+chart.colorRange(true); 
+</code></pre><p></p><div id="iframe6" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container6" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit6 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/theatre_seating_plan.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+
+    // load SVG data
+    chart.geoData(svg);
+    
+    // set the title
+    chart.title("Color Range creating"); 
+
+    // set the ranges for the scale and corresponding colors
+    colorScale = anychart.scales.ordinalColor();
+    colorScale.ranges([
+{from: 0, to: 3.5, color: "#FCEF86"},
+{from: 4, to: 5.5, color: "#EC8A00"},
+{from: 6, to: 7.5, color: "#1368C4"},
+{from: 8, to: 12, color: "#9F0856"}
+    ]);
+
+
+    // create and enable the colorRange
+    chart.colorRange(true);    
+
+    // create a series with the data that comes from the function defined below
+    series = chart.choropleth(getData());
+    // set color scale to a series
+    series.colorScale(colorScale);
+    
+    // set container id for the chart
+    chart.container("container6");
+    // initiate chart drawing
+    chart.draw();  
+};
+
+// function to load the data
+function getData(){
+    // put the data into the data set
+    var dataSet = anychart.data.set([            
+{id: "r1s1", value: "12"},
+{id: "r1s2", value: "12"},
+{id: "r1s3", value: "12"},
+{id: "r1s4", value: "12"},
+{id: "r1s5", value: "12"},
+{id: "r1s6", value: "12"},
+{id: "r2s1", value: "12"},
+{id: "r2s2", value: "12"},
+{id: "r2s3", value: "12"},
+{id: "r2s4", value: "12"},
+{id: "r2s5", value: "12"},
+{id: "r2s6", value: "12"},
+{id: "r2s7", value: "12"},
+{id: "r2s8", value: "12"}, 
+{id: "r3s2", value: "10"},
+{id: "r3s3", value: "10"},
+{id: "r3s4", value: "10"},
+{id: "r3s5", value: "10"},
+{id: "r5s5", value: "10"},
+{id: "r5s6", value: "10"},
+{id: "r5s7", value: "10"},
+{id: "r5s8", value: "10"},
+{id: "r6s5", value: "10"},
+{id: "r6s6", value: "10"},
+{id: "r6s7", value: "10"},
+{id: "r6s8", value: "10"},
+{id: "r7s5", value: "10"},
+{id: "r7s6", value: "10"},
+{id: "r7s7", value: "10"},
+{id: "r7s8", value: "10"},
+{id: "r8s5", value: "10"},
+{id: "r8s6", value: "10"},
+{id: "r8s7", value: "10"},
+{id: "r8s8", value: "10"},
+{id: "r3s1", value: "5.5"},
+{id: "r3s6", value: "5.5"},
+{id: "r4s1", value: "5.5"},
+{id: "r4s2", value: "5.5"},
+{id: "r4s3", value: "10"},
+{id: "r4s4", value: "10"},
+{id: "r4s5", value: "10"},
+{id: "r4s6", value: "10"},
+{id: "r4s7", value: "5.5"},
+{id: "r4s8", value: "5.5"},
+{id: "r4s9", value: "5.5"},
+{id: "r4s10", value: "5.5"},
+{id: "r5s1", value: "5.5"},
+{id: "r5s2", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s11", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s12", value: "5.5"},
+{id: "r6s1", value: "5.5"},
+{id: "r6s2", value: "5.5"},
+{id: "r6s11", value: "5.5"},
+{id: "r6s12", value: "5.5"},
+{id: "r7s1", value: "5.5"},
+{id: "r7s2", value: "5.5"},
+{id: "r7s11", value: "5.5"},
+{id: "r7s12", value: "5.5"},
+{id: "r8s1", value: "5.5"},
+{id: "r8s2", value: "5.5"},
+{id: "r8s11", value: "5.5"},
+{id: "r8s12", value: "5.5"},
+{id: "r5s3", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s4", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s9", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s10", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r6s3", value: "7.5"},
+{id: "r6s4", value: "7.5"},
+{id: "r6s9", value: "7.5"},
+{id: "r6s10", value: "7.5"},
+{id: "r7s3", value: "7.5"},
+{id: "r7s4", value: "7.5"},
+{id: "r7s9", value: "7.5"},
+{id: "r7s10", value: "7.5"},
+{id: "r8s3", value: "7.5"},
+{id: "r8s4", value: "7.5"},
+{id: "r8s9", value: "7.5"},
+{id: "r8s10", value: "7.5"},
+    ]);
+    
+    return dataSet;
+}})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_05">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><p>There are some other ways to set colors for a Color Scale: for example, it is possible to set the gradient mode (to learn more, see the <a href="../ColorRange.html">Color Range</a> article). </p><p>Using a color gradient can make the chart more illustrative, and in this case there is no need to set a color for each value range.</p><p>In the sample below the ranges are set without colors for each of them, but the colors of the Color Scale are defined as a progression of a hue through the <a class="method" href="http://api.anychart.com/latest/anychart.color#singleHueProgression">singleHueProgression()</a> function. </p><pre><code>// set the ranges for the scale
+currentColorScale = anychart.scales.ordinalColor();
+currentColorScale.ranges([
+        {from: 0, to: 3.5},
+        {from: 4, to: 5.5},
+        {from: 6, to: 7.5},
+        {from: 8, to: 12}
+    ]);
+
+//set the color progression
+var colors = anychart.color.singleHueProgression("#336666");
+
+// define the colors 
+currentColorScale.colors(colors);
+series.сolorScale(currentColorScale);
+
+// create and enable the Color Range
+var colorrange = chart.colorRange();
+colorrange.enabled(true);
+</code></pre><p></p><div id="iframe7" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container7" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit7 = function(){$.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-map_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../../deps/https___code_jquery_com_jquery-latest_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+$.ajax({
+    type: "GET",
+    url: "https://static.anychart.com/images/docs/seat_map/theatre_seating_plan.svg",
+    success: function (svgData) {
+    createSeatMap(svgData);
+}
+    });
+});
+
+function createSeatMap(svg){
+    // create a new seat map
+    chart = anychart.seatMap();
+    // setting the data
+    dataSet = anychart.data.set([            
+{id: "r1s1", value: "12"},
+{id: "r1s2", value: "12"},
+{id: "r1s3", value: "12"},
+{id: "r1s4", value: "12"},
+{id: "r1s5", value: "12"},
+{id: "r1s6", value: "12"},
+{id: "r2s1", value: "12"},
+{id: "r2s2", value: "12"},
+{id: "r2s3", value: "12"},
+{id: "r2s4", value: "12"},
+{id: "r2s5", value: "12"},
+{id: "r2s6", value: "12"},
+{id: "r2s7", value: "12"},
+{id: "r2s8", value: "12"}, 
+{id: "r3s2", value: "10"},
+{id: "r3s3", value: "10"},
+{id: "r3s4", value: "10"},
+{id: "r3s5", value: "10"},
+{id: "r5s5", value: "10"},
+{id: "r5s6", value: "10"},
+{id: "r5s7", value: "10"},
+{id: "r5s8", value: "10"},
+{id: "r6s5", value: "10"},
+{id: "r6s6", value: "10"},
+{id: "r6s7", value: "10"},
+{id: "r6s8", value: "10"},
+{id: "r7s5", value: "10"},
+{id: "r7s6", value: "10"},
+{id: "r7s7", value: "10"},
+{id: "r7s8", value: "10"},
+{id: "r8s5", value: "10"},
+{id: "r8s6", value: "10"},
+{id: "r8s7", value: "10"},
+{id: "r8s8", value: "10"},
+{id: "r3s1", value: "5.5"},
+{id: "r3s6", value: "5.5"},
+{id: "r4s1", value: "5.5"},
+{id: "r4s2", value: "5.5"},
+{id: "r4s3", value: "10"},
+{id: "r4s4", value: "10"},
+{id: "r4s5", value: "10"},
+{id: "r4s6", value: "10"},
+{id: "r4s7", value: "5.5"},
+{id: "r4s8", value: "5.5"},
+{id: "r4s9", value: "5.5"},
+{id: "r4s10", value: "5.5"},
+{id: "r5s1", value: "5.5"},
+{id: "r5s2", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s11", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s12", value: "5.5"},
+{id: "r6s1", value: "5.5"},
+{id: "r6s2", value: "5.5"},
+{id: "r6s11", value: "5.5"},
+{id: "r6s12", value: "5.5"},
+{id: "r7s1", value: "5.5"},
+{id: "r7s2", value: "5.5"},
+{id: "r7s11", value: "5.5"},
+{id: "r7s12", value: "5.5"},
+{id: "r8s1", value: "5.5"},
+{id: "r8s2", value: "5.5"},
+{id: "r8s11", value: "5.5"},
+{id: "r8s12", value: "5.5"},
+
+{id: "r5s3", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s4", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s9", value: "3.5", extra: "RESTRICTED VIEW"},
+{id: "r5s10", value: "3.5", extra: "RESTRICTED VIEW"},
+
+{id: "r6s3", value: "7.5"},
+{id: "r6s4", value: "7.5"},
+{id: "r6s9", value: "7.5"},
+{id: "r6s10", value: "7.5"},
+
+{id: "r7s3", value: "7.5"},
+{id: "r7s4", value: "7.5"},
+{id: "r7s9", value: "7.5"},
+{id: "r7s10", value: "7.5"},
+
+{id: "r8s3", value: "7.5"},
+{id: "r8s4", value: "7.5"},
+{id: "r8s9", value: "7.5"},
+{id: "r8s10", value: "7.5"},
+    ]);
+    // load SVG data
+    chart.geoData(svg);
+    // set the title
+    chart.title("Color Range with Color Scale"); 
+    series = chart.choropleth(dataSet);
+
+    // set the tooltips
+    series.tooltip().titleFormat(function (){
+if (this.value == 12) return "Best seats (Rows 1-2)";    
+if (this.value == 10) return "Best seats (Rows 3-8)";  
+if (this.value == 7.5) return "Back seats";
+if (this.value == 5.5) return "Side seats";
+if (this.value == 3.5) return "Side seats \nRESTRICTED VIEW";
+    });
+
+    // set the ranges for the scale
+    currentColorScale = anychart.scales.ordinalColor();
+    currentColorScale.ranges([
+    {from: 0, to: 3.5},
+    {from: 4, to: 5.5},
+    {from: 6, to: 7.5},
+    {from: 8, to: 12}
+]);
+
+    // set the single hue progression
+    var colors = anychart.color.singleHueProgression("#336666");
+
+    // define the colors 
+    currentColorScale.colors(colors);
+    series.colorScale(currentColorScale);
+
+    // create and enable the colorRange
+    var colorRange = chart.colorRange();
+    colorRange.enabled(true);
+
+    // set container id for the chart
+    chart.container("container7");
+    // initiate chart drawing
+    chart.draw();  
+};})();
+      }});
+      }});
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/Maps_Seat_Advanced_Coloring_06">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p>
+                </div>
+                <div class="col-lg-6 hidden-sm hidden-xs hidden-md visible-lg">
+                    <div id="table-of-content-large"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script type="text/javascript">
+    window['version'] = '8.1.0';
+</script>
+<script id="main_script" type="text/javascript" src="../../deps/local_main.min.js" async="async"></script>
+<script type="text/javascript">
+    var tryUpdateSampleInit = function(){
+        var anychartScriptIsLoad;
+        var mainScriptIsLoad;
+        var updateSampleInit = function(){
+            if( anychartScriptIsLoad == false) return;
+            if( mainScriptIsLoad == false) return;
+            console.log("Init main");
+            for( var i = 1; typeof window["sampleInit" + i] !== 'undefined'; i++){
+                window["sampleInit" + i]();
+                delete window["sampleInit" + i];
+            }
+            // settings for local (zip) version
+            //$(".table_of_content").css("top", "80px");
+            addListeners('../../');
+            initFolders();
+            expandCurrentMenu('../../', 'Maps/Seat_Maps/Advanced_Coloring');
+            openFolders('../../', open_folders);
+        };
+        anychartScriptIsLoad = typeof anychart !== 'undefined';
+        mainScriptIsLoad = typeof $ !== 'undefined';
+        if (anychartScriptIsLoad && mainScriptIsLoad){
+            updateSampleInit();
+        }else{
+            anychart_script.onload = function(){
+                anychartScriptIsLoad = true;
+                updateSampleInit();
+            };
+            main_script.onload = function(){
+                mainScriptIsLoad = true;
+                updateSampleInit();
+            };
+        }
+    };
+    tryUpdateSampleInit();
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/msft-daily-short-data(2011-2016).js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/orcl-daily-short-data(2011-2016).js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/csco-daily-short-data(2011-2016).js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Stock Data Point Markers</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data that have been used for this sample can be taken from the CDN
+// https://cdn.anychart.com/csv-data/msft-daily-short-data(2011-2016).js
+// https://cdn.anychart.com/csv-data/orcl-daily-short-data(2011-2016).js
+// https://cdn.anychart.com/csv-data/csco-daily-short-data(2011-2016).js
+
+// create data tables on loaded data
+var msftDataTable = anychart.data.table();
+msftDataTable.addData(get_msft_daily_short_data());
+
+var orclDataTable = anychart.data.table();
+orclDataTable.addData(get_orcl_daily_short_data());
+
+var cscoDataTable = anychart.data.table();
+cscoDataTable.addData(get_csco_daily_short_data());
+
+// create stock chart
+chart = anychart.stock();
+chart.padding(10, 10, 10, 50);
+
+// create chart title
+chart.title('Stock Data Point Markers');
+
+// create first plot on the chart with column series
+var firstPlot = chart.plot(0);
+// create splineArea series on the first plot
+var spline = firstPlot.splineArea(msftDataTable.mapAs({'value': 1}));
+spline.name('MSFT')
+        .stroke('1 #EF6C00')
+        .fill('#EF6C00 0.3')
+        .markers(true);
+spline.legendItem().iconFill('#EF6C00');
+
+// create second plot on the chart with line series
+var secondPlot = chart.plot(1);
+// create line series on the first plot
+var line = secondPlot.line(orclDataTable.mapAs({'value': 1}));
+line.name('ORCL')
+        .stroke('1 #455A64')
+        .markers(true);
+
+// create first plot on the chart with stepLine series
+var thirdPlot = chart.plot(2);
+// create line series on the first plot
+var stepLine = thirdPlot.stepLine(cscoDataTable.mapAs({'value': 1}));
+stepLine.name('CSCO')
+        .markers(true)
+        .stroke('1 #64B5F6');
+
+// set chart selected date/time range
+chart.selectRange('2013-11-24', '2014-05-17');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// create range picker
+rangePicker = anychart.ui.rangePicker();
+// init range picker
+rangePicker.render(chart);
+
+// create range selector
+rangeSelector = anychart.ui.rangeSelector();
+// init range selector
+rangeSelector.render(chart);
+    });
+        </script>
+    </body>
+</html>

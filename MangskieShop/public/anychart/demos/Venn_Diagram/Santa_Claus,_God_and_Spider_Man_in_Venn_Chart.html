@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-venn.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Santa Claus, God and Spider Man in Venn Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = getData();
+
+// create venn diagram
+chart = anychart.venn(data);
+
+// set chart title
+chart.title()
+        .enabled(true)
+        .padding({bottom: 35})
+        .text('Santa Claus, God and Spider Man in Venn Diagram');
+
+// set chart stroke
+chart.stroke('2 #fff');
+
+// set labels settings
+chart.labels()
+        .fontFamily('Arial, Verdana')
+        .fontColor('#5e6469')
+        .format('{%Name}');
+
+// set intersections labels settings
+chart.intersections().labels()
+        .fontColor('#fff')
+        .fontFamily('Arial')
+        .fontWeight('bold')
+        .format('{%Name}');
+
+// set font color for hover intersections labels
+chart.intersections().hovered().fill('black 0.25');
+
+// set legend padding
+chart.legend().padding({top: 35});
+
+// set tooltip settings
+chart.tooltip().titleFormat('{%Name}');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getData() {
+return [
+    {
+        x: 'A',
+        value: 100,
+        name: 'Knows if you have\nbeen naughty or nice'
+    },
+    {
+        x: 'B',
+        value: 100,
+        name: 'Wears red suit'
+    },
+    {
+        x: 'C',
+        value: 100,
+        name: 'Great power\ngreat responsibility'
+    },
+    {
+        x: ['A', 'B'],
+        value: 20,
+        name: 'Spanish\ninquisition'
+    },
+    {
+        x: ['A', 'C'],
+        value: 20,
+        name: 'God'
+    },
+    {
+        x: ['B', 'C'],
+        value: 20,
+        name: 'Spider man'
+    },
+    {
+        x: ['A', 'B', 'C'],
+        value: 20,
+        name: 'Santa'
+    }
+];
+    }
+        </script>
+    </body>
+</html>

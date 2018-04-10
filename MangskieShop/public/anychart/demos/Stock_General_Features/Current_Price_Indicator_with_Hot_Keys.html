@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Current Price Indicator with Hot Keys</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/csv-data/msft-daily.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/csv-data/orcl-intraday.csv', function (data) {
+    var hoveredDate;
+    var index = 0;
+
+    // create data table on loaded data
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    // map loaded data
+    var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4, 'volume': 1});
+
+    // create stock chart
+    chart = anychart.stock();
+    // setting chart padding to fit both Y axes
+    chart.padding(10, 50, 20, 50);
+    // set chart title
+    chart.title('Press alt + h to build the indicator by the current hovered date.');
+
+    // create plot on the chart
+    var plot = chart.plot(0);
+    // set orientation y-axis to the right side
+    plot.yAxis().orientation('right');
+
+    // create ohlc series
+    var ohlcSeries = plot.ohlc();
+    ohlcSeries.data(mapping)
+            .name('ORCL')
+            .stroke('2px #64b5f6');
+
+    // get crosshair
+    var crosshair = plot.crosshair();
+    // set crosshair settings
+    crosshair.xLabel(false)
+            .yLabel(false)
+            .yStroke(false);
+
+    // create price indicator
+    var priceIndicator = plot.priceIndicator(index);
+    // set value
+    priceIndicator.value('last');
+
+    // create scroller series with mapped data
+    chart.scroller().ohlc(mapping);
+
+    // format title tooltip
+    chart.tooltip().titleFormat(function () {
+        // save hovered date to variable
+        hoveredDate = this.hoveredDate;
+
+        return anychart.format.dateTime(hoveredDate, 'dd MMM yyyy')
+    });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+
+    window.focus();
+    // listen keydown event
+    document.onkeydown = function (e) {
+        if (e.keyCode == '72' && e.altKey && ohlcSeries.enabled()) {
+            plot.priceIndicator(++index).value(hoveredDate);
+        }
+    };
+});
+    });
+        </script>
+    </body>
+</html>

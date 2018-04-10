@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/australia/australia.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/maps-point-maps/top_25_beaches/style.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Top 25 Beaches in Australia</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// "https://cdn.anychart.com/samples-data/maps-point-maps-dot-maps/top-25-beaches-in-australia/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-point-maps-dot-maps/top-25-beaches-in-australia/data.json', function (data) {
+    var image_link = 'https://cdn.anychart.com/images/australia_beaches/';
+    var beachesData = data;
+
+    // creates custom html elements for custom html tooltip
+    var container = document.getElementById('container');
+    container.innerHTML = '<div id="map-container"></div><div id="map_tooltip"></div>';
+    var $custom_tooltip = $('#map_tooltip');
+
+    // creates map chart
+    var map = anychart.map();
+
+    map.unboundRegions()
+            .enabled(true)
+            .fill('#E1E1E1')
+            .stroke('#D2D2D2');
+
+    map.padding(0);
+    map.credits()
+            .enabled(true)
+            .url('https://www.tripadvisor.com.au/TravelersChoice-Beaches-cTop-g255055')
+            .text('Data source: https://www.tripadvisor.com.au/TravelersChoice-Beaches-cTop-g255055')
+            .logoSrc('https://static.tacdn.com/favicon.ico');
+
+    // sets geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/australia/australia.js
+    map.geoData('anychart.maps.australia');
+
+    // sets Chart Title
+    map.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([10, 0, 20, 0])
+            .text('Top 25 Beaches in Australia<br/><span style="color:#212121; font-size:12px">' +
+                    'According to Tripadvisor.com</span>');
+
+    // creates marker series
+    var series = map.marker(anychart.data.set(beachesData));
+
+    // sets series settings
+    series.stroke('2 #fff')
+            .fill('#1976d2')
+            .size(8)
+            .selectionMode('none')
+            .tooltip(false);
+
+    series.hovered()
+            .stroke('2 #fff')
+            .size(10);
+
+    // sets labels settings
+    series.labels()
+            .anchor('left-center')
+            .position('right')
+            .fontSize(12)
+            .offsetX(8)
+            .offsetY(0)
+            .format(function () {
+                return this.getData('name')
+            });
+
+    series.hovered().labels().fontWeight('bold');
+
+    // sets custom listeners for custom html tooltip
+    var tooltipVisible = false;
+    map.listen('pointsHover', function (evt) {
+        var isHovered = evt.seriesStatus.length && evt.seriesStatus[0].points.length;
+        if (!isHovered) {
+            $custom_tooltip.hide();
+            tooltipVisible = false;
+            return;
+        }
+        var data = beachesData[evt.point.index];
+        $custom_tooltip.html('<h3>' + data.name + '</h3>' +
+                '<p> <img src="' + image_link + data.number + '.jpg"/>' + data.description).show();
+        tooltipVisible = true;
+    });
+
+    map.listen('mouseMove', function (evt) {
+        if (!tooltipVisible) {
+            $custom_tooltip.hide();
+            return;
+        }
+        var clientX = evt.clientX;
+        var clientY = evt.clientY;
+
+        var container = $(this.container().getStage().container());
+        var containerOffset = container.offset();
+        var scrollLeft = $(document).scrollLeft();
+        var scrollTop = $(document).scrollTop();
+
+        var x = clientX - (containerOffset.left - scrollLeft);
+        var y = clientY - (containerOffset.top - scrollTop);
+
+        if (window.innerWidth - x > 320 && window.innerHeight - y > $custom_tooltip.height())
+            $custom_tooltip.css('top', y - 10).css('left', x + 10);
+        else if (window.innerWidth - x < 320 && window.innerHeight - y > $custom_tooltip.height())
+            $custom_tooltip.css('top', y - 10).css('left', x - 340);
+        else if (window.innerWidth - x < 320 && window.innerHeight - y < $custom_tooltip.height())
+            $custom_tooltip.css('top', y - 10 - $custom_tooltip.height()).css('left', x - 340);
+        else
+            $custom_tooltip.css('top', y - 10 - $custom_tooltip.height()).css('left', x + 10);
+    });
+
+    // sets container id for the chart
+    map.container('map-container');
+    // initiates chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

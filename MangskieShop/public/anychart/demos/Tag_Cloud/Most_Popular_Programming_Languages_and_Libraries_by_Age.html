@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-tag-cloud.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Most Popular Programming Languages and Libraries by Age</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/tag-cloud/programming-languages-and-libraries-by-age/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/tag-cloud/programming-languages-and-libraries-by-age/data.json', function (data) {
+    var currentYear = (new Date()).getFullYear();
+
+    // add age for each library
+    for (var i = 0; i < data.length; i++) {
+        data[i].value = currentYear - data[i]['initial-release'];
+    }
+
+    var dataSet = anychart.data.set(data);
+    var colors = anychart.scales.ordinalColor().colors(['#03a9f4', '#ff6e40', '#ffd600']);
+
+    // create tag cloud
+    chart = anychart.tagCloud();
+
+    // set chart title
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .text('Most Popular Programming Languages and Libraries by Age' + '<br/>' +
+                    '<span style="color: #575e64; font-size: 12px;">' +
+                    'Click on words to see AnyChart integration page with selected technology' +
+                    '</span>');
+
+    // set data with settings
+    chart.data(dataSet)
+            // set color scale
+            // additional empty space in all directions from the text, only in pixels
+            .colorScale(colors)
+            .textSpacing(5)
+            // set array of angles, by which words will be placed
+            .angles([-45, 45]);
+
+    // get the color range
+    var colorRange = chart.colorRange();
+    // enabled color range
+    colorRange.enabled(true)
+            // sets color line size
+            .colorLineSize(15);
+
+    // format tooltip
+    chart.tooltip().format('Age: {%Value}');
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // event for point click
+    chart.listen('pointClick', function (e) {
+        // open link in new tab
+        window.open(e.point.get('link'), '_blank');
+    })
+});
+    });
+        </script>
+    </body>
+</html>

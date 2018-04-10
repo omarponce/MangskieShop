@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Winter Olympics, Top 10 Chart using Google Spreadsheet</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             // https://docs.google.com/spreadsheets/d/1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk/
+    anychart.data.loadGoogleSpreadsheet('1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk', function (data) {
+// create column chart
+chart = anychart.column();
+
+// set chart title
+chart.title('Winter Olympics, Top 10 Chart using Google Spreadsheet');
+
+// set chart data
+chart.data(data);
+
+// set custom palette
+chart.palette(['#cd8032', '#bdbdbd', 'gold']);
+
+// axes titles
+chart.xAxis().title('Country');
+chart.yAxis().title('Points');
+
+// set y-scale settings
+chart.yScale()
+        // set scale minimum
+        .minimum(0)
+        // force chart to stack values by Y scale
+        .stackMode('value');
+
+// set union tooltip
+chart.tooltip().displayMode('union');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

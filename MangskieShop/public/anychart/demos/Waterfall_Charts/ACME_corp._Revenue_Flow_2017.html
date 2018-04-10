@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-waterfall.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>ACME corp. Revenue Flow 2017</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {x: 'Start', value: 23000000},
+    {x: 'Jan', value: 2200000},
+    {x: 'Feb', value: -4600000},
+    {x: 'Mar', value: -9100000},
+    {x: 'Apr', value: 3700000},
+    {x: 'May', value: -2100000},
+    {x: 'Jun', value: 5300000},
+    {x: 'Jul', value: 3100000},
+    {x: 'Aug', value: -1500000},
+    {x: 'Sep', value: 4200000},
+    {x: 'Oct', value: 5300000},
+    {x: 'Nov', value: -1500000},
+    {x: 'Dec', value: 5100000},
+    {x: 'End', isTotal: true}
+];
+
+// create waterfall chart with our data
+chart = anychart.waterfall(data);
+
+// set chart title
+chart.title('ACME corp. Revenue Flow 2017');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// format y-axis labels
+chart.yAxis().labels().format('${%Value}{scale:(1000000)(1)|( mln)}');
+
+// set labels settings
+chart.labels()
+        .enabled(true)
+        .format(function () {
+            if (this['isTotal']) {
+                return anychart.format.number(this.absolute, {scale: true})
+            }
+
+            return anychart.format.number(this.value, {scale: true})
+        });
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

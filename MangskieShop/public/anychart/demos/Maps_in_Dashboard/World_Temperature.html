@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/maps-in-dashboard/world-temperature/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/custom/world/world.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>World Temperature</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             var stage, map, chart, data, mapData, globData, nHemData, sHemData, colorScale;
+    var selected = NaN, hovered = NaN, last;
+
+    anychart.onDocumentReady(function () {
+setup();
+stage.resume();
+    });
+
+    function setupTrendChart() {
+chart = anychart.area();
+
+chart.credits(true);
+chart.credits().url('https://www.coursera.org/course/datavisualization');
+chart.credits().text('Special for: https://www.coursera.org/course/datavisualization');
+chart.credits().logoSrc('https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/icon-blue-32x32.png');
+chart.interactivity().hoverMode('by-x');
+
+var tooltipFormatter = function (info) {
+    return '<span style="color: #bebebe;">Global: </span>' + info.getData('glob').toFixed(2) + String.fromCharCode(176) + 'C<br/>' +
+            '<span style="color: #bebebe;">Northern Hem.: </span>' + info.getData('nHem').toFixed(2) + String.fromCharCode(176) + 'C<br/>' +
+            '<span style="color: #bebebe;">Southern Hem.: </span>' + info.getData('sHem').toFixed(2) + String.fromCharCode(176) + 'C';
+};
+
+var series;
+
+series = chart.area(globData);
+series.clip(false)
+        .name('Global mean')
+        .fill('#4fc3f7 0.6')
+        .stroke('2 #4fc3f7')
+        .markers({enabled: false, zIndex: 100})
+        .tooltip({
+            format: function (info) {
+                return tooltipFormatter(info)
+            },
+            titleFormat: function (info) {
+                return info.x;
+            },
+            useHtml: true
+        });
+series.hovered().markers({size: 4});
+
+series = chart.line(nHemData);
+series.clip(false)
+        .name('Northen Hem.')
+        .stroke('2 #f06292')
+        .tooltip({
+            format: function (info) {
+                return tooltipFormatter(info)
+            },
+            titleFormat: function (info) {
+                return info.x;
+            },
+            useHtml: true
+        });
+series.hovered().markers({size: 4});
+
+series = chart.line(sHemData);
+series.clip(false)
+        .name('Sourthen Hem.')
+        .stroke('2 #c2185b')
+        .tooltip({
+            format: function (info) {
+                return tooltipFormatter(info)
+            },
+            titleFormat: function (info) {
+                return info.x;
+            },
+            useHtml: true
+        });
+series.hovered().markers({size: 4});
+
+chart.padding().right(chart.padding().right() + 10);
+chart.legend().enabled(true).position('center-bottom');
+chart.xScale().ticks().interval(10);
+chart.yAxis().labels().format(labelFormatter);
+chart.yAxis().title('Temperature, ' + String.fromCharCode(176) + 'C');
+chart.xAxis().labels().format(function (info) {
+    return info.value + 's';
+});
+chart.crosshair()
+        .enabled(true)
+        .yStroke(null)
+        .xLabel(false)
+        .yLabel(false);
+chart.listen('pointclick', chartPointClick);
+chart.listen('pointmouseover', chartPointHover);
+chart.listen('pointmousemove', chartPointHover);
+chart.listen('pointmouseout', chartPointUnhover);
+return chart
+    }
+
+    function setupMap() {
+map = anychart.map();
+map.geoData('anychart.maps.world');
+map.credits(false);
+map.legend()
+        .useHtml(true)
+        .enabled(true)
+        .itemsLayout('vertical')
+        .position('right')
+        .inverted(true)
+        .align('top')
+        .width(200)
+        .itemsSpacing(10)
+        .title()
+        .enabled(true)
+        .hAlign('left')
+        .align('left')
+        .useHtml(true)
+        .padding().bottom(10);
+map.unboundRegions().stroke('#fff');
+return map
+    }
+
+    function setup() {
+colorScale = anychart.scales.linearColor({keys: ['#304ffe', '#03a9f4', '#81d4fa', '#f48fb1', '#c2185b']});
+colorScale.ticks().set([]);
+prepareData();
+stage = anychart.graphics.create('container');
+stage.suspend();
+
+var title = anychart.standalones.title();
+title.text('World Land-Ocean Temperature Trend For The Last 35 Years');
+title.vAlign('bottom');
+title.height('5%');
+title.container(stage);
+title.draw();
+
+map = setupMap();
+map.top('5%');
+map.height('55%');
+map.container(stage);
+map.draw();
+
+chart = setupTrendChart();
+chart.top('60%');
+chart.container(stage);
+chart.draw();
+colorizeMap();
+
+stage.listen('stageresize', colorizeMap);
+    }
+
+    function chartPointClick(e) {
+var index = e.pointIndex;
+if (selected == index)
+    return;
+var row = data.row(selected);
+markSelected(row, false);
+data.row(selected, row);
+row = data.row(index);
+selected = index;
+markSelected(row, true);
+data.row(index, row);
+colorizeMap();
+    }
+
+    function chartPointHover(e) {
+var index = e.pointIndex;
+if (hovered == index)
+    return;
+hovered = index;
+colorizeMap();
+    }
+
+    function chartPointUnhover(e) {
+hovered = NaN;
+colorizeMap();
+    }
+
+    function markSelected(row, isSelected) {
+if (isSelected) {
+    var selectedMarker = {
+        enabled: true,
+        stroke: 'null',
+        type: 'star5',
+        size: 8
+    };
+    var selectedHoverMarker = {
+        size: 8
+    };
+    var selectedLabel = {
+        enabled: true
+    };
+    row[12] = selectedMarker;
+    row[13] = selectedHoverMarker;
+    row[14] = selectedLabel;
+} else {
+    delete row[12];
+    delete row[13];
+    delete row[14];
+}
+    }
+
+    function labelFormatter(info) {
+return 'tickValue' in info ?
+        info.tickValue.toFixed(2) :
+        'rawValue' in info ?
+                info.rawValue.toFixed(2) :
+                info.value.toFixed(2);
+    }
+
+    function colorizeMap() {
+var southEndReal = -55.98;
+var northEndReal = 83.6275;
+
+var net = [-90, -64, -44, -24, 0, 24, 44, 64, 90];
+var offsets = net.map(function (val) {
+    return (val - southEndReal) / (northEndReal - southEndReal);
+});
+var regions = ['s4', 's3', 's2', 's1', 'n1', 'n2', 'n3', 'n4'];
+var names = ['90S-64S', '64S-44S', '44S-24S', '24S-Equator', 'Equator-24N', '24N-44N', '44N-64N', '64N-90N'];
+
+var iter = mapData.getIterator();
+iter.select(isNaN(hovered) ? selected : hovered);
+var keys = [];
+var i, val;
+var items = [];
+
+for (i = 2; i < offsets.length; i++) {
+    var region = regions[i - 1];
+    val = iter.get(region);
+    var offset1 = Math.min(1, Math.max(0, offsets[i - 1] + 0.0001));
+    keys.push({
+        offset: offset1,
+        color: colorScale.valueToColor(val)
+    });
+    var offset2 = Math.min(1, Math.max(0, offsets[i]));
+    keys.push({
+        offset: offset2,
+        color: colorScale.valueToColor(val)
+    });
+
+    items.push({
+        iconFill: colorScale.valueToColor(val),
+        text: names[i - 1] +
+        ': <span style="color: #212121; font-size: 12px;">'
+        + val.toFixed(2) + String.fromCharCode(176) + 'C</span>'
+    });
+}
+
+map.legend().items(items).fontSize(12);
+map.legend().paginator(false).title().text(
+        '<span style="font-weight: bold">' + iter.get('x') + '</span><br/>' +
+        '<span style="font-size: 12px;">' + 'Global: <span style="color: #212121;">' +
+        iter.get('glob') + String.fromCharCode(176) + 'C</span></span>' + '<br/>' +
+        '<span style="font-size: 12px; color: #f06292">' + 'Northern Hem.: <span style="color: #212121;">' +
+        iter.get('nHem') + String.fromCharCode(176) + 'C</span></span>' + '<br/>' +
+        '<span style="font-size: 12px; color: #c2185b">' + 'Southern Hem.: <span style="color: #212121;">' +
+        iter.get('sHem') + String.fromCharCode(176) + 'C</span></span>'
+);
+
+var gradient = {
+    keys: keys,
+    mode: map.getPixelBounds(),
+    angle: 90
+};
+map.unboundRegions().fill(gradient);
+    }
+
+    function prepareData() {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-in-dashboard/world-temperature/data.js
+var rawData = anychart.data.set(getData(), {rowsSeparator: '\n', colsSeparator: ',', ignoreFirstRow: true}
+).mapAs({
+    'x': 0,
+    'glob': 1,
+    'nHem': 2,
+    'sHem': 3,
+    'n4': 7,
+    'n3': 8,
+    'n2': 9,
+    'n1': 10,
+    's1': 11,
+    's2': 12,
+    's3': 13,
+    's4': 14
+});
+
+var arr = [];
+var iterator = rawData.getIterator().reset();
+var min = Infinity;
+var max = -Infinity;
+while (iterator.advance()) {
+    var row = [
+        +iterator.get('x'),
+        +iterator.get('glob') / 100 + 14,
+        +iterator.get('n4') / 100 + 14,
+        +iterator.get('n3') / 100 + 14,
+        +iterator.get('n2') / 100 + 14,
+        +iterator.get('n1') / 100 + 14,
+        +iterator.get('s1') / 100 + 14,
+        +iterator.get('s2') / 100 + 14,
+        +iterator.get('s3') / 100 + 14,
+        +iterator.get('s4') / 100 + 14,
+        +iterator.get('nHem') / 100 + 14,
+        +iterator.get('sHem') / 100 + 14
+    ];
+    for (var i = 1; i < row.length; i++) {
+        min = Math.min(min, row[i]);
+        max = Math.max(max, row[i]);
+    }
+    arr.push(row);
+}
+colorScale.minimum(min);
+colorScale.maximum(max);
+
+selected = arr.length - 1;
+markSelected(arr[selected], true);
+
+data = anychart.data.set(arr);
+globData = data.mapAs({
+    'x': 0,
+    'value': 1,
+    'glob': 1,
+    'marker': 12,
+    'hoverMarker': 13,
+    'nHem': 10,
+    'sHem': 11
+});
+nHemData = data.mapAs({
+    'x': 0,
+    'value': 10,
+    'glob': 1,
+    'marker': 12,
+    'hoverMarker': 13,
+    'nHem': 10,
+    'sHem': 11
+});
+sHemData = data.mapAs({
+    'x': 0,
+    'value': 11,
+    'glob': 1,
+    'marker': 12,
+    'hoverMarker': 13,
+    'nHem': 10,
+    'sHem': 11
+});
+mapData = data.mapAs({
+    'x': 0,
+    'glob': 1,
+    'n4': 2,
+    'n3': 3,
+    'n2': 4,
+    'n1': 5,
+    's1': 6,
+    's2': 7,
+    's3': 8,
+    's4': 9,
+    'nHem': 10,
+    'sHem': 11
+});
+    }
+        </script>
+    </body>
+</html>

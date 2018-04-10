@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/ibm-daily-short.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/empty_data(2009-2010).js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/annotated/annotated-title.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Annotated Step Line Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data that have been used for this sample can be
+// taken from the CDN
+// https://cdn.anychart.com/csv-data/ibm-daily-short.js
+// https://cdn.anychart.com/csv-data/empty_data(2009-2010).js
+
+$('#container').append('<div class="container-title">' +
+        '<h1>Annotated Step Line Chart</h1>' +
+        '<p>See also <a href="' +
+        'https://www.anychart.com/products/' +
+        'anystock/drawing_tools/"' +
+        'target="_blank">Drawing Tools and ' +
+        'Annotations Demo</a></p>' + '</div>');
+
+// create data tables on loaded data
+var ibmDataTable = anychart.data.table();
+ibmDataTable.addData(get_ibm_daily_short_data());
+ibmDataTable.addData(get_empty_data());
+
+// create stock chart
+chart = anychart.stock();
+chart.padding([75, 50, 57, 50]);
+
+// create plot
+var plot = chart.plot();
+
+// create step line series with mapped data on the plot
+var ibm = plot.stepLine(ibmDataTable.mapAs({'value': 4}));
+ibm.name('IBM');
+ibm.tooltip().format(function () {
+    var value = this.value;
+    if (isNaN(this.value)) {
+        value = 'undefined';
+    }
+    return this.seriesName + ': ' + value
+});
+
+// create annotation
+var annotation = plot.annotations();
+// create annotation line
+annotation.line({
+    // X - part of the first anchor
+    xAnchor: '2008-01-06',
+    // Y - part of the first anchor
+    valueAnchor: 97.67,
+    // X - part of the second anchor
+    secondXAnchor: '2008-07-13',
+    // Y - part of the second anchor
+    secondValueAnchor: 129.89,
+    stroke: {
+        thickness: 2, color: '#60727B', dash: '10 15'
+    },
+    hovered: {
+        stroke: {
+            thickness: 2, color: '#60727B', dash: '10 15'
+        }
+    }
+});
+// create annotation line
+annotation.line({
+    // X - part of the first anchor
+    xAnchor: '2008-07-13',
+    // Y - part of the first anchor
+    valueAnchor: 129.89,
+    // X - part of the second anchor
+    secondXAnchor: '2008-11-16',
+    // Y - part of the second anchor
+    secondValueAnchor: 74.88,
+    // set stroke settings
+    stroke: {
+        thickness: 2, color: '#60727B', dash: '10 15'
+    },
+    hovered: {
+        stroke: {
+            thickness: 2, color: '#60727B', dash: '10 15'
+        }
+    }
+});
+// create fibonacci Retracement
+annotation.fibonacciRetracement({
+    // X - part of the first anchor
+    xAnchor: '2008-07-13',
+    // Y - part of the first anchor
+    valueAnchor: 135,
+    // X - part of the second anchor
+    secondXAnchor: '2008-07-13',
+    // Y - part of the second anchor
+    secondValueAnchor: 74.88,
+    // set stroke settings
+    stroke: '2 #60727B',
+    hovered: {
+        stroke: '2 #6E9C4E 0.75'
+    }
+});
+
+// create scroller series with mapped data
+chart.scroller().line(ibmDataTable.mapAs({'value': 4}));
+// set chart selected date/time range
+chart.selectRange('2008-01-06', '2010-06-20');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// create range picker
+rangePicker = anychart.ui.rangePicker();
+// init range picker
+rangePicker.render(chart);
+
+// create range selector
+rangeSelector = anychart.ui.rangeSelector();
+// init range selector
+rangeSelector.render(chart);
+    });
+        </script>
+    </body>
+</html>

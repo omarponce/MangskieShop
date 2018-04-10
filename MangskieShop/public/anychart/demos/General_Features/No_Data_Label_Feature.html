@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/general-features/no-data-label-feature/style.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>No Data Label Feature</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create column chart
+chart = anychart.column();
+
+var data = [
+    ['Rouge', '80540'],
+    ['Foundation', '94190'],
+    ['Mascara', '102610'],
+    ['Lip gloss', '110430'],
+    ['Lipstick', '128000'],
+    ['Nail polish', '143760'],
+    ['Eyebrow pencil', '170670'],
+    ['Eyeliner', '213210'],
+    ['Eyeshadows', '249980']
+];
+
+// set chart padding
+chart.padding().top(10);
+
+// set chart title text settings
+chart.title()
+        .enabled(true)
+        .text('Top 10 Cosmetic Products by Revenue');
+
+// enable no data label
+chart.noData().label(true);
+
+// create area series with passed data
+var series = chart.column(data);
+
+// set series tooltip settings
+series.tooltip().titleFormat('{%X}');
+
+series.tooltip()
+        .position('center-top')
+        .anchor('center-bottom')
+        .offsetX(0)
+        .offsetY(5)
+        .format('${%Value}{groupsSeparator: }');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+// set yAxis labels formatter
+chart.yAxis().labels().format('${%Value}{groupsSeparator: }');
+
+// tooltips position and interactivity settings
+chart.tooltip().positionMode('point');
+chart.interactivity().hoverMode('by-x');
+
+// axes titles
+chart.xAxis().title('Product');
+chart.yAxis().title('Revenue');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+
+// add button to container
+$('#container').append('<button class="switch-btn switch-btn-primary" id="switch-data-btn">Switch Data</button>');
+
+// event to switch data
+$('#switch-data-btn').on('click', function () {
+    // if data rows === 0 then empty data and show label
+    series.data().getRowsCount() ? series.data(null) : series.data(data);
+});
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/solutions-data/acme-corp-price/data.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>ACME Corp Prices</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// get data from https://cdn.anychart.com/solutions-data/acme-corp-price/data.js
+var data = acme_corp_data();
+// create stage
+var stage = anychart.graphics.create("container");
+// create data set on loaded data
+var dataSet = anychart.data.set(data);
+
+// map data for the range spline area series
+var seriesData_first = dataSet.mapAs({'x': 0, 'low': 1, 'high': 2});
+// map data for the candlestick series
+var seriesData_second = dataSet.mapAs({'x': 0, 'open': 3, 'high': 4, 'low': 5, 'close': 6});
+// map data for the spline series
+var seriesData_third = dataSet.mapAs({'x': 0, 'value': 7});
+
+// create financial chart
+chartFirst = anychart.financial();
+// set title
+chartFirst.title("ACME Corp. Stock Prices: 11.05.07 - 07.08.07");
+// set position for the first stage
+chartFirst.bounds(0, 0, "100%", "70%");
+// create range spline area series
+chartFirst.rangeSplineArea(seriesData_first)
+        .name('Range Spline Area');
+// create candlestick series
+chartFirst.candlestick(seriesData_second)
+        .name('Candlestick');
+// create spline series
+chartFirst.spline(seriesData_third)
+        .markers(null)
+        .name('Spline');
+
+// set xScale settings
+var xScale = chartFirst.xScale();
+xScale.minimum(Date.UTC(2007, 4, 10))
+        .maximum(Date.UTC(2007, 7, 8));
+
+// set xTicks settings
+chartFirst.xScale().ticks().interval(0, 0, 7);
+
+// set xAxis settings
+chartFirst.xAxis().drawFirstLabel(false);
+
+// set tooltip settings
+chartFirst.tooltip().displayMode('union')
+        .titleFormat(function () {
+            return anychart.format.dateTime(this.points[0].x, 'dd/MM/yyyy', null, null);
+        })
+        .unionFormat(function () {
+            return this.points[0].seriesName + '\n' + 'High: ' +
+                    this.points[0].high.toFixed(2) + '\n' + 'Low: ' + this.points[0].low.toFixed(2) +
+                    '\n\n' + this.points[1].seriesName + '\n' + 'Open: ' + this.points[1].open +
+                    '\n' + 'High: ' + this.points[1].high + '\n' + 'Low: ' + this.points[1].low +
+                    '\n' + 'Close: ' + this.points[1].close + '\n\n' +
+                    this.points[2].seriesName + '\n' + 'Value: ' + this.points[2].value.toFixed(2);
+        });
+// set stage for the chart
+chartFirst.container(stage);
+// initiate chart drawing
+chartFirst.draw();
+
+// map data for the column series
+var columnData = dataSet.mapAs({'x': 0, 'value': 8});
+
+// create column chart
+chartSecond = anychart.column(columnData);
+chartSecond.bounds(0, '70%', '100%', '30%')
+        .interactivity().hoverMode('by-x');
+
+chartSecond.tooltip()
+        .titleFormat(function () {
+            return anychart.format.dateTime(this.x, 'dd/MM/yyyy', null, null);
+        })
+        .format('${%Value}{groupsSeparator: }  stocks bought');
+
+chartSecond.getSeries(0).hovered()
+        .fill('orange')
+        .stroke('#EF6C00');
+
+chartSecond.xScale().inverted(true);
+
+// adjust axes labels view
+chartSecond.xAxis().labels(false);
+
+chartSecond.yAxis().labels().format('${%Value}{scale:(1000000)(1)|( mln)}');
+
+// adjust x axis internal
+chartSecond.xScale().ticks().interval(11);
+// set stage for the chart
+chartSecond.container(stage);
+// initiate chart drawing
+chartSecond.draw();
+    });
+        </script>
+    </body>
+</html>

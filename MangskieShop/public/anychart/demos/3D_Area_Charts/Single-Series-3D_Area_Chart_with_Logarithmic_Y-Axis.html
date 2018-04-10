@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Single-Series-3D Area Chart with Logarithmic Y-Axis</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create area chart
+chart = anychart.area3d();
+
+// turn on chart animation
+chart.animation(true);
+
+// set chart title text settings
+chart.title()
+        .enabled(true)
+        .useHtml(true)
+        .text('Site Visits During 2014 Year<br/>' +
+                '<span style="color:#212121; font-size: 13px;">' +
+                'Considered to be the total amount of visits, including repeatable' +
+                '</span>');
+
+chart.yAxis().title('Number of Visits');
+
+// create logarithmic scale
+var logScale = anychart.scales.log();
+logScale.minimum(1) // set scale minimum value
+        .maximumGap(0.2); // increase scale maximum gap
+logScale.ticks().count(6); // set fixed major ticks count
+logScale.minorTicks().mode('logariphmic'); // set minor ticks to use logarithmic distribution
+
+// set scale for the chart
+// it force to use passed scale in all scale dependent entries such axes, grids, crosshairs etc
+chart.yScale(logScale);
+
+// create area series on passed data
+var series = chart.area(getData());
+series.name('Number of Visits');
+
+// set series data labels settings
+series.labels()
+        .enabled(true)
+        .fontColor('#212121');
+
+// set series data markers settings
+series.markers(true);
+
+chart.tooltip()
+        .positionMode('point')
+        .anchor('left-top')
+        .offsetX(5)
+        .offsetY(5);
+
+chart.interactivity().hoverMode('by-x');
+
+// set container for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getData() {
+return [
+    ['Jan', '112'],
+    ['Feb', '163'],
+    ['Mar', '229'],
+    ['Apr', '990'],
+    ['May', '4104'],
+    ['June', '3250'],
+    ['July', '5720'],
+    ['Aug', '43'],
+    ['Sep', '61'],
+    ['Oct', '34'],
+    ['Nov', '45'],
+    ['Dec', '122']
+]
+    }
+        </script>
+    </body>
+</html>

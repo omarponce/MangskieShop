@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/united_states_of_america/united_states_of_america.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>25 Most Popular Summer Destinations for New Yorkers</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-connectors/25-most-popular-summer-destinations-for-new-yorkers/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-connectors/25-most-popular-summer-destinations-for-new-yorkers/data.json', function (data) {
+
+    // Creates map chart
+    var map = anychart.connector();
+
+    // Defines settings for maps regions (regions bounds are not relevant for this data, so let's make it less contrast)
+    map.unboundRegions()
+            .enabled(true)
+            .fill('#E1E1E1')
+            .stroke('#D2D2D2');
+
+    // Sets settings for map chart
+    map.geoData('anychart.maps.united_states_of_america')
+            .padding(0);
+    map.scale().gap(0.2);
+    map.interactivity().selectionMode('none');
+
+    // Sets title for map chart and customizes it
+    map.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([20, 0, 20, 0])
+            .text('The 25 Most Poppular Destinations<br/>' +
+                    'for New Yorkers during Summer 2015<br/>' +
+                    '<span style="color:#212121; font-size: 13px;">According to https://www.businessinsider.com/</span>');
+
+    // Sets credits data
+    map.credits()
+            .enabled(true)
+            .url('https://www.businessinsider.com/top-summer-destinations-from-new-york-city-2015-5?op=1')
+            .text('Data source: https://www.businessinsider.com/')
+            .logoSrc('https://static3.businessinsider.com/assets/images/us/favicons/favicon.ico');
+
+    // Creates connector series for destinations and customizes them
+    var connectorSeries = map.connector(data)
+            .startSize(0)
+            .endSize(0)
+            .stroke('1.5 #1976d2')
+            .markers({
+                position: '100%',
+                size: 5,
+                fill: '#1976d2',
+                stroke: '2 #E1E1E1',
+                type: 'circle'
+            })
+            .curvature(0);
+    connectorSeries.hovered()
+            .stroke('1.5 #455a64')
+            .markers({
+                position: '100%',
+                size: 4,
+                fill: '#455a64',
+                stroke: '2 #455a64',
+                type: 'circle'
+            });
+
+    // Customizes labels for the destination series
+    connectorSeries.labels()
+            .fontSize(12)
+            .offsetY(0)
+            .offsetX(0)
+            .position('100%')
+            .format('{%to}');
+    // Customizes labels on hover for the destination series
+    connectorSeries.hovered().labels()
+            .fontColor('#455a64')
+            .fontWeight('bold');
+
+    // Sets tooltip setting for the destination series
+    connectorSeries.tooltip()
+            .useHtml(true)
+            .fontSize(13)
+            .padding([8, 13, 10, 13])
+            .titleFormat(function () {
+                return this.getData('number')
+            })
+            .format(function () {
+                return '<span style="font-size: 12px; color: #E1E1E1">' + this.getData('to') + '</span>';
+            });
+
+    // create zoom controls
+    var zoomController = anychart.ui.zoom();
+    zoomController.render(map);
+
+    // Sets container id for the chart
+    map.container('container');
+    // Initiates chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

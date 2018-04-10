@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Volume Conditional Coloring</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             // The data used in this sample can be obtained from the CDN
+    // https://cdn.anychart.com/csv-data/aapl-daily.csv
+    anychart.data.loadCsvFile('https://cdn.anychart.com/csv-data/aapl-daily.csv', function (data) {
+// create data table on loaded data
+var dataTable = anychart.data.table();
+dataTable.addData(data);
+
+// map loaded data
+var mapping = dataTable.mapAs({
+    open: 1,
+    high: 2,
+    low: 3,
+    close: 4,
+    value: {
+        column: 6,
+        type: 'sum'
+    }
+});
+
+// create stock chart
+chart = anychart.stock();
+// set chart padding
+chart.padding().right(60);
+
+// create plot on the chart
+var plot = chart.plot(0);
+// enabled x-grid/y-grid
+plot.xGrid(true)
+        .yGrid(true);
+
+// set orientation y-axis to the right side
+plot.yAxis().orientation('right');
+
+// create custom palette
+var palette = anychart.palettes.distinctColors();
+palette.items(['red', 'green']);
+
+// create candlestick series on the plot
+var aaplSeries = plot.candlestick(mapping);
+// set series settings
+aaplSeries.name('AAPL')
+        .zIndex(50);
+aaplSeries.risingFill(palette.itemAt(0), 0.5)
+        .fallingFill(palette.itemAt(1), 0.5)
+        .risingStroke(palette.itemAt(0), 0.5)
+        .fallingStroke(palette.itemAt(1), 0.5);
+
+// create EMA indicators with period 50 on the plot
+var ema = plot.ema(dataTable.mapAs({'value': 4}));
+ema.series().stroke('1.5 #5FB1EE');
+
+// create annotation
+var annotation = plot.annotations();
+// create annotation triangle
+annotation.triangle({
+    // X - part of the first anchor
+    xAnchor: '2016-09-09',
+    // Y - part of the first anchor
+    valueAnchor: 103.13,
+    // X - part of the second anchor
+    secondXAnchor: '2016-09-15',
+    // Y - part of the second anchor
+    secondValueAnchor: 115.57,
+    // X - part of the third anchor
+    thirdXAnchor: '2016-10-25',
+    // Y - part of the third anchor
+    thirdValueAnchor: 118.25,
+    // set stroke settings
+    stroke: '1.5 #6E9C4E 0.5',
+    // set fill settings
+    fill: '#6E9C4E 0.15',
+    // disable interaction with annotation
+    allowEdit: false
+});
+
+// create volume series on the plot
+var volumeSeries = plot.column(mapping);
+// set series settings
+volumeSeries.name('Volume')
+        .zIndex(100)
+        .maxHeight('20%')
+        .bottom(0);
+volumeSeries.legendItem({
+    iconEnabled: false,
+    textOverflow: ''
+});
+
+// create a logarithmic scale
+var customScale = anychart.scales.log();
+// sets y-scale
+volumeSeries.yScale(customScale);
+
+// set volume fill settings
+volumeSeries.risingFill(palette.itemAt(0), 0.25)
+        .fallingFill(palette.itemAt(1), 0.25)
+        .risingStroke(palette.itemAt(0), 0.25)
+        .fallingStroke(palette.itemAt(1), 0.25);
+
+// we setup custom series drawer to support coloring values below zero
+setupDrawer(volumeSeries);
+
+// set chart selected date/time range
+chart.selectRange('2016-07-01', '2016-12-30');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+
+// create range picker
+rangePicker = anychart.ui.rangePicker();
+// init range picker
+rangePicker.render(chart);
+
+// create range selector
+rangeSelector = anychart.ui.rangeSelector();
+// init range selector
+rangeSelector.render(chart);
+
+function setupDrawer(series) {
+    var shapesConfig = [{
+        name: 'rising',
+        shapeType: 'path',
+        fillName: 'risingFill',
+        strokeName: 'stroke'
+    }, {
+        name: 'falling',
+        shapeType: 'path',
+        fillName: 'fallingFill',
+        strokeName: 'stroke'
+    }];
+
+    series.rendering()
+            .shapes(shapesConfig)
+            .point(function (point) {
+                if (!point.missing) {
+                    var rising = +point.getDataValue('open') < +point.getDataValue('close');
+                    var shapeNames = rising ? ['rising'] : ['falling'];
+                    var shapes = point.getShapesGroup(point.seriesState, 0, shapeNames);
+                    var path = shapes[shapeNames[0]];
+
+                    var leftX = point.x - point.pointWidth / 2;
+                    var rightX = leftX + point.pointWidth;
+
+                    var thickness = getThickness(path.stroke());
+                    if ((point.categoryWidth - point.pointWidth) > 2.5 && point.pointWidth > 10) {
+                        leftX = applyShift(leftX, thickness);
+                        rightX = applyShift(rightX, thickness);
+                    }
+                    var y = applyShift(point.value, thickness);
+                    var zero = applyShift(point.zero, thickness);
+
+                    path.moveTo(leftX, y);
+                    path.lineTo(rightX, y, rightX, zero, leftX, zero);
+                    path.close();
+                }
+            });
+
+    function applyShift(value, thickness) {
+        var shift = (thickness & 1) / 2;
+        if (value % 1 >= 0.5)
+            return Math.ceil(value) - shift;
+        else
+            return Math.floor(value) + shift;
+    }
+
+    function getThickness(stroke) {
+        var res;
+        return (stroke && stroke != 'none') ?
+                (isNaN(res = stroke['thickness']) || res === null ? 1 : res) : 0;
+    }
+}
+    });
+        </script>
+    </body>
+</html>

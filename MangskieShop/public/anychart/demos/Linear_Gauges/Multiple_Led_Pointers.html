@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/linear-gauge/control-container.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Multiple Led Pointers</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+$('#container').append(
+        '<div class="control-container"><span class="edge left">0</span>' +
+        '<input id="rangeInput" name="rangeInput" type="range" min="0" max="200" step="1" value="65">' +
+        '<span class="edge right">200</span></div>'
+);
+
+// Create data for this sample
+var data = [65, 65, 65, 65, 65];
+
+// Create gauge
+var gauge = anychart.gauges.linear();
+gauge.data(data);
+gauge.padding([30, 0, 80, 0]);
+gauge.tooltip().format(function () {
+    var value = this.value;
+    var index = this.index;
+
+    return 'Value: ' + formatText(index, value);
+});
+
+// Set gauge title
+gauge.title()
+        .enabled(true)
+        .padding([0, 0, 35, 0])
+        .text('Multiple LED Pointers with Different Scales');
+
+function createGaugeSeries(min, max, name, offset, i) {
+    // Create scale
+    var scale = anychart.scales.linear();
+    scale.minimum(min)
+            .maximum(max);
+
+    // Create led pointer
+    var ledSeries = gauge.led(i);
+    ledSeries.name(name)
+            .size('1%')
+            .gap('1.25%')
+            .width('9%')
+            .offset(offset)
+            .scale(scale)
+            .dimmer(function () {
+                return '#EAEAEA'
+            });
+
+    // Create led label
+    ledSeries.labels()
+            .enabled(true)
+            .offsetY('-15px')
+            .format(function () {
+                var value = this.value;
+                var index = this.index;
+
+                return formatText(index, value);
+            });
+    ledSeries.hovered().labels()
+            .enabled(true)
+            .fontColor('#545f69')
+            .fontWeight('600');
+    ledSeries.selected().labels()
+            .enabled(true)
+            .fontColor('#545f69')
+            .fontWeight('600');
+
+    // Create custom color scale for pointer
+    ledSeries.colorScale(
+            anychart.scales.ordinalColor().ranges([
+                {
+                    from: min,
+                    to: (max - min) / 2,
+                    color: '#64b5f6'
+                },
+                {
+                    from: (max - min) / 2,
+                    to: max,
+                    color: '#F7F7F7'
+                }
+            ])
+    );
+}
+
+createGaugeSeries(0, 100, 'First', 0, 0);
+createGaugeSeries(35, 200, 'Second', 10, 1);
+createGaugeSeries(15, 150, 'Third', 20, 2);
+createGaugeSeries(10, 175, 'Forth', 30, 3);
+createGaugeSeries(5, 120, 'Fifth', 40, 4);
+
+// Initiate gauge drawing
+gauge.container('container');
+
+gauge.draw();
+
+// set data of the led pointer's from range input
+$('#rangeInput').on('change', function () {
+    gauge.data().set(0, 'value', $(this).val());
+    gauge.data().set(1, 'value', $(this).val());
+    gauge.data().set(2, 'value', $(this).val());
+    gauge.data().set(3, 'value', $(this).val());
+    gauge.data().set(4, 'value', $(this).val());
+});
+
+function formatText(index, value) {
+    switch (index) {
+        case 0 :
+            return value >= 100 ? 100 : value;
+        case 1 :
+            return value >= 200 ? 200 : value;
+        case 2 :
+            return value >= 150 ? 150 : value;
+        case 3 :
+            return value >= 175 ? 175 : value;
+        case 4 :
+            return value >= 120 ? 120 : value;
+    }
+}
+    });
+        </script>
+    </body>
+</html>

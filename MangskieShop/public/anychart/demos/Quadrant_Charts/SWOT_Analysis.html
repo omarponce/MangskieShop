@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>SWOT Analysis</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create quadrant chart
+chart = anychart.quadrant();
+// set chart title
+chart.title('SWOT Analysis');
+// set chart padding
+chart.padding([20, 20, 40, 40]);
+
+// set quarters settings
+chart.quarters(
+        {
+            rightTop: {
+                fill: '#E6B80A'
+            },
+            rightBottom: {
+                fill: '#C24B51'
+            },
+            leftTop: {
+                fill: '#02757A'
+            },
+            leftBottom: {
+                fill: '#A3BB59'
+            }
+        }
+);
+
+// create first label for left top quarter
+chart.quarters().leftTop().label(0)
+        .enabled(true)
+        .fontColor('#fff')
+        .fontSize(15)
+        .width('90%')
+        .text('1) What are your strengths?\n' +
+                '2) What do you do better than others?\n' +
+                '3) What unique capabilities and resources do you possess?\n' +
+                '4) What do others perceive as your strengths?');
+
+// create first label for right top quarter
+chart.quarters().rightTop().label(0)
+        .enabled(true)
+        .fontColor('#fff')
+        .fontSize(15)
+        .width('90%')
+        .text('1) What are your weaknesses?\n' +
+                '2) What do your competitors do better than you?\n' +
+                '3) What can you improve given the current situation?\n' +
+                '4) What do others perceive as your weaknesses?');
+
+// create first label for left bottom quarter
+chart.quarters().leftBottom().label(0)
+        .enabled(true)
+        .fontColor('#fff')
+        .fontSize(15)
+        .width('90%')
+        .text('1) What trends or conditions may positively impact you?\n' +
+                '2) What opportunities are available to you?');
+
+// create first label for right bottom quarter
+chart.quarters().rightBottom().label(0)
+        .enabled(true)
+        .fontColor('#fff')
+        .fontSize(15)
+        .width('90%')
+        .text('1) What trends or conditions may negatively impact you?\n' +
+                '2) What are your competitors doing that may impact you?\n' +
+                '3) Do you have solid financial support?\n' +
+                '4) What impact do your weaknesses have on the threats to you?');
+
+// create second label for left top quarter
+chart.quarters().leftTop().label(1)
+        .enabled(true)
+        .fontColor('#7c868e')
+        .fontSize(17)
+        .position('left-center')
+        .rotation(-90)
+        .offsetX(-20)
+        .text('Internal');
+
+// create second label for left bottom quarter
+chart.quarters().leftBottom().label(1)
+        .enabled(true)
+        .fontColor('#7c868e')
+        .fontSize(17)
+        .position('left-center')
+        .rotation(-90)
+        .offsetX(-20)
+        .text('External');
+
+// create third label for left bottom quarter
+chart.quarters().leftBottom().label(2)
+        .enabled(true)
+        .fontColor('#7c868e')
+        .fontSize(17)
+        .position('center-bottom')
+        .offsetY(20)
+        .text('Favourable');
+
+// create second label for right bottom quarter
+chart.quarters().rightBottom().label(1)
+        .enabled(true)
+        .fontColor('#7c868e')
+        .fontSize(17)
+        .position('center-bottom')
+        .offsetY(20)
+        .text('Unfavourable');
+
+// set chart container id
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Planned-vs-Actual Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-charts/planned-vs-actual-chart/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-charts/planned-vs-actual-chart/data.json', function (data) {
+    // create data tree
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create project gantt chart
+    chart = anychart.ganttProject();
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // set start splitter position settings
+    chart.splitterPosition(460);
+
+    // get chart data grid link to set column settings
+    var dataGrid = chart.dataGrid();
+
+    // set first column settings
+    dataGrid.column(0).cellTextSettings({hAlign: 'center'});
+
+    // set second column settings
+    dataGrid.column(1)
+            .width(200)
+            .cellTextSettingsOverrider(labelTextSettingsFormatter);
+
+    // set third column settings
+    dataGrid.column(2)
+            .title('Baseline Start')
+            .width(100)
+            .cellTextSettingsOverrider(labelTextSettingsFormatter)
+            .format(thirdColumnTextFormatter);
+
+    // set fourth column settings
+    dataGrid.column(3)
+            .title('Baseline End')
+            .width(100)
+            .cellTextSettingsOverrider(labelTextSettingsFormatter)
+            .format(fourthColumnTextFormatter);
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart to specified date
+    chart.zoomTo(Date.UTC(2010, 0, 8, 15), Date.UTC(2010, 3, 25, 20));
+});
+    });
+
+    //add bold and italic text settings to all parent items
+    function labelTextSettingsFormatter(label, dataItem) {
+if (dataItem.numChildren()) {
+    label.fontWeight('bold').fontStyle('italic');
+}
+    }
+
+    //do pretty formatting for dates in third column
+    function thirdColumnTextFormatter(item) {
+var field = item.get('baselineStart');
+
+// format base line text
+if (field) {
+    var baselineStart = new Date(field);
+    return formatDate(baselineStart.getUTCMonth() + 1) + '/' +
+            formatDate(baselineStart.getUTCDate()) + '/' + baselineStart.getUTCFullYear() + ' ' +
+            formatDate(baselineStart.getUTCHours()) + ':' +
+            formatDate(baselineStart.getUTCMinutes());
+} else {
+    // format milestone text
+    var actualStart = item.get('actualStart');
+    var actualEnd = item.get('actualEnd');
+    if ((actualStart == actualEnd) || (actualStart && !actualEnd)) {
+        var start = new Date(actualStart);
+        return formatDate(start.getUTCMonth() + 1) + '/' +
+                formatDate(start.getUTCDate()) + '/' + start.getUTCFullYear() + ' ' +
+                formatDate(start.getUTCHours()) + ':' +
+                formatDate(start.getUTCMinutes());
+    }
+    return '';
+}
+    }
+
+    //do pretty formatting for dates in fourth column
+    function fourthColumnTextFormatter(item) {
+var field = item.get('baselineEnd');
+if (field) {
+    var baselineEnd = new Date(field);
+    return formatDate((baselineEnd.getUTCMonth() + 1)) + '/' +
+            formatDate(baselineEnd.getUTCDate()) + '/' + baselineEnd.getUTCFullYear() + ' ' +
+            formatDate(baselineEnd.getUTCHours()) + ':' +
+            formatDate(baselineEnd.getUTCMinutes());
+} else {
+    return '';
+}
+    }
+
+    //do pretty formatting for passed date unit
+    function formatDate(dateUnit) {
+if (dateUnit < 10) dateUnit = '0' + dateUnit;
+return dateUnit + '';
+    }
+        </script>
+    </body>
+</html>

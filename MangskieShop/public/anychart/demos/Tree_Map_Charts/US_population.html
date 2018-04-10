@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-treemap.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>US population</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/tree-map-charts/top-1000-companies/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/tree-map-charts/us-population/data.json', function (data) {
+    // makes tree from the data for the sample
+    var dataTree = anychart.data.tree(data, 'as-table');
+    chart = anychart.treeMap(dataTree);
+
+    // sets chart settings
+    chart.selectionMode('none')
+            // set colorScale with colors
+            .colorScale(anychart.scales.linearColor('#f1a122', '#a50b01'))
+            // setting the number of levels shown
+            .hintDepth(1)
+            // hintOpacity setting
+            .hintOpacity(0.8);
+
+    // sets credits for this sample
+    chart.credits()
+            .enabled(true)
+            .url('https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population')
+            .text('Data source: https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population')
+            .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+    // sets title for chart and customizes it
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([0, 0, 20, 0])
+            .text(
+                    'US population by Biggest Cities<br/>' +
+                    '<span style="color:#212121; font-size: 13px;">According to en.wikipedia.org</span>'
+            );
+
+    // sets settings for labels
+    chart.labels()
+            .useHtml(true)
+            .fontColor('#212121')
+            .fontSize(12)
+            .format(function () {
+                return this.getData('name') + '<br/><span style="font-size: 10px; font-weight: bold">' +
+                        parseFloat(this.value).toLocaleString() + '</span> ';
+            });
+
+    // sets settings for tooltips
+    chart.tooltip().format(function () {
+        return parseFloat(this.value).toLocaleString() + ' people';
+    });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

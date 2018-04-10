@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-waterfall.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Income Statement by Region</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+var dataSet = anychart.data.set([
+    ['Revenue', 175000, 140000, 250650],
+    ['Services Revenue', 235050, 225250, 390580],
+    ['Fixed Costs', 177950, 160550, 290890],
+    ['Sales and Marketing Costs', 121050, 105500, 220500],
+    ['Variable Costs', 65890, 55890, 105000],
+    ['Total', {isTotal: true}, {isTotal: true}, {isTotal: true}]
+]);
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var data1 = dataSet.mapAs({'x': 0, 'value': 1});
+// map data for the second series, take x from the zero column and value from the second column of data set
+var data2 = dataSet.mapAs({'x': 0, 'value': 2});
+// map data for the third series, take x from the zero column and value from the third column of data set
+var data3 = dataSet.mapAs({'x': 0, 'value': 3});
+
+// create waterfall chart
+chart = anychart.waterfall();
+
+// set chart title
+chart.title('Income Statement by Region');
+// set data mode
+chart.dataMode('absolute');
+
+// create waterfall series, Iowa series
+chart.waterfall()
+        .data(data1)
+        .name('Iowa')
+        .fill('#3c5e79')
+        .stroke('#3c5e79')
+        .risingFill('#3c5e79')
+        .fallingFill('#3c5e79')
+        .risingStroke('#3c5e79')
+        .fallingStroke('#3c5e79');
+
+// create waterfall series, Oklahoma series
+chart.waterfall()
+        .data(data2)
+        .name('Oklahoma')
+        .fill('#5686ad')
+        .stroke('#3c5e79')
+        .risingFill('#5686ad')
+        .fallingFill('#5686ad')
+        .risingStroke('#3c5e79')
+        .fallingStroke('#3c5e79');
+
+// create waterfall series, Texas series
+chart.waterfall()
+        .data(data3)
+        .name('Texas')
+        .fill('#7bc0f7')
+        .stroke('#3c5e79')
+        .risingFill('#7bc0f7')
+        .fallingFill('#7bc0f7')
+        .risingStroke('#3c5e79')
+        .fallingStroke('#3c5e79');
+
+// set labels settings
+chart.labels()
+        .enabled(true)
+        .fontColor('#fff')
+        .position('center');
+
+// set legend settings
+chart.legend()
+        .enabled(true)
+        .itemsSourceMode('default');
+
+// set title tooltip
+chart.tooltip().titleFormat('{%SeriesName}');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

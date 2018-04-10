@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-heatmap.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/samples-data/heat-map-charts/climate-data-for-white-plains/data.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Climate Data for White Plains</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+
+var i = 0;
+// heat value index in array
+var index = 2;
+const MM_IN_INCHES = 25.4;
+const MM_IN_CM = 100;
+
+function maxValue(arr, index) {
+    var value = 0;
+    for (i = 0; i < arr.length - 1; i++) {
+        if (arr[i][index] >= value) {
+            value = arr[i][2];
+        }
+    }
+    return value
+}
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/heat-map-charts/climate-data-for-white-plains/data.js
+var record_high_arr = recordHighData();
+var average_high_arr = averageHighData();
+var average_low_arr = averageLowData();
+var record_low_arr = recordLowData();
+var precipitation_mm_arr = precipitationMMData();
+var precipitation_cm_arr = precipitationCMData();
+var average_precipitation_days_arr = precipitationDaysData();
+var average_snowy_days_arr = precipitationSnowyDaysData();
+
+// init high/low value
+var record_high = maxValue(record_high_arr, index);
+var average_high = maxValue(average_high_arr, index);
+var average_low = maxValue(average_low_arr, index);
+var record_low = maxValue(record_low_arr, index);
+var precipitation_mm_high = maxValue(precipitation_mm_arr, index);
+var precipitation_cm_high = maxValue(precipitation_cm_arr, index);
+var average_precipitation_days_high = maxValue(average_precipitation_days_arr, index);
+var average_snowy_days_high = maxValue(average_snowy_days_arr, index);
+
+var temperature_arr = [];
+temperature_arr = temperature_arr.concat(
+        record_high_arr,
+        average_high_arr,
+        average_low_arr,
+        record_low_arr
+);
+
+var days_arr = [];
+days_arr = days_arr.concat(
+        average_precipitation_days_arr,
+        average_snowy_days_arr
+);
+
+// data set
+var temperature = anychart.data.set(temperature_arr);
+var precipitation_mm = anychart.data.set(precipitation_mm_arr);
+var precipitation_cm = anychart.data.set(precipitation_cm_arr);
+var average_days = anychart.data.set(days_arr);
+
+// create stage
+var stage = anychart.graphics.create('container');
+
+// mapping data
+var dataSetTemperatures = temperature.mapAs({'x': 0, 'y': 1, 'heat': 2});
+
+var dataSetPrecipitationMM = precipitation_mm.mapAs({'x': 0, 'y': 1, 'heat': 2});
+
+var dataSetPrecipitationCM = precipitation_cm.mapAs({'x': 0, 'y': 1, 'heat': 2});
+
+var dataSetAverageDays = average_days.mapAs({'x': 0, 'y': 1, 'heat': 2});
+
+// create ordinalColor scale
+var colorScale_1 = anychart.scales.ordinalColor();
+colorScale_1.ranges([
+    // set color for all points with the heat parameter less than -10
+    {less: -10, color: '#5aacec'},
+    // set color for all points with the heat parameter more than -10 but less than 0
+    {from: -10, to: 0, color: '#8ec7f5'},
+    {from: 0, to: 25, color: '#fddcbc'},
+    {from: 25, to: 50, color: '#FFB66E'},
+    {from: 50, to: 75, color: '#FF6300'},
+    {from: 75, to: 100, color: '#f93716'},
+    // set color for all points with the heat parameter more than 100
+    {greater: 100, color: '#FF1100'}
+]);
+
+// create ordinalColor scale
+var colorScale_2 = anychart.scales.ordinalColor();
+colorScale_2.ranges([
+    {from: 2.5, to: 3, color: '#baf7ba'},
+    {from: 3, to: 4, color: '#8cf58c'},
+    {from: 4, to: 5, color: '#6ff76f'},
+    {greater: 5, color: '#4ddc4d'}
+]);
+
+// create ordinalColor scale
+var colorScale_3 = anychart.scales.ordinalColor();
+colorScale_3.ranges([
+    {less: 0.1, color: '#d8d8e2'},
+    {from: 0.1, to: 5, color: '#d1d1f0'},
+    {from: 5, to: 10, color: '#b4b4e7'},
+    {greater: 10, color: '#8888dc'}
+]);
+
+var colorScale_4 = anychart.scales.ordinalColor();
+colorScale_4.ranges([
+    {less: 0.1, color: '#d8d8e2'},
+    {from: 0.1, to: 5, color: '#c0cad0'},
+    {from: 5, to: 10, color: '#A0B1BA'},
+    {greater: 10, color: '#7b95a2'}
+]);
+
+// creates Heat Map
+chart_1 = anychart.heatMap(dataSetTemperatures);
+chart_1.colorScale(colorScale_1)
+        .bounds([0, 0, '100%', '50%'])
+        .padding(['15px', '25px', 0, '90px']);
+// sets title
+chart_1.title()
+        .enabled(true)
+        .text('Climate data for White Plains')
+        .padding({'bottom': 30});
+// sets Axes
+chart_1.yAxis()
+        .stroke(null)
+        .labels();
+chart_1.xAxis().ticks(false);
+chart_1.labels()
+        .useHtml(true)
+        .format(function () {
+            // Fahrenheit to Celsius
+            var c = (this.heat - 32) / 1.8;
+            c = c > 0 ? Math.ceil(c) : Math.floor(c);
+
+            if (this.x !== 'Year') {
+                switch (this.y) {
+                    case 'Record high ?F (?C)' :
+                        if (this.heat === record_high) {
+                            return '<span style="color: white;">' + this.heat + ' (' + c + ')' + '</span>'
+                        }
+                        break;
+                    case 'Record low ?F (?C)' :
+                        if (this.heat === record_low) {
+                            return '<span style="color: white;">' + this.heat + ' (' + c + ')' + '</span>'
+                        }
+                        break;
+                    case 'Average high ?F (?C)' :
+                        if (this.heat === average_high) {
+                            return '<span style="color: white;">' + this.heat + ' (' + c + ')' + '</span>'
+                        }
+                        break;
+                    case 'Average low ?F (?C)' :
+                        if (this.heat === average_low) {
+                            return '<span style="color: white;">' + this.heat + ' (' + c + ')' + '</span>'
+                        }
+                        break;
+                }
+            }
+
+            return this.heat + ' (' + c + ')';
+        });
+chart_1.tooltip()
+        .useHtml(true)
+        .format(function () {
+            // Fahrenheit to Celsius
+            var c = (this.heat - 32) / 1.8;
+            c = c > 0 ? Math.ceil(c) : Math.floor(c);
+
+            return 'Temperature: ' + this.heat + '?F' + ' (' + c + '?C)';
+        });
+
+// creates Heat Map
+chart_2 = anychart.heatMap(dataSetPrecipitationMM);
+chart_2.colorScale(colorScale_2)
+        .padding([0, '24px', 0, '10px'])
+        .bounds([0, '50%', '100%', '12.5%']);
+chart_2.yAxis().stroke(null);
+chart_2.xAxis(false);
+chart_2.labels()
+        .useHtml(true)
+        .format(function () {
+            var mm = Math.round(this.heat * MM_IN_INCHES);
+
+            if (this.x !== 'Year') {
+                if (this.heat === precipitation_mm_high) {
+                    return '<span style="color: white;">' + this.heat + ' (' + mm + ')' + '</span>'
+                }
+            }
+
+            return this.heat + ' (' + mm + ')';
+        });
+chart_2.tooltip()
+        .useHtml(true)
+        .format(function () {
+            var mm = Math.round(this.heat * MM_IN_INCHES);
+
+            return 'Precipitation: ' + this.heat + ' inches' + ' (' + mm + 'mm)';
+        });
+
+// creates Heat Map
+chart_3 = anychart.heatMap(dataSetPrecipitationCM);
+chart_3.colorScale(colorScale_3)
+        .padding([0, '25px', 0, '40px'])
+        .bounds([0, '62.5%', '100%', '12.5%']);
+chart_3.yAxis().stroke(null);
+chart_3.xAxis(false);
+chart_3.labels()
+        .useHtml(true)
+        .format(function () {
+            var cm = Math.round(this.heat * MM_IN_INCHES / MM_IN_CM);
+
+            if (this.x !== 'Year') {
+                if (this.heat === precipitation_cm_high) {
+                    return '<span style="color: white;">' + this.heat + ' (' + cm + ')' + '</span>'
+                }
+            }
+
+            return this.heat + ' (' + cm + ')';
+        });
+chart_3.tooltip()
+        .useHtml(true)
+        .format(function () {
+            var cm = Math.round(this.heat * MM_IN_INCHES / MM_IN_CM);
+
+            return 'Precipitation: ' + this.heat + ' inches' + ' (' + cm + 'cm)';
+        });
+
+// creates Heat Map
+chart_4 = anychart.heatMap(dataSetAverageDays);
+chart_4.colorScale(colorScale_4)
+        .bounds([0, '75%', '100%', '25%'])
+        .padding([0, '25px', '25px', '58px']);
+chart_4.yAxis().stroke(null);
+chart_4.xAxis(false);
+chart_4.labels()
+        .useHtml(true)
+        .format(function () {
+            if (this.x !== 'Year') {
+                switch (this.y) {
+                    case 'Average precipitation days' :
+                        if (this.heat === average_precipitation_days_high) {
+                            return '<span style="color: white;">' + this.heat + '</span>'
+                        }
+                        break;
+                    case 'Average snowy days' :
+                        if (this.heat === average_snowy_days_high) {
+                            return '<span style="color: white;">' + this.heat + '</span>'
+                        }
+                        break;
+                }
+            }
+
+            return this.heat;
+        });
+chart_4.tooltip()
+        .useHtml(true)
+        .format(function () {
+
+            return 'Average Precipitation days: ' + this.heat;
+        });
+
+// init stage container and draw charts
+chart_1.container(stage);
+chart_1.draw();
+
+chart_2.container(stage);
+chart_2.draw();
+
+chart_3.container(stage);
+chart_3.draw();
+
+chart_4.container(stage);
+chart_4.draw();
+    });
+        </script>
+    </body>
+</html>

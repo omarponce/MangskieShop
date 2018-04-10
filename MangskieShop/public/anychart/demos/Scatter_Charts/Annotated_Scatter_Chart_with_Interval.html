@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/annotated/annotated-scatter.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Annotated Scatter Chart with Interval</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+$('#container').append('<div class="container-title">' +
+        '<h1>Annotated Scatter Chart with Interval</h1>' +
+        '<div>' +
+        '<div class="form-group">' +
+        '<label for="first-border">First border: </label>' +
+        '<input type="number" id="first-border" ' +
+        'value="75" max="200" min="10" class="annotation-input" data-number-annotations="0">' +
+        '</div>' +
+        '<div class="form-group">' +
+        '<label for="second-border">Second border: </label>' +
+        '<input type="number" id="second-border" ' +
+        'value="100" max="200" min="10" class="annotation-input" data-number-annotations="1">' +
+        '</div>' +
+        '<br><p>Points in the interval' + '<span class="result"></span>' + '</p>');
+
+chart = anychart.scatter();
+
+// create markers
+chart.marker(getRandomArbitrary(10, 200, 300));
+chart.padding([75, 20, 20, 20]);
+chart.xScale().maximum(215);
+
+// create annotation
+var annotation = chart.annotations();
+// create annotation line - bottom
+annotation.line({
+    // X - part of the first anchor
+    xAnchor: 5,
+    // Y - part of the first anchor
+    valueAnchor: 75,
+    // X - part of the second anchor
+    secondXAnchor: 210,
+    // Y - part of the second anchor
+    secondValueAnchor: 75,
+    // set stroke settings
+    stroke: {
+        thickness: 2, color: '#60727B'
+    }
+    // disable interaction with Annotation
+}).allowEdit(false);
+
+// create annotation line - top
+annotation.line({
+    // X - part of the first anchor
+    xAnchor: 5,
+    // Y - part of the first anchor
+    valueAnchor: 100,
+    // X - part of the second anchor
+    secondXAnchor: 210,
+    // Y - part of the second anchor
+    secondValueAnchor: 100,
+    // set stroke settings
+    stroke: {
+        thickness: 2, color: '#60727B'
+    }
+    // disable interaction with Annotation
+}).allowEdit(false);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+$('.annotation-input').on('change', function (e) {
+    var annotation = chart.annotations().getAnnotationAt(e.currentTarget.dataset.numberAnnotations);
+    annotation.valueAnchor($(this).val())
+            .secondValueAnchor($(this).val());
+
+    selectPointsInInterval(chart);
+});
+
+selectPointsInInterval(chart);
+    });
+
+    function selectPointsInInterval(chart) {
+var $annotationFirst = $('[data-number-annotations="0"]');
+var $annotationSecond = $('[data-number-annotations="1"]');
+
+$('.result').text(function () {
+    var result = [];
+    var seriesToSelect = [];
+    var count = -1;
+    var data;
+    var topVal;
+    var bottomVal;
+
+    if (Number($annotationFirst.val()) <= Number($annotationSecond.val())) {
+        bottomVal = $annotationFirst.val();
+        topVal = $annotationSecond.val();
+    } else {
+        bottomVal = $annotationSecond.val();
+        topVal = $annotationFirst.val();
+    }
+
+    for (var i = 0; i < chart.getSeriesCount(); i++) {
+        var series = chart.getSeriesAt(i);
+        data = chart.getSeriesAt(i).data();
+        var iter = data.getIterator();
+        while (iter.advance()) {
+            count++;
+            if (iter.get('value') >= bottomVal && iter.get('value') <= topVal) {
+                result.push([iter.get('x'), iter.get('value')]);
+                seriesToSelect.push(count);
+            }
+        }
+        series.select(seriesToSelect);
+    }
+    return ': ' + result.length;
+});
+    }
+
+    function getRandomArbitrary(min, max, count) {
+var result = [];
+for (var i = 0; i < count; i++) {
+    result.push(
+            [
+                Math.ceil(Math.random() * (max - min) + min),
+                Math.ceil(Math.random() * (max - min) + min)
+            ]
+    );
+}
+return result
+    }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Stick Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create column chart
+chart = anychart.column();
+// turn on chart animation
+chart.animation(true);
+// set chart title text settings
+chart.title('World\'s largest cities');
+
+// create area series with passed data
+chart.stick(getData());
+
+chart.credits().enabled(true)
+        .url('https://en.wikipedia.org/wiki/List_of_cities_proper_by_population')
+        .text('Data source: https://en.wikipedia.org/wiki/List_of_cities_proper_by_population')
+        .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+// set scale minimum
+chart.yScale()
+        .minimum(0)
+        .ticks({
+            interval: 5
+        });
+
+// tooltips position and interactivity settings
+chart.tooltip()
+        .positionMode('point')
+        .format('Population in 2016: {%Value}{groupsSeparator: } mln');
+chart.interactivity().hoverMode('by-x');
+
+// axes titles
+chart.yAxis().title('Population (millions)');
+chart.xAxis().labels().rotation(-90);
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+
+    function getData() {
+return [
+    ['Shanghai', 24.2],
+    ['Karachi', 23.5],
+    ['Beijing', 21.5],
+    ['Delhi', 16.7],
+    ['Lagos', 16.0],
+    ['Tianjin', 15.2],
+    ['Istanbul', 14.1],
+    ['Tokyo', 13.5],
+    ['Guangzhou', 13],
+    ['Mumbai', 12.4],
+    ['Moscow', 12.1],
+    ['S?o Paulo', 11.8],
+    ['Shenzhen', 10.4],
+    ['Jakarta', 10.1],
+    ['Lahore', 10],
+    ['Seoul', 9.9],
+    ['Wuhan', 9.7],
+    ['Kinshasa', 9.7],
+    ['Cairo', 9.2],
+    ['Mexico City', 8.8]
+]
+    }
+        </script>
+    </body>
+</html>

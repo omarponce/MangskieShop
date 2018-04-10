@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-resource.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>UEFA Stadiums (Time Tracking Off)</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/resource-charts/uefa-stadiums-time-tracking-off/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/resource-charts/uefa-stadiums-time-tracking-off/data.json', function (data) {
+    chart = anychart.resource();
+    var dateSet = anychart.data.set(data);
+
+    chart.data(dateSet.mapAs({'description': 'city'}));
+
+    chart.zoomLevel(0)
+            .pixPerHour(30)
+            .minRowHeight(80)
+            .currentStartDate('2016-06-11');
+
+    chart.activities().labels()
+            .useHtml(true)
+            .format(function () {
+                return this['activityName'] + '<br><span style="color: #ccc">' + this['activityInfo']['group'] + '</span>';
+            });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

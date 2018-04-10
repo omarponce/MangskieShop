@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Radio Scale</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// Set data for this sample
+var fm_frequencies = [
+    {value: 87.9, name: 'Forever FM'},
+    {value: 92.1, name: 'Crucial FM'},
+    {value: 103.1, name: 'Radio<br/>Roo'},
+    {value: 107.8, name: 'Radio<br/>Norwich'}
+];
+var am_frequencies = [
+    {value: 180, name: 'Galaxy<br/>News Radio'},
+    {value: 571, name: 'The Dukes<br/>of Hazzard'},
+    {value: 780, name: 'Frasier'},
+    {value: 970, name: 'The<br/>Simpsons'}
+];
+var stationCount = Math.max(am_frequencies.length, fm_frequencies.length);
+
+// Create gauge chart
+var gauge = anychart.gauges.linear();
+gauge.markerPalette().items(['v-line']);
+
+// Set gauge title
+gauge.title()
+        .enabled(true)
+        .useHtml(true)
+        .padding([0, 0, 15, 0])
+        .text('Radio Scale<br>' +
+                '<span style="color: #212121; font-size: 12px">' +
+                'Use AM and FM labels to switch between them</span>');
+
+// Set gauge layout, padding and turn tooltip off
+gauge.layout('horizontal')
+        .padding([30, 100, 0, 100])
+        .tooltip(false);
+
+// Set bar point as background
+var bar = gauge.bar(stationCount - 1);
+bar.width('3.5%')
+        .offset('-13.5%')
+        .fill('#EAEAEA')
+        .stroke('5 #fff');
+bar.hovered()
+        .stroke(function () {
+            return this.sourceColor;
+        })
+        .fill(function () {
+            return this.sourceColor;
+        });
+bar.selected()
+        .stroke(function () {
+            return this.sourceColor;
+        })
+        .fill(function () {
+            return this.sourceColor;
+        });
+
+// Set points
+for (var i = 0; i < stationCount; i++) {
+    var marker = gauge.marker(i);
+    marker.enabled(true)
+            .stroke(null)
+            .width('2.6%')
+            .offset('-13%')
+            .fill('#212121');
+    marker.hovered().fill('#545f69');
+    marker.selected().fill('#dd2c00');
+    marker.labels()
+            .enabled(true)
+            .position('center-bottom')
+            .useHtml(true)
+            .anchor('center-top')
+            .offsetX(5)
+            .offsetY(25)
+            .hAlign('center')
+            .format(function () {
+                return this.getData('name')
+            });
+    marker.hovered().labels()
+            .enabled(true)
+            .fontColor('#212121');
+    marker.selected().labels()
+            .enabled(true)
+            .fontColor('#dd2c00');
+}
+
+// Create axis
+var axisTop = gauge.axis(0);
+axisTop.minorTicks()
+        .enabled(true)
+        .stroke('2 #7c868e');
+axisTop.ticks().stroke('2 #7c868e');
+axisTop.stroke('2 #7c868e')
+        .width('1%')
+        .offset('-15.5%');
+
+// Create another axis on bottom position
+var axisBottom = gauge.axis(1);
+axisBottom.minorTicks()
+        .enabled(true)
+        .stroke('2 #7c868e');
+axisBottom.stroke('2 #7c868e')
+        .ticks({'stroke': '2 #7c868e'})
+        .labels(false)
+        .width('1%')
+        .offset('-9%')
+        .orientation('bottom');
+
+// Listen point click function
+gauge.listen('pointClick', function (e) {
+    var name = e.iterator.get('name');
+    if (e.target != bar && name) {
+        RSNLabel.text('You are listening to the<br/>' +
+                '<span style="font-weight: 600; color: #dd2c00">"' + name.replace('<br/>', ' ') + '' +
+                '"</span><br/>station now.');
+    } else {
+        RSNLabel.text('Click to choose station');
+    }
+});
+
+// Set helper function to update gauge
+function updateGauge(data, labels_postfix) {
+    // Create scale
+    var scale = gauge.scale();
+    scale.minimum(data[0].value)
+            .maximum(data[data.length - 1].value);
+    scale.ticks(data.map(function (a) {
+        return a.value
+    }));
+
+    gauge.axis(0).labels().format('{%Value} ' + labels_postfix);
+    gauge.data(data);
+    return gauge;
+}
+
+// Create label for switching to FM
+var FMLabel = gauge.label(0);
+FMLabel.text('FM')
+        .position('center-top')
+        .anchor('center')
+        .padding(5)
+        .offsetX('-45px')
+        .offsetY('95px');
+FMLabel.background()
+        .enabled(false)
+        .fill('#CECECE')
+        .corners(3)
+        .zIndex(-1);
+FMLabel.listen('click', function () {
+    updateGauge(fm_frequencies, 'KHz');
+    AMLabel.fontColor('#7c868e')
+            .fontWeight(300);
+    FMLabel.fontColor('#dd2c00')
+            .fontWeight(600);
+    RSNLabel.text('Click to choose station')
+            .fontColor('#7c868e');
+    FMLabel.background(true);
+    AMLabel.background(false);
+});
+
+// Create label for switching to AM
+var AMLabel = gauge.label(1);
+AMLabel.text('AM')
+        .position('center-top')
+        .anchor('center')
+        .padding(5);
+AMLabel.fontColor('#dd2c00')
+        .fontWeight(600);
+AMLabel.offsetX('45px')
+        .offsetY('95px');
+AMLabel.background()
+        .enabled(true)
+        .fill('#CECECE')
+        .corners(3)
+        .zIndex(-1);
+
+AMLabel.listen('click', function () {
+    updateGauge(am_frequencies, 'MHz');
+    FMLabel.fontColor('#7c868e')
+            .fontWeight(300);
+    AMLabel.fontColor('#dd2c00')
+            .fontWeight(600);
+    RSNLabel.text('Click on point');
+    RSNLabel.fontColor('#7c868e');
+    AMLabel.background(true);
+    FMLabel.background(false);
+});
+
+// Create label for current radio station name
+var RSNLabel = gauge.label(2);
+RSNLabel.text('Click to choose station')
+        .position('center')
+        .anchor('center')
+        .hAlign('center');
+RSNLabel.offsetY('150px')
+        .useHtml(true);
+
+// Set up gauge as AM by default
+updateGauge(am_frequencies, 'MHz');
+
+// Set container id and initiate  drawing
+gauge.container('container');
+gauge.draw();
+    });
+        </script>
+    </body>
+</html>

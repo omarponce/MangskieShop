@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Editing Events</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             //Currently selected tree data item
+    var selectedItem;
+    //Data tree
+    var treeData;
+
+    anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-live-editing/editing-events/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-live-editing/editing-events/data.json', function (data) {
+    //Adding edit buttons
+    var container = $('#container');
+
+    var absButtonContainer = $('<div>');
+    absButtonContainer.css({
+        'position': 'relative',
+        'left': 0,
+        'top': 0,
+        'z-index': 1000,
+        'display': 'inline-block'
+    });
+    container.append(absButtonContainer);
+
+    var createButton = $('<button id="create"/>');
+    createButton.html('Create item');
+    createButton.click(createClick);
+    absButtonContainer.append(createButton);
+
+    var removeButton = $('<button id="remove"/>');
+    removeButton.html('Remove item');
+    removeButton.click(removeClick);
+    absButtonContainer.append(removeButton);
+
+    // create data tree on raw data
+    treeData = anychart.data.tree(data, 'as-table');
+
+    // create resource gantt chart
+    chart = anychart.ganttResource();
+
+    chart.title('Live Edit Events\n-');
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // Adding margin: chart and custom buttons should not overlap each other
+    chart.margin(0, 0, 20, 0);
+
+    // set pixel position of the main splitter
+    chart.splitterPosition(120);
+
+    // make chart editable
+    chart.editing(true);
+
+    // getting chart's data grid
+    var dataGrid = chart.dataGrid();
+
+    // disabling default 0-column
+    dataGrid.column(0, false);
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+
+    // External event: listening "rowSelect" event
+    chart.listen('rowSelect', function (e) {
+        selectedItem = e['item'];
+    });
+
+    // Data change events
+    treeData.listen('treeItemCreate', function (e) {
+        var msg = e['type'] + '\n';
+        var itemName = e['item'].get('name');
+        msg += 'Created item "' + itemName + '"';
+
+        var parentName = e['target'] ? '"' + e['target'].get('name') + '"' : 'tree';
+        msg += ' in ' + parentName;
+        chart.title(msg);
+    });
+
+    treeData.listen('treeItemMove', function (e) {
+        var msg = e['type'] + '\n';
+        var itemName = e['item'].get('name');
+        msg += 'Move "' + itemName + '"';
+
+        var sourceName = e['source'] ? '"' + e['source'].get('name') + '"' : 'tree';
+        msg += ' from ' + sourceName;
+
+        var targetName = e['target'] ? '"' + e['target'].get('name') + '"' : 'tree';
+        msg += ' to ' + targetName;
+
+        chart.title(msg);
+    });
+
+    treeData.listen('treeItemRemove', function (e) {
+        var msg = e['type'] + '\n';
+        var itemName = e['item'].get('name');
+        msg += 'Remove "' + itemName + '"';
+
+        var sourceName = e['source'] ? '"' + e['source'].get('name') + '"' : 'tree';
+        msg += ' from ' + sourceName;
+
+        chart.title(msg);
+    });
+
+    treeData.listen('treeItemUpdate', function (e) {
+        var msg = e['type'] + '\n';
+        var itemName = e['item'].get('name');
+        msg += 'In item "' + itemName + '"';
+
+        var val = e['value'];
+        msg += ' set value ' + val;
+
+        var path = e['path'].join();
+        msg += ' by path ' + path;
+
+        chart.title(msg);
+    });
+});
+    });
+
+    //Create item button click handler
+    function createClick() {
+var destination = selectedItem ? selectedItem : treeData;
+
+var id = Math.random() * 100 << 16;
+var start = Date.UTC(2014, 3, 6) + Math.round(Math.random() * 1000000000);
+var end = start + Math.round(Math.random() * 1000000000);
+var itemToBeAdded = {
+    'id': id,
+    'name': 'New item #' + id,
+    'periods': [
+        {
+            'id': 'period' + id,
+            'start': start,
+            'end': end
+        }
+    ]
+};
+destination.addChild(itemToBeAdded);
+    }
+
+    //Remove item button click handler
+    function removeClick() {
+if (selectedItem) {
+    selectedItem.remove();
+    selectedItem = null;
+}
+    }
+        </script>
+    </body>
+</html>

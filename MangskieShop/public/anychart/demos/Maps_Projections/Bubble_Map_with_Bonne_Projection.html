@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/custom/world_source/world_source.js"></script>
+        
+        <script src="https://cdn.anychart.com/themes/8.0.1/coffee.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Bubble Map with Bonne Projection</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-projections/bubble-map-with-bonne-projection/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-projections/bubble-map-with-bonne-projection/data.json', function (data) {
+    var map = anychart.map();
+
+    map.crs('bonne')
+            .geoData('anychart.maps.world_source')
+            .background(false);
+
+    map.title()
+            .enabled(true)
+            .useHtml(true)
+            .fontSize(18)
+            .text('Starbucks Distribution by Country');
+
+    map.credits()
+            .enabled(true)
+            .url('https://opendata.socrata.com/Business/All-Starbucks-Locations-in-the-World/xy4y-c4mk')
+            .text('Data source: https://opendata.socrata.com')
+            .logoSrc('https://opendata.socrata.com/stylesheets/images/common/favicon.ico');
+
+    map.interactivity().selectionMode('none');
+
+    // Sets bubble max size settings
+    map.minBubbleSize('0.5%')
+            .maxBubbleSize('5%');
+
+    var dataSet = anychart.data.set(data);
+    var series = map.bubble(dataSet)
+            .fill('#9b301c')
+            .stroke('1.5 #482311');
+    series.tooltip()
+            .format(function () {
+                return 'Number of Starbucks: ' + anychart.format.number(this.size, {groupsSeparator: ','});
+            });
+
+    // create zoom controls
+    var zoomController = anychart.ui.zoom();
+    zoomController.render(map);
+
+    // Sets container id for the chart
+    map.container('container');
+    // Initiates chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

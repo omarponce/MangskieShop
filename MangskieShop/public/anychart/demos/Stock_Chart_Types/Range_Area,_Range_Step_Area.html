@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Range Area, Range Step Area</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/csv-data/weather-data.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/csv-data/weather-data.csv', function (data) {
+    // create data table on loaded data
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    // map loaded data
+    var firstMapping = dataTable.mapAs({'low': 2, 'high': 3, 'value': 4});
+    var secondMapping = dataTable.mapAs({'low': 11, 'high': 12, 'value': 13});
+
+    // create stock chart
+    chart = anychart.stock();
+
+    // create first plot on the chart with column series
+    var firstPlot = chart.plot(0);
+    firstPlot.marker()
+            .name('Average')
+            .data(firstMapping)
+            .type('diamond')
+            .tooltip(false);
+
+    firstPlot.xAxis().background().enabled(true);
+    // set grid settings
+    firstPlot.yGrid(true)
+            .xGrid(true)
+            .yMinorGrid(true)
+            .xMinorGrid(true);
+
+    var temperatureSeries = firstPlot.rangeStepArea(firstMapping);
+    temperatureSeries.name('Temperature');
+    temperatureSeries.tooltip().format(function () {
+        return this.seriesName +
+                '<br/><span style="color: #ccc">Max</span>: ' + this.high + '&deg;' +
+                '<br/><span style="color: #ccc">Avg.</span>: ' + this.getData('value') + '&deg;' +
+                '<br/><span style="color: #ccc">Min</span>: ' + this.low + '&deg;'
+    });
+
+    // create second plot on the chart with column series
+    var secondPlot = chart.plot(1);
+    secondPlot.marker()
+            .data(secondMapping)
+            .name('Average')
+            .fill('#ef6c00 0.8')
+            .stroke('#ef6c00')
+            .type('pentagon')
+            .tooltip(false);
+
+    secondPlot.height('30%');
+    secondPlot.xAxis().background().enabled(true);
+
+    var windSeries = secondPlot.rangeArea(secondMapping);
+    windSeries.name('Wind')
+            .fill('#ffd54f 0.65')
+            .lowStroke('1.5 #ffd54f')
+            .highStroke('1.5 #ffd54f');
+    windSeries.tooltip().format(function () {
+        return '<br/><br/>' + this.seriesName +
+                '<br/><span style="color: #ccc">Max</span>: ' + this.high + ' m/s' +
+                '<br/><span style="color: #ccc">Avg.</span>: ' + this.getData('value') + ' m/s' +
+                '<br/><span style="color: #ccc">Min</span>: ' + this.low + ' m/s';
+    });
+
+    // create scroller series with mapped data
+    chart.scroller().rangeStepArea(firstMapping);
+
+    // set chart selected date/time range
+    chart.selectRange('2007-01-03', '2007-05-20');
+
+    // set tooltip format
+    chart.tooltip().useHtml(true);
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+});
+    });
+        </script>
+    </body>
+</html>

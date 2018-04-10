@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/united_states_of_america/united_states_of_america.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Dealership Locator</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-choropleth/dealership-locator/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-choropleth/dealership-locator/data.json', function (data) {
+    var base_link = 'https://en.wikipedia.org/wiki/';
+    //create map chart
+    var map = anychart.map();
+    // The data used in this sample can be obtained from the CDN
+    // https://cdn.anychart.com/samples-data/maps-choropleth/dealership-locator/data.js
+    var dealershipData = data;
+
+    //settings for map chart
+    map.padding([10, 0, 10, 10])
+            .geoData('anychart.maps.united_states_of_america')
+            .interactivity({selectionMode: 'none'});
+
+    map.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([10, 0, 10, 0])
+            .text('ACME Dealership Locator by State<br/>' +
+                    '<span style="color:#929292; font-size: 12px;">' +
+                    '(Numbers on map - amount of ACME dealerships for each state)</span>');
+
+    //create choropleth series for map chart
+    mapSeries = map.choropleth(anychart.data.set(dealershipData));
+    mapSeries.geoIdField('code_hasc')
+            .colorScale(anychart.scales.linearColor('#f2f2f2', '#42a5f5', '#1976d2'));
+
+    mapSeries.hovered()
+            .fill(mapSeries.fill())
+            .stroke(mapSeries.stroke());
+
+    //custom text in tooltips for choropleth series for map chart
+    mapSeries.tooltip()
+            .useHtml(true)
+            .titleFormat('{%Id}')
+            .format(function () {
+                var dealerships_amount_text = '<span style="color: #d9d9d9;">ACME has no dealerships in ' + this.getData('name');
+                if (this.value > 0 && this.value == 1) {
+                    dealerships_amount_text = '<span style="color: #d9d9d9;">' +
+                            'ACME has <strong><span style="color: #fff;">' + this.value + ' </span></strong>dealership in '
+                            + this.getData('name') + '</span><br/>Click to see more.';
+                }
+                else if (this.value > 1) {
+                    dealerships_amount_text = '<span style="color: #d9d9d9;">' +
+                            'ACME has <strong><span style="color: #fff;">' + this.value + ' </span></strong>dealerships in '
+                            + this.getData('name') + '</span><br/>Click to see more.';
+                }
+                return dealerships_amount_text;
+            });
+
+    // onclick function for points - redirecting client (based on base_link variable)
+    map.listen('pointClick', function (e) {
+        window.open(base_link + dealershipData[e.pointIndex].name, '_blank');
+    });
+
+    // set container id for the chart
+    map.container('container');
+    // initiate chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

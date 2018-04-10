@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/maps-projections/religion-in-africa-with-orthografic-projection/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/custom/world_source/world_source.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Religion in Africa with Orthografic Projection</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var map = anychart.map();
+
+map.credits()
+        .enabled(true)
+        .url('https://en.wikipedia.org/wiki/Religion_in_Africa')
+        .text('Data source: https://en.wikipedia.org/wiki/Religion_in_Africa')
+        .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+map.title()
+        .enabled(true)
+        .useHtml(true)
+        .padding([10, 0, 10, 0])
+        .text('Religion of Africa<br/><span  style="color:#929292; font-size: 12px;">' +
+                'Data source is Wikipedia article "Religion in Africa"</span>');
+
+map.geoData('anychart.maps.world_source')
+        .padding(0);
+
+// sets projection
+map.crs('orthographic');
+map.interactivity().selectionMode('none');
+
+function createSeries(name, data, color, colors) {
+    map.choropleth(anychart.data.set(data).mapAs({'value': [name.toLowerCase()]}))
+            .name(name)
+            .colorScale(anychart.scales.linearColor(colors))
+            .stroke('#fafafa')
+            .legendItem({iconFill: color});
+}
+
+map.tooltip()
+        .useHtml(true)
+        .format(function () {
+            return '<span style="color: #d9d9d9">Christianity</span>: ' + this.getData('christianity') + '%<br/>' +
+                    '<span style="color: #d9d9d9">Islam</span>: ' + this.getData('islam') + '%<br/>' +
+                    '<span style="color: #d9d9d9">Traditional</span>: ' + this.getData('traditional') + '%';
+        });
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-projections/religion-in-africa-with-orthografic-projection/data.js
+createSeries('Traditional', getTraditionalData(), '#d81b60', ['#ec407a', '#880e4f']);
+createSeries('Christianity', getChristianityData(), '#1e88e5', ['#bbdefb', '#1565c0']);
+createSeries('Islam', getIslamData(), '#f9a825', ['#fff9c4', '#f57f17']);
+
+var label = map.label();
+label.offsetX($('#container').width() / 2 - 300)
+        .width(335)
+        .offsetY('61%')
+        .useHtml(true)
+        .fontSize(12)
+        .text(
+                '<span style="color: #212121; font-size:13px">Religion in Africa is multifaceted and has been<br/>' +
+                'a major influence on art, culture and philosophy.</span><br/><br/>' +
+                'Today, the continent\'s various populations and<br/>individuals are mostly adherents of Christianity, ' +
+                'Islam, and to a lesser extent Traditional African religion.<br/><br/>In Christian or Islamic communities, religious ' +
+                'beliefs<br/>are also sometimes characterized with syncretism with<br/>the beliefs and practices of traditional religions.'
+        );
+map.legend()
+        .enabled(true)
+        .padding([0, 0, 20, 0]);
+
+// set container id for the map
+map.container('container');
+// initiate map drawing
+map.draw();
+
+$(window).resize(function () {
+    label.offsetX($('#container').width() / 2 - 300);
+});
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/canada/canada.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Canada Map with Crosshair and Grids</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [];
+
+// data for the sample
+anychart.maps['canada'].features.filter(function (item) {
+    data.push(
+            {
+                id: item.properties.id,
+                name: item.properties.name
+            }
+    );
+});
+
+var min = 1900;
+var max = 2000;
+
+// create random data
+for (var i = 0; i < data.length; i++) {
+    data[i]['value'] = randomExt(min, max);
+}
+
+var dataSet = anychart.data.set(data);
+
+// create map
+var map = anychart.map();
+map.crs('august')
+        .geoData('anychart.maps.canada')
+        .padding([0, 25]);
+
+// enable grids
+map.grids()
+        .enabled(true)
+        .palette(['rgba(0,0,0,0.005)', 'rgba(0,0,0,0.05)']);
+
+// create map title
+map.title()
+        .enabled(true)
+        .padding({top: 35})
+        .text('Canada Map with Crosshair and Grids');
+
+map.scale()
+        // set xAxes ticks interval
+        .xTicks({interval: 15})
+        // set yAxes ticks interval
+        .yTicks({interval: 5})
+        // set drawing precision
+        .precision(1)
+        // set minimum and maximum lat/long
+        .minimumX(-145)
+        .maximumX(-45)
+        .minimumY(40)
+        .maximumY(84);
+
+// set crosshair settings
+var crosshair = map.crosshair()
+        .enabled(true)
+        .xStroke('1.3 #badb93')
+        .yStroke('1.3 #badb93');
+
+// format crosshair labels
+crosshair.yLabel()
+        .useHtml(true)
+        .format(function () {
+            return this.tickValue.toFixed(6) + '&deg;';
+        });
+crosshair.xLabel()
+        .useHtml(true)
+        .format(function () {
+            return this.tickValue.toFixed(6) + '&deg;';
+        });
+
+map.axes()
+        // enable axes
+        .enabled(true)
+        // hidden the first label in axes
+        .drawFirstLabel(false)
+        // hidden the last label in axes
+        .drawLastLabel(false);
+
+var series_data = dataSet.mapAs({'value': 'value'});
+
+var scale_color = anychart.scales.ordinalColor([
+    {from: 1900, to: 1930},
+    {from: 1930, to: 1950},
+    {from: 1950, to: 1970},
+    {greater: 1970}
+]);
+
+scale_color.colors(
+        ['#29b6f6', '#0277bd', '#01579b', '#014377']
+);
+
+// create series with mapped data and set settings
+map.choropleth(series_data)
+        .colorScale(scale_color);
+
+map.hovered().fill('#b8b5d9');
+
+// set container id for the chart
+map.container('container');
+// initiate chart drawing
+map.draw();
+
+function randomExt(a, b) {
+    return Math.round(Math.random() * (b - a + 1) + a);
+}
+    });
+        </script>
+    </body>
+</html>

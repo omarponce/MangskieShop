@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Multi-Series 3D Bar Chart with Z Distribution</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+var dataSet = anychart.data.set([
+    ['Nail polish', 6229, 4376, 4054, 2381],
+    ['Eyebrow pencil', 9332, 8987, 5067, 1401],
+    ['Lipstick', 9256, 7376, 5054, 981]
+]);
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
+
+// map data for the second series, take x from the zero column and value from the second column of data set
+var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+// map data for the third series, take x from the zero column and value from the third column of data set
+var seriesData_3 = dataSet.mapAs({'x': 0, 'value': 3});
+
+// map data for the fourth series, take x from the zero column and value from the fourth column of data set
+var seriesData_4 = dataSet.mapAs({'x': 0, 'value': 4});
+
+// create bar chart
+chart = anychart.bar3d();
+
+// turn on chart animation
+chart.animation(true);
+
+// set chart padding
+chart.padding([10, 40, 5, 20]);
+
+// set chart title text settings
+chart.title('Top 3 Products with Region Sales Data');
+
+// set scale minimum
+chart.yScale().minimum(0);
+
+chart.xAxis().labels()
+        .rotation(-90)
+        .padding([0, 0, 20, 0]);
+
+chart.yAxis().labels().format('${%Value}{groupsSeparator: }');
+
+// set titles for Y-axis
+chart.yAxis().title('Revenue in Dollars');
+
+// create first series with mapped data
+chart.bar(seriesData_1).name('Florida');
+
+// create second series with mapped data
+chart.bar(seriesData_2).name('Texas');
+
+// create third series with mapped data
+chart.bar(seriesData_3).name('Arizona');
+
+// create fourth series with mapped data
+chart.bar(seriesData_4).name('Nevada');
+
+// turn on legend
+chart.legend()
+        .enabled(true)
+        .fontSize(13)
+        .padding([0, 0, 20, 0]);
+
+chart.interactivity().hoverMode('single');
+
+// set tooltip settings
+chart.tooltip()
+        .positionMode('point')
+        .position('right')
+        .anchor('left-center')
+        .offsetX(5)
+        .offsetY(0)
+        .format('${%Value}');
+
+chart.zAspect('10%')
+        .zPadding(20)
+        .zAngle(45)
+        .zDistribution(true);
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

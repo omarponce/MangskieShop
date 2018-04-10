@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pyramid-funnel.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Sales Retail Channels</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// prepare data for the chart
+var data = [
+    {name: 'TV promotion', value: 6371664},
+    {name: 'Radio promotion', value: 7216301},
+    {name: 'Advertising leaflets', value: 1486621},
+    {name: 'Before advertising started', value: 1386622}
+];
+
+// create funnel chart
+chart = anychart.pyramid(data);
+
+// set chart margin
+chart.margin(10, '20%', 10, '20%');
+
+// set chart legend settings
+chart.legend()
+        .enabled(true)
+        .position('outside-right')
+        .itemsLayout('vertical')
+        .align('top');
+
+// set chart title
+chart.title('Number of customers after different AD campaigns');
+
+// set chart base width settings
+chart.baseWidth('70%');
+
+// set chart labels settings
+chart.labels()
+        .position('outside-right')
+        .format('{%Value}');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

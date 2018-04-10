@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-sparkline.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-table.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Area</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/sparkline-charts/area-chart/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/sparkline-charts/area-chart/data.json', function (data) {
+    // create line chart
+    var lineChart = anychart.line();
+
+    lineChart.title('Web Analytics for April 2015');
+    lineChart.xAxis()
+            .labels(false)
+            .ticks(false)
+            .stroke(null);
+
+    lineChart.crosshair()
+            .enabled(true)
+            .yStroke(false)
+            .yLabel(false);
+
+    lineChart.legend()
+            .enabled(true)
+            .title('Visits for months')
+            .inverted(true);
+
+    // create line series based on 'sessions' data
+    lineChart.line()
+            .name('Current Month')
+            .data(data['sessions']);
+
+    // create line series based on 'lastMonthSessions' data
+    lineChart.line()
+            .name('Last Month')
+            .data(data['lastMonthSessions']);
+
+    lineChart.tooltip().title('Visits');
+
+    // create table for sparkline charts layout
+    var sparklineTable = anychart.standalones.table();
+
+    // set content for sparklineTable
+    sparklineTable.contents([
+        ['Session Metrics', '30 Days', '4/10/2015', null, 'Traffic Metrics', '30 Days', '4/10/2015'],
+        ['Unique Sessions', createSparkLine(data['uniqueSessions']), sum(data['uniqueSessions']), null, 'Direct Traffic', createSparkLine(data['directTraffic']), 21],
+        ['Page Sessions', createSparkLine(data['pageSessions']), sum(data['pageSessions']), null, 'Referring Sites', createSparkLine(data['referringSites']), 19],
+        ['Page/Session', createSparkLine(data['pageToSession']), sum(data['pageToSession']), null, 'Search Engines', createSparkLine(data['searchEngine']), 19],
+        ['New Sessions', createSparkLine(data['newSessions']), sum(data['newSessions']), null, 'Goal Metrics', '30 Days', '4/10/2015'],
+        ['Bounce Rate', createSparkLine(data['bonusRate']), '27%', null, 'Goal 1', createSparkLine(data['goal1']), 18],
+        ['Avg. Time on Site', createSparkLine(data['avgTime']), sum(data['avgTime']) / 30 + 'ms', null, 'Goal 2', createSparkLine(data['goal2']), 17]
+    ]);
+    sparklineTable.hAlign('center')
+            .vAlign('middle')
+            .fontSize(11)
+            .cellBorder(null);
+
+    sparklineTable.getCol(0).hAlign('left');
+    sparklineTable.getCol(4).hAlign('left');
+    sparklineTable.getCol(2).width(70);
+    sparklineTable.getCol(6).width(70);
+    sparklineTable.getCol(3).width(30);
+
+    setupCell(sparklineTable.getRow(0));
+    setupCell(sparklineTable.getCell(4, 4));
+    setupCell(sparklineTable.getCell(4, 5));
+    setupCell(sparklineTable.getCell(4, 6));
+
+    sparklineTable.getCell(0, 3).border().bottom({'color': '#fff', 'thickness': 1});
+
+    // create table with four rows and three columns
+    // this table provides layout for the line chart and sparkline charts table
+    var layoutTable = anychart.standalones.table(4, 3);
+
+    // disable borders for all table cells
+    layoutTable.cellBorder(false);
+
+    // set table parameters
+    layoutTable.getCol(1).width('95%');
+    layoutTable.getRow(1).height(20);
+    layoutTable.getRow(0).minHeight(200);
+    layoutTable.getRow(2).maxHeight(250);
+    layoutTable.getRow(3).height(20);
+
+    // set content for the tables cells
+    layoutTable.getCell(0, 1).content(lineChart);
+    layoutTable.getCell(2, 1).content(sparklineTable);
+
+    // set container id for the table
+    layoutTable.container('container');
+    // draw the table and all elements it contains
+    // (you don't need to call the draw method for internal tables and charts)
+    layoutTable.draw();
+});
+    });
+
+    /**
+     * Helper function, setups header cell.
+     * @param {Cell.<anychart.standalones.table.cell>} Cell to setup
+     */
+    function setupCell(cell) {
+cell.vAlign('bottom');
+cell.fontColor('#545f69');
+cell.border().bottom({'color': '#EAEAEA', 'thickness': 1, 'dash': '1 1 1'});
+    }
+
+    /**
+     * Helper function, creates sparkline chart using anychart.sparkline method,
+     * sets passed data and visual preference.
+     * @param {Array.<number>} array Sparkline data.
+     * @return {anychart.charts.Sparkline} New sparkline chart with passed data.
+     */
+    function createSparkLine(array) {
+// create sparkline chart with passed data
+var sparkLine = anychart.sparkline(array);
+sparkLine.seriesType('area');
+// enable minimum point
+sparkLine.minMarkers().enabled(true);
+return sparkLine;
+    }
+
+    /**
+     * Calculate sum of values in passed Array.
+     * @param {Array.<number>} array List of numbers to calculate.
+     * @return {number} Calculation result.
+     */
+    function sum(array) {
+var summ = 0;
+for (var i = 0, count = array.length; i < count; i++) {
+    summ += array[i];
+}
+return summ
+    }
+        </script>
+    </body>
+</html>

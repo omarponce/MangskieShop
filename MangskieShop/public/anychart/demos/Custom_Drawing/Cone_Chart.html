@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Cone Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create column chart
+chart = anychart.column();
+
+var dataSet = anychart.data.set([
+    ['Eyeshadows', 16252],
+    ['Eyeliner', 8525],
+    ['Eyebrow pencil', 14151],
+    ['Nail polish', 10169],
+    ['Lipstick', 15198],
+    ['Lip gloss', 17489]
+]);
+
+// set chart title
+chart.title('Top 6 Products by Revenue');
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var seriesData_one = dataSet.mapAs({'x': 0, 'value': 1});
+
+// create first series with mapped data
+var series = chart.column(seriesData_one);
+series.name('Florida')
+        .color('pink');
+
+// get shapes
+var shapes = series.rendering().shapes();
+
+// set rendering settings
+series.rendering()
+        // set point function to drawing
+        .point(drawer)
+        // set update point function to drawing, change the point shape when the state changes
+        .updatePoint(drawer)
+        // set shapes
+        .shapes(shapes);
+
+// set titles for Y-axis
+chart.yAxis().title('Revenue in Dollars');
+// set minimum for y-scale
+chart.yScale().minimum(0);
+// set tooltip prefix
+chart.tooltip().valuePrefix('$');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+
+    function drawer() {
+// if missing (not correct data), then skipping this point drawing
+if (this.missing) {
+    return;
+}
+
+// get shapes group
+var shapes = this.shapes || this.getShapesGroup(this.pointState);
+// calculate the left value of the x-axis
+var leftX = this.x - this.pointWidth / 2;
+// calculate the right value of the x-axis
+var rightX = leftX + this.pointWidth;
+// calculate the half of point width
+var rx = this.pointWidth / 2;
+
+shapes.path
+        // resets all 'path' operations
+        .clear()
+        // draw cone
+        .moveTo(leftX, this.zero)
+        .lineTo(leftX + rx, this.value)
+        .lineTo(rightX, this.zero)
+        // set fill settings, gradient
+        .fill(['0 ' + anychart.color.darken(shapes.path.fill().color, 0.35),
+            '0.40 ' + anychart.color.darken(shapes.path.fill().color, 0.35),
+            '0.85 ' + anychart.color.lighten(shapes.path.fill().color, 0.35),
+            '1 ' + anychart.color.lighten(shapes.path.fill().color, 0.35)])
+        // set stroke settings
+        .stroke('1.5 ' + anychart.color.darken(shapes.path.fill().color, 0.5))
+        // close by connecting the last point with the first straight line
+        .close();
+    }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Range Spline-Area Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create area series with passed data
+var data = anychart.data.set([
+    {low: 25, high: 34, x: 'Jan'},
+    {low: 24, high: 35, x: 'Feb'},
+    {low: 32, high: 55, x: 'Mar'},
+    {low: 48, high: 68, x: 'Apr'},
+    {low: 59, high: 79, x: 'May'},
+    {low: 70, high: 89, x: 'June'},
+    {low: 81, high: 103, x: 'July'},
+    {low: 77, high: 90, x: 'Aug'},
+    {low: 63, high: 75, x: 'Sep'},
+    {low: 55, high: 63, x: 'Oct'},
+    {low: 42, high: 51, x: 'Nov'},
+    {low: 32, high: 35, x: 'Dec'}
+]);
+
+// create column chart
+chart = anychart.area();
+
+// set chart title text settings
+chart.title('Weather in New York in 2010 (?F)');
+
+// create series
+chart.rangeSplineArea(data);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

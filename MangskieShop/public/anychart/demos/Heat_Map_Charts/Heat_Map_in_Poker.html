@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-heatmap.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Heat Map in Poker</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/heat-map-charts/heat-map-in-poker/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/heat-map-charts/heat-map-in-poker/data.json', function (data) {
+    // create Heat Map Chart
+    chart = anychart.heatMap(data);
+
+    var colorScale = anychart.scales.ordinalColor();
+    // set color for all points
+    colorScale.ranges([
+        {less: 0.35, color: "#e3f2fd"},
+        {from: 0.35, to: 0.45, color: "#D3EDFC"},
+        {from: 0.45, to: 0.50, color: "#BEE7FC"},
+        {from: 0.50, to: 0.55, color: "#aee2fb"},
+        {from: 0.55, to: 0.60, color: "#B3B0D3"},
+        {from: 0.60, to: 0.65, color: "#B691BB"},
+        {from: 0.65, to: 0.70, color: "#B973A3"},
+        {from: 0.70, to: 0.75, color: "#BC558B"},
+        {from: 0.75, to: 0.80, color: "#BF3673"},
+        {greater: 0.80, color: "#c2185b"}
+    ]);
+    chart.colorScale(colorScale);
+
+    // Sets selection mode for single selection
+    chart.interactivity().selectionMode("none");
+
+    chart.padding([10, 20, 10, 20]);
+
+    // Sets title
+    chart.title()
+            .useHtml(true)
+            .enabled(true)
+            .padding([0, 0, 10, 5])
+            .align('left')
+            .text("Poker Spread Sheet <span style='font-size: 13px; color:#B9B9B9'>(Texas Hold'em)</span>");
+
+    // Sets chart labels
+    chart.labels()
+            .enabled(true)
+            .maxFontSize(14)
+            .format(function () {
+                return this.x + this.y + this.getData('symbol');
+            });
+
+    // Turns off axes
+    chart.yAxis(null)
+            .xAxis(null)
+            // Sets chart and hover chart settings
+            .stroke('#fff');
+    chart.hovered()
+            .stroke('6 #fff')
+            .fill('#545f69')
+            .labels({fontColor: '#fff'});
+
+    // Sets legend
+    chart.legend()
+            .enabled(true)
+            .align('top')
+            .position('right')
+            .itemsLayout('vertical')
+            .padding([2, 10, 0, 20]);
+
+    // Sets tooltip
+    chart.tooltip()
+            .titleFormat(function () {
+                var s = '';
+                if (this.getData('symbol') == 's') s = 'suited';
+                else if (this.getData('symbol') == 'u') s = 'unsuited';
+                return this.x + this.y + ' ' + s;
+            })
+            .format(function () {
+                return 'Win statistic: ' + this.heat;
+            });
+
+    chart.container('container');
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

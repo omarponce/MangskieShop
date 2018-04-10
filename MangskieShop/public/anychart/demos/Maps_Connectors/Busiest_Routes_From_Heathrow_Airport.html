@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/custom/world/world.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Busiest Routes From Heathrow Airport</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-connectors/busiest-routes-from-heathrow-airport/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-connectors/busiest-routes-from-heathrow-airport/data.json', function (data) {
+    // Creates map chart
+    var map = anychart.connector();
+
+    // Sets settings for map chart
+    map.padding([10, 10, 10, 10]);
+    map.unboundRegions()
+            .enabled(true)
+            .fill('#E1E1E1')
+            .stroke('#D2D2D2');
+    map.geoData('anychart.maps.world');
+    map.interactivity().selectionMode("none");
+
+    // Sets title for map chart and customizes it
+    map.title()
+            .enabled(true)
+            .padding([0, 0, 20, 0])
+            .useHtml(true).text('The Busiest Routes from Heathrow Airport (2014)<br/>' +
+            '<span style="color:#212121; font-size: 13px;">According to en.wikipedia.org/wiki/Heathrow_Airport</span>');
+
+    // Sets credits data
+    map.credits()
+            .enabled(true)
+            .url('https://en.wikipedia.org/wiki/Heathrow_Airport#Traffic_and_statistics')
+            .text('Data source: https://en.wikipedia.org/wiki/Heathrow_Airport')
+            .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+    // Creates connector series for destinations and customizes them
+    var connectorSeries = map.connector(data)
+            .startSize(0)
+            .endSize(0)
+            .stroke('0.5 #1976d2')
+            .curvature(0.3);
+
+    connectorSeries.hovered().stroke('1.5 #455a64');
+
+    connectorSeries.markers()
+            .position('100%')
+            .size(4)
+            .fill('#1976d2')
+            .stroke('2 #E1E1E1')
+            .type('circle');
+
+    connectorSeries.hovered().markers()
+            .position('100%')
+            .size(4)
+            .fill('#455a64')
+            .stroke('2 #455a64')
+            .type('circle');
+
+    // Customizes labels for the destination series
+    connectorSeries.labels()
+            .enabled(true)
+            .fontSize(10)
+            .offsetX(3)
+            .offsetY(3)
+            .position('100%')
+            .format('{%to}');
+
+    // Customizes labels on hover for the destination series
+    connectorSeries.hovered().labels()
+            .fontColor('#455a64')
+            .fontSize(11);
+
+    // Sets tooltip setting for the destination series
+    connectorSeries.tooltip().title(true);
+    connectorSeries.tooltip()
+            .padding([8, 13, 10, 13])
+            .separator(true)
+            .titleFormat('To {%to}');
+    connectorSeries.tooltip()
+            .useHtml(true)
+            .fontSize(13)
+            .format(function () {
+                return 'Passengers (2014): ' + anychart.format.number(this.getData('passengers'), {groupsSeparator: ','});
+            });
+
+    // create zoom controls
+    var zoomController = anychart.ui.zoom();
+    zoomController.render(map);
+
+    // Sets container id for the chart
+    map.container('container');
+
+    // Initiates chart drawing
+    map.draw();
+});
+    });
+        </script>
+    </body>
+</html>

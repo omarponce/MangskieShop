@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/united_states_of_america/united_states_of_america.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Rental Station Locator</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var stationsData = getData();
+
+var base_link = 'https://en.wikipedia.org/wiki/';
+
+// create map chart
+var map = anychart.map();
+
+map.unboundRegions()
+        .enabled(true)
+        .fill('#E1E1E1')
+        .stroke('#D2D2D2');
+
+//settings for map chart
+map.padding([10, 0, 10, 10])
+        .geoData('anychart.maps.united_states_of_america');
+map.interactivity().selectionMode("none");
+map.title()
+        .enabled(true)
+        .useHtml(true)
+        .padding([10, 0, 10, 0])
+        .text('ACME Rental Station Locator<br/>' +
+                '<span style="color:#929292; font-size: 12px;">' +
+                '(Number in a bubble - number of stations in a city)</span>');
+
+// create marker series for map chart
+mapSeries = map.marker(anychart.data.set(stationsData));
+
+// setting for marker series for map chart
+mapSeries.labels()
+        .enabled(true)
+        .position('center-top')
+        .anchor('center-top')
+        .offsetY(-12)
+        .hAlign('center')
+        .fontColor('#263238')
+        .fontWeight('bold')
+        .format(function () {
+            return this.getData('number') + "\n\n" + this.getData('name');
+        });
+
+mapSeries.size(15)
+        .geoIdField('code_hasc');
+
+mapSeries.hovered()
+        .size(20)
+        .stroke(mapSeries.stroke())
+        .fill(mapSeries.fill());
+
+// custom text in tooltips for marker series for map chart
+mapSeries.tooltip()
+        .useHtml(true)
+        .title(false)
+        .separator(false)
+        .format(function () {
+            return '<span style="color: #d9d9d9;"><span style="color: #fff;">' + this.getData('number') +
+                    '</span> stations in ' + this.getData('name') + '</span><br/>Click to see more';
+        });
+
+// onclick function for points - redirecting client (based on base_link variable)
+map.listen('pointClick', function (e) {
+    window.open(base_link + stationsData[e.pointIndex].name, '_blank')
+});
+
+// set container id for the chart
+map.container('container');
+
+// initiate chart drawing
+map.draw();
+    });
+
+    // data for the sample
+    function getData() {
+return [
+    {name: "New York", lat: '40.6643', long: '-73.9385', number: 12},
+    {name: "Seattle", lat: '47.6097', long: '-122.3331', number: 10},
+    {name: "Chicago", lat: '41.8376', long: '-87.6818', number: 9},
+    {name: "Houston", lat: '29.7805', long: '-95.3863', number: 8},
+    {name: "San Diego", lat: '32.711555', long: '-117.158701', number: 4}
+]
+    }
+        </script>
+    </body>
+</html>

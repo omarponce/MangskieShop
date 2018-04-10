@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Spline Polar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// generate data
+var cardData = [];
+var biDirData = [];
+var omniDirData = [];
+
+for (x = -180; x < 180; x++) {
+    cardData.push([x, -12.6 * (1 - Math.cos(x * 3.14 / 180))]);
+    omniDirData.push([x, -3]);
+}
+
+for (x = -180; x < -90; x++) {
+    biDirData.push([x, -26 * (1 + Math.cos(x * 3.14 / 180))]);
+}
+
+for (x = -90; x < 90; x++) {
+    biDirData.push([x, -26 * (1 - Math.cos(x * 3.14 / 180))]);
+}
+
+for (x = 90; x < 180; x++) {
+    biDirData.push([x, -26 * (1 + Math.cos(x * 3.14 / 180))]);
+}
+
+var dataSetCard = anychart.data.set(cardData);
+var dataSetBi = anychart.data.set(biDirData);
+var dataSetOmni = anychart.data.set(omniDirData);
+
+// create polar chart
+chart = anychart.polar();
+
+// set chart yScale settings
+chart.yScale().ticks().interval(5);
+chart.yScale()
+        .minimum(-25)
+        .maximum(0);
+chart.startAngle(-90);
+
+// set chart xScale settings
+chart.xScale()
+        .minimum(-180)
+        .maximum(180);
+chart.xScale().ticks().interval(30);
+
+// set xAxis formatting settings
+chart.xAxis().labels().format(function () {
+    return Math.abs(this['value']) + '?';
+});
+
+// turn off ticks
+chart.xAxis().ticks(false);
+
+// draw y-grid
+chart.yGrid(true);
+
+// set chart title
+chart.title('Microphone Types Polar Patterns');
+
+// turn legend on
+chart.legend()
+        .enabled(true)
+        .position('center-bottom');
+
+// create series line series
+var series1 = chart.line(dataSetCard);
+series1.name('Cardioid (unidirectional)')
+        .stroke({'dash': '5 5 2', 'thickness': 2})
+        .legendItem({iconStroke: {'dash': 0}});
+
+var series2 = chart.line(dataSetOmni);
+series2.name('Omnidirectional')
+        .stroke({'dash': '2', 'thickness': 2})
+        .legendItem({iconStroke: {'dash': 0}});
+
+var series3 = chart.line(dataSetBi);
+series3.name('Bidirectional')
+        .stroke({'thickness': 2});
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

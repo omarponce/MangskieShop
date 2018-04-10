@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Stacked Column and Stacked Area Chart Y Scale Sync</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+var dataSet = anychart.data.set([
+    ['P1', 100, 100, 100, 100],
+    ['P2', 200, 200, 200, 200],
+    ['P3', 325, 325, 325, 325],
+    ['P4', 566, 750, 422, 350],
+    ['P5', 754, 450, 378, 467],
+    ['P6', 485, 620, 300, 378],
+    ['P7', 937, 450, 225, 437],
+    ['P8', 1000, 550, 476, 607],
+    ['P9', 544, 378, 341, 467],
+    ['P10', 375, 375, 375, 375]
+]);
+
+// map data for the first series, take x from the zero column and value from the first column of data set
+var seriesData_1 = dataSet.mapAs({'x': 0, 'value': 1});
+// map data for the second series, take x from the zero column and value from the second column of data set
+var seriesData_2 = dataSet.mapAs({'x': 0, 'value': 2});
+// map data for the third series, take x from the zero column and value from the second column of data set
+var seriesData_3 = dataSet.mapAs({'x': 0, 'value': 3});
+// map data for the fourth series, take x from the zero column and value from the second column of data set
+var seriesData_4 = dataSet.mapAs({'x': 0, 'value': 4});
+
+chart = anychart.line();
+
+// set title
+chart.title('Stacked Column and Stacked Area Chart Y Scale Sync');
+// set stack mode
+chart.yScale().stackMode('value');
+
+// create column series
+chart.column()
+        .name('Column First')
+        .data(seriesData_1);
+
+// create column series
+chart.column()
+        .name('Column Second')
+        .data(seriesData_2);
+
+// create scale
+var scale = anychart.scales.linear();
+scale.stackMode('value');
+
+// create area series
+chart.area()
+        .name('Area First')
+        .data(seriesData_3)
+        // set y-scale
+        .yScale(scale);
+
+// create area series
+chart.area()
+        .name('Area Second')
+        .data(seriesData_4)
+        // set y-scale
+        .yScale(scale);
+
+var minValue = chart.getStat('yScalesMin');
+var maxValue = chart.getStat('yScalesMax');
+var yScales = chart.getYScales();
+
+// set minimum and maximum y-scale
+for (i = 0; i < yScales.length; i++) {
+    var yScale = yScales[i];
+    yScale.minimum(minValue);
+    yScale.maximum(maxValue);
+}
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

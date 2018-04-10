@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/countries/australia/australia.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>ACME corp. Offices Map</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// Creates data set
+var dataSet = anychart.data.set([
+    {'id': 'AU.NS', 'offices': 25, 'last_year': 7},
+    {'id': 'AU.NT', 'offices': 15, 'last_year': 4},
+    {'id': 'AU.WA', 'offices': 23, 'last_year': 9},
+    {'id': 'AU.SA', 'offices': 21, 'last_year': 15},
+    {'id': 'AU.VI', 'offices': 5, 'last_year': 3},
+    {'id': 'AU.QL', 'offices': 2, 'last_year': undefined},
+    {'id': 'AU.TS', 'offices': 9, 'last_year': 1}
+]);
+
+// Creates map chart
+var map = anychart.map();
+// Sets geodata using https://cdn.anychart.com/releases/8.0.1/geodata/countries/australia/australia.js
+map.geoData('anychart.maps.australia');
+// Sets Chart Title
+map.title()
+        .enabled(true)
+        .text('ACME corp. Offices by Australian Regions')
+        .padding([0, 0, 10, 0]);
+
+var data1 = dataSet.mapAs({'id': 'id', 'size': 'offices'});
+// Creates first bubble series
+var series1 = map.bubble(data1);
+series1.name('Amount of Offices in Region')
+        .legendItem({iconType: 'circle'})
+        // Sets series geo id field settings
+        .geoIdField('code_hasc');
+series1.hovered()
+        .fill(series1.fill())
+        .stroke(series1.stroke());
+series1.labels()
+        .anchor('left-top')
+        .position('right')
+        .fontSize(14)
+        .fontColor('#212121');
+
+var data2 = dataSet.mapAs({'id': 'id', 'size': 'last_year'});
+// Creates second bubble series
+var series2 = map.bubble(data2);
+series2.name('Were Opened in Last Year')
+        .labels(false)
+        .legendItem({iconType: 'circle'})
+        // Sets series geo id field settings
+        .geoIdField('code_hasc');
+series2.hovered()
+        .fill(series2.fill())
+        .stroke(series2.stroke());
+
+map.tooltip()
+        .useHtml(true)
+        .title({fontColor: '#7c868e'})
+        .padding([8, 13, 10, 13])
+        .format(function () {
+            var span_for_value = '<span style="color: #545f69; font-size: 12px; font-weight: bold">';
+            var span_for_description = '<br/><span style="color: #7c868e; font-size: 12px; font-style: italic">';
+            if (this.getData('last_year') > 0) {
+                return span_for_value + this.getData('offices') + ' offices</span></strong>'
+                        + span_for_description + this.getData('last_year') + ' opened in last year</span>';
+            } else {
+                return span_for_value + this.getData('offices') + ' offices</span></strong>';
+            }
+        });
+map.tooltip().background()
+        .enabled(true)
+        .fill('#fff')
+        .stroke('#c1c1c1')
+        .corners(3)
+        .cornerType('round');
+
+// Sets legend
+map.legend()
+        .enabled(true)
+        .position('center-top')
+        .align('center')
+        .itemsLayout('horizontal')
+        .padding(0, 0, 30, 0)
+        .paginator(false);
+map.interactivity().selectionMode('none');
+
+// Sets container id for the chart
+map.container('container');
+// Initiates chart drawing
+map.draw();
+    });
+        </script>
+    </body>
+</html>

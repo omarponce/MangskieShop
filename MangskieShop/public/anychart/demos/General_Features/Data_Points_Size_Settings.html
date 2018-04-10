@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Data Points Size Settings</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create cartesian chart
+chart = anychart.column();
+
+var data = [
+    ['Jan', 9.3],
+    ['Feb', 10.5],
+    ['Mar', 11.2],
+    ['Apr', 11.2],
+    ['May', 0],
+    ['Jun', 13.1],
+    ['Jul', 12.2],
+    ['Aug', 0],
+    ['Sep', 10.1],
+    ['Oct', 14.5],
+    ['Nov', 0],
+    ['Dec', 15.5]
+];
+
+// create column
+chart.column(data);
+
+// enabled x-axes
+chart.xAxis(true);
+
+// set min point length
+chart.minPointLength(25);
+
+// set union tooltip
+chart.tooltip()
+        .format('Plain: ${%Value}mln')
+        .positionMode('point');
+
+// set interactivity hover mode
+chart.interactivity().hoverMode('by-x');
+
+// set yAxis labels formatter
+chart.yAxis().labels().format('${%Value} mln');
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

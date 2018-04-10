@@ -1,0 +1,389 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Frog Column</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+chart = anychart.column();
+chart.title('Frog Column');
+
+chart.background().fill('#fff');
+
+series = chart.column([15, 17, 25, 14, 19, 10, 21]);
+series.hovered().fill('pink');
+series.selected().fill('#CDE5B2');
+series.tooltip()
+        .titleFormat(function () {
+            return 'Frog ' + ++this.index
+        })
+        .format('Value: {%Value}');
+
+// get shapes
+var shapes = series.rendering().shapes();
+
+// add 'rect-transparent' shape to shapes group
+shapes.push({
+    // shape name
+    'name': 'rect-transparent',
+    // shape type ('path', 'circle', 'ellipse' or 'rect')
+    'shapeType': 'path',
+    // ZIndex for the balance of shapes relative to each other
+    'zIndex': 1
+});
+
+// add 'hands' shape to shapes group
+shapes.push({
+    // shape name
+    'name': 'hands',
+    // shape type ('path', 'circle', 'ellipse' or 'rect')
+    'shapeType': 'path',
+    // set fill settings
+    'fillName': 'fill',
+    // set stroke settings
+    'strokeName': 'stroke',
+    // enabled hover/select state
+    'canBeHoveredSelected': true,
+    // ZIndex for the balance of shapes relative to each other
+    'zIndex': 2
+});
+
+// add 'eyes' shape to shapes group
+shapes.push({
+    // shape name
+    'name': 'eyes',
+    // shape type ('path', 'circle', 'ellipse' or 'rect')
+    'shapeType': 'path',
+    // set fill settings
+    'fillName': 'fill',
+    // set stroke settings
+    'strokeName': 'stroke',
+    // enabled hover/select state
+    'canBeHoveredSelected': true,
+    // ZIndex for the balance of shapes relative to each other
+    'zIndex': 2
+});
+
+// add 'pupils' shape to shapes group
+shapes.push({
+    // shape name
+    'name': 'pupils',
+    // shape type ('path', 'circle', 'ellipse' or 'rect')
+    'shapeType': 'path',
+    // set fill settings
+    'fillName': 'fill',
+    // set stroke settings
+    'strokeName': 'stroke',
+    // enabled hover/select state
+    'canBeHoveredSelected': true,
+    // ZIndex for the balance of shapes relative to each other
+    'zIndex': 2
+});
+
+chart.yScale().minimum(0);
+chart.yScale().ticks().interval(5);
+
+// set rendering settings
+series.rendering()
+        // set point function to drawing
+        .point(drawer)
+        // set update point function to drawing, change the point shape when the state changes
+        .updatePoint(drawer)
+        // set shapes
+        .shapes(shapes);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// listen point select
+chart.listen('pointsselect', function (e) {
+    if (!e.point.selected()) {
+        flag = true;
+    }
+});
+
+    });
+
+    var flag = true;
+    var gap = 10;
+    var deviationHandsFinal;
+    var deviationPupilsFinal;
+    var intervalFirst = null;
+    var intervalSecond = null;
+
+    function drawer() {
+// if missing (not correct data), then skipping this point drawing
+if (this.missing) {
+    return;
+}
+
+// get shapes group
+var shapes = this.shapes || this.getShapesGroup(this.pointState);
+// calculate the left value of the x-axis
+var leftX = this.x - this.pointWidth / 2;
+// calculate the right value of the x-axis
+var rightX = leftX + this.pointWidth;
+// calculate the half of point width
+var rx = this.pointWidth / 2;
+
+var deviationPupils = 1;
+var deviationHands = 1;
+var that = this;
+// calculate gap
+var gap = Math.floor(this.pointWidth / this.series.data().getRowsCount());
+
+if (gap > 10) {
+    gap = 10;
+}
+
+// if pointState > 0, then hover or select point state
+if (this.pointState > 0) {
+    shapes['path']
+    // resets all 'path' operations
+            .clear()
+            // draw column (body)
+            .moveTo(leftX, this.zero)
+            .lineTo(leftX, this.value + rx)
+            .lineTo(rightX, this.value + rx)
+            .lineTo(rightX, this.zero)
+            // close by connecting the last point with the first straight line
+            .close()
+
+            // draw circular arc (head)
+            .moveTo(leftX, this.value)
+            .circularArc(this.x, this.value + rx - gap, rx, rx, 180, 180)
+            // close by connecting the last point with the first straight line
+            .close();
+
+    shapes['rect-transparent']
+    // draw transparent rectangle (mouth)
+            .moveTo(leftX - 5, this.value + rx - 1)
+            .lineTo(leftX - 5, this.value - gap + rx + 1)
+            .lineTo(rightX + 5, this.value - gap + rx + 1)
+            .lineTo(rightX + 5, this.value + rx - 1)
+            .fill('#fff')
+            .stroke('#fff')
+            // close by connecting the last point with the first straight line
+            .close();
+
+    shapes['hands']
+    // resets all 'hands' operations
+            .clear()
+            .stroke('1 #546269')
+            // draw path hands
+            .moveTo(leftX - rx / 2, this.value + rx)
+            .lineTo(leftX, this.value + 2 * rx)
+            .circularArc(leftX - rx / 2, this.value + rx, rx / 5, rx / 5, -210, 180)
+            .fill('red')
+            // close by connecting the last point with the first straight line
+            .close()
+
+            // draw wrist
+            .moveTo(rightX + rx / 2, this.value + rx)
+            .lineTo(rightX, this.value + 2 * rx)
+            .circularArc(rightX + rx / 2, this.value + rx, rx / 5, rx / 5, 210, 180)
+            // close by connecting the last point with the first straight line
+            .close();
+
+    shapes['eyes']
+    // resets all 'eyes' operations
+            .clear()
+            // draw eyes
+            .moveTo(leftX, this.value + rx)
+            .circularArc(this.x - rx / 2, this.value + rx / 4 - gap, rx / 4, rx / 3, 360, 360)
+            .moveTo(rightX, this.value + rx)
+            .circularArc(this.x + rx / 2, this.value + rx / 4 - gap, rx / 4, rx / 3, 360, 360)
+            .stroke('#546269')
+            .fill('#fff');
+
+    // select point state
+    if (this.pointState === 2) {
+        if (!flag) {
+            shapes['pupils']
+            // resets all 'pupils' operations
+                    .clear()
+                    // draw pupils
+                    .moveTo(leftX, this.value + rx)
+                    .circularArc(this.x - rx / 2, this.value + rx / 4 - deviationPupilsFinal - gap / 2, rx / 6, rx / 6, 360, 360)
+                    .moveTo(rightX, that.value + rx)
+                    .circularArc(this.x + rx / 2, this.value + rx / 4 - deviationPupilsFinal - gap / 2, rx / 6, rx / 6, 360, 360)
+                    .fill('#DD3F2A')
+                    .stroke('1 #546269');
+            shapes['hands']
+            // resets all 'hands' operations
+                    .clear()
+                    // draw hands
+                    .moveTo(leftX - rx / 2 + deviationHandsFinal, this.value + rx - deviationHandsFinal)
+                    .lineTo(leftX, this.value + 2 * rx)
+                    .circularArc(leftX - rx / 2 + deviationHandsFinal, this.value + rx - deviationHandsFinal, rx / 5, rx / 5, -210 + deviationHandsFinal, 180)
+                    // close by connecting the last point with the first straight line
+                    .close()
+
+                    // draw wrist
+                    .moveTo(rightX + rx / 2 - deviationHandsFinal, this.value + rx - deviationHandsFinal)
+                    .lineTo(rightX, this.value + 2 * rx)
+                    .circularArc(rightX + rx / 2 - deviationHandsFinal, this.value + rx - deviationHandsFinal, rx / 5, rx / 5, 210 - deviationHandsFinal, 180)
+                    // close by connecting the last point with the first straight line
+                    .close();
+            return;
+        }
+
+        if (intervalFirst === null) {
+            intervalFirst = setInterval(function () {
+                deviationPupils += 1;
+                shapes['pupils']
+                // resets all 'pupils' operations
+                        .clear()
+                        // draw pupils
+                        .moveTo(leftX, that.value + rx)
+                        .circularArc(that.x - rx / 2, that.value + rx / 4 - deviationPupils - gap / 2, rx / 6, rx / 6, 360, 360)
+                        .moveTo(rightX, that.value + rx)
+                        .circularArc(that.x + rx / 2, that.value + rx / 4 - deviationPupils - gap / 2, rx / 6, rx / 6, 360, 360)
+                        .fill('#DD3F2A')
+                        .stroke('1 #546269');
+
+                if (deviationPupils >= rx / 5) {
+                    clearInterval(intervalFirst);
+                    intervalFirst = null;
+                    deviationPupilsFinal = deviationPupils;
+                    flag = false
+                }
+            }, 10);
+        }
+
+        if (intervalSecond === null) {
+            intervalSecond = setInterval(function () {
+                deviationHands += 1;
+                shapes['hands']
+                // resets all 'hands' operations
+                        .clear()
+                        //draw hands
+                        .moveTo(leftX - rx / 2 + deviationHands, that.value + rx - deviationHands)
+                        .lineTo(leftX, that.value + 2 * rx)
+                        .circularArc(leftX - rx / 2 + deviationHands, that.value + rx - deviationHands, rx / 5, rx / 5, -210 + deviationHands, 180)
+                        // close by connecting the last point with the first straight line
+                        .close()
+
+                        // draw wrist
+                        .moveTo(rightX + rx / 2 - deviationHands, that.value + rx - deviationHands)
+                        .lineTo(rightX, that.value + 2 * rx)
+                        .circularArc(rightX + rx / 2 - deviationHands, that.value + rx - deviationHands, rx / 5, rx / 5, 210 - deviationHands, 180)
+                        // close by connecting the last point with the first straight line
+                        .close();
+
+                if (deviationHands >= rx / 5) {
+                    clearInterval(intervalSecond);
+                    intervalSecond = null;
+                    deviationHandsFinal = deviationHands;
+                    flag = false
+                }
+            }, 10);
+        }
+    } else {
+        // hover point state
+        shapes['pupils']
+        // resets all 'pupils' operations
+                .clear()
+                // draw pupils
+                .moveTo(leftX, this.value + rx)
+                .circularArc(this.x - rx / 2, this.value + rx / 4 - gap / 2, rx / 6, rx / 6, 360, 360)
+                .moveTo(rightX, this.value + rx)
+                .circularArc(this.x + rx / 2, this.value + rx / 4 - gap / 2, rx / 6, rx / 6, 360, 360)
+                .stroke('1 #546269')
+                .fill('#DD3F2A');
+    }
+} else {
+    // pointState === 0, then normal point state
+    shapes['path']
+    // resets all 'path' operations
+            .clear()
+            // draw path (body)
+            .moveTo(leftX, this.zero)
+            .lineTo(leftX, this.value + rx)
+            .lineTo(rightX, this.value + rx)
+            .lineTo(rightX, this.zero)
+            // close by connecting the last point with the first straight line
+            .close()
+
+            // draw path (head)
+            .moveTo(leftX, this.value)
+            .circularArc(this.x, this.value + rx, rx, rx, 180, 180)
+            // close by connecting the last point with the first straight line
+            .close();
+
+    shapes['rect-transparent']
+    // resets all 'rect-transparent' operations
+            .clear();
+
+    shapes['hands']
+    // resets all 'hands' operations
+            .clear()
+            // draw hands
+            .stroke('1 #546269')
+            .moveTo(leftX, this.value + 2 * rx)
+            .lineTo(leftX - rx / 2, this.value + 3 * rx)
+            .circularArc(leftX - rx / 2, this.value + 3 * rx, rx / 5, rx / 5, 30, 180)
+            // close by connecting the last point with the first straight line
+            .close()
+
+            // draw wrist
+            .moveTo(rightX, this.value + 2 * rx)
+            .lineTo(rightX + rx / 2, this.value + 3 * rx)
+            .circularArc(rightX + rx / 2, this.value + 3 * rx, rx / 5, rx / 5, -30, 180)
+            .fill('blue 0.5')
+            // close by connecting the last point with the first straight line
+            .close();
+
+    shapes['eyes']
+    // resets all 'eyes' operations
+            .clear()
+            // draw eyes
+            .moveTo(leftX, this.value + rx)
+            .circularArc(this.x - rx / 2, this.value + rx / 4, rx / 4, rx / 3, 360, 360)
+            .moveTo(rightX, this.value + rx)
+            .circularArc(this.x + rx / 2, this.value + rx / 4, rx / 4, rx / 3, 360, 360)
+            .stroke('#546269')
+            .fill('#fff');
+
+    shapes['pupils']
+    // resets all 'pupils' operations
+            .clear()
+            // draw pupils
+            .moveTo(leftX, this.value + rx)
+            .circularArc(this.x - rx / 2, this.value + rx / 4, rx / 6, rx / 6, 360, 360)
+            .moveTo(rightX, this.value + rx)
+            .circularArc(this.x + rx / 2, this.value + rx / 4, rx / 6, rx / 6, 360, 360)
+            .fill('blue 0.5')
+            .stroke('1 #546269');
+}
+    }
+        </script>
+    </body>
+</html>

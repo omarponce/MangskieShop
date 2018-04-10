@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/sparkline-charts/line-chart/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-sparkline.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-table.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Line</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/sparkline-charts/line-chart/data.js
+// prepare the data for charts
+var argentina_nominal = getArgentinaNominalData();
+var australia_nominal = getAustraliaNominalData();
+var austria_nominal = getAustriaNominalData();
+var belgium_nominal = getBelgiumNominalData();
+var brazil_nominal = getBrazilNominalData();
+var bulgaria_nominal = getBulgariaNominalData();
+var canada_nominal = getCanadaNominalData();
+var chile_nominal = getChileNominalData();
+var china_nominal = getChinaNominalData();
+var croatia_nominal = getCroatiaNominalData();
+var czech_nominal = getCzechNominal();
+var denmark_nominal = getDenmarkNominalData();
+var estonia_nominal = getEstoniaNominalData();
+var euroarea_nominal = getEuroareaNominalData();
+var finland_nominal = getFinlandNominalData();
+var france_nominal = getFranceNominalData();
+var germany_nominal = getGermanyNominalData();
+var greece_nominal = getGreeceNominalData();
+
+var argentina_real = getArgentinaRealData();
+var australia_real = getAustraliaRealData();
+var austria_real = getAustriaRealData();
+var belgium_real = getBelgiumRealData();
+var brazil_real = getBrazilRealData();
+var bulgaria_real = getBulgariaRealData();
+var canada_real = getCanadaRealData();
+var chile_real = getChileRealData();
+var china_real = getChinaRealData();
+var croatia_real = getCroatiaRealData();
+var czech_real = getCzechRealData();
+var denmark_real = getDenmarkRealData();
+var estonia_real = getEstoniaRealData();
+var euroarea_real = getEuroareaRealData();
+var finland_real = getFinlandRealData();
+var france_real = getFranceRealData();
+var germany_real = getGermanyRealData();
+var greece_real = getGreeceRealData();
+
+// create table, this table provide layout for the sparkline charts
+var table = anychart.standalones.table();
+// set table size settings
+table.bounds('5%', '20px', '90%', '90%');
+// set table contents (sparkline charts and text)
+table.contents([
+    [null, 'Nominal Exchange Rate', null, null, 'Real Exchange Rate', null, null],
+    ['Country', 'Jan 94', '148 Months', 'Apr 06', 'Jan 94', '148 Months', 'Apr 06'],
+    ['Argentina', first(argentina_nominal), createSparkline(argentina_nominal).minMarkers(true).maxMarkers(true), last(argentina_nominal), first(argentina_real), createSparkline(argentina_real), last(argentina_real)],
+    ['Australia', first(australia_nominal), createSparkline(australia_nominal), last(australia_nominal), first(australia_real), createSparkline(australia_real), last(australia_real)],
+    ['Austria', first(austria_nominal), createSparkline(austria_nominal), last(austria_nominal), first(austria_real), createSparkline(austria_real), last(austria_real)],
+    ['Belgium', first(belgium_nominal), createSparkline(belgium_nominal), last(belgium_nominal), first(belgium_real), createSparkline(belgium_real), last(belgium_real)],
+    ['Brazil', first(brazil_nominal), createSparkline(brazil_nominal), last(brazil_nominal), first(brazil_real), createSparkline(brazil_real), last(brazil_real)],
+    ['Bulgaria', first(bulgaria_nominal), createSparkline(bulgaria_nominal), last(bulgaria_nominal), first(bulgaria_real), createSparkline(bulgaria_real), last(bulgaria_real)],
+    ['Canada', first(canada_nominal), createSparkline(canada_nominal), last(canada_nominal), first(canada_real), createSparkline(canada_real), last(canada_real)],
+    ['Chile', first(chile_nominal), createSparkline(chile_nominal), last(chile_nominal), first(chile_real), createSparkline(chile_real), last(chile_real)],
+    ['China', first(china_nominal), createSparkline(china_nominal), last(china_nominal), first(china_real), createSparkline(china_real), last(china_real)],
+    ['Croatia', first(croatia_nominal), createSparkline(croatia_nominal), last(croatia_nominal), first(croatia_real), createSparkline(croatia_real), last(croatia_real)],
+    ['Czech republic', first(czech_nominal), createSparkline(czech_nominal), last(czech_nominal), first(czech_real), createSparkline(czech_real), last(czech_real)],
+    ['Denmark', first(denmark_nominal), createSparkline(denmark_nominal), last(denmark_nominal), first(denmark_real), createSparkline(denmark_real), last(denmark_real)],
+    ['Estonia', first(estonia_nominal), createSparkline(estonia_nominal), last(estonia_nominal), first(estonia_real), createSparkline(estonia_real), last(estonia_real)],
+    ['Euro area', first(euroarea_nominal), createSparkline(euroarea_nominal), last(euroarea_nominal), first(euroarea_real), createSparkline(euroarea_real), last(euroarea_real)],
+    ['Finland', first(finland_nominal), createSparkline(finland_nominal), last(finland_nominal), first(finland_real), createSparkline(finland_real), last(finland_real)],
+    ['France', first(france_nominal), createSparkline(france_nominal), last(france_nominal), first(france_real), createSparkline(france_real), last(france_real)],
+    ['Germany', first(germany_nominal), createSparkline(germany_nominal), last(germany_nominal), first(germany_real), createSparkline(germany_real), last(germany_real)],
+    ['Greece', first(greece_nominal), createSparkline(greece_nominal), last(greece_nominal), first(greece_real), createSparkline(greece_real), last(greece_real)]
+]);
+
+// set of colors and fonts used in this demo
+var fontFamilyText = "'Verdana', Helvetica, Arial, sans-serif";
+var smallHeaderFontColor = '#212121';
+var contentFontColor = '#7c868e';
+var countryFontColor = '#7c868e';
+var borderColor = '#EAEAEA';
+
+// disable borders for all cells in the table
+table.cellBorder(null);
+// set dashed bottom border for all cells in the table
+table.cellBorder().bottom({'color': borderColor, 'thickness': 1, 'dash': '1 1 1'});
+
+// set text settings for all table cells
+table.vAlign('middle')
+        .fontFamily(fontFamilyText)
+        .hAlign('center')
+        .fontSize('11px');
+
+// set cells span
+table.getCell(0, 1).colSpan(3);
+table.getCell(0, 4).colSpan(3);
+
+// set fixed height for the first rows
+table.getRow(0).height(40);
+table.getRow(1).height(20);
+
+// set fixed width for some of the tables columns
+table.getCol(0).width(100);
+table.getCol(1).width(60);
+table.getCol(3).width(60);
+table.getCol(4).width(60);
+table.getCol(6).width(60);
+
+// set main header text and border settings
+var mainHeaderRow = table.getRow(0);
+mainHeaderRow.fontColor(contentFontColor)
+        .fontSize('14px')
+        .hAlign('center');
+mainHeaderRow.cellBorder().bottom('none');
+
+// set secondary header text and border settings
+var secondaryHeader = table.getRow(1);
+secondaryHeader
+        .fontColor(smallHeaderFontColor)
+        .fontSize('12px');
+secondaryHeader.cellBorder().bottom(borderColor);
+
+// set text settings for columns
+var firstColumn = table.getCol(0);
+firstColumn.fontColor(countryFontColor)
+        .hAlign('left');
+
+// set container id for the table
+table.container('container');
+// draw the table and all elements it contains
+//(you don't need to call the draw method for internal tables and charts)
+table.draw();
+    });
+
+    /**
+     * Helper function, creates sparkline chart with Line type using anychart.sparkline method,
+     * sets passed data and visual preference.
+     * @param {Array} array Sparkline data.
+     * @return {anychart.charts.Sparkline} New sparkline chart with passed data.
+     */
+    function createSparkline(array) {
+return anychart.sparkline()
+        .data(array)
+        .seriesType('line')
+        .padding(5)
+        .stroke('1.2 #64b5f6')
+        .maxMarkers(true)
+        .minMarkers(true);
+    }
+
+    /**
+     * Helper function, returns first value of array.
+     * @param {Array} array
+     * @return {number}
+     */
+    function first(array) {
+return array[0];
+    }
+
+    /**
+     * Helper function, returns last value of array.
+     * @param {Array} array
+     * @return {number}
+     */
+    function last(array) {
+return array[array.length - 1];
+    }
+        </script>
+    </body>
+</html>

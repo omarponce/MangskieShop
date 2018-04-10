@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pert.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Garage Construction PERT Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/pert-charts/garage-construction-pert-chart/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/pert-charts/garage-construction-pert-chart/data.json', function (data) {
+    // set filling method for tree
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create PERT chart
+    chart = anychart.pert();
+    // set data
+    chart.data(treeData)
+            // set spacing between milestones
+            .horizontalSpacing('13.37%')
+            // set padding for chart
+            .padding([25, 50, 0, 50]);
+
+    // get duration project
+    var duration = Math.round(chart.getStat('pertChartProjectDuration'));
+    // get deviation project
+    var deviation = Math.round(chart.getStat('pertChartCriticalPathStandardDeviation'));
+
+    // set title text
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .padding([0, 0, 35, 0])
+            .text(
+                    'Garage Construction PERT Chart' +
+                    '<br>' + 'Project duration: ' +
+                    duration + '&plusmn;' +
+                    deviation + ' days'
+            );
+
+    // set settings for tasks
+    var tasks = chart.tasks();
+    tasks.stroke('1.5 #93CBF9')
+            .dummyFill('#A0B1BA')
+            // set dummy settings for tasks
+            .dummyStroke('#60727B', 1.5, 10);
+    // format upper label tasks
+    tasks.upperLabels().format(function () {
+        return this.item.get('fullName');
+    });
+
+    // create tasks tooltip
+    var tasksTooltip = tasks.tooltip();
+    // tooltip settings
+    tasksTooltip.separator(true)
+            .titleFormat(function () {
+                // return fullName from data
+                return this.item.get('fullName');
+            });
+
+    // set settings for critical tasks
+    chart.criticalPath().tasks().stroke('1.5 #FF835C');
+
+    // english alphabet array
+    var alphabet = genCharArray('A', 'Z');
+
+    // set settings for milestones
+    var milestones = chart.milestones();
+    // set milestones item size
+    milestones.size('6.5%');
+    milestones.labels().format(function () {
+        return this['creator'] ? alphabet[--this.index] : this['isStart'] ? 'Start' : 'Finish';
+    });
+    milestones.tooltip()
+            .titleFormat(function () {
+                return 'Milestone - ' + alphabet[--this.index]
+            })
+            .format(defuaultMilesoneTooltipTextFormatter);
+
+    // set settings for critical milestones
+    var critMilestones = chart.criticalPath().milestones();
+    critMilestones.color('#F18126');
+    critMilestones.tooltip().titleFormat(function () {
+        return this['creator'] ? 'Milestone - ' + alphabet[--this.index] : this['isStart'] ? 'Milestone - Start' : 'Milestone - Finish';
+    });
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+
+    function genCharArray(charA, charZ) {
+var alphabetArr = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
+for (; i <= j; ++i) {
+    alphabetArr.push(String.fromCharCode(i));
+}
+return alphabetArr;
+    }
+
+    function defuaultMilesoneTooltipTextFormatter() {
+var result = '';
+var i = 0;
+if (this['successors'] && this['successors'].length) {
+    result += 'Successors:';
+    for (i = 0; i < this['successors'].length; i++) {
+        result += '\n - ' + this['successors'][i].get('fullName');
+    }
+    if (this['predecessors'] && this['predecessors'].length)
+        result += '\n\n';
+}
+if (this['predecessors'] && this['predecessors'].length) {
+    result += 'Predecessors:';
+    for (i = 0; i < this['predecessors'].length; i++) {
+        result += '\n - ' + this['predecessors'][i].get('fullName');
+    }
+}
+return result;
+    }
+        </script>
+    </body>
+</html>

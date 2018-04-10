@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/custom-drawing/custom-stacked-tooltip/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Custom Stacked Tooltip</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             chart;
+    anychart.onDocumentReady(function () {
+var stage = anychart.graphics.create('container');
+
+chart = anychart.column();
+chart.title('TV Shows Ad Revenue for Popular Channels');
+chart.title().margin().bottom(30);
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/custom-drawing/custom-stacked-tooltip/data.js
+chart.column(getHBOData()).name('HBO');
+chart.column(getABCData()).name('ABC');
+chart.column(getCBSData()).name('CBS');
+chart.column(getFOXData()).name('FOX');
+
+chart.yScale().stackMode('percent');
+
+chart.tooltip({displayMode: 'union', enabled: false});
+chart.legend({position: 'right', itemsLayout: 'vertical', align: 'top'});
+
+chart.container(stage).draw();
+
+// distance between right x coordinate of the point and left x coordinate of info bar
+var dx = 40;
+
+// distance to widen height of info bar (point top y coord minus dy and bot y coord plus dy)
+var dy = 20;
+
+var drawMiniStack = function (path, x, y, width, height) {
+    path
+            .moveTo(x, y)
+            .lineTo(x + width, y)
+            .lineTo(x + width, y + height)
+            .lineTo(x, y + height)
+            .lineTo(x, y)
+            .close();
+    return y + height;
+};
+
+var textOffsetX = 5;
+var textOffsetY = 5;
+var WIDTH_TOOLTIP = 150;
+
+var drawText = function (textElement, text, x, y, h) {
+    textElement
+            .htmlText(text)
+            .x(x + textOffsetX)
+            .y(y - textOffsetY)
+            .height(h)
+            .vAlign('middle')
+            .hAlign('center')
+            .width(WIDTH_TOOLTIP)
+            .visible(true);
+};
+
+var texts = [
+    chart.container().text().zIndex(110),
+    chart.container().text().zIndex(111),
+    chart.container().text().zIndex(112)
+];
+
+// create path and put it high over other elements.
+var path = chart.container().path()
+        .stroke('#c1c1c1')
+        .fill('#fff')
+        .zIndex(100);
+
+var connectorPath = chart.container().path()
+        .stroke('#cecece')
+        .fill(null)
+        .zIndex(101);
+
+var connectorRect = chart.container().path()
+        .stroke(null)
+        .fill('#fff')
+        .zIndex(100);
+
+chart.listen('pointshover', function (e) {
+    var i;
+    for (i = 0; i < texts.length; i++) {
+        texts[i].visible(false);
+    }
+    path.clear();
+    connectorPath.clear();
+    connectorRect.clear();
+    var point = e.point;
+    // do nothing if point is unhover
+    if (!point.hovered())
+        return true;
+
+    // fetch meta form point data.
+    var meta = point.get('meta');
+    // if there is no meta then nothing to do here :D
+    if (!meta)
+        return true;
+
+    var series = point.getSeries();
+
+    var pw = series.getPixelPointWidth();
+
+    var topY = series.transformY(point.getStackValue());
+    var botY = series.transformY(point.getStackZero());
+    var rightX = series.transformX(point.get('x'), 0.5) + pw / 2;
+    var leftX = rightX - pw;
+
+    var columnTopY = topY - dy;
+    var columnBotY = botY + dy;
+
+    var columnHeight = columnBotY - columnTopY;
+
+    var columnLeftX = rightX + dx;
+    var columnRightX = leftX - dx - WIDTH_TOOLTIP;
+
+    var values = meta.values;
+    var names = meta.names;
+    var sum = 0;
+
+    for (i = 0; i < values.length; sum += values[i++]);
+    var ratios = values.map(function (item) {
+        return item / sum;
+    });
+    var heights = ratios.map(function (item) {
+        return columnHeight * item;
+    });
+
+    var y = columnTopY;
+    var positionX;
+    var text;
+    for (i = 0; i < heights.length; i++) {
+        text = '<span style="font-size: 16px;font-weight: bold;color:#7c868e;">' +
+                Math.ceil(ratios[i].toFixed(2) * 100) + '%</span><br/>' +
+                '<span style="color:#212121;font-size:12px">"' + names[i] + '"</span>';
+
+        if (isRightPositionTooltip()) {
+            positionX = columnLeftX;
+        } else {
+            positionX = columnRightX;
+        }
+
+        drawText(texts[i], text, positionX, y, heights[i]);
+        y = drawMiniStack(path, positionX, y, WIDTH_TOOLTIP, heights[i])
+    }
+
+    if (isRightPositionTooltip()) {
+        createConnectorPath(rightX, columnLeftX);
+    } else {
+        createConnectorPath(leftX, columnRightX + WIDTH_TOOLTIP);
+    }
+
+    function createConnectorPath(x, columnX) {
+        connectorPath
+                .moveTo(x, topY)
+                .lineTo(columnX, columnTopY)
+                .close()
+                .moveTo(columnX, columnBotY)
+                .lineTo(x, botY)
+                .close();
+
+        connectorRect
+                .moveTo(x, topY)
+                .lineTo(columnX, columnTopY)
+                .lineTo(columnX, columnBotY)
+                .lineTo(x, botY)
+                .close()
+                .fill('#fff');
+    }
+
+    function isRightPositionTooltip() {
+        return stage.width() >= columnLeftX + WIDTH_TOOLTIP
+    }
+});
+    });
+        </script>
+    </body>
+</html>

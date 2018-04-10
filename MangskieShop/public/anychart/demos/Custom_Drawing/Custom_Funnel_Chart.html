@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Custom Funnel Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create bar chart
+chart = anychart.bar();
+
+var dataSet = anychart.data.set([
+    ['2015-12', 10350],
+    ['2015-11', 9233],
+    ['2015-10', 8610],
+    ['2015-09', 7875],
+    ['2015-08', 7571],
+    ['2015-07', 7266],
+    ['2015-06', 6599],
+    ['2015-05', 6256],
+    ['2015-04', 5808],
+    ['2015-03', 5623],
+    ['2015-02', 4898],
+    ['2015-01', 4482]
+]);
+
+// map data for the series
+var seriesData = dataSet.mapAs({'x': 0, 'value': 1});
+
+// get iterator
+var iterator = seriesData.getIterator();
+
+// creates palette
+var palette = anychart.palettes.rangeColors();
+palette.items(['#ff0400', '#0600ff'])
+        // get the number of rows in the view
+        .count(iterator.getRowsCount());
+
+// create series with mapped data
+var series = chart.bar(seriesData);
+// set settings for series labels
+series.labels()
+        .enabled(true)
+        .position('center')
+        .fontColor('#fff')
+        // set labels position formatter
+        .positionFormatter(function () {
+            return {
+                x: (series.getPixelBounds().width / 2) + series.getPixelBounds().left,
+                y: this.value.y
+            }
+        })
+        // format labels
+        .format(function () {
+            return Math.round(this.value * 100 / this.series.getPoint(0).getStat('value')) + '%'
+        });
+
+// set series fill
+series.fill(function () {
+    // get point fill by index
+    return palette.itemAt(this.index);
+});
+
+// disabled y-axis
+chart.yAxis(false);
+
+// set settings for x-axis
+chart.xAxis(0).title()
+        .enabled(true)
+        .padding({bottom: 15})
+        .text('Month')
+        .fontWeight(700);
+
+// set settings for an additional x-axis
+var xAxis = chart.xAxis(1);
+xAxis.orientation('right');
+xAxis.title()
+        .enabled(true)
+        .padding({bottom: 15})
+        .text('Order Count')
+        .fontWeight(700);
+// format x-axis labels
+xAxis.labels().format(function () {
+    return '$' + anychart.format.number(seriesData.get(this.index, 'value'), {groupsSeparator: ','})
+});
+
+// set tooltip format
+chart.tooltip().format(function () {
+    return 'Percent Value: ' + Math.round(this.value * 100 / this.series.getPoint(0).getStat('value')) + '%'
+});
+
+var shapes = series.rendering().shapes();
+
+// set rendering settings
+series.rendering()
+        // set point function to drawing
+        .point(drawer)
+        // set update point function to drawing, change the point shape when the state changes
+        .updatePoint(drawer)
+        // set shapes
+        .shapes(shapes);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+function drawer() {
+    // if missing (not correct data), then skipping this point drawing
+    if (this.missing) {
+        return;
+    }
+
+    // get shapes group
+    var shapes = this.shapes || this.getShapesGroup(this.pointState);
+    // get chart bounds
+    var bounds = series.getPixelBounds();
+    // calculate margin
+    var margin = (bounds.width - this.value) / 2;
+
+    var index;
+    var angleValue;
+
+    // reset iterator, because the drawer function is also used for other states of points (hover/select)
+    iterator.reset();
+    // advances iterator
+    iterator.advance();
+    // returns the index of the item to which iterator points to
+    index = iterator.getIndex();
+
+    // for other states of points (hover/select)
+    // find index of current point
+    while (this.value !== this.series.transformY(this.series.getPoint(index).getStat('value'))) {
+        index++;
+    }
+
+    // increase that would get the index of the next point
+    index++;
+
+    // if this is the last point, then the drawing angle will be 0
+    if (index < iterator.getRowsCount()) {
+        angleValue = (this.value - this.series.transformY(this.series.getPoint(index).getStat('value'))) / 2;
+    } else {
+        angleValue = 0;
+    }
+
+    // uncomment to turn off smoothed bars
+    // angleValue = 0;
+
+    // draw point
+    shapes.path
+            // resets all 'line' operations
+            .clear()
+            // set color stroke
+            .stroke('#fff')
+            // move to left bottom position of the point
+            .moveTo(this.zero + margin + angleValue, this.x + this.categoryWidth / 2)
+            // line to left top position of the point
+            .lineTo(this.zero + margin, this.x - this.categoryWidth / 2)
+            // line to right top position of the point
+            .lineTo(this.zero + margin + this.value, this.x - this.categoryWidth / 2)
+            // line to right bottom position of the point
+            .lineTo(this.zero + margin - angleValue + this.value, this.x + this.categoryWidth / 2)
+            // close by connecting the last point with the first straight line
+            .close();
+}
+    });
+        </script>
+    </body>
+</html>

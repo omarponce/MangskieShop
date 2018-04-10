@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Styling Timeline</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-general-features/styling-timeline/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-general-features/styling-timeline/data.json', function (data) {
+    // create data tree on raw data
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create project gantt chart
+    chart = anychart.ganttProject();
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // set the splitter position
+    chart.splitterPosition(200);
+
+    // setting common rows separation stroke
+    chart.rowStroke('#414554 0.6');
+
+    // styling the timeline
+    chart.getTimeline()
+            .rowEvenFill('#e4e5ea 0.5')
+            .rowOddFill('#fff')
+            .rowHoverFill('#f4e8ec')
+            .rowSelectedFill('#d1b8bf')
+            .columnStroke('#414554')
+            // making baseline bar display above an actual time's bar
+            .baselineAbove(true)
+            // styling timeline's elements
+            .baseFill('#6aabcc')
+            .baseStroke('#45738b')
+            .baselineFill('#cf9ead')
+            .baselineStroke('#6f5264')
+            .milestoneFill('#96246a 0.7')
+            .milestoneStroke('2 #96246a 1')
+            .parentFill('#938d9c 0.7')
+            .parentStroke('#938d9c')
+            .progressFill('#61687d 0.8')
+            .parentStroke('#61687d 1')
+            .connectorFill('#333')
+            .connectorStroke({
+                color: '#333',
+                dash: '3 2'
+            })
+            .selectedElementFill('#01579b')
+            .selectedElementStroke('#fff');
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+});
+    });
+        </script>
+    </body>
+</html>

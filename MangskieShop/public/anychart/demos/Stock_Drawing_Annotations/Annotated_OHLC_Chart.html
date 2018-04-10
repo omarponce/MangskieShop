@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/annotated/annotated-title.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Annotated OHLC Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/csv-data/orcl-daily-short-data(2011-2016).csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/csv-data/orcl-daily-short-data(2011-2016).csv', function (data) {
+
+    $('#container').append('<div class="container-title">' +
+            '<h1>Annotated OHLC Chart</h1>' +
+            '<p>See also <a href="' +
+            'https://www.anychart.com/products/' +
+            'anystock/drawing_tools/"' +
+            'target="_blank">Drawing Tools and ' +
+            'Annotations Demo</a></p>' + '</div>');
+
+    // create data table on loaded data
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    // map loaded data for the ohlc series
+    var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
+
+    // map loaded data for the scroller
+    var scrollerMapping = dataTable.mapAs();
+    scrollerMapping.addField('value', 5);
+
+    // create stock chart
+    chart = anychart.stock();
+    chart.padding([75, 50, 57, 50]);
+
+    // create plot on the chart
+    var plot = chart.plot();
+    plot.yGrid(true)
+            .yMinorGrid(true);
+
+    var series = plot.ohlc(mapping).name('CSCO');
+    series.legendItem().iconType('rising-falling');
+
+    // create annotation
+    var annotation = plot.annotations();
+    // create annotation line
+    annotation.line({
+        // X - part of the first anchor
+        xAnchor: '2011-01-02',
+        // Y - part of the first anchor
+        valueAnchor: 11.5,
+        // X - part of the second anchor
+        secondXAnchor: '2011-08-07',
+        // Y - part of the second anchor
+        secondValueAnchor: 9,
+        stroke: '2 #DD3F2A',
+        // set hover stroke settings
+        hovered: {
+            stroke: '2 #DD3F2A'
+        }
+    });
+    // create annotation horizontalLine
+    annotation.horizontalLine({
+        // X - part of the first anchor
+        xAnchor: '2011-01-02',
+        // Y - part of the first anchor
+        valueAnchor: 16,
+        // X - part of the second anchor
+        secondXAnchor: '2016-06-12',
+        // Y - part of the second anchor
+        secondValueAnchor: 16,
+        // set stroke settings
+        stroke: {
+            thickness: 2, color: '#60727B', dash: '10 15'
+        },
+        // set hover stroke settings
+        hovered: {
+            stroke: {
+                thickness: 2, color: '#60727B', dash: '10 15'
+            }
+        }
+    });
+    // create annotation trendChannel
+    annotation.trendChannel({
+        // X - part of the first anchor
+        xAnchor: '2011-08-07',
+        // Y - part of the first anchor
+        valueAnchor: 14,
+        // X - part of the second anchor
+        secondXAnchor: '2015-01-04',
+        // Y - part of the second anchor
+        secondValueAnchor: 24,
+        // X - part of the third anchor
+        thirdXAnchor: '2011-08-07',
+        // Y - part of the third anchor
+        thirdValueAnchor: 9,
+        // set stroke settings
+        stroke: '2 #6E9C4E',
+        // set fill settings
+        fill: '#6E9C4E 0.3',
+        // set hover fill/stroke settings
+        hovered: {
+            fill: '#6E9C4E 0.2',
+            stroke: '2 #6E9C4E'
+        }
+
+    });
+
+    // create scroller series with mapped data
+    chart.scroller().ohlc(mapping);
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+});
+    });
+        </script>
+    </body>
+</html>

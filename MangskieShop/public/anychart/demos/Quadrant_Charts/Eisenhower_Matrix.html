@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/quadrant-charts/eisenhower-matrix/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Eisenhower Matrix</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create quadrant chart
+chart = anychart.quadrant();
+// set chart padding
+chart.padding([10, 30, 30, 30]);
+
+// set chart title text settings
+chart.title('Eisenhower Matrix');
+
+// set legend settings
+chart.legend()
+        .enabled(true)
+        .padding([0, 0, 30, 0])
+        .margin(0);
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/quadrant-charts/eisenhower-matrix/data.js
+// create series with data
+var series1 = chart.marker(anychart.data.set(getFamilyBusinessData()).mapAs({
+    'x': 'urgent',
+    'value': 'important'
+}));
+series1.name('Family')
+        .stroke('2px #fff')
+        .type('circle')
+        .size(8)
+        .selectionMode('none')
+        .legendItem({iconType: 'circle'});
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/quadrant-charts/eisenhower-matrix/data.js
+var series2 = chart.marker(anychart.data.set(getWorkBusinessData()).mapAs({
+    'x': 'urgent',
+    'value': 'important'
+}));
+series2.name('Business')
+        .stroke('2px #fff')
+        .type('circle')
+        .size(8)
+        .selectionMode('none')
+        .legendItem({iconType: 'circle'});
+
+// set chart labels settings
+chart.labels()
+        .enabled(true)
+        .fontFamily('Arial')
+        .position('right')
+        .anchor('left-center')
+        .offsetX(8)
+        .offsetY(0)
+        .format('{%Name}');
+
+// set tooltip format
+chart.tooltip().format('{%Description}');
+
+// set quarters settings
+chart.quarters(
+        {
+            rightTop: {
+                fill: '#fff',
+                title: {
+                    useHtml: true,
+                    fontSize: 12,
+                    lineHeight: 1.2,
+                    text: 'Urgent and important<br><span style="color: #2d4053;">DO IMMEDIATELY</span>',
+                    background: {
+                        fill: '#ECECEC',
+                        stroke: anychart.color.darken('#ECECEC', 0.2)
+                    },
+                    fontColor: '#929292',
+                    padding: [5, 10]
+                }
+            },
+            rightBottom: {
+                title: {
+                    useHtml: true,
+                    fontSize: 12,
+                    lineHeight: 1.2,
+                    text: 'Urgent, not important<br><span style="color: #2d4053;">DELEGATE</span>',
+                    background: {
+                        fill: '#ECECEC',
+                        stroke: anychart.color.darken('#ECECEC', 0.2)
+                    },
+                    fontColor: '#929292',
+                    padding: [5, 10]
+                }
+            },
+            leftTop: {
+                title: {
+                    useHtml: true,
+                    fontSize: 12,
+                    lineHeight: 1.2,
+                    text: 'Important, but not urgent<br><span style="color: #2d4053;">DECIDE WHEN WILL DO</span>',
+                    background: {
+                        fill: '#ECECEC',
+                        stroke: anychart.color.darken('#ECECEC', 0.2)
+                    },
+                    fontColor: '#929292',
+                    padding: [5, 10]
+                }
+            },
+            leftBottom: {
+                fill: '#fff',
+                title: {
+                    useHtml: true,
+                    fontSize: 12,
+                    lineHeight: 1.2,
+                    text: 'Not important, not urgent<br><span style="color: #2d4053;">DO LATER</span>',
+                    background: {
+                        fill: '#ECECEC',
+                        stroke: anychart.color.darken('#ECECEC', 0.2)
+                    },
+                    fontColor: '#929292',
+                    padding: [5, 10]
+                }
+            }
+        }
+);
+
+// set chart container id
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,2293 @@
+<!doctype html>
+<html>
+<head>
+    <title>Legend | AnyChart Documentation ver. 8.1.0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="../deps/i/anychart.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="../deps/main.css" />
+    <link rel="stylesheet" href="../deps/fonts/2.7.0/anychart.css" />
+    <link rel="apple-touch-icon" sizes="57x57" href="../deps/icons/57.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../deps/icons/76.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../deps/icons/120.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../deps/icons/152.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="../deps/icons/167.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../deps/icons/180.png" />
+    <script id="anychart_script" src="../deps/https___cdn_anychart_com_js_8_1_0_anychart-bundle_min_js.js" async="async"></script>
+</head>
+<body>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-22 col-lg-offset-1">
+                <a class="sidebar-switcher hidden-md hidden-lg"><i class="ac ac-bars"></i></a>
+                <a class="navbar-brand" href="http://anychart.com/" style="display: block;">
+                    <img src="../deps/i/logo-empty.png" width="300" height="72" alt="AnyChart" />
+                    <span class="chart-row" style="display: block;">
+                        <span class="chart-col green"></span>
+                        <span class="chart-col orange"></span>
+                        <span class="chart-col red"></span>
+                    </span>
+                </a>
+
+                <a class="brand hidden-super-small"> Documentation</a>
+
+                <div class="pull-right helpers  hidden-xs">
+                    <div class="btn-group">
+                        <!--<button type="button" class="btn btn-default btn-blue dropdown-toggle" data-toggle="dropdown">-->
+                        <!--Version 8.1.0 <span class="caret"></span></button>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                        <!---->
+                        <!--<li><a href="/8.1.0/Common_Settings/Legend">Version 8.1.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/8.0.1/Common_Settings/Legend">Version 8.0.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/8.0.0/Common_Settings/Legend">Version 8.0.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.4/Common_Settings/Legend">Version 7.14.4</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.3/Common_Settings/Legend">Version 7.14.3</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.14.0/Common_Settings/Legend">Version 7.14.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.13.1/Common_Settings/Legend">Version 7.13.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.13.0/Common_Settings/Legend">Version 7.13.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.12.0/Common_Settings/Legend">Version 7.12.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.11.1/Common_Settings/Legend">Version 7.11.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.11.0/Common_Settings/Legend">Version 7.11.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.10.1/Common_Settings/Legend">Version 7.10.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.10.0/Common_Settings/Legend">Version 7.10.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.9.1/Common_Settings/Legend">Version 7.9.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.9.0/Common_Settings/Legend">Version 7.9.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.8.0/Common_Settings/Legend">Version 7.8.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.7.0/Common_Settings/Legend">Version 7.7.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.6.0/Common_Settings/Legend">Version 7.6.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.5.1/Common_Settings/Legend">Version 7.5.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.5.0/Common_Settings/Legend">Version 7.5.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.4.1/Common_Settings/Legend">Version 7.4.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.4.0/Common_Settings/Legend">Version 7.4.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.3.1/Common_Settings/Legend">Version 7.3.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.3.0/Common_Settings/Legend">Version 7.3.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.2.0/Common_Settings/Legend">Version 7.2.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.1.1/Common_Settings/Legend">Version 7.1.1</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.1.0/Common_Settings/Legend">Version 7.1.0</a></li>-->
+                        <!---->
+                        <!--<li><a href="/7.0.0/Common_Settings/Legend">Version 7.0.0</a></li>-->
+                        <!---->
+                        <!--</ul>-->
+                        <span style="color: white; line-height: 30px;">Version 8.1.0</span>
+                    </div>
+                    <div class="text-muted questions">
+                        <a href="http://support.anychart.com/" class="text-support">
+                            <i class="ac ac-support"></i>
+                        </a>
+                        <span class="hidden-super-small">
+                            Still have questions?<br />
+                            <a href="http://anychart.com/support/"> Contact support</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="shadow" class=""></div>
+<div id="bar" class="">
+    <div class="helpers visible-xs bordered">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-blue dropdown-toggle" data-toggle="dropdown">Version
+                8.1.0 <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu">
+                
+                <li><a href="/8.1.0/Common_Settings/Legend">Version 8.1.0</a></li>
+                
+                <li><a href="/8.0.1/Common_Settings/Legend">Version 8.0.1</a></li>
+                
+                <li><a href="/8.0.0/Common_Settings/Legend">Version 8.0.0</a></li>
+                
+                <li><a href="/7.14.4/Common_Settings/Legend">Version 7.14.4</a></li>
+                
+                <li><a href="/7.14.3/Common_Settings/Legend">Version 7.14.3</a></li>
+                
+                <li><a href="/7.14.0/Common_Settings/Legend">Version 7.14.0</a></li>
+                
+                <li><a href="/7.13.1/Common_Settings/Legend">Version 7.13.1</a></li>
+                
+                <li><a href="/7.13.0/Common_Settings/Legend">Version 7.13.0</a></li>
+                
+                <li><a href="/7.12.0/Common_Settings/Legend">Version 7.12.0</a></li>
+                
+                <li><a href="/7.11.1/Common_Settings/Legend">Version 7.11.1</a></li>
+                
+                <li><a href="/7.11.0/Common_Settings/Legend">Version 7.11.0</a></li>
+                
+                <li><a href="/7.10.1/Common_Settings/Legend">Version 7.10.1</a></li>
+                
+                <li><a href="/7.10.0/Common_Settings/Legend">Version 7.10.0</a></li>
+                
+                <li><a href="/7.9.1/Common_Settings/Legend">Version 7.9.1</a></li>
+                
+                <li><a href="/7.9.0/Common_Settings/Legend">Version 7.9.0</a></li>
+                
+                <li><a href="/7.8.0/Common_Settings/Legend">Version 7.8.0</a></li>
+                
+                <li><a href="/7.7.0/Common_Settings/Legend">Version 7.7.0</a></li>
+                
+                <li><a href="/7.6.0/Common_Settings/Legend">Version 7.6.0</a></li>
+                
+                <li><a href="/7.5.1/Common_Settings/Legend">Version 7.5.1</a></li>
+                
+                <li><a href="/7.5.0/Common_Settings/Legend">Version 7.5.0</a></li>
+                
+                <li><a href="/7.4.1/Common_Settings/Legend">Version 7.4.1</a></li>
+                
+                <li><a href="/7.4.0/Common_Settings/Legend">Version 7.4.0</a></li>
+                
+                <li><a href="/7.3.1/Common_Settings/Legend">Version 7.3.1</a></li>
+                
+                <li><a href="/7.3.0/Common_Settings/Legend">Version 7.3.0</a></li>
+                
+                <li><a href="/7.2.0/Common_Settings/Legend">Version 7.2.0</a></li>
+                
+                <li><a href="/7.1.1/Common_Settings/Legend">Version 7.1.1</a></li>
+                
+                <li><a href="/7.1.0/Common_Settings/Legend">Version 7.1.0</a></li>
+                
+                <li><a href="/7.0.0/Common_Settings/Legend">Version 7.0.0</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="text-muted questions">
+            <a href="http://support.anychart.com/" class="text-support"><i class="icon icon-ring icon-data"></i></a>
+            <span class="hidden-super-small"> Still have questions?<br /> <a href="http://anychart.com/support/"> Contact
+                support</a></span>
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li><a href="../Quick_Start.html"><i class="ac ac-folder"></i> Quick Start</a><ul><li> <a href="../Quick_Start/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Quick_Start/Downloading_AnyChart.html"><i class="ac ac-file-text"></i> Downloading AnyChart</a></li><li> <a href="../Quick_Start/Supported_Charts_Types.html"><i class="ac ac-file-text"></i> Supported Charts Types</a></li><li> <a href="../Quick_Start/Credits.html"><i class="ac ac-file-text"></i> Credits</a></li><li> <a href="../Quick_Start/Modules.html"><i class="ac ac-file-text"></i> Modules</a></li></ul></li><li><a href="../Working_with_Data.html"><i class="ac ac-folder"></i> Working with Data</a><ul><li> <a href="../Working_with_Data/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Working_with_Data/Supported_Data_Formats.html"><i class="ac ac-file-text"></i> Supported Data Formats</a></li><li> <a href="../Working_with_Data/Using_Data_Sets.html"><i class="ac ac-file-text"></i> Using Data Sets</a></li><li> <a href="../Working_with_Data/Data_Manipulation.html"><i class="ac ac-file-text"></i> Data Manipulation</a></li><li> <a href="../Working_with_Data/Series_Manipulation.html"><i class="ac ac-file-text"></i> Series Manipulation</a></li><li> <a href="../Working_with_Data/Using_Data_Tree_Model.html"><i class="ac ac-file-text"></i> Using Data Tree Model</a></li><li> <a href="../Working_with_Data/Using_Table_Data_Model.html"><i class="ac ac-file-text"></i> Using Table Data Model</a></li><li> <a href="../Working_with_Data/Data_From_JSON.html"><i class="ac ac-file-text"></i> Data From JSON</a></li><li> <a href="../Working_with_Data/Data_From_XML.html"><i class="ac ac-file-text"></i> Data From XML</a></li><li> <a href="../Working_with_Data/Data_From_CSV.html"><i class="ac ac-file-text"></i> Data From CSV</a></li><li> <a href="../Working_with_Data/Settings_from_Data.html"><i class="ac ac-file-text"></i> Settings from Data</a></li><li> <a href="../Working_with_Data/No_Data_Label.html"><i class="ac ac-file-text"></i> No Data Label</a></li><li><a href="../Working_with_Data/Data_Adapter.html"><i class="ac ac-folder"></i> Data Adapter</a><ul><li> <a href="../Working_with_Data/Data_Adapter/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Working_with_Data/Data_Adapter/Parsing_HTML_Table.html"><i class="ac ac-file-text"></i> Parsing HTML Table</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_CSV_File.html"><i class="ac ac-file-text"></i> Loading CSV File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_JSON_File.html"><i class="ac ac-file-text"></i> Loading JSON File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_XML_File.html"><i class="ac ac-file-text"></i> Loading XML File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_Google_Spreadsheet.html"><i class="ac ac-file-text"></i> Loading Google Spreadsheet</a></li></ul></li></ul></li><li><a href="../Basic_Charts.html"><i class="ac ac-folder"></i> Basic Charts</a><ul><li> <a href="../Basic_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../Basic_Charts/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../Basic_Charts/Combining_Series.html"><i class="ac ac-file-text"></i> Combining Series</a></li><li> <a href="../Basic_Charts/Custom_Drawing.html"><i class="ac ac-file-text"></i> Custom Drawing</a></li><li> <a href="../Basic_Charts/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../Basic_Charts/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Bullet_Chart.html"><i class="ac ac-file-text"></i> Bullet Chart</a></li><li> <a href="../Basic_Charts/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li><a href="../Basic_Charts/Error_Chart.html"><i class="ac ac-folder"></i> Error Chart</a><ul><li> <a href="../Basic_Charts/Error_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Error_Chart/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Scatter_Line_Chart.html"><i class="ac ac-file-text"></i> Scatter Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Scatter_Marker_Chart.html"><i class="ac ac-file-text"></i> Scatter Marker Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../Basic_Charts/Funnel_Chart.html"><i class="ac ac-file-text"></i> Funnel Chart</a></li><li> <a href="../Basic_Charts/Heat_Map_Chart.html"><i class="ac ac-file-text"></i> Heat Map Chart</a></li><li> <a href="../Basic_Charts/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../Basic_Charts/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../Basic_Charts/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li><a href="../Basic_Charts/Marimekko_Chart.html"><i class="ac ac-folder"></i> Marimekko Chart</a><ul><li> <a href="../Basic_Charts/Marimekko_Chart/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../Basic_Charts/Marimekko_Chart/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../Basic_Charts/Marimekko_Chart/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li></ul></li><li> <a href="../Basic_Charts/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../Basic_Charts/Pareto_Chart.html"><i class="ac ac-file-text"></i> Pareto Chart</a></li><li> <a href="../Basic_Charts/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li><a href="../Basic_Charts/Polar_Plot.html"><i class="ac ac-folder"></i> Polar Plot</a><ul><li> <a href="../Basic_Charts/Polar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Polar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Polygon_Chart.html"><i class="ac ac-file-text"></i> Polygon Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Polyline_Chart.html"><i class="ac ac-file-text"></i> Polyline Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li></ul></li><li> <a href="../Basic_Charts/Pyramid_Chart.html"><i class="ac ac-file-text"></i> Pyramid Chart</a></li><li> <a href="../Basic_Charts/Quadrant_Chart.html"><i class="ac ac-file-text"></i> Quadrant Chart</a></li><li><a href="../Basic_Charts/Radar_Plot.html"><i class="ac ac-folder"></i> Radar Plot</a><ul><li> <a href="../Basic_Charts/Radar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Radar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Radar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Radar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../Basic_Charts/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../Basic_Charts/Range_Bar_Chart.html"><i class="ac ac-file-text"></i> Range Bar Chart</a></li><li> <a href="../Basic_Charts/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li><li> <a href="../Basic_Charts/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../Basic_Charts/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li><a href="../Basic_Charts/Scatter_Plot.html"><i class="ac ac-folder"></i> Scatter Plot</a><ul><li> <a href="../Basic_Charts/Scatter_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../Basic_Charts/Sparkline_Chart.html"><i class="ac ac-file-text"></i> Sparkline Chart</a></li><li> <a href="../Basic_Charts/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li><a href="../Basic_Charts/Stacked.html"><i class="ac ac-folder"></i> Stacked</a><ul><li> <a href="../Basic_Charts/Stacked/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li><a href="../Basic_Charts/Stacked/Percent.html"><i class="ac ac-folder"></i> Percent</a><ul><li> <a href="../Basic_Charts/Stacked/Percent/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li><li><a href="../Basic_Charts/Stacked/Value.html"><i class="ac ac-folder"></i> Value</a><ul><li> <a href="../Basic_Charts/Stacked/Value/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li></ul></li><li> <a href="../Basic_Charts/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Tag_Cloud.html"><i class="ac ac-file-text"></i> Tag Cloud</a></li><li> <a href="../Basic_Charts/Treemap_Chart.html"><i class="ac ac-file-text"></i> Treemap Chart</a></li><li> <a href="../Basic_Charts/Venn_Diagram.html"><i class="ac ac-file-text"></i> Venn Diagram</a></li><li><a href="../Basic_Charts/Vertical.html"><i class="ac ac-folder"></i> Vertical</a><ul><li> <a href="../Basic_Charts/Vertical/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Vertical/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../Basic_Charts/Vertical/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../Basic_Charts/Vertical/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Vertical/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../Basic_Charts/Vertical/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../Basic_Charts/Vertical/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Vertical/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../Basic_Charts/Vertical/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li><li> <a href="../Basic_Charts/Vertical/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../Basic_Charts/Vertical/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../Basic_Charts/Waterfall_Chart.html"><i class="ac ac-file-text"></i> Waterfall Chart</a></li><li><a href="../Basic_Charts/3D.html"><i class="ac ac-folder"></i> 3D</a><ul><li> <a href="../Basic_Charts/3D/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/3D/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/3D/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/3D/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/3D/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li> <a href="../Basic_Charts/3D/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li> <a href="../Basic_Charts/3D/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/3D/2D_Line_Chart.html"><i class="ac ac-file-text"></i> 2D Line Chart</a></li></ul></li></ul></li><li><a href="../Gantt_Chart.html"><i class="ac ac-folder"></i> Gantt Chart</a><ul><li> <a href="../Gantt_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Gantt_Chart/Data_from_JSON,_XML,_CSV.html"><i class="ac ac-file-text"></i> Data from JSON, XML, CSV</a></li><li> <a href="../Gantt_Chart/DataGrid_Column_Presets.html"><i class="ac ac-file-text"></i> DataGrid Column Presets</a></li><li> <a href="../Gantt_Chart/DataGrid.html"><i class="ac ac-file-text"></i> DataGrid</a></li><li> <a href="../Gantt_Chart/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../Gantt_Chart/Gantt_Interactivity.html"><i class="ac ac-file-text"></i> Gantt Interactivity</a></li><li> <a href="../Gantt_Chart/Live_Edit_UI_and_API.html"><i class="ac ac-file-text"></i> Live Edit UI and API</a></li><li> <a href="../Gantt_Chart/Markers_(Multiple_Milestones).html"><i class="ac ac-file-text"></i> Markers (Multiple Milestones)</a></li><li> <a href="../Gantt_Chart/Project_Chart.html"><i class="ac ac-file-text"></i> Project Chart</a></li><li> <a href="../Gantt_Chart/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li><li> <a href="../Gantt_Chart/Timeline.html"><i class="ac ac-file-text"></i> Timeline</a></li></ul></li><li><a href="../PERT_Chart.html"><i class="ac ac-folder"></i> PERT Chart</a><ul><li> <a href="../PERT_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../PERT_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../PERT_Chart/Terminology.html"><i class="ac ac-file-text"></i> Terminology</a></li><li> <a href="../PERT_Chart/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../PERT_Chart/Pert_Chart.html"><i class="ac ac-file-text"></i> Pert Chart</a></li></ul></li><li><a href="../Axes_and_Grids.html"><i class="ac ac-folder"></i> Axes and Grids</a><ul><li> <a href="../Axes_and_Grids/Axis_Basics.html"><i class="ac ac-file-text"></i> Axis Basics</a></li><li> <a href="../Axes_and_Grids/Axis_Orientation.html"><i class="ac ac-file-text"></i> Axis Orientation</a></li><li> <a href="../Axes_and_Grids/Axes_Labels_Formatting.html"><i class="ac ac-file-text"></i> Axes Labels Formatting</a></li><li> <a href="../Axes_and_Grids/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../Axes_and_Grids/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Axes_and_Grids/Date_Time_Axes.html"><i class="ac ac-file-text"></i> Date Time Axes</a></li><li> <a href="../Axes_and_Grids/Line_Markers.html"><i class="ac ac-file-text"></i> Line Markers</a></li><li> <a href="../Axes_and_Grids/Range_Markers.html"><i class="ac ac-file-text"></i> Range Markers</a></li><li> <a href="../Axes_and_Grids/Text_Markers.html"><i class="ac ac-file-text"></i> Text Markers</a></li><li> <a href="../Axes_and_Grids/Additional_Axes.html"><i class="ac ac-file-text"></i> Additional Axes</a></li></ul></li><li><a href="../Appearance_Settings.html"><i class="ac ac-folder"></i> Appearance Settings</a><ul><li> <a href="../Appearance_Settings/Background.html"><i class="ac ac-file-text"></i> Background</a></li><li> <a href="../Appearance_Settings/Color_Management.html"><i class="ac ac-file-text"></i> Color Management</a></li><li> <a href="../Appearance_Settings/Colors_Table.html"><i class="ac ac-file-text"></i> Colors Table</a></li><li> <a href="../Appearance_Settings/Lines_Settings.html"><i class="ac ac-file-text"></i> Lines Settings</a></li><li> <a href="../Appearance_Settings/Palettes.html"><i class="ac ac-file-text"></i> Palettes</a></li><li> <a href="../Appearance_Settings/Text_Settings.html"><i class="ac ac-file-text"></i> Text Settings</a></li><li> <a href="../Appearance_Settings/Themes.html"><i class="ac ac-file-text"></i> Themes</a></li></ul></li><li><a href="../Common_Settings.html"><i class="ac ac-folder"></i> Common Settings</a><ul><li> <a href="../Common_Settings/ASYNC_Rendering.html"><i class="ac ac-file-text"></i> ASYNC Rendering</a></li><li> <a href="../Common_Settings/Exports.html"><i class="ac ac-file-text"></i> Exports</a></li><li> <a href="../Common_Settings/Printing.html"><i class="ac ac-file-text"></i> Printing</a></li><li> <a href="../Common_Settings/Sharing.html"><i class="ac ac-file-text"></i> Sharing</a></li><li> <a href="../Common_Settings/Accessibility_(508_section).html"><i class="ac ac-file-text"></i> Accessibility (508 section)</a></li><li> <a href="../Common_Settings/Localization.html"><i class="ac ac-file-text"></i> Localization</a></li><li> <a href="../Common_Settings/Calendar.html"><i class="ac ac-file-text"></i> Calendar</a></li><li> <a href="../Common_Settings/Chart_Labels.html"><i class="ac ac-file-text"></i> Chart Labels</a></li><li> <a href="../Common_Settings/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li><a href="../Common_Settings/Interactivity.html"><i class="ac ac-folder"></i> Interactivity</a><ul><li> <a href="../Common_Settings/Interactivity/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Common_Settings/Interactivity/States.html"><i class="ac ac-file-text"></i> States</a></li></ul></li><li> <a href="../Common_Settings/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../Common_Settings/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Common_Settings/Point_Size.html"><i class="ac ac-file-text"></i> Point Size</a></li><li> <a href="../Common_Settings/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../Common_Settings/Server-side_Rendering.html"><i class="ac ac-file-text"></i> Server-side Rendering</a></li><li> <a href="../Common_Settings/Statistics.html"><i class="ac ac-file-text"></i> Statistics</a></li><li> <a href="../Common_Settings/Text_Formatters.html"><i class="ac ac-file-text"></i> Text Formatters</a></li><li> <a href="../Common_Settings/Title.html"><i class="ac ac-file-text"></i> Title</a></li><li> <a href="../Common_Settings/Tooltip.html"><i class="ac ac-file-text"></i> Tooltip</a></li><li><a href="../Common_Settings/UI_Controls.html"><i class="ac ac-folder"></i> UI Controls</a><ul><li> <a href="../Common_Settings/UI_Controls/Zoom_Controls.html"><i class="ac ac-file-text"></i> Zoom Controls</a></li><li> <a href="../Common_Settings/UI_Controls/AnyChart_UI.html"><i class="ac ac-file-text"></i> AnyChart UI</a></li><li> <a href="../Common_Settings/UI_Controls/Chart_Editor.html"><i class="ac ac-file-text"></i> Chart Editor</a></li><li> <a href="../Common_Settings/UI_Controls/Context_Menu.html"><i class="ac ac-file-text"></i> Context Menu</a></li><li> <a href="../Common_Settings/UI_Controls/Gantt_Toolbar.html"><i class="ac ac-file-text"></i> Gantt Toolbar</a></li><li> <a href="../Common_Settings/UI_Controls/Preloader.html"><i class="ac ac-file-text"></i> Preloader</a></li></ul></li></ul></li><li><a href="../Dashboards.html"><i class="ac ac-folder"></i> Dashboards</a><ul><li> <a href="../Dashboards/Stage-Based_Layout.html"><i class="ac ac-file-text"></i> Stage-Based Layout</a></li><li> <a href="../Dashboards/Table_Layout.html"><i class="ac ac-file-text"></i> Table Layout</a></li><li> <a href="../Dashboards/Standalones.html"><i class="ac ac-file-text"></i> Standalones</a></li></ul></li><li><a href="../Drilldown.html"><i class="ac ac-folder"></i> Drilldown</a><ul><li> <a href="../Drilldown/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li></ul></li><li><a href="../Gauges.html"><i class="ac ac-folder"></i> Gauges</a><ul><li> <a href="../Gauges/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Gauges/Circular_Gauge.html"><i class="ac ac-file-text"></i> Circular Gauge</a></li><li> <a href="../Gauges/Linear_Gauge.html"><i class="ac ac-file-text"></i> Linear Gauge</a></li><li> <a href="../Gauges/Pointers_and_Data.html"><i class="ac ac-file-text"></i> Pointers and Data</a></li></ul></li><li><a href="../Graphics.html"><i class="ac ac-folder"></i> Graphics</a><ul><li> <a href="../Graphics/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Graphics/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Graphics/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../Graphics/Virtual_DOM.html"><i class="ac ac-file-text"></i> Virtual DOM</a></li><li> <a href="../Graphics/Events.html"><i class="ac ac-file-text"></i> Events</a></li><li> <a href="../Graphics/Transformations.html"><i class="ac ac-file-text"></i> Transformations</a></li><li> <a href="../Graphics/Layers.html"><i class="ac ac-file-text"></i> Layers</a></li><li> <a href="../Graphics/Paths.html"><i class="ac ac-file-text"></i> Paths</a></li><li> <a href="../Graphics/Shapes.html"><i class="ac ac-file-text"></i> Shapes</a></li><li> <a href="../Graphics/Text_and_Fonts.html"><i class="ac ac-file-text"></i> Text and Fonts</a></li><li> <a href="../Graphics/Fill_Settings.html"><i class="ac ac-file-text"></i> Fill Settings</a></li><li> <a href="../Graphics/Hatch_Fill_Settings.html"><i class="ac ac-file-text"></i> Hatch Fill Settings</a></li><li> <a href="../Graphics/Stroke_Settings.html"><i class="ac ac-file-text"></i> Stroke Settings</a></li><li> <a href="../Graphics/Browser_Support.html"><i class="ac ac-file-text"></i> Browser Support</a></li><li> <a href="../Graphics/Performance.html"><i class="ac ac-file-text"></i> Performance</a></li></ul></li><li><a href="../Maps.html"><i class="ac ac-folder"></i> Maps</a><ul><li> <a href="../Maps/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Maps/Architecture.html"><i class="ac ac-file-text"></i> Architecture</a></li><li> <a href="../Maps/Maps_List.html"><i class="ac ac-file-text"></i> Maps List</a></li><li> <a href="../Maps/Custom_GeoJson_Maps.html"><i class="ac ac-file-text"></i> Custom GeoJson Maps</a></li><li> <a href="../Maps/Custom_SVG_Maps.html"><i class="ac ac-file-text"></i> Custom SVG Maps</a></li><li> <a href="../Maps/Custom_TopoJSON.html"><i class="ac ac-file-text"></i> Custom TopoJSON</a></li><li> <a href="../Maps/Amap_to_GeoJson.html"><i class="ac ac-file-text"></i> Amap to GeoJson</a></li><li> <a href="../Maps/Choropleth_Map.html"><i class="ac ac-file-text"></i> Choropleth Map</a></li><li> <a href="../Maps/Connector_Maps.html"><i class="ac ac-file-text"></i> Connector Maps</a></li><li> <a href="../Maps/Dot_(Point)_Map.html"><i class="ac ac-file-text"></i> Dot (Point) Map</a></li><li> <a href="../Maps/Proportional_Symbol_Map.html"><i class="ac ac-file-text"></i> Proportional Symbol Map</a></li><li><a href="../Maps/Seat_Maps.html"><i class="ac ac-folder"></i> Seat Maps</a><ul><li> <a href="../Maps/Seat_Maps/Seat_Map.html"><i class="ac ac-file-text"></i> Seat Map</a></li><li> <a href="../Maps/Seat_Maps/Preparing_SVG_Image.html"><i class="ac ac-file-text"></i> Preparing SVG Image</a></li><li> <a href="../Maps/Seat_Maps/Advanced_Coloring.html"><i class="ac ac-file-text"></i> Advanced Coloring</a></li></ul></li><li> <a href="../Maps/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../Maps/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Maps/ColorRange.html"><i class="ac ac-file-text"></i> ColorRange</a></li><li> <a href="../Maps/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Maps/Map_Projections.html"><i class="ac ac-file-text"></i> Map Projections</a></li><li> <a href="../Maps/Geo_Scale.html"><i class="ac ac-file-text"></i> Geo Scale</a></li><li> <a href="../Maps/Map_Axes.html"><i class="ac ac-file-text"></i> Map Axes</a></li><li> <a href="../Maps/Map_Grid.html"><i class="ac ac-file-text"></i> Map Grid</a></li><li> <a href="../Maps/Map_Crosshair.html"><i class="ac ac-file-text"></i> Map Crosshair</a></li><li> <a href="../Maps/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../Maps/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../Maps/Visualisation.html"><i class="ac ac-file-text"></i> Visualisation</a></li><li> <a href="../Maps/Maps_and_Charts_in_one_Dashboard.html"><i class="ac ac-file-text"></i> Maps and Charts in one Dashboard</a></li><li> <a href="../Maps/Move_and_Zoom.html"><i class="ac ac-file-text"></i> Move and Zoom</a></li><li><a href="../Maps/Drill_Down_Maps.html"><i class="ac ac-folder"></i> Drill Down Maps</a><ul><li> <a href="../Maps/Drill_Down_Maps/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Maps/Drill_Down_Maps/Methods.html"><i class="ac ac-file-text"></i> Methods</a></li><li> <a href="../Maps/Drill_Down_Maps/Basic_Tutorial.html"><i class="ac ac-file-text"></i> Basic Tutorial</a></li><li> <a href="../Maps/Drill_Down_Maps/AJAX_Tutorial.html"><i class="ac ac-file-text"></i> AJAX Tutorial</a></li><li> <a href="../Maps/Drill_Down_Maps/Breadcrumbs.html"><i class="ac ac-file-text"></i> Breadcrumbs</a></li></ul></li></ul></li><li><a href="../Stock_Charts.html"><i class="ac ac-folder"></i> Stock Charts</a><ul><li> <a href="../Stock_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Stock_Charts/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../Stock_Charts/Data_Grouping.html"><i class="ac ac-file-text"></i> Data Grouping</a></li><li> <a href="../Stock_Charts/Axes.html"><i class="ac ac-file-text"></i> Axes</a></li><li> <a href="../Stock_Charts/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Stock_Charts/Chart_Plots.html"><i class="ac ac-file-text"></i> Chart Plots</a></li><li> <a href="../Stock_Charts/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Stock_Charts/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../Stock_Charts/Price_Indicator.html"><i class="ac ac-file-text"></i> Price Indicator</a></li><li> <a href="../Stock_Charts/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../Stock_Charts/Range_Selection.html"><i class="ac ac-file-text"></i> Range Selection</a></li><li><a href="../Stock_Charts/Series.html"><i class="ac ac-folder"></i> Series</a><ul><li> <a href="../Stock_Charts/Series/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Series/Supported_Series.html"><i class="ac ac-file-text"></i> Supported Series</a></li><li> <a href="../Stock_Charts/Series/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../Stock_Charts/Series/Area.html"><i class="ac ac-file-text"></i> Area</a></li><li> <a href="../Stock_Charts/Series/Column.html"><i class="ac ac-file-text"></i> Column</a></li><li> <a href="../Stock_Charts/Series/HiLo.html"><i class="ac ac-file-text"></i> HiLo</a></li><li> <a href="../Stock_Charts/Series/Japanese_Candlestick.html"><i class="ac ac-file-text"></i> Japanese Candlestick</a></li><li> <a href="../Stock_Charts/Series/Jump_Line.html"><i class="ac ac-file-text"></i> Jump Line</a></li><li> <a href="../Stock_Charts/Series/Line.html"><i class="ac ac-file-text"></i> Line</a></li><li> <a href="../Stock_Charts/Series/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../Stock_Charts/Series/OHLC.html"><i class="ac ac-file-text"></i> OHLC</a></li><li> <a href="../Stock_Charts/Series/Range_Area.html"><i class="ac ac-file-text"></i> Range Area</a></li><li> <a href="../Stock_Charts/Series/Range_Column.html"><i class="ac ac-file-text"></i> Range Column</a></li><li> <a href="../Stock_Charts/Series/Range_Spline_Area.html"><i class="ac ac-file-text"></i> Range Spline Area</a></li><li> <a href="../Stock_Charts/Series/Range_Step_Area.html"><i class="ac ac-file-text"></i> Range Step Area</a></li><li> <a href="../Stock_Charts/Series/Spline.html"><i class="ac ac-file-text"></i> Spline</a></li><li> <a href="../Stock_Charts/Series/Spline_Area.html"><i class="ac ac-file-text"></i> Spline Area</a></li><li> <a href="../Stock_Charts/Series/Step_Area.html"><i class="ac ac-file-text"></i> Step Area</a></li><li> <a href="../Stock_Charts/Series/Step_Line.html"><i class="ac ac-file-text"></i> Step Line</a></li><li> <a href="../Stock_Charts/Series/Stick.html"><i class="ac ac-file-text"></i> Stick</a></li></ul></li><li><a href="../Stock_Charts/Technical_Indicators.html"><i class="ac ac-folder"></i> Technical Indicators</a><ul><li> <a href="../Stock_Charts/Technical_Indicators/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Supported_Technical_Indicators.html"><i class="ac ac-file-text"></i> Supported Technical Indicators</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Mathematical_Description.html"><i class="ac ac-file-text"></i> Mathematical Description</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Custom_Indicators.html"><i class="ac ac-file-text"></i> Custom Indicators</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Accumulation_Distribution_Line_(ADL).html"><i class="ac ac-file-text"></i> Accumulation Distribution Line (ADL)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Adaptive_Moving_Average_(AMA).html"><i class="ac ac-file-text"></i> Adaptive Moving Average (AMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Aroon.html"><i class="ac ac-file-text"></i> Aroon</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Average_True_Range_(ATR).html"><i class="ac ac-file-text"></i> Average True Range (ATR)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands.html"><i class="ac ac-file-text"></i> Bollinger Bands</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands_%B.html"><i class="ac ac-file-text"></i> Bollinger Bands %B</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands_Width.html"><i class="ac ac-file-text"></i> Bollinger Bands Width</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Chaikin_Money_Flow_(CMF).html"><i class="ac ac-file-text"></i> Chaikin Money Flow (CMF)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Chaikin_Oscillator_(CHO).html"><i class="ac ac-file-text"></i> Chaikin Oscillator (CHO)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Commodity_Channel_Index_(CCI).html"><i class="ac ac-file-text"></i> Commodity Channel Index (CCI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Directional_Movement_Index_(DMI).html"><i class="ac ac-file-text"></i> Directional Movement Index (DMI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Exponential_Moving_Average_(EMA).html"><i class="ac ac-file-text"></i> Exponential Moving Average (EMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/KDJ.html"><i class="ac ac-file-text"></i> KDJ</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Modified_Moving_Average_(MMA).html"><i class="ac ac-file-text"></i> Modified Moving Average (MMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Moving_Average_Convergence_Divergence_(MACD).html"><i class="ac ac-file-text"></i> Moving Average Convergence Divergence (MACD)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Rate_of_Change_(ROC).html"><i class="ac ac-file-text"></i> Rate of Change (ROC)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Relative_Strength_Index_(RSI).html"><i class="ac ac-file-text"></i> Relative Strength Index (RSI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Simple_Moving_Average_(SMA).html"><i class="ac ac-file-text"></i> Simple Moving Average (SMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Stochastic_Oscillator.html"><i class="ac ac-file-text"></i> Stochastic Oscillator</a></li></ul></li><li><a href="../Stock_Charts/Event_Markers.html"><i class="ac ac-folder"></i> Event Markers</a><ul><li> <a href="../Stock_Charts/Event_Markers/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Event_Markers/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../Stock_Charts/Event_Markers/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../Stock_Charts/Event_Markers/Events.html"><i class="ac ac-file-text"></i> Events</a></li></ul></li><li><a href="../Stock_Charts/Drawing_Tools_and_Annotations.html"><i class="ac ac-folder"></i> Drawing Tools and Annotations</a><ul><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Drawing.html"><i class="ac ac-file-text"></i> Drawing</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Serializing_Deserializing.html"><i class="ac ac-file-text"></i> Serializing Deserializing</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Andrews_Pitchfork.html"><i class="ac ac-file-text"></i> Andrews Pitchfork</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Ellipse.html"><i class="ac ac-file-text"></i> Ellipse</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Arc.html"><i class="ac ac-file-text"></i> Fibonacci Arc</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Fan.html"><i class="ac ac-file-text"></i> Fibonacci Fan</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Retracement.html"><i class="ac ac-file-text"></i> Fibonacci Retracement</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Time_Zones.html"><i class="ac ac-file-text"></i> Fibonacci Time Zones</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Horizontal_Line.html"><i class="ac ac-file-text"></i> Horizontal Line</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Infinite_Line.html"><i class="ac ac-file-text"></i> Infinite Line</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Label.html"><i class="ac ac-file-text"></i> Label</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Line_Segment.html"><i class="ac ac-file-text"></i> Line Segment</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Ray.html"><i class="ac ac-file-text"></i> Ray</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Rectangle.html"><i class="ac ac-file-text"></i> Rectangle</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Trend_Channel.html"><i class="ac ac-file-text"></i> Trend Channel</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Triangle.html"><i class="ac ac-file-text"></i> Triangle</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Vertical_Line.html"><i class="ac ac-file-text"></i> Vertical Line</a></li></ul></li></ul></li><li><a href="../beta.html"><i class="ac ac-folder"></i> beta</a><ul><li> <a href="../beta/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li></ul></li>
+    </ul>
+    <div class="footer">
+        <div class="footer-inner">
+            <a href="https://www.facebook.com/AnyCharts" class="soc-network" target="_blank">
+                <span class="soc-network-icon fb"><i class="sn-mini-icon ac ac-facebook"></i></span>
+            </a>
+            <a href="https://twitter.com/AnyChart" class="soc-network" target="_blank">
+                <span class="soc-network-icon tw"><i class="sn-mini-icon ac ac-twitter"></i></span>
+            </a>
+            <a href="https://www.linkedin.com/company/386660" class="soc-network" target="_blank">
+                <span class="soc-network-icon in"><i class="sn-mini-icon ac ac-linkedin"></i></span>
+            </a>
+            <p> © 2015 AnyChart.Com All rights reserved.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-lg-5 col-lg-offset-1 hidden-xs hidden-sm" id="bar-side" style="top: 30px;">
+            <!--<div class="col-md-8 col-lg-5 col-lg-offset-1 hidden-xs hidden-sm" id="bar-side">-->
+
+            <ul class="menu"><li><a href="../Quick_Start.html"><i class="ac ac-folder"></i> Quick Start</a><ul><li> <a href="../Quick_Start/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Quick_Start/Downloading_AnyChart.html"><i class="ac ac-file-text"></i> Downloading AnyChart</a></li><li> <a href="../Quick_Start/Supported_Charts_Types.html"><i class="ac ac-file-text"></i> Supported Charts Types</a></li><li> <a href="../Quick_Start/Credits.html"><i class="ac ac-file-text"></i> Credits</a></li><li> <a href="../Quick_Start/Modules.html"><i class="ac ac-file-text"></i> Modules</a></li></ul></li><li><a href="../Working_with_Data.html"><i class="ac ac-folder"></i> Working with Data</a><ul><li> <a href="../Working_with_Data/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Working_with_Data/Supported_Data_Formats.html"><i class="ac ac-file-text"></i> Supported Data Formats</a></li><li> <a href="../Working_with_Data/Using_Data_Sets.html"><i class="ac ac-file-text"></i> Using Data Sets</a></li><li> <a href="../Working_with_Data/Data_Manipulation.html"><i class="ac ac-file-text"></i> Data Manipulation</a></li><li> <a href="../Working_with_Data/Series_Manipulation.html"><i class="ac ac-file-text"></i> Series Manipulation</a></li><li> <a href="../Working_with_Data/Using_Data_Tree_Model.html"><i class="ac ac-file-text"></i> Using Data Tree Model</a></li><li> <a href="../Working_with_Data/Using_Table_Data_Model.html"><i class="ac ac-file-text"></i> Using Table Data Model</a></li><li> <a href="../Working_with_Data/Data_From_JSON.html"><i class="ac ac-file-text"></i> Data From JSON</a></li><li> <a href="../Working_with_Data/Data_From_XML.html"><i class="ac ac-file-text"></i> Data From XML</a></li><li> <a href="../Working_with_Data/Data_From_CSV.html"><i class="ac ac-file-text"></i> Data From CSV</a></li><li> <a href="../Working_with_Data/Settings_from_Data.html"><i class="ac ac-file-text"></i> Settings from Data</a></li><li> <a href="../Working_with_Data/No_Data_Label.html"><i class="ac ac-file-text"></i> No Data Label</a></li><li><a href="../Working_with_Data/Data_Adapter.html"><i class="ac ac-folder"></i> Data Adapter</a><ul><li> <a href="../Working_with_Data/Data_Adapter/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Working_with_Data/Data_Adapter/Parsing_HTML_Table.html"><i class="ac ac-file-text"></i> Parsing HTML Table</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_CSV_File.html"><i class="ac ac-file-text"></i> Loading CSV File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_JSON_File.html"><i class="ac ac-file-text"></i> Loading JSON File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_XML_File.html"><i class="ac ac-file-text"></i> Loading XML File</a></li><li> <a href="../Working_with_Data/Data_Adapter/Loading_Google_Spreadsheet.html"><i class="ac ac-file-text"></i> Loading Google Spreadsheet</a></li></ul></li></ul></li><li><a href="../Basic_Charts.html"><i class="ac ac-folder"></i> Basic Charts</a><ul><li> <a href="../Basic_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../Basic_Charts/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../Basic_Charts/Combining_Series.html"><i class="ac ac-file-text"></i> Combining Series</a></li><li> <a href="../Basic_Charts/Custom_Drawing.html"><i class="ac ac-file-text"></i> Custom Drawing</a></li><li> <a href="../Basic_Charts/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../Basic_Charts/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Bullet_Chart.html"><i class="ac ac-file-text"></i> Bullet Chart</a></li><li> <a href="../Basic_Charts/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li><a href="../Basic_Charts/Error_Chart.html"><i class="ac ac-folder"></i> Error Chart</a><ul><li> <a href="../Basic_Charts/Error_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Error_Chart/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Scatter_Line_Chart.html"><i class="ac ac-file-text"></i> Scatter Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Scatter_Marker_Chart.html"><i class="ac ac-file-text"></i> Scatter Marker Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Error_Chart/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../Basic_Charts/Funnel_Chart.html"><i class="ac ac-file-text"></i> Funnel Chart</a></li><li> <a href="../Basic_Charts/Heat_Map_Chart.html"><i class="ac ac-file-text"></i> Heat Map Chart</a></li><li> <a href="../Basic_Charts/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../Basic_Charts/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../Basic_Charts/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li><a href="../Basic_Charts/Marimekko_Chart.html"><i class="ac ac-folder"></i> Marimekko Chart</a><ul><li> <a href="../Basic_Charts/Marimekko_Chart/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../Basic_Charts/Marimekko_Chart/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../Basic_Charts/Marimekko_Chart/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li></ul></li><li> <a href="../Basic_Charts/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../Basic_Charts/Pareto_Chart.html"><i class="ac ac-file-text"></i> Pareto Chart</a></li><li> <a href="../Basic_Charts/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li><a href="../Basic_Charts/Polar_Plot.html"><i class="ac ac-folder"></i> Polar Plot</a><ul><li> <a href="../Basic_Charts/Polar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Polar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Polygon_Chart.html"><i class="ac ac-file-text"></i> Polygon Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Polyline_Chart.html"><i class="ac ac-file-text"></i> Polyline Chart</a></li><li> <a href="../Basic_Charts/Polar_Plot/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li></ul></li><li> <a href="../Basic_Charts/Pyramid_Chart.html"><i class="ac ac-file-text"></i> Pyramid Chart</a></li><li> <a href="../Basic_Charts/Quadrant_Chart.html"><i class="ac ac-file-text"></i> Quadrant Chart</a></li><li><a href="../Basic_Charts/Radar_Plot.html"><i class="ac ac-folder"></i> Radar Plot</a><ul><li> <a href="../Basic_Charts/Radar_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Radar_Plot/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Radar_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Radar_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../Basic_Charts/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../Basic_Charts/Range_Bar_Chart.html"><i class="ac ac-file-text"></i> Range Bar Chart</a></li><li> <a href="../Basic_Charts/Range_Column_Chart.html"><i class="ac ac-file-text"></i> Range Column Chart</a></li><li> <a href="../Basic_Charts/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../Basic_Charts/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li><a href="../Basic_Charts/Scatter_Plot.html"><i class="ac ac-folder"></i> Scatter Plot</a><ul><li> <a href="../Basic_Charts/Scatter_Plot/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Scatter_Plot/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li></ul></li><li> <a href="../Basic_Charts/Sparkline_Chart.html"><i class="ac ac-file-text"></i> Sparkline Chart</a></li><li> <a href="../Basic_Charts/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li><a href="../Basic_Charts/Stacked.html"><i class="ac ac-folder"></i> Stacked</a><ul><li> <a href="../Basic_Charts/Stacked/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li><a href="../Basic_Charts/Stacked/Percent.html"><i class="ac ac-folder"></i> Percent</a><ul><li> <a href="../Basic_Charts/Stacked/Percent/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Percent/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li><li><a href="../Basic_Charts/Stacked/Value.html"><i class="ac ac-folder"></i> Value</a><ul><li> <a href="../Basic_Charts/Stacked/Value/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Spline Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Vertical Step Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Vertical_Stick_Chart.html"><i class="ac ac-file-text"></i> Vertical Stick Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Area_Chart.html"><i class="ac ac-file-text"></i> 3D Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/Radar_Area_Chart.html"><i class="ac ac-file-text"></i> Radar Area Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Bar_Chart.html"><i class="ac ac-file-text"></i> 3D Bar Chart</a></li><li> <a href="../Basic_Charts/Stacked/Value/3D_Column_Chart.html"><i class="ac ac-file-text"></i> 3D Column Chart</a></li></ul></li></ul></li><li> <a href="../Basic_Charts/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li><li> <a href="../Basic_Charts/Tag_Cloud.html"><i class="ac ac-file-text"></i> Tag Cloud</a></li><li> <a href="../Basic_Charts/Treemap_Chart.html"><i class="ac ac-file-text"></i> Treemap Chart</a></li><li> <a href="../Basic_Charts/Venn_Diagram.html"><i class="ac ac-file-text"></i> Venn Diagram</a></li><li><a href="../Basic_Charts/Vertical.html"><i class="ac ac-folder"></i> Vertical</a><ul><li> <a href="../Basic_Charts/Vertical/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/Vertical/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Bar_Mekko_Chart.html"><i class="ac ac-file-text"></i> Bar Mekko Chart</a></li><li> <a href="../Basic_Charts/Vertical/Box_Chart.html"><i class="ac ac-file-text"></i> Box Chart</a></li><li> <a href="../Basic_Charts/Vertical/Bubble_Chart.html"><i class="ac ac-file-text"></i> Bubble Chart</a></li><li> <a href="../Basic_Charts/Vertical/HiLo_Chart.html"><i class="ac ac-file-text"></i> HiLo Chart</a></li><li> <a href="../Basic_Charts/Vertical/Japanese_Candlestick_Chart.html"><i class="ac ac-file-text"></i> Japanese Candlestick Chart</a></li><li> <a href="../Basic_Charts/Vertical/Jump_Line_Chart.html"><i class="ac ac-file-text"></i> Jump Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Marker_Chart.html"><i class="ac ac-file-text"></i> Marker Chart</a></li><li> <a href="../Basic_Charts/Vertical/Mekko_Chart.html"><i class="ac ac-file-text"></i> Mekko Chart</a></li><li> <a href="../Basic_Charts/Vertical/Mosaic_Chart.html"><i class="ac ac-file-text"></i> Mosaic Chart</a></li><li> <a href="../Basic_Charts/Vertical/OHLC_Chart.html"><i class="ac ac-file-text"></i> OHLC Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Area_Chart.html"><i class="ac ac-file-text"></i> Range Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Range Spline Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Range_Step_Area_Chart.html"><i class="ac ac-file-text"></i> Range Step Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Spline_Area_Chart.html"><i class="ac ac-file-text"></i> Spline Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Spline_Chart.html"><i class="ac ac-file-text"></i> Spline Chart</a></li><li> <a href="../Basic_Charts/Vertical/Step_Area_Chart.html"><i class="ac ac-file-text"></i> Step Area Chart</a></li><li> <a href="../Basic_Charts/Vertical/Step_Line_Chart.html"><i class="ac ac-file-text"></i> Step Line Chart</a></li><li> <a href="../Basic_Charts/Vertical/Stick_Chart.html"><i class="ac ac-file-text"></i> Stick Chart</a></li></ul></li><li> <a href="../Basic_Charts/Waterfall_Chart.html"><i class="ac ac-file-text"></i> Waterfall Chart</a></li><li><a href="../Basic_Charts/3D.html"><i class="ac ac-folder"></i> 3D</a><ul><li> <a href="../Basic_Charts/3D/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Basic_Charts/3D/Area_Chart.html"><i class="ac ac-file-text"></i> Area Chart</a></li><li> <a href="../Basic_Charts/3D/Bar_Chart.html"><i class="ac ac-file-text"></i> Bar Chart</a></li><li> <a href="../Basic_Charts/3D/Column_Chart.html"><i class="ac ac-file-text"></i> Column Chart</a></li><li> <a href="../Basic_Charts/3D/Doughnut_Chart.html"><i class="ac ac-file-text"></i> Doughnut Chart</a></li><li> <a href="../Basic_Charts/3D/Pie_Chart.html"><i class="ac ac-file-text"></i> Pie Chart</a></li><li> <a href="../Basic_Charts/3D/Line_Chart.html"><i class="ac ac-file-text"></i> Line Chart</a></li><li> <a href="../Basic_Charts/3D/2D_Line_Chart.html"><i class="ac ac-file-text"></i> 2D Line Chart</a></li></ul></li></ul></li><li><a href="../Gantt_Chart.html"><i class="ac ac-folder"></i> Gantt Chart</a><ul><li> <a href="../Gantt_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Gantt_Chart/Data_from_JSON,_XML,_CSV.html"><i class="ac ac-file-text"></i> Data from JSON, XML, CSV</a></li><li> <a href="../Gantt_Chart/DataGrid_Column_Presets.html"><i class="ac ac-file-text"></i> DataGrid Column Presets</a></li><li> <a href="../Gantt_Chart/DataGrid.html"><i class="ac ac-file-text"></i> DataGrid</a></li><li> <a href="../Gantt_Chart/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../Gantt_Chart/Gantt_Interactivity.html"><i class="ac ac-file-text"></i> Gantt Interactivity</a></li><li> <a href="../Gantt_Chart/Live_Edit_UI_and_API.html"><i class="ac ac-file-text"></i> Live Edit UI and API</a></li><li> <a href="../Gantt_Chart/Markers_(Multiple_Milestones).html"><i class="ac ac-file-text"></i> Markers (Multiple Milestones)</a></li><li> <a href="../Gantt_Chart/Project_Chart.html"><i class="ac ac-file-text"></i> Project Chart</a></li><li> <a href="../Gantt_Chart/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li><li> <a href="../Gantt_Chart/Timeline.html"><i class="ac ac-file-text"></i> Timeline</a></li></ul></li><li><a href="../PERT_Chart.html"><i class="ac ac-folder"></i> PERT Chart</a><ul><li> <a href="../PERT_Chart/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../PERT_Chart/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../PERT_Chart/Terminology.html"><i class="ac ac-file-text"></i> Terminology</a></li><li> <a href="../PERT_Chart/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../PERT_Chart/Pert_Chart.html"><i class="ac ac-file-text"></i> Pert Chart</a></li></ul></li><li><a href="../Axes_and_Grids.html"><i class="ac ac-folder"></i> Axes and Grids</a><ul><li> <a href="../Axes_and_Grids/Axis_Basics.html"><i class="ac ac-file-text"></i> Axis Basics</a></li><li> <a href="../Axes_and_Grids/Axis_Orientation.html"><i class="ac ac-file-text"></i> Axis Orientation</a></li><li> <a href="../Axes_and_Grids/Axes_Labels_Formatting.html"><i class="ac ac-file-text"></i> Axes Labels Formatting</a></li><li> <a href="../Axes_and_Grids/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../Axes_and_Grids/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Axes_and_Grids/Date_Time_Axes.html"><i class="ac ac-file-text"></i> Date Time Axes</a></li><li> <a href="../Axes_and_Grids/Line_Markers.html"><i class="ac ac-file-text"></i> Line Markers</a></li><li> <a href="../Axes_and_Grids/Range_Markers.html"><i class="ac ac-file-text"></i> Range Markers</a></li><li> <a href="../Axes_and_Grids/Text_Markers.html"><i class="ac ac-file-text"></i> Text Markers</a></li><li> <a href="../Axes_and_Grids/Additional_Axes.html"><i class="ac ac-file-text"></i> Additional Axes</a></li></ul></li><li><a href="../Appearance_Settings.html"><i class="ac ac-folder"></i> Appearance Settings</a><ul><li> <a href="../Appearance_Settings/Background.html"><i class="ac ac-file-text"></i> Background</a></li><li> <a href="../Appearance_Settings/Color_Management.html"><i class="ac ac-file-text"></i> Color Management</a></li><li> <a href="../Appearance_Settings/Colors_Table.html"><i class="ac ac-file-text"></i> Colors Table</a></li><li> <a href="../Appearance_Settings/Lines_Settings.html"><i class="ac ac-file-text"></i> Lines Settings</a></li><li> <a href="../Appearance_Settings/Palettes.html"><i class="ac ac-file-text"></i> Palettes</a></li><li> <a href="../Appearance_Settings/Text_Settings.html"><i class="ac ac-file-text"></i> Text Settings</a></li><li> <a href="../Appearance_Settings/Themes.html"><i class="ac ac-file-text"></i> Themes</a></li></ul></li><li><a href="../Common_Settings.html"><i class="ac ac-folder"></i> Common Settings</a><ul><li> <a href="../Common_Settings/ASYNC_Rendering.html"><i class="ac ac-file-text"></i> ASYNC Rendering</a></li><li> <a href="../Common_Settings/Exports.html"><i class="ac ac-file-text"></i> Exports</a></li><li> <a href="../Common_Settings/Printing.html"><i class="ac ac-file-text"></i> Printing</a></li><li> <a href="../Common_Settings/Sharing.html"><i class="ac ac-file-text"></i> Sharing</a></li><li> <a href="../Common_Settings/Accessibility_(508_section).html"><i class="ac ac-file-text"></i> Accessibility (508 section)</a></li><li> <a href="../Common_Settings/Localization.html"><i class="ac ac-file-text"></i> Localization</a></li><li> <a href="../Common_Settings/Calendar.html"><i class="ac ac-file-text"></i> Calendar</a></li><li> <a href="../Common_Settings/Chart_Labels.html"><i class="ac ac-file-text"></i> Chart Labels</a></li><li> <a href="../Common_Settings/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li><a href="../Common_Settings/Interactivity.html"><i class="ac ac-folder"></i> Interactivity</a><ul><li> <a href="../Common_Settings/Interactivity/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Common_Settings/Interactivity/States.html"><i class="ac ac-file-text"></i> States</a></li></ul></li><li> <a href="../Common_Settings/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../Common_Settings/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Common_Settings/Point_Size.html"><i class="ac ac-file-text"></i> Point Size</a></li><li> <a href="../Common_Settings/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../Common_Settings/Server-side_Rendering.html"><i class="ac ac-file-text"></i> Server-side Rendering</a></li><li> <a href="../Common_Settings/Statistics.html"><i class="ac ac-file-text"></i> Statistics</a></li><li> <a href="../Common_Settings/Text_Formatters.html"><i class="ac ac-file-text"></i> Text Formatters</a></li><li> <a href="../Common_Settings/Title.html"><i class="ac ac-file-text"></i> Title</a></li><li> <a href="../Common_Settings/Tooltip.html"><i class="ac ac-file-text"></i> Tooltip</a></li><li><a href="../Common_Settings/UI_Controls.html"><i class="ac ac-folder"></i> UI Controls</a><ul><li> <a href="../Common_Settings/UI_Controls/Zoom_Controls.html"><i class="ac ac-file-text"></i> Zoom Controls</a></li><li> <a href="../Common_Settings/UI_Controls/AnyChart_UI.html"><i class="ac ac-file-text"></i> AnyChart UI</a></li><li> <a href="../Common_Settings/UI_Controls/Chart_Editor.html"><i class="ac ac-file-text"></i> Chart Editor</a></li><li> <a href="../Common_Settings/UI_Controls/Context_Menu.html"><i class="ac ac-file-text"></i> Context Menu</a></li><li> <a href="../Common_Settings/UI_Controls/Gantt_Toolbar.html"><i class="ac ac-file-text"></i> Gantt Toolbar</a></li><li> <a href="../Common_Settings/UI_Controls/Preloader.html"><i class="ac ac-file-text"></i> Preloader</a></li></ul></li></ul></li><li><a href="../Dashboards.html"><i class="ac ac-folder"></i> Dashboards</a><ul><li> <a href="../Dashboards/Stage-Based_Layout.html"><i class="ac ac-file-text"></i> Stage-Based Layout</a></li><li> <a href="../Dashboards/Table_Layout.html"><i class="ac ac-file-text"></i> Table Layout</a></li><li> <a href="../Dashboards/Standalones.html"><i class="ac ac-file-text"></i> Standalones</a></li></ul></li><li><a href="../Drilldown.html"><i class="ac ac-folder"></i> Drilldown</a><ul><li> <a href="../Drilldown/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li></ul></li><li><a href="../Gauges.html"><i class="ac ac-folder"></i> Gauges</a><ul><li> <a href="../Gauges/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Gauges/Circular_Gauge.html"><i class="ac ac-file-text"></i> Circular Gauge</a></li><li> <a href="../Gauges/Linear_Gauge.html"><i class="ac ac-file-text"></i> Linear Gauge</a></li><li> <a href="../Gauges/Pointers_and_Data.html"><i class="ac ac-file-text"></i> Pointers and Data</a></li></ul></li><li><a href="../Graphics.html"><i class="ac ac-folder"></i> Graphics</a><ul><li> <a href="../Graphics/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Graphics/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Graphics/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../Graphics/Virtual_DOM.html"><i class="ac ac-file-text"></i> Virtual DOM</a></li><li> <a href="../Graphics/Events.html"><i class="ac ac-file-text"></i> Events</a></li><li> <a href="../Graphics/Transformations.html"><i class="ac ac-file-text"></i> Transformations</a></li><li> <a href="../Graphics/Layers.html"><i class="ac ac-file-text"></i> Layers</a></li><li> <a href="../Graphics/Paths.html"><i class="ac ac-file-text"></i> Paths</a></li><li> <a href="../Graphics/Shapes.html"><i class="ac ac-file-text"></i> Shapes</a></li><li> <a href="../Graphics/Text_and_Fonts.html"><i class="ac ac-file-text"></i> Text and Fonts</a></li><li> <a href="../Graphics/Fill_Settings.html"><i class="ac ac-file-text"></i> Fill Settings</a></li><li> <a href="../Graphics/Hatch_Fill_Settings.html"><i class="ac ac-file-text"></i> Hatch Fill Settings</a></li><li> <a href="../Graphics/Stroke_Settings.html"><i class="ac ac-file-text"></i> Stroke Settings</a></li><li> <a href="../Graphics/Browser_Support.html"><i class="ac ac-file-text"></i> Browser Support</a></li><li> <a href="../Graphics/Performance.html"><i class="ac ac-file-text"></i> Performance</a></li></ul></li><li><a href="../Maps.html"><i class="ac ac-folder"></i> Maps</a><ul><li> <a href="../Maps/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Maps/Architecture.html"><i class="ac ac-file-text"></i> Architecture</a></li><li> <a href="../Maps/Maps_List.html"><i class="ac ac-file-text"></i> Maps List</a></li><li> <a href="../Maps/Custom_GeoJson_Maps.html"><i class="ac ac-file-text"></i> Custom GeoJson Maps</a></li><li> <a href="../Maps/Custom_SVG_Maps.html"><i class="ac ac-file-text"></i> Custom SVG Maps</a></li><li> <a href="../Maps/Custom_TopoJSON.html"><i class="ac ac-file-text"></i> Custom TopoJSON</a></li><li> <a href="../Maps/Amap_to_GeoJson.html"><i class="ac ac-file-text"></i> Amap to GeoJson</a></li><li> <a href="../Maps/Choropleth_Map.html"><i class="ac ac-file-text"></i> Choropleth Map</a></li><li> <a href="../Maps/Connector_Maps.html"><i class="ac ac-file-text"></i> Connector Maps</a></li><li> <a href="../Maps/Dot_(Point)_Map.html"><i class="ac ac-file-text"></i> Dot (Point) Map</a></li><li> <a href="../Maps/Proportional_Symbol_Map.html"><i class="ac ac-file-text"></i> Proportional Symbol Map</a></li><li><a href="../Maps/Seat_Maps.html"><i class="ac ac-folder"></i> Seat Maps</a><ul><li> <a href="../Maps/Seat_Maps/Seat_Map.html"><i class="ac ac-file-text"></i> Seat Map</a></li><li> <a href="../Maps/Seat_Maps/Preparing_SVG_Image.html"><i class="ac ac-file-text"></i> Preparing SVG Image</a></li><li> <a href="../Maps/Seat_Maps/Advanced_Coloring.html"><i class="ac ac-file-text"></i> Advanced Coloring</a></li></ul></li><li> <a href="../Maps/Event_Listeners.html"><i class="ac ac-file-text"></i> Event Listeners</a></li><li> <a href="../Maps/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Maps/ColorRange.html"><i class="ac ac-file-text"></i> ColorRange</a></li><li> <a href="../Maps/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Maps/Map_Projections.html"><i class="ac ac-file-text"></i> Map Projections</a></li><li> <a href="../Maps/Geo_Scale.html"><i class="ac ac-file-text"></i> Geo Scale</a></li><li> <a href="../Maps/Map_Axes.html"><i class="ac ac-file-text"></i> Map Axes</a></li><li> <a href="../Maps/Map_Grid.html"><i class="ac ac-file-text"></i> Map Grid</a></li><li> <a href="../Maps/Map_Crosshair.html"><i class="ac ac-file-text"></i> Map Crosshair</a></li><li> <a href="../Maps/Labels.html"><i class="ac ac-file-text"></i> Labels</a></li><li> <a href="../Maps/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../Maps/Visualisation.html"><i class="ac ac-file-text"></i> Visualisation</a></li><li> <a href="../Maps/Maps_and_Charts_in_one_Dashboard.html"><i class="ac ac-file-text"></i> Maps and Charts in one Dashboard</a></li><li> <a href="../Maps/Move_and_Zoom.html"><i class="ac ac-file-text"></i> Move and Zoom</a></li><li><a href="../Maps/Drill_Down_Maps.html"><i class="ac ac-folder"></i> Drill Down Maps</a><ul><li> <a href="../Maps/Drill_Down_Maps/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Maps/Drill_Down_Maps/Methods.html"><i class="ac ac-file-text"></i> Methods</a></li><li> <a href="../Maps/Drill_Down_Maps/Basic_Tutorial.html"><i class="ac ac-file-text"></i> Basic Tutorial</a></li><li> <a href="../Maps/Drill_Down_Maps/AJAX_Tutorial.html"><i class="ac ac-file-text"></i> AJAX Tutorial</a></li><li> <a href="../Maps/Drill_Down_Maps/Breadcrumbs.html"><i class="ac ac-file-text"></i> Breadcrumbs</a></li></ul></li></ul></li><li><a href="../Stock_Charts.html"><i class="ac ac-folder"></i> Stock Charts</a><ul><li> <a href="../Stock_Charts/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Quick_Start.html"><i class="ac ac-file-text"></i> Quick Start</a></li><li> <a href="../Stock_Charts/Data.html"><i class="ac ac-file-text"></i> Data</a></li><li> <a href="../Stock_Charts/Data_Grouping.html"><i class="ac ac-file-text"></i> Data Grouping</a></li><li> <a href="../Stock_Charts/Axes.html"><i class="ac ac-file-text"></i> Axes</a></li><li> <a href="../Stock_Charts/Scales.html"><i class="ac ac-file-text"></i> Scales</a></li><li> <a href="../Stock_Charts/Chart_Plots.html"><i class="ac ac-file-text"></i> Chart Plots</a></li><li> <a href="../Stock_Charts/Legend.html"><i class="ac ac-file-text"></i> Legend</a></li><li> <a href="../Stock_Charts/Crosshair.html"><i class="ac ac-file-text"></i> Crosshair</a></li><li> <a href="../Stock_Charts/Price_Indicator.html"><i class="ac ac-file-text"></i> Price Indicator</a></li><li> <a href="../Stock_Charts/Scroller.html"><i class="ac ac-file-text"></i> Scroller</a></li><li> <a href="../Stock_Charts/Range_Selection.html"><i class="ac ac-file-text"></i> Range Selection</a></li><li><a href="../Stock_Charts/Series.html"><i class="ac ac-folder"></i> Series</a><ul><li> <a href="../Stock_Charts/Series/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Series/Supported_Series.html"><i class="ac ac-file-text"></i> Supported Series</a></li><li> <a href="../Stock_Charts/Series/Series_Type.html"><i class="ac ac-file-text"></i> Series Type</a></li><li> <a href="../Stock_Charts/Series/Area.html"><i class="ac ac-file-text"></i> Area</a></li><li> <a href="../Stock_Charts/Series/Column.html"><i class="ac ac-file-text"></i> Column</a></li><li> <a href="../Stock_Charts/Series/HiLo.html"><i class="ac ac-file-text"></i> HiLo</a></li><li> <a href="../Stock_Charts/Series/Japanese_Candlestick.html"><i class="ac ac-file-text"></i> Japanese Candlestick</a></li><li> <a href="../Stock_Charts/Series/Jump_Line.html"><i class="ac ac-file-text"></i> Jump Line</a></li><li> <a href="../Stock_Charts/Series/Line.html"><i class="ac ac-file-text"></i> Line</a></li><li> <a href="../Stock_Charts/Series/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../Stock_Charts/Series/OHLC.html"><i class="ac ac-file-text"></i> OHLC</a></li><li> <a href="../Stock_Charts/Series/Range_Area.html"><i class="ac ac-file-text"></i> Range Area</a></li><li> <a href="../Stock_Charts/Series/Range_Column.html"><i class="ac ac-file-text"></i> Range Column</a></li><li> <a href="../Stock_Charts/Series/Range_Spline_Area.html"><i class="ac ac-file-text"></i> Range Spline Area</a></li><li> <a href="../Stock_Charts/Series/Range_Step_Area.html"><i class="ac ac-file-text"></i> Range Step Area</a></li><li> <a href="../Stock_Charts/Series/Spline.html"><i class="ac ac-file-text"></i> Spline</a></li><li> <a href="../Stock_Charts/Series/Spline_Area.html"><i class="ac ac-file-text"></i> Spline Area</a></li><li> <a href="../Stock_Charts/Series/Step_Area.html"><i class="ac ac-file-text"></i> Step Area</a></li><li> <a href="../Stock_Charts/Series/Step_Line.html"><i class="ac ac-file-text"></i> Step Line</a></li><li> <a href="../Stock_Charts/Series/Stick.html"><i class="ac ac-file-text"></i> Stick</a></li></ul></li><li><a href="../Stock_Charts/Technical_Indicators.html"><i class="ac ac-folder"></i> Technical Indicators</a><ul><li> <a href="../Stock_Charts/Technical_Indicators/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Supported_Technical_Indicators.html"><i class="ac ac-file-text"></i> Supported Technical Indicators</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Mathematical_Description.html"><i class="ac ac-file-text"></i> Mathematical Description</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Custom_Indicators.html"><i class="ac ac-file-text"></i> Custom Indicators</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Accumulation_Distribution_Line_(ADL).html"><i class="ac ac-file-text"></i> Accumulation Distribution Line (ADL)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Adaptive_Moving_Average_(AMA).html"><i class="ac ac-file-text"></i> Adaptive Moving Average (AMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Aroon.html"><i class="ac ac-file-text"></i> Aroon</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Average_True_Range_(ATR).html"><i class="ac ac-file-text"></i> Average True Range (ATR)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands.html"><i class="ac ac-file-text"></i> Bollinger Bands</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands_%B.html"><i class="ac ac-file-text"></i> Bollinger Bands %B</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Bollinger_Bands_Width.html"><i class="ac ac-file-text"></i> Bollinger Bands Width</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Chaikin_Money_Flow_(CMF).html"><i class="ac ac-file-text"></i> Chaikin Money Flow (CMF)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Chaikin_Oscillator_(CHO).html"><i class="ac ac-file-text"></i> Chaikin Oscillator (CHO)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Commodity_Channel_Index_(CCI).html"><i class="ac ac-file-text"></i> Commodity Channel Index (CCI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Directional_Movement_Index_(DMI).html"><i class="ac ac-file-text"></i> Directional Movement Index (DMI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Exponential_Moving_Average_(EMA).html"><i class="ac ac-file-text"></i> Exponential Moving Average (EMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/KDJ.html"><i class="ac ac-file-text"></i> KDJ</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Modified_Moving_Average_(MMA).html"><i class="ac ac-file-text"></i> Modified Moving Average (MMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Moving_Average_Convergence_Divergence_(MACD).html"><i class="ac ac-file-text"></i> Moving Average Convergence Divergence (MACD)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Rate_of_Change_(ROC).html"><i class="ac ac-file-text"></i> Rate of Change (ROC)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Relative_Strength_Index_(RSI).html"><i class="ac ac-file-text"></i> Relative Strength Index (RSI)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Simple_Moving_Average_(SMA).html"><i class="ac ac-file-text"></i> Simple Moving Average (SMA)</a></li><li> <a href="../Stock_Charts/Technical_Indicators/Stochastic_Oscillator.html"><i class="ac ac-file-text"></i> Stochastic Oscillator</a></li></ul></li><li><a href="../Stock_Charts/Event_Markers.html"><i class="ac ac-folder"></i> Event Markers</a><ul><li> <a href="../Stock_Charts/Event_Markers/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Event_Markers/Basics.html"><i class="ac ac-file-text"></i> Basics</a></li><li> <a href="../Stock_Charts/Event_Markers/Tooltips.html"><i class="ac ac-file-text"></i> Tooltips</a></li><li> <a href="../Stock_Charts/Event_Markers/Events.html"><i class="ac ac-file-text"></i> Events</a></li></ul></li><li><a href="../Stock_Charts/Drawing_Tools_and_Annotations.html"><i class="ac ac-folder"></i> Drawing Tools and Annotations</a><ul><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Overview.html"><i class="ac ac-file-text"></i> Overview</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/General_Settings.html"><i class="ac ac-file-text"></i> General Settings</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Drawing.html"><i class="ac ac-file-text"></i> Drawing</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Serializing_Deserializing.html"><i class="ac ac-file-text"></i> Serializing Deserializing</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Andrews_Pitchfork.html"><i class="ac ac-file-text"></i> Andrews Pitchfork</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Ellipse.html"><i class="ac ac-file-text"></i> Ellipse</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Arc.html"><i class="ac ac-file-text"></i> Fibonacci Arc</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Fan.html"><i class="ac ac-file-text"></i> Fibonacci Fan</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Retracement.html"><i class="ac ac-file-text"></i> Fibonacci Retracement</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Fibonacci_Time_Zones.html"><i class="ac ac-file-text"></i> Fibonacci Time Zones</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Horizontal_Line.html"><i class="ac ac-file-text"></i> Horizontal Line</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Infinite_Line.html"><i class="ac ac-file-text"></i> Infinite Line</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Label.html"><i class="ac ac-file-text"></i> Label</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Line_Segment.html"><i class="ac ac-file-text"></i> Line Segment</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Marker.html"><i class="ac ac-file-text"></i> Marker</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Ray.html"><i class="ac ac-file-text"></i> Ray</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Rectangle.html"><i class="ac ac-file-text"></i> Rectangle</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Trend_Channel.html"><i class="ac ac-file-text"></i> Trend Channel</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Triangle.html"><i class="ac ac-file-text"></i> Triangle</a></li><li> <a href="../Stock_Charts/Drawing_Tools_and_Annotations/Vertical_Line.html"><i class="ac ac-file-text"></i> Vertical Line</a></li></ul></li></ul></li><li><a href="../beta.html"><i class="ac ac-folder"></i> beta</a><ul><li> <a href="../beta/Resource_Chart.html"><i class="ac ac-file-text"></i> Resource Chart</a></li></ul></li></ul>
+            <div class="footer">
+                <div class="footer-inner">
+                    <a href="https://www.facebook.com/AnyCharts" class="soc-network" target="_blank">
+                        <span class="soc-network-icon fb"><i class="sn-mini-icon ac ac-facebook"></i></span>
+                    </a>
+                    <a href="https://twitter.com/AnyChart" class="soc-network" target="_blank">
+                        <span class="soc-network-icon tw"><i class="sn-mini-icon ac ac-twitter"></i></span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/386660" class="soc-network" target="_blank">
+                        <span class="soc-network-icon in"><i class="sn-mini-icon ac ac-linkedin"></i></span>
+                    </a>
+                    <p> © 2015 AnyChart.Com All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row helpers hidden-lg hidden-md">
+            <div class="col-xs-24 col-sm-12">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="What are you looking for?" />
+                    <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="ac ac-search form-control-feedback"></span></button></span>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <section class="col-md-16 col-lg-18 col-lg-offset-6 col-md-offset-8" id="page-content" style="padding-top: 30px;">
+            <div id="table-of-content-small" class="hidden-lg"></div>
+            <div class="row">
+                <div class="col-lg-17" id="article-content">
+                    <h1 id="legend">Legend</h1><ul><li><a href="#overview">Overview</a></li><li><a href="#auto_legend">Auto Legend</a><ul><li><a href="#single_series">Single Series</a></li></ul></li><li><a href="#title">Title</a></li><li><a href="#positioning">Positioning</a><ul><li><a href="#outside">Outside</a></li><li><a href="#inside">Inside</a></li><li><a href="#drag_and_drop">Drag and Drop</a></li></ul></li><li><a href="#layout">Layout</a></li><li><a href="#size">Size</a><ul><li><a href="#expandable">Expandable</a></li><li><a href="#fixed">Fixed</a></li></ul></li><li><a href="#paging">Paging</a></li><li><a href="#visualization">Visualization</a><ul><li><a href="#background">Background</a></li><li><a href="#marker_symbol">Marker Symbol</a></li><li><a href="#mouse_cursor">Mouse Cursor</a></li><li><a href="#tooltip">Tooltip</a></li></ul></li><li><a href="#series_management">Series Management</a></li><li><a href="#custom_item">Custom Item</a></li><li><a href="#custom_legend">Custom Legend</a></li><li><a href="#events">Events</a><ul><li><a href="#legend_items_events">Legend Items Events</a></li><li><a href="#legend_events">Legend Events</a></li></ul></li><li><a href="#one_legend_for_several_charts">One Legend for Several Charts</a></li><li><a href="#one_legend_for_several_series">One Legend for Several Series</a></li></ul><h2 id="overview">Overview</h2><p>Legend is a element of a chart that lists and explains the symbols and colors used on a chart or a map. Sometimes it contains additional information that helps user to understand a chart.</p><h2 id="auto_legend">Auto Legend</h2><p>By default legend shows all series names with a symbol that shows the color and the type of the series.</p><p>To enable legend you have to pass <code>true</code> to <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#enabled">enabled()</a> method or <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend">legend()</a> constructor:</p><p>Enable using the <strong>legend()</strong> method:</p><pre><code>chart.legend(true);
+</code></pre><p>Enable using the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#enabled">enabled()</a> method:</p><pre><code>// create chart
+var chart = anychart.line();
+
+// enable legend
+var legend = chart.legend();
+legend.enabled(true);
+</code></pre><p>In the live sample, please notice that when you move the mouse over the series name in legend - all series elements are highlighted and if you click on legend element - series is hidden.</p><p></p><div id="iframe1" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container1" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit1 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+anychart.utils.hideTooltips(true);
+var chart;
+setTimeout(function () {
+  
+  // data
+  var data = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  
+  var Quarter1 = data.mapAs({x: 0, value: 1});
+  var Quarter2 = data.mapAs({x: 0, value: 2});
+  var Quarter3 = data.mapAs({x: 0, value: 3});
+  var Quarter4 = data.mapAs({x: 0, value: 4});
+  
+  // chart type
+  chart = anychart.area();
+  
+  // set title
+  chart.title("Bar Chart");
+  
+  // set data
+  var series1 = chart.column(Quarter1);
+  series1.name("Quarter 1");
+  var series2 = chart.area(Quarter2);
+  series2.name("Quarter 2");
+  var series3 = chart.line(Quarter3);
+  series3.name("Quarter 3");
+  var series4 = chart.spline(Quarter4);
+  series4.name("Quarter 4");
+  
+  // enable legend
+  chart.legend(true);
+  
+  // draw chart
+  chart.container("container1");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_01">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="single_series">Single Series</h3><p>If you are showing a single series chart and want your legend to show all points names and values you should configure the legend:</p><pre><code>var legend = chart.legend();
+// enable legend
+legend.enabled(true);
+// set source of legend items
+legend.itemsSourceMode("categories");
+</code></pre><p>To create a legend for a single series chart you  have to set <strong>categories</strong> value for <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#itemsSourceMode">itemsSourceMode()</a>.</p><p></p><div id="iframe2" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container2" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit2 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set chart type
+  chart = anychart.column();
+
+  // legend settings
+  var legend = chart.legend();
+  // enable legend
+  legend.enabled(true);
+  // set source of legend items
+  legend.itemsSourceMode("categories");
+
+  // set data
+  var series = chart.column([
+    {x: "John", value: 10000},
+    {x: "Jake", value: 12000},
+    {x: "Peter", value: 16000}
+  ]);
+
+  series.name("Sales");
+
+  // set chart title
+  chart.title("Legend for Single Series");
+
+  // set container and draw chart
+  chart.container("container2");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_02">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="title">Title</h2><p>To enable or disable a legend title use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Title#enabled">enabled()</a> method of the legend <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#title">title()</a>:</p><pre><code>var title = chart.legend().title();
+title.enabled(true);
+</code></pre><p>To specify and format the legend title use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Title#text">text()</a> method of a <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#title">title()</a>. Settings of a legend title are very similar to the <a href="../Appearance_Settings/Text_Settings.html">Chart Title</a> settings.</p><pre><code>var title = chart.legend().title();
+title.useHtml(true);
+
+// enable legend title
+title.enabled(true);
+title.text("Total sales&lt;br&gt;&lt;i style=\"color: #999; font-weight: 400; font-size: 11px;\"&gt;(Year 2004)&lt;/i&gt;");
+
+// set font size and align
+title.fontSize(14);
+title.hAlign("center");
+</code></pre><p>Here is a sample of a chart and the legend title is configured:</p><p></p><div id="iframe3" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container3" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit3 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // data
+  var data = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  
+  // map data
+  var Quarter1 = data.mapAs({x: 0, value: 1});
+  var Quarter2 = data.mapAs({x: 0, value: 2});
+  var Quarter3 = data.mapAs({x: 0, value: 3});
+  var Quarter4 = data.mapAs({x: 0, value: 4});
+  
+  // chart type
+  chart = anychart.bar();
+  
+  // set title
+  chart.title("Legend Title Configuration");
+  
+  // set data
+  var series1 = chart.bar(Quarter1);
+  series1.name("Quarter 1");
+  var series2 = chart.bar(Quarter2);
+  series2.name("Quarter 2");
+  var series3 = chart.bar(Quarter3);
+  series3.name("Quarter 3");
+  var series4 = chart.bar(Quarter4);
+  series4.name("Quarter 4");
+  
+  // legend settings
+  var legend = chart.legend();
+  legend.titleSeparator(true);
+  // enable legend
+  legend.enabled(true);
+  // set legend position
+  legend.position("right");
+  // set legend align
+  legend.align("top");
+  // set items layout
+  legend.itemsLayout("vertical"); 
+  
+  // settings for legend title  
+  var legendTitle = chart.legend().title();
+  legendTitle.useHtml(true);
+  // enables legend title
+  legendTitle.enabled(true);
+  legendTitle.text("Total sales<br><i style=\"color: #999; font-weight: 400; font-size: 11px;\">(Year 2004)</i>");
+  // set font size
+  legendTitle.fontSize(14);
+  legendTitle.hAlign("center");
+  
+  var xAxis = chart.xAxis();
+  xAxis.title("Sales");
+  var yAxis = chart.yAxis();
+  yAxis.title("Manager");
+  // draw chart
+  chart.container("container3");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_03">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="positioning">Positioning</h2><p>Depending on the layout and type of your chart it is possible to position the legend to a desired place using the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#positionMode">positionMode()</a>, <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#position">position()</a> and  <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#align">align()</a> methods of a <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend">legend()</a>.</p><h3 id="outside">Outside</h3><p>"Outside" is a default legend position mode for the most of the charts. In this mode you can define the side of the chart it should be bound to, and the alignment:</p><pre><code>var legend = chart.legend();
+legend.enabled(true);
+
+// set position mode
+legend.positionMode("outside");
+// set position and alignment
+legend.position("bottom");
+legend.align("center");
+legend.itemsLayout("horizontal-expandable");
+</code></pre><p></p><div id="iframe4" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container4" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit4 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  // create a chart
+  chart = anychart.marker();
+
+  // add series
+  chart.marker([[1,1],[1,1],[5,6],[10,1]]).name("FDH 1mg/day");
+  chart.marker([[2,3],[1,4],[7,6],[13,1]]).name("FDH 5mg/day");
+  chart.marker([[2,1],[1,2],[3,6],[8,1]]).name("Placebo");
+
+  // configure legend
+  var legend = chart.legend();
+  legend.enabled(true);
+  legend.background().enabled(true).stroke("1 black");
+  legend.padding(5);  
+
+  // set position mode
+  legend.positionMode("outside");
+  // set position and alignement
+  legend.position("center-top");
+  legend.align("right");
+  legend.itemsLayout("vertical-expandable");
+
+  chart.title("Outside Legend Position");
+  chart.container("container4");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_04">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="inside">Inside</h3><p>"Inside" position mode is when the legend is placed within a data plot (inner area of a chart). In this mode you can define the side of a data plot it should be bound to, and the alignment:</p><pre><code>var legend = chart.legend();
+legend.enabled(true);
+
+// set position mode
+legend.positionMode("inside");
+// set position and alignment
+legend.position("top");
+legend.align("right");
+</code></pre><p></p><div id="iframe5" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container5" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit5 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  // create a chart
+  chart = anychart.marker();
+
+  // add series
+  chart.marker([[1,1],[1,1],[5,6],[10,1]]).name("FDH 1mg/day");
+  chart.marker([[2,3],[1,4],[7,6],[13,1]]).name("FDH 5mg/day");
+  chart.marker([[2,1],[1,2],[3,6],[8,1]]).name("Placebo");
+
+  // enable major grids
+  chart.xGrid(true);
+  chart.yGrid(true);
+
+  // enable minor grids 
+  chart.xMinorGrid(true);
+  chart.yMinorGrid(true);
+
+  // configure legend
+  var legend = chart.legend();
+  legend.enabled(true);
+  legend.background().enabled(true).stroke("1 black");
+  legend.padding(5); 
+  legend.margin(25);
+
+  // set position mode
+  legend.positionMode("inside");
+  // set position and alignement
+  legend.position("center-top");
+  legend.align("right");
+  legend.itemsLayout("vertical-expandable");
+
+  chart.title("Inside Legend Position");
+  chart.container("container5");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_05">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="drag_and_drop">Drag and Drop</h3><p>The "Drag and Drop" feature of a legend allows user to move the legend to any position on a chart. Use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#drag">drag()</a> method to enable this mode:</p><pre><code>var legend = chart.legend();
+
+// Enable drag and drop
+legend.drag(true);
+</code></pre><p>Note that "drag and drop" always works withing constraints set by the <a href="#positioning">position mode and align</a>. It means that if the legend's <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#positionMode">positionMode()</a> is set to <a href="#inside">Inside</a> - you cannot move it outside of a data plot, and if it is <a href="#outside">Outside</a> - you cannot move it inside of a data plot.</p><p>Here is a sample of a legend that can be moved around:</p><p></p><div id="iframe6" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container6" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit6 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  chart = anychart.marker();
+
+  chart.marker([[1,1],[1,1],[5,6],[10,1]]).name("FDH 1mg/day");
+  chart.marker([[2,3],[1,4],[7,6],[13,1]]).name("FDH 5mg/day");
+  chart.marker([[2,1],[1,2],[3,6],[8,1]]).name("Placebo");
+
+  // enable major grids
+  chart.xGrid(true);
+  chart.yGrid(true);
+
+  // enable minor grids 
+  chart.xMinorGrid(true);
+  chart.yMinorGrid(true);
+
+  // configure legend
+  var legend = chart.legend();
+  legend.enabled(true);
+  legend.background().enabled(true).stroke("1 black");
+  legend.padding(10); 
+  legend.margin(5);
+
+  // legend title
+  title = legend.title("Drag the legend");
+
+  // allow drag
+  legend.drag(true);
+
+  // set position mode
+  legend.positionMode("inside");
+  // set position and alignement
+  legend.position("center-top");
+  legend.align("right");
+  legend.itemsLayout("vertical-expandable");
+  legend.width(200);
+  legend.height(130);
+
+  chart.title("Inside Legend Position");
+  chart.container("container6");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_06">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="layout">Layout</h2><p>The <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#itemsLayout">itemsLayout()</a> method controls how the items of a legend are placed. Possible values are listed in the <a class="method" href="http://api.anychart.com/latest/anychart.enums.LegendLayout">anychart.enums.LegendLayout</a> and they are:</p><ul><li>"horizontal",</li><li>"horizontal-expandable",</li><li>"vertical",</li><li>"vertical-expandable".</li></ul><p>The legend layout mode works in conjunction with <a href="#positioning">position</a> and <a href="#size">size</a> settings. </p><h2 id="size">Size</h2><p>Legend size is controlled by the following methods:</p><ul><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxHeight">maxHeight()</a>,</li><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxWidth">maxWidth()</a>,</li><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#height">height()</a>,</li><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#width">width()</a>,</li><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#padding">padding()</a>,</li><li><a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#margin">margin()</a>.</li></ul><h3 id="expandable">Expandable</h3><p>When the legend <a href="#layout">layout mode</a> is set to <em>"horizontal-expandable"</em> or <em>"vertical-expandable"</em> it makes sense to use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxHeight">maxHeight()</a> and the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxWidth">maxWidth()</a> methods, which control the extent to which legend can expand to. It can be set both in pixels and in percent. This way you can ensure that a legend does not grab to much space when there are a few elements and that it will not squeeze the chart into nothingness if there are to many elements.</p><pre><code>// Set maximum width and height.
+legend.maxWidth("30%");
+legend.maxHeight("30%");
+
+// legend mode and position
+legend.itemsLayout("vertical-expandable");
+legend.position("right");
+
+// paginator position
+legend.paginator().orientation("bottom");
+</code></pre><p>See how these settings work in the following interactive sample: click buttons to add or remove series and see how the legend and the chart change their sizes. Once the legend reached maximum allowed size, a <a href="#paging">paginator</a> appears.</p><p></p><div id="iframe7" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container7" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit7 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+    stage = anychart.graphics.create("container7");
+
+    var data = [
+["Apples", 21, 99, 19, 72, 94, 71],
+["Pears", 41, 7, 71, 10, 27, 79],
+["Bananas", 9, 15, 77, 58, 97, 79],
+["Grapes", 71, 34, 40, 21, 72, 6],
+["Oranges", 6, 29, 11, 46, 19, 49]
+    ];
+
+    chart = anychart.column();
+
+    var series = anychart.data.mapAsTable(data, "value");
+
+    for (var i in series) {
+chart.column(series[i]);
+    }
+
+    var legend = chart.legend();
+    legend.enabled(true);
+
+    // Set maximum width and height.
+    legend.maxWidth("30%");
+    legend.maxHeight("30%");
+    
+    // legend mode and position
+    legend.itemsLayout("vertical-expandable");
+    legend.position("right");
+
+    // paginator position
+    legend.paginator().orientation("bottom");
+
+    
+    chart.title("Expandable legend");
+    chart.container(stage);
+    chart.draw();
+
+    createLabel("Click to remove 7 series", 5, function (){
+chart.removeSeriesAt(chart.getSeriesCount() - 1);
+    });
+
+    createLabel("Click to add 7 series", 180, function (){
+for (var i in series) {
+    chart.column(series[i]);
+}
+    });
+});
+    
+function createLabel(text, offset, action){
+    var lbl = anychart.standalones.label();
+    lbl.background({fill: "#9E9E9E"});
+    lbl.text(text);
+    lbl.fontColor("#fff");
+    lbl.padding(5);
+    lbl.offsetX(offset);
+    lbl.offsetY(5);
+    lbl.listen("mouseOver", function () {
+document.body.style.cursor = "pointer";
+    });
+    lbl.listen("mouseOut", function () {
+document.body.style.cursor = "auto";
+    });
+    lbl.listen("click", action);
+    lbl.container(stage);
+    lbl.draw();    
+}})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_09">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="fixed">Fixed</h3><p>The <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#height">height()</a> and <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#width">width()</a> methods are used to set the fixed size of a legend in pixels or in percent. They override <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxHeight">maxHeight()</a> and <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#maxWidth">maxWidth()</a> if both are set simultaneously.</p><p>A Pie Chart Sample with a legend of a fixed (75px - width, 140px height) size positioned to the <em>"Left"</em> of the chart, aligned to <em>"Top"</em>, with padding of 10 pixels:</p><pre><code>var legend = chart.legend();
+// set height
+legend.height(140);
+// set width
+legend.width(95);
+// set position
+legend.position("left");
+// set align
+legend.align("top");
+// set padding
+legend.padding(10);
+</code></pre><p></p><div id="iframe8" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container8" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit8 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set data and define chart type
+  chart = anychart.pie([
+    {name: "John", value: 10000},
+    {name: "Jake", value: 12000},
+    {name: "Peter", value: 16000},
+    {name: "Alex", value: 11000},
+    {name: "Tom", value: 13000},
+    {name: "Julia", value: 18000}
+  ]);
+  
+  // legend settings
+  var legend = chart.legend();
+  // enables legend
+  legend.enabled(true);
+  // set legend height
+  legend.height(140);
+  // set legend width
+  legend.width(95);
+  // set legend position
+  legend.position("left");
+  // set legend align
+  legend.align("top");
+  // set padding 10px
+  legend.padding(10);
+  // legend items layout
+  legend.itemsLayout("vertical");
+  // paginator settings
+  var paging = chart.legend().paginator();
+  // place paginator at the bottom of a legend
+  paging.orientation("bottom");
+  
+  // draw
+  chart.container("container8");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_10">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="paging">Paging</h2><p>If legend items can't fit into an area, the legend can occupy (this is controlled by <a href="#size">size settings</a>) the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#paginator">paginator()</a> appears. You can choose paginator layout and position:</p><pre><code>// legend settings
+var paginator = chart.legend().paginator();
+// set paginator layout
+paginator.layout("vertical");
+// place paginator on the right
+paginator.orientation("right");
+</code></pre><p></p><div id="iframe9" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container9" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit9 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set data and define chart type
+  chart = anychart.pie([
+    {name: "John", value: 10000},
+    {name: "Jake", value: 12000},
+    {name: "Peter", value: 16000},
+    {name: "Alex", value: 11000},
+    {name: "Tom", value: 13000},
+    {name: "Julia", value: 18000}
+  ]);
+  
+  // legend settings
+  var legend = chart.legend();
+  // enables legend
+  legend.enabled(true);
+  // set legend height
+  legend.height(145);
+  // set legend width
+  legend.width(105);
+  // set legend position
+  legend.position("left");
+  // set legend align
+  legend.align("top");
+  // legend items layout
+  legend.itemsLayout("vertical");
+  // paginator settings
+  var paginator = chart.legend().paginator();
+  // set padding for paginator
+  paginator.padding(3);
+  // set paginator layout
+  paginator.layout("vertical");
+  // place paginator at the left of a legend
+  paginator.orientation("left");
+  
+  // draw
+  chart.container("container9");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_11">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="visualization">Visualization</h2><h3 id="background">Background</h3><p>To configure the border and the inner color of the legend use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#background">background()</a> method. To learn more about background adjusting please see the <a href="../Appearance_Settings/Background.html">background tutorial</a>.</p><p></p><div id="iframe10" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container10" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit10 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set data and define chart type
+  chart = anychart.pie([
+    {name: "John", value: 10000},
+    {name: "Jake", value: 12000},
+    {name: "Peter", value: 16000},
+    {name: "Alex", value: 11000},
+    {name: "Tom", value: 13000},
+    {name: "Julia", value: 18000}
+  ]);
+  
+  var legend = chart.legend();
+  // enables legend
+  legend.enabled(true);
+  // set legend position
+  legend.position("left");
+  // set legend align
+  legend.align("top");
+  // legend items layout
+  legend.itemsLayout("vertical");
+  // background settings
+  var background = legend.background();
+  // background inner color settings
+  background.fill(["white", "lightgreen"], -45);
+  background.enabled(true);
+  
+  // draw
+  chart.container("container10");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_07">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="marker_symbol">Marker Symbol</h3><p>When you are working with <a href="../Basic_Charts/Line_Chart.html">line</a> and <a href="../Basic_Charts/Spline_Chart.html">spline</a> charts you can use markers to distinguish different series. By default AnyChart charting library shows marker symbols in legend - only color representation is used in a small line icon. If it is necessary to tune markers in legend icons, adjust the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.LegendItem">legendItem()</a> method. Sample code presented below:</p><pre><code>// chart data 
+var series = chart.line([
+  {x: "John", value: 16000},
+  {x: "Jake", value: 21000},
+  {x: "Peter", value: 22000}
+]);
+// enable markers
+series.markers(true);
+// settings for legend item of the series
+var item = series.legendItem()
+// set inner color of icon marker
+item.iconType("line");
+</code></pre><p>It may be bothersome to tune legend item for each series, you can set defaults using <a href="../Appearance_Settings/Themes.html">Themes</a> to avoid this:</p><pre><code>// set default icons for legend items 
+// for lines, splines and markers
+anychart.theme({
+      chart: {
+          defaultSeriesSettings: {
+              line: {legendItem: {iconType: "line"}},
+              spline: {legendItem: {iconType: "spline"}},
+              marker: {legendItem: {iconType: "marker"}}
+  }}});
+</code></pre><p>Here is a sample with defaults for legend set to show series icons with markers:</p><p></p><div id="iframe11" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container11" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit11 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set default icons for legend items 
+  // for lines, splines and markers
+  anychart.theme({
+chart: {
+    defaultSeriesSettings: {
+line: {legendItem: {iconType: "line"}},
+spline: {legendItem: {iconType: "spline"}},
+marker: {legendItem: {iconType: "marker"}}
+    }}});
+  
+  // create a chart
+  chart = anychart.line();
+  // enable legend
+  chart.legend(true);
+  
+  // series data
+  var data = anychart.data.set([
+    ["John",  1, 3, 2],
+    ["Jake",  4, 2, 1],
+    ["Pete",  6, 3, 5]
+  ]);
+
+  chart.marker(data.mapAs({x: 0, value: 1}));
+  chart.line(data.mapAs({x: 0, value: 2})).markers(true);
+  chart.spline(data.mapAs({x: 0, value: 3})).markers(true);
+
+  // draw chart
+  chart.container("container11");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_12">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="mouse_cursor">Mouse Cursor</h3><p>Use the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#hoverCursor">hoverCursor()</a> method to set the type of cursor that is shown when mouse moves over the legend items. You can use string values from <a class="method" href="http://api.anychart.com/latest/anychart.enums.Cursor">anychart.enums.Cursor</a>.</p><pre><code>var legend = chart.legend();
+legend.hoverCursor("pointer"); // sets hover cursor using a string
+</code></pre><h3 id="tooltip">Tooltip</h3><p>If you want to configure legend tooltips - you should do that using the <a class="method" href="http://api.anychart.com/latest/anychart.core.ui.Legend#tooltip">tooltip()</a> method. You can tune its visual appearance and format. In the following sample we format the tooltips of the legend to show detailed description information.</p><p></p><div id="iframe12" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container12" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit12 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set data
+  var data = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  
+  // map data
+  var Quarter1 = data.mapAs({x: 0, value: 1});
+  var Quarter2 = data.mapAs({x: 0, value: 2});
+  var Quarter3 = data.mapAs({x: 0, value: 3});
+  var Quarter4 = data.mapAs({x: 0, value: 4});
+  
+  // chart type
+  chart = anychart.column();
+  
+  // tune legend tooltip content appearance
+  var tooltip = chart.legend().tooltip();
+  // enable HTML
+  tooltip.useHtml(true);
+  tooltip.enabled(true);
+  tooltip.format(function (){
+    return this.meta.legendTooltipText;
+  });
+  
+  var legend = chart.legend();
+  // enable title separator
+  legend.enabled(true);
+  // enable legend
+  legend.position("right");
+  // set legend position
+  legend.align("top");
+  // set legend align
+  legend.itemsLayout("vertical");
+  // set items layout
+  legend.titleSeparator(true);
+  // settings for legend title
+  var title = legend.title();
+  // enable title
+  title.enabled(true);
+  // enable HTML
+  title.useHtml(true);
+  // set text align
+  title.hAlign("center");
+  title.text("Total sales<br><i style=\"color: #999; font-weight: 400; font-size: 11px;\">(Year 2004)</i>");
+  // set title text size
+  title.fontSize(14);
+  
+  // set title
+  chart.title("Legend Title Configuration");
+  
+  // set data
+  var series1 = chart.column(Quarter1);
+  series1.name("Quarter 1");
+  series1.meta({
+    // set text for the legend tooltip
+    legendTooltipText:"<b>Year:</b> 2004"+
+    "<br><b>Quarter:</b> first"+
+    "<br><b>Total sales: </b>"+(Quarter1.get(0,"value") + Quarter1.get(1,"value") + Quarter1.get(2,"value"))+
+    "<br><b>Best result</b>: "+
+      Quarter1.get(
+// get the row with the best seller
+Quarter1.find(
+  // get the row with the biggest value
+  "value",
+  // get the biggest sales value of the first quarter
+  Math.max(
+    Quarter1.get(0,"value"),
+    Quarter1.get(1,"value"),
+    Quarter1.get(2,"value")
+  )
+),
+      // get the name of the best seller
+      "x")
+  });
+  var series2 = chart.column(Quarter2);
+  series2.name("Quarter 2");
+  series2.meta({
+    legendTooltipText:"<b>Year:</b> 2004"+
+    "<br><b>Quarter:</b> second"+
+    "<br><b>Total sales: </b>"+(Quarter2.get(0,"value")+Quarter2.get(1,"value")+Quarter2.get(2,"value"))+
+    "<br><b>Best result</b>: "+Quarter2.get(Quarter2.find("value",Math.max(Quarter2.get(0,"value"),Quarter2.get(1,"value"),Quarter2.get(2,"value"))),"x")
+  });
+  var series3 = chart.column(Quarter3);
+  series3.name("Quarter 3");
+  series3.meta({
+    legendTooltipText: "<b>Year:</b> 2004"+
+    "<br><b>Quarter:</b> third"+
+    "<br><b>Total sales: </b>"+(Quarter3.get(0,"value")+Quarter3.get(1,"value")+Quarter3.get(2,"value"))+
+    "<br><b>Best result</b>: "+Quarter3.get(Quarter3.find("value",Math.max(Quarter3.get(0,"value"),Quarter3.get(1,"value"),Quarter3.get(2,"value"))),"x")
+  });
+  var series4 = chart.column(Quarter4);
+  series4.name("Quarter 4");
+  series4.meta({
+    legendTooltipText:"<b>Year:</b> 2004"+
+    "<br><b>Quarter:</b> fourth"+
+    "<br><b>Total sales: </b>"+(Quarter4.get(0,"value")+Quarter4.get(1,"value")+Quarter4.get(2,"value"))+
+    "<br><b>Best result</b>: "+Quarter4.get(Quarter4.find("value",Math.max(Quarter4.get(0,"value"),Quarter4.get(1,"value"),Quarter4.get(2,"value"))),"x")
+  });
+  
+  var xAxis = chart.xAxis();
+  xAxis.title("Manager");
+  var yAxis = chart.yAxis();
+  yAxis.title("Sales");
+  
+  // set container and draw chart
+  chart.container("container12");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_13">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="series_management">Series Management</h2><p>You can easily control series of the chart using chart legend. You can hide and show any of the series by clicking on the legend items. Here is a sample of column chart with four series. One of the series is already disabled. Click on the last legend item to show the hidden series. </p><p></p><div id="iframe13" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container13" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit13 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // data
+  var data = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  
+  // map data
+  var Quarter1 = data.mapAs({x: 0, value: 1});
+  var Quarter2 = data.mapAs({x: 0, value: 2});
+  var Quarter3 = data.mapAs({x: 0, value: 3});
+  var Quarter4 = data.mapAs({x: 0, value: 4});
+  
+  // chart type
+  chart = anychart.column();
+  
+  // set title
+  chart.title("Legend Title Configuration");
+  
+  // set data
+  var series1 = chart.column(Quarter1);
+  series1.name("Quarter 1");
+  var series2 = chart.column(Quarter2);
+  series2.name("Quarter 2");
+  var series3 = chart.column(Quarter3);
+  series3.name("Quarter 3");
+  var series4 = chart.column(Quarter4);
+  series4.name("Quarter 4");
+  series4.enabled(false);
+  
+  // legend settings
+  var legend = chart.legend();
+  // enable title separator
+  legend.titleSeparator(true);
+  // enable legend
+  legend.enabled(true);
+  // set legend position
+  legend.position("right");
+  // set legend align
+  legend.align("top");
+  // set items layout
+  legend.itemsLayout("vertical");
+  
+  // settings for legend title  
+  var title = chart.legend().title();
+  title.useHtml(true);
+  // enables legend title
+  title.enabled(true);
+  title.text("Total sales<br><i style=\"color: #999; font-weight: 400; font-size: 11px;\">(Year 2004)</i>");
+  // set font size
+  title.fontSize(14);
+  title.hAlign("center");
+    
+  // draw chart
+  chart.container("container13");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_14">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="custom_item">Custom Item</h2><p>When creating legend you can add your own items with any information you want to see on the legend, to do that use <a class="method" href="http://api.anychart.com/latest/anychart.standalones.Legend#itemsFormatter">itemsFormatter()</a> method. </p><pre><code>var legend = chart.legend();
+// adjust legend items
+legend.itemsFormatter(function(items){
+  // push into items array
+  items.push({
+    // set text of a new item
+    text: "item text "
+  });
+  // return items array
+  return items;
+});
+</code></pre><p>In the sample chart below we've used custom item that adds the <em>Total</em> data to legend.</p><p></p><div id="iframe14" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container14" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit14 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set data and define chart type
+  var dataSet = anychart.data.set([
+    {name: "John", value: 10000},
+    {name: "Jake", value: 12000},
+    {name: "Peter", value: 16000},
+    {name: "Alex", value: 11000},
+    {name: "Tom", value: 13000},
+    {name: "Julia", value: 18000}
+  ]);
+  
+  // variable for total sales
+  var total = 0;
+  
+  for (var i = 0; i<dataSet.mapAs().getRowsCount();i++)
+    total+=dataSet.mapAs().get(i,"value");
+  
+  chart = anychart.pie(dataSet);
+  
+  // legend settings
+  var legend = chart.legend();
+  // enables legend
+  legend.enabled(true);
+  // set legend position
+  legend.position("left");
+  // set legend align
+  legend.align("top");
+  // legend items layout
+  legend.itemsLayout("vertical");
+  // adjust legend items
+  legend.itemsFormatter(function(items){
+    // push into items array
+    items.push({
+      // set item text
+      text: "Total: "+total.toString(),
+      // disable icon for a new item
+      iconEnabled: false,
+      // bold text of the item
+      fontWeight: 900
+    });
+    // return items array
+    return items;
+  });
+  
+  // configure tooltip considering new item 
+  var tooltip = chart.legend().tooltip();
+  tooltip.enabled(true);
+  tooltip.format(function (){
+    // to avoid failing on "total" item
+    if(this.meta.pointValue === undefined)
+      return this.value;
+    // for all other points
+    return this.value+"\n"+this.meta.pointValue.toString();
+  });
+  
+  // set container and draw chart
+  chart.container("container14");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_15">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="custom_legend">Custom Legend</h2><p>AnyChart JavaScript Framework sets no limits to the amount of legends on one chart plot. Legend can be a part chart as well as a separate unit. Sample below demonstrates three custom legends at the bottom of the chart. </p><p></p><div id="iframe15" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container15" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit15 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set stage
+  var stage = anychart.graphics.create("container15");
+  
+  // data
+  var data = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  
+  // get default color palette
+  var palette = anychart.palettes.distinctColors().items();
+  
+  // variables for legend items
+  var johnLegendItems = [];
+  var jakeLegendItems = [];
+  var peterLegendItems = [];
+  
+  // push settings into arrays of legend items
+  for (var i0=1;i0<data.data()[0].length;i0++){
+    johnLegendItems.push({
+      text: data.data()[0][i0].toString(),  // text of item
+      iconType: "square",                   // type of icons
+      iconFill: palette[i0-1],              // color of icons
+      iconStroke: anychart.color.darken(palette[i0-1], 0.2)
+    });
+  }
+  for (var i1=1;i1<data.data()[1].length;i1++){
+    jakeLegendItems.push({
+      text: data.data()[1][i1].toString(),  // text of item
+      iconType: "square",                   // type of icons
+      iconFill: palette[i1-1],              // color of icons
+      iconStroke: anychart.color.darken(palette[i1-1], 0.2)
+    });
+  }
+  for (var i2=1;i2<data.data()[2].length;i2++){
+    peterLegendItems.push({
+      index: i2,
+      text: data.data()[2][i2].toString(),  // text of item
+      iconType: "square",                   // type of icons
+      iconFill: palette[i2-1],              // color of icons
+      iconStroke: anychart.color.darken(palette[i2-1], 0.2)
+    });
+  }
+  
+  // custom legends
+  var johnLegend = anychart.standalones.legend();
+  var jakeLegend = anychart.standalones.legend();
+  var peterLegend = anychart.standalones.legend();
+  
+  // set legend titles
+  var johnTitle = johnLegend.title();
+  johnTitle.text("John");
+  johnTitle.hAlign("center");
+  var jakeTitle = jakeLegend.title();
+  jakeTitle.text("Jake");
+  jakeTitle.hAlign("center");
+  var peterTitle = peterLegend.title();
+  peterTitle.text("Peter");
+  peterTitle.hAlign("center");
+  
+  // set legend items
+  johnLegend.itemsFormatter(function (){return johnLegendItems});
+  jakeLegend.itemsFormatter(function (){return jakeLegendItems});
+  peterLegend.itemsFormatter(function (){return peterLegendItems});
+  
+  // legends settings
+  johnLegend.position("center-bottom");
+  johnLegend.align("left");
+  johnLegend.zIndex(1);
+  johnLegend.enabled(true);
+  johnLegend.itemsLayout("vertical");
+  johnLegend.listen("legendItemClick", function(event) {
+    event.preventDefault();
+    var index = event["itemIndex"];
+    if (chart.getSeries(index).data().get(0, "value") == "missing"){
+      chart.getSeries(index).data().set(0, "value", johnLegendItems[index].text);
+      johnLegendItems[index].fontColor = "#000";
+      johnLegendItems[index].iconFill = palette[index];
+      johnLegendItems[index].iconStroke = anychart.color.darken(palette[index], 0.2);
+      johnLegend.itemsFormatter(function (){return johnLegendItems});
+    }
+    else{
+      chart.getSeries(index).data().set(0, "value", "missing");
+      johnLegendItems[index].fontColor = "#999";
+      johnLegendItems[index].iconFill = "#999";
+      johnLegendItems[index].iconStroke = "#999";
+      johnLegend.itemsFormatter(function (){return johnLegendItems});
+    }
+  });
+  johnLegend.listen("legendItemMouseOver", function(event) {
+    chart.getSeries(event.itemIndex).hover(0);
+  });
+  johnLegend.listen("legendItemMouseOut", function(event) {
+    chart.getSeries(event.itemIndex).unhover(0);
+  });
+  
+  jakeLegend.position("center-bottom");
+  jakeLegend.align("center");
+  jakeLegend.zIndex(1);
+  jakeLegend.enabled(true);
+  jakeLegend.itemsLayout("vertical");
+  jakeLegend.listen("legendItemClick", function(event) {
+    event.preventDefault();
+    var index = event["itemIndex"];
+    if (chart.getSeries(index).data().get(1, "value") == "missing"){
+      chart.getSeries(index).data().set(1, "value", jakeLegendItems[index].text);
+      jakeLegendItems[index].fontColor = "#000";
+      jakeLegendItems[index].iconFill = palette[index];
+      jakeLegendItems[index].iconStroke = anychart.color.darken(palette[index], 0.2);
+      jakeLegend.itemsFormatter(function (){return jakeLegendItems});
+    }
+    else{
+      chart.getSeries(index).data().set(1, "value", "missing");
+      jakeLegendItems[index].fontColor = "#999";
+      jakeLegendItems[index].iconFill = "#999";
+      jakeLegendItems[index].iconStroke = "#999";
+      jakeLegend.itemsFormatter(function (){return jakeLegendItems});
+    }
+  });
+  jakeLegend.listen("legendItemMouseOver", function(event) {
+    chart.getSeries(event.itemIndex).hover(1);
+  });
+  jakeLegend.listen("legendItemMouseOut", function(event) {
+    chart.getSeries(event.itemIndex).unhover(1);
+  });
+  
+  peterLegend.position("center-bottom");
+  peterLegend.align("right");
+  peterLegend.zIndex(1);
+  peterLegend.enabled(true);
+  peterLegend.itemsLayout("vertical");
+  peterLegend.listen("legendItemClick", function(event) {
+    event.preventDefault();
+    var index = event["itemIndex"];
+    if (chart.getSeries(index).data().get(2, "value") == "missing"){
+      chart.getSeries(index).data().set(2, "value", peterLegendItems[index].text);
+      peterLegendItems[index].fontColor = "#000";
+      peterLegendItems[index].iconFill = palette[index];
+      peterLegendItems[index].iconStroke = anychart.color.darken(palette[index], 0.2);
+      peterLegend.itemsFormatter(function (){return peterLegendItems});
+    }
+    else{
+      chart.getSeries(index).data().set(2, "value", "missing");
+      peterLegendItems[index].fontColor = "#999";
+      peterLegendItems[index].iconFill = "#999";
+      peterLegendItems[index].iconStroke = "#999";
+      peterLegend.itemsFormatter(function (){return peterLegendItems});
+    }
+  });
+  peterLegend.listen("legendItemMouseOver", function(event) {
+    chart.getSeries(event.itemIndex).hover(2);
+  });
+  peterLegend.listen("legendItemMouseOut", function(event) {
+    chart.getSeries(event.itemIndex).unhover(2);
+  });
+  
+  // draw legends
+  johnLegend.container(stage);
+  johnLegend.draw();
+  jakeLegend.container(stage);
+  jakeLegend.draw();
+  peterLegend.container(stage);
+  peterLegend.draw();
+  
+  
+  // map data
+  var Quarter1 = data.mapAs({x: 0, value: 1});
+  var Quarter2 = data.mapAs({x: 0, value: 2});
+  var Quarter3 = data.mapAs({x: 0, value: 3});
+  var Quarter4 = data.mapAs({x: 0, value: 4});
+  
+  // chart type
+  chart = anychart.column();
+  
+  var xAxis = chart.xAxis();
+  xAxis.title(null);
+  var yAxis = chart.yAxis();
+  yAxis.title(null);
+  
+  // set title
+  chart.title("Custom Legend");
+  
+  // set data
+  var series1 = chart.column(Quarter1);
+  series1.name("Quarter 1");
+  var series2 = chart.column(Quarter2);
+  series2.name("Quarter 2");
+  var series3 = chart.column(Quarter3);
+  series3.name("Quarter 3");
+  var series4 = chart.column(Quarter4);
+  series4.name("Quarter 4");
+  
+  // legend settings
+  var legend = chart.legend();
+  // draw line to separate title
+  legend.titleSeparator(true);
+  // enable legend
+  legend.enabled(true);
+  // set legend position
+  legend.position("right");
+  // set legend align
+  legend.align("top");
+  // set items layout
+  legend.itemsLayout("vertical");
+  
+  // disable chart background
+  chart.background(null);
+  
+  // settings for legend title  
+  var legendTitle = chart.legend().title();
+  legendTitle.useHtml(true);
+  // enables legend title
+  legendTitle.enabled(true);
+  // set title text
+  legendTitle.text("Total sales<br><i style=\"color: #999; font-weight: 400; font-size: 11px;\">(Year 2004)</i>");
+  // set font size
+  legendTitle.fontSize(14);
+  legendTitle.hAlign("center");
+  
+  // prevent chart overlapping by legends
+  var margin = chart.margin();
+  margin.bottom(stage.height() - johnLegend.getRemainingBounds().getHeight() - 10);
+  var yScale = chart.yScale();
+  yScale.minimum(0);
+  // redraw legends if chart is redrawn
+  chart.container(stage);
+  chart.draw();
+  chart.listen(
+    "chartDraw",
+    function (){
+      johnLegend.parentBounds(
+anychart.math.rect(
+  0,
+  0,
+  chart.container().width(),
+  chart.container().height()
+)
+      );
+      johnLegend.draw();
+      jakeLegend.parentBounds(
+anychart.math.rect(
+  0,
+  0,
+  chart.container().width(),
+  chart.container().height()
+)
+      );
+      jakeLegend.draw();
+      peterLegend.parentBounds(
+anychart.math.rect(
+  0,
+  0,
+  chart.container().width(),
+  chart.container().height()
+)
+      );
+      peterLegend.draw();
+    });
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_16">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="events">Events</h2><p>As an interactive component of a Chart, Legend has some events which can be used for managing and adjusting the Chart and the Legend itself. Look through this section to know all about legend events.</p><h3 id="legend_items_events">Legend Items Events</h3><p>Legend items are child elements of a legend, but they have some events which have nothing to do with the whole legend. The list below demonstrates the list of legend items events.</p><ul><li><strong>legendItemClick</strong> - Event type for click on item of legend.</li><li><strong>legendItemDblclick</strong> -  Event type for double click on item of legend.</li><li><strong>legendItemMouseDown</strong> - Event type for item of legend at mouse down.</li><li><strong>legendItemMouseMove</strong> - Event type for item of legend at mouse moving.</li><li><strong>legendItemMouseOut</strong> -  Event type for item of legend at mouse leading off.</li><li><strong>legendItemMouseOver</strong> - Event type for item of legend at hover mouse.</li><li><strong>legendItemMouseUp</strong> - Event type for item of legend at up mouse.</li></ul><pre><code>// legend items events adjusting
+legend.listen("legendItemMouseDown", function(e){
+  // stop reacting on this event
+  e.preventDefault();
+});
+
+// set the action to the click event
+legend.listen("legendItemСlick", function(e){
+  var series = chart.getSeriesAt(e.itemIndex);
+  var selected = !series.meta("selected");
+  if(selected){
+    series.select();
+  } else {
+    series.unselect();
+  }
+  series.meta("selected", selected);
+  // prevent chart click from happenning
+  e.stopWrapperPropagation();
+});
+</code></pre><p></p><div id="iframe16" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container16" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit16 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  // data
+  data = [
+      ["John",  10000, 12000, 20000, 16000],
+      ["Jake",  12000, 15000, 19000, 21000],
+      ["Peter", 16000, 17000, 21000, 22000]
+    ];
+  
+  // create column chart
+  chart = anychart.column();
+
+  // set chart data
+  chart.data(data);
+
+  // legend settings
+  var legend = chart.legend();
+  // enable legend
+  legend.enabled(true);
+
+  // legend items events adjusting
+  legend.listen("legendItemMouseDown", function(e){
+    // stop reacting on this event
+    e.preventDefault();
+  });
+
+  // set the action to the click event
+  legend.listen("legendItemClick", function(e){
+    var series = chart.getSeriesAt(e.itemIndex);
+    var selected = !series.meta("selected");
+    if(selected){
+      series.select();
+    } else {
+      series.unselect();
+    }
+    series.meta("selected", selected);
+    // prevent chart click from happenning
+    e.stopWrapperPropagation();
+  });
+       
+  // set title
+  chart.title("Legend Items events");
+ 
+  // reset legend items
+  chart.listen("click", function (){
+    for (i=0;i<chart.getSeriesCount();i++){
+      chart.getSeries(i).legendItem().disabled(false);
+    }
+  });
+ 
+  // draw chart
+  chart.container("container16");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_18">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h3 id="legend_events">Legend Events</h3><p>There are only three events the Legend has:</p><ul><li><strong>drag</strong> -  Event type for legend moving.</li><li><strong>dragEnd</strong> - Event type for legend at the end of moving.</li><li><strong>dragStart</strong> - Event type for legend at the start of moving.</li></ul><pre><code>// allow drag
+legend.drag(true);
+
+// chart title changes on dragging event
+legend.listen("drag", function (){
+  chart.title("Legend is being dragged");
+});
+</code></pre><p></p><div id="iframe17" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container17" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit17 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  chart = anychart.marker();
+
+  series1 = chart.marker([[1,1],[1,1],[5,6],[10,1]]);
+  series1.name("FDH 1mg/day");
+  series2 = chart.marker([[2,3],[1,4],[7,6],[13,1]]);
+  series2.name("FDH 5mg/day");
+  series3 = chart.marker([[2,1],[1,2],[3,6],[8,1]])
+  series3.name("Placebo");
+
+  // enable major grids
+  chart.xGrid(true);
+  chart.yGrid(true);
+
+  // enable minor grids 
+  chart.xMinorGrid(true);
+  chart.yMinorGrid(true);
+
+  // configure legend
+  var legend = chart.legend();
+  legend.enabled(true);
+  legend.background().enabled(true).stroke("1 black");
+  legend.padding(10); 
+  legend.margin(5);
+
+  // legend title
+  title = legend.title("Drag the legend");
+
+  // chart title  
+  chartTitle = "Inside Legend Position";
+  chart.title(chartTitle);
+
+  // allow drag
+  legend.drag(true);
+
+  // legend get emphasized when dragging through background darkening
+  legend.listen("dragStart", function (){
+      chart.background().fill("#eee");
+  });
+  legend.listen("dragEnd", function (){
+      chart.background().fill("#fff");
+  });
+
+  // set position mode
+  legend.positionMode("inside");
+  // set position and alignement
+  legend.position("center-top");
+  legend.align("right");
+  legend.itemsLayout("vertical-expandable");
+  legend.width(200);
+  legend.height(130);
+  chart.container("container17");
+  chart.draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_17">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="one_legend_for_several_charts">One Legend for Several Charts</h2><p>As you can see, one legend can contain different information from one chart. Moreover, one legend can contain information from several charts. To add several chart into one legend use <a class="method" href="http://api.anychart.com/latest/anychart.standalones.Legend#itemsSource">itemsSource()</a> method and define charts for legend's content.</p><pre><code>// define charts
+var chart2005 = anychart.column();
+var chart2006 = anychart.column();
+
+// create custom legend
+var legend = anychart.standalones.legend();
+// set sources for legend items
+legend.itemsSource([chart2005, chart2006]);
+</code></pre><p></p><div id="iframe18" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container18" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit18 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set stage
+  var stage = anychart.graphics.create("container18");
+  
+  // manage data
+  var data2005 = anychart.data.set([
+    ["John",  10000, 12000, 20000, 16000],
+    ["Jake",  12000, 15000, 19000, 21000],
+    ["Peter", 16000, 17000, 21000, 22000]
+  ]);
+  var data2006 = anychart.data.set([
+    ["John",  13000, 10000, 18000, 21000],
+    ["Jake",  11700, 12000, 21000, 20000],
+    ["Peter", 18000, 11000, 12000, 22000]
+  ]);
+  
+  
+  // create variables and count results
+  var results2005 = [];
+  for(var series2005=1;series2005<data2005.data()[0].length;series2005++){
+    var total = 0;
+    var values = [];
+    var bestResult = 0;
+    for(var points2005=0;points2005<data2005.mapAs().getRowsCount();points2005++){
+      total+= data2005.data()[points2005][series2005];
+      values.push(data2005.data()[points2005][series2005]);
+      if (Math.max.apply(Math, values) == data2005.data()[points2005][series2005])
+bestResult = data2005.data()[points2005][0];
+    }
+    results2005.push({total: total, bestResult: bestResult});
+  }
+  
+  var results2006 = [];
+  for(var n=1;n<data2006.data()[0].length;n++){
+    var total2006 = 0;
+    var values2006 = [];
+    var bestResult2006 = 0;
+    for(var r=0;r<data2006.mapAs().getRowsCount();r++){
+      total2006+= data2006.data()[r][n];
+      values2006.push(data2006.data()[r][n]);
+      if (Math.max.apply(Math, values2006) == data2006.data()[r][n])
+bestResult2006 = data2006.data()[r][0];
+    }
+    results2006.push({total: total2006, max: bestResult2006});
+  }
+  
+  // set charts
+  chart2005 = anychart.column();
+  chart2005.title("2005 Sales");
+  
+  // set data
+  chart2005.column(data2005.mapAs({x: 0, value: 1}))
+    // set name
+    .name("Quarter 1")
+    // set data for legend tooltip content
+    .meta({legendText: "<b>Year:</b> 2005"+
+      "<br><b>Quarter</b> first"+
+      "<br><b>Total Sales:</b> "+results2005[0].total+
+      "<br><b>Best Result:</b> "+results2005[0].bestResult
+    });
+  chart2005.column(data2005.mapAs({x: 0, value: 2}))
+    .name("Quarter 2")
+    .meta({legendText: "<b>Year:</b> 2005"+
+      "<br><b>Quarter</b> second"+
+      "<br><b>Total Sales:</b> "+results2005[1].total+
+      "<br><b>Best Result:</b> "+results2005[1].bestResult
+    });
+  chart2005.column(data2005.mapAs({x: 0, value: 3}))
+    .name("Quarter 3")
+    .meta({legendText: "<b>Year:</b> 2005"+
+      "<br><b>Quarter</b> third"+
+      "<br><b>Total Sales:</b> "+results2005[2].total+
+      "<br><b>Best Result:</b> "+results2005[2].bestResult
+    });
+  chart2005.column(data2005.mapAs({x: 0, value: 4}))
+    .name("Quarter 4")
+    .meta({legendText: "<b>Year:</b> 2005"+
+      "<br><b>Quarter</b> forth"+
+      "<br><b>Total Sales:</b> "+results2005[3].total+
+      "<br><b>Best Result:</b> "+results2005[3].bestResult
+    });
+  chart2005.padding().right(0).bottom(0);
+  chart2005.xAxis().title("Manager");
+  chart2005.yAxis().orientation("right").title().text("Sales").rotation(0);
+  
+  // create second chart
+  chart2006 = anychart.column();
+  
+  // set title
+  chart2006.title("2006 Sales");
+  
+  // set data
+  chart2006.column(data2006.mapAs({x: 0, value: 1}))
+    // set name
+    .name("Quarter 1")
+    // set legend tooltip content
+    .meta({legendText: "<b>Year:</b> 2006"+
+      "<br><b>Quarter</b> first<br>"+
+      "<b>Total Sales:</b> "+results2006[0].total+
+      "<br><b>Best Result:</b> "+results2006[0].max
+    });
+  chart2006.column(data2006.mapAs({x: 0, value: 2}))
+    .name("Quarter 2")
+    .meta({legendText: "<b>Year:</b> 2006"+
+      "<br><b>Quarter</b> second<br>"+
+      "<b>Total Sales:</b> "+results2006[1].total+
+      "<br><b>Best Result:</b> "+results2006[1].max
+    });
+  chart2006.column(data2006.mapAs({x: 0, value: 3}))
+    .name("Quarter 3")
+    .meta({legendText: "<b>Year:</b> 2006"+
+      "<br><b>Quarter</b> third<br>"+
+      "<b>Total Sales:</b> "+results2006[2].total+
+      "<br><b>Best Result:</b> "+results2006[2].max
+    });
+  chart2006.column(data2006.mapAs({x: 0, value: 4}))
+    .name("Quarter 4")
+    .meta({legendText: "<b>Year:</b> 2006"+
+      "<br><b>Quarter</b> forth<br>"+
+      "<b>Total Sales:</b> "+results2006[3].total+
+      "<br><b>Best Result:</b> "+results2006[3].max
+    });
+  chart2006.xAxis().title("Manager");
+  chart2006.padding().left(0).bottom(0);
+  
+  // create custom legend
+  var legend = anychart.standalones.legend();
+  // enable legend
+  legend.enabled(true);
+  // set items source
+  legend.itemsSource([chart2005, chart2006]);
+  // legend title settings
+  var legendTitle = legend.title();
+  // enable title
+  legendTitle.enabled(true);
+  // title text
+  legendTitle.text("2005 - 2006 Sales");
+  // title alignment
+  legendTitle.hAlign("center");
+  
+  // legend tooltip settings
+  legend.tooltip()
+    .useHtml(true)    // enable using of html tags
+    .fontWeight(400); // set font weigh
+  
+  // set legend tooltip content
+  legend.tooltip().format(function (){
+      return this.meta.legendText;
+    });
+  
+  // draw legend
+  legend.container(stage).draw();
+  
+  // manage charts size and position
+  chart2005.bounds(0,0,"55%","100%");
+  chart2006.bounds("55%",0,"45%","100%");
+  
+  // prevent legend overlapping
+  chart2005.margin().bottom(stage.height() - legend.getRemainingBounds().getHeight());
+  chart2006.margin().bottom(stage.height() - legend.getRemainingBounds().getHeight());
+  
+  // redraw legend every time the first chart is redrawn
+  chart2005.listen(
+    "chartDraw",
+    function (){
+      // define legend bounds
+      var legendBounds = anychart.math.rect(
+0,
+legend.getRemainingBounds().getHeight(),
+chart2005.container().width(),
+chart2005.container().height()
+      );
+      
+      // set bounds and draw legend
+      legend.parentBounds(legendBounds).draw();
+    }
+  );
+  
+  // draw charts
+  chart2005.container(stage).draw();
+  chart2006.container(stage).draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_19">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p><h2 id="one_legend_for_several_series">One Legend for Several Series</h2><p>One legend can be used for several series on different charts. Look through and explore the following sample:</p><pre><code>// create legend
+var legend = anychart.standalones.legend();
+
+// enable and disable series on legend item click
+legend.listen("legendItemClick", function(event) {
+  // get item's index
+  var index = event["itemIndex"];
+  // manage enabled/disabled state of the series
+  chart2005.getSeries(index).enabled(! chart2005.getSeries(index).enabled());
+  chart2006.getSeries(index).enabled(! chart2006.getSeries(index).enabled());
+});
+</code></pre><p>Sample below demonstrate managing several series with one legend item.</p><p></p><div id="iframe19" class="iframe" style="width:100%;">
+    <div class="no-overflow">
+        <div class="iframe-tag" style="position:relative;margin:0px;height:400px;">
+            
+            <link rel="stylesheet" href="../deps/https___cdn_anychart_com_releases_8_1_0_css_anychart-ui_min_css.css" />
+            
+            <div id="container19" style="width: 100%; height: 100%; margin: 0; padding: 0;"></div>
+            <script type="text/javascript">
+                sampleInit19 = function(){$.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-base_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-exports_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      $.ajax({url: '../deps/https___cdn_anychart_com_releases_8_1_0_js_anychart-ui_min_js.js', dataType: 'script', crossDomain: true, success:function(data, status, jqxhr){
+      (function(){
+            if (anychart.hasOwnProperty('theme')) {anychart.theme('defaultTheme');}
+var chart;
+setTimeout(function () {
+  
+  // set stage
+  var stage = anychart.graphics.create("container19");
+  
+  // chart data
+  var data2005 = anychart.data.set([
+    ["Quarter 1", 10000, 12000, 16000],
+    ["Quarter 2", 12000, 15000, 17000],
+    ["Quarter 3", 20000, 19000, 21000],
+    ["Quarter 4", 16000, 21000, 22000]
+  ]);
+  
+  var data2006 = anychart.data.set([
+    ["Quarter 1", 13000, 11700, 18000],
+    ["Quarter 2", 10000, 12000, 11000],
+    ["Quarter 3", 18000, 21000, 12000],
+    ["Quarter 4", 21000, 20000, 22000]
+  ]);
+  
+  // get default color palette
+  var palette = anychart.palettes.distinctColors().items();
+  
+  // create first chart
+  chart2005 = anychart.line();
+  
+  // set chart series and tooltips
+  chart2005.spline(data2005.mapAs({x: 0, value: 1})).name("John");
+  chart2005.spline(data2005.mapAs({x: 0, value: 2})).name("Jake");
+  chart2005.spline(data2005.mapAs({x: 0, value: 3})).name("Peter");
+  
+  // create second chart
+  chart2006 = anychart.line();
+  
+  // set chart series and tooltips
+  chart2006.spline(data2006.mapAs({x: 0, value: 1})).name("John");
+  chart2006.spline(data2006.mapAs({x: 0, value: 2})).name("Jake");
+  chart2006.spline(data2006.mapAs({x: 0, value: 3})).name("Peter");
+  
+  
+  // create variables for legend
+  var legendsItemsArray = [];
+  var managersNames=["John","Jake","Peter"];
+  
+  // create legend items from charts data
+  for(var managers=1;managers<data2005.data()[0].length;managers++){
+    var total2005 = 0;
+    var total2006 = 0;
+    for (var quarter=0;quarter<data2005.mapAs().getRowsCount();quarter++){
+      total2005+=data2005.data()[quarter][managers];
+      total2006+=data2006.data()[quarter][managers];
+    }
+    // create items array for legend 
+    legendsItemsArray.push({
+      text: managersNames[managers-1],
+      iconType: "SPLINE",
+      iconStroke: palette[managers-1],
+      iconMarkerStroke: anychart.color.darken(palette[managers-1],0.2),
+      iconMarkerFill: palette[managers-1],
+      iconMarkerType: chart2005.markerPalette().itemAt([managers-1]),
+      meta: {legendText:"<b>2005 Result:</b> "+total2005+"<br><b>2006 Result:</b> "+total2006}
+    });
+  }
+  
+  // create custom legend
+  var legend = anychart.standalones.legend();
+  legend.enabled(true);
+  legend.position("center-top");
+  var legendTitle = legend.title();
+  legendTitle.enabled(true);
+  legendTitle.text("2005 - 2006 Sales");
+  legendTitle.hAlign("center");
+
+  // settings for legend tooltips
+  legend.tooltip().useHtml(true).fontWeight(400);
+  // set source of content for legend tooltips
+  legend.tooltip().format(function (){
+    return this.meta.legendText;
+  });
+  
+  // set legend items from array
+  legend.itemsFormatter(function (){return legendsItemsArray});
+  
+  // set legend events
+  legend.listen("legendItemMouseOver", function(event) {
+    // get item's index
+    var index = event["itemIndex"];
+    // simulate hovering charts series
+    chart2005.getSeries(index).hover();
+    chart2006.getSeries(index).hover();
+  });
+  legend.listen("legendItemMouseOut", function(event) {
+    // get item's index
+    var index = event["itemIndex"];
+    // simulate unhovering charts series
+    chart2005.getSeries(index).unhover();
+    chart2006.getSeries(index).unhover();
+  });
+  legend.listen("legendItemClick", function(event) {
+    // get item's index
+    var index = event["itemIndex"];
+    // manage series
+    chart2005.getSeries(index).enabled(! chart2005.getSeries(index).enabled());
+    chart2006.getSeries(index).enabled(! chart2006.getSeries(index).enabled());
+    // manage clicked item visual appearance
+    if (chart2005.getSeries(index).enabled() == true){
+      legendsItemsArray[index].fontColor = "#777";
+      legendsItemsArray[index].iconStroke = palette[index];
+      legendsItemsArray[index].iconMarkerStroke= anychart.color.darken(palette[index], 0.2);
+      legendsItemsArray[index].iconMarkerFill= palette[index];
+      legend.itemsFormatter(function (){return legendsItemsArray});
+    }
+    else{
+      legendsItemsArray[index].fontColor = "#999";
+      legendsItemsArray[index].iconStroke = "#999";
+      legendsItemsArray[index].iconMarkerStroke= "#999";
+      legendsItemsArray[index].iconMarkerFill= "#999";
+      legend.itemsFormatter(function (){return legendsItemsArray});
+    }
+  });
+  
+  legend.container(stage).draw();
+  
+  // manage charts size and position
+  chart2005.bounds(0,0,"50%","100%").background().enabled(false);
+  chart2006.bounds("50%",0,"50%","100%").background().enabled(false);
+  chart2005.margin().top(stage.height() - legend.getRemainingBounds().getHeight());
+  chart2006.margin().top(stage.height() - legend.getRemainingBounds().getHeight());
+  chart2005.title().enabled(false);
+  chart2006.title().enabled(false);
+  chart2005.xAxis().title().text("Year 2005");
+  chart2006.xAxis().title().text("Year 2006");
+  chart2005.yAxis().title().enabled(false);
+  chart2006.yAxis().title().enabled(false);
+  
+  // redraw legend if the first chart is redrawn
+  chart2005.listen(
+    "chartDraw",
+    function (){
+      // define legend bounds
+      var legendBounds = anychart.math.rect(
+0,
+0,
+chart2005.container().width(),
+chart2005.container().height()
+      );
+      
+      // set bounds and draw legend
+      legend.parentBounds(legendBounds).draw();
+    });
+  
+  chart2005.container(stage).draw();
+  chart2006.container(stage).draw();
+});})();
+      }});
+      }});
+      }});}
+            </script>
+        </div>
+    </div>
+    <fieldset class="btns">
+        <a class="btn-playground btn" target="_blank" href="http://playground.anychart.com/docs/8.1.0/samples/CS_Legend_20">
+            <i class="ac ac-play"></i> Playground
+        </a>
+    </fieldset>
+</div><p></p>
+                </div>
+                <div class="col-lg-6 hidden-sm hidden-xs hidden-md visible-lg">
+                    <div id="table-of-content-large"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script type="text/javascript">
+    window['version'] = '8.1.0';
+</script>
+<script id="main_script" type="text/javascript" src="../deps/local_main.min.js" async="async"></script>
+<script type="text/javascript">
+    var tryUpdateSampleInit = function(){
+        var anychartScriptIsLoad;
+        var mainScriptIsLoad;
+        var updateSampleInit = function(){
+            if( anychartScriptIsLoad == false) return;
+            if( mainScriptIsLoad == false) return;
+            console.log("Init main");
+            for( var i = 1; typeof window["sampleInit" + i] !== 'undefined'; i++){
+                window["sampleInit" + i]();
+                delete window["sampleInit" + i];
+            }
+            // settings for local (zip) version
+            //$(".table_of_content").css("top", "80px");
+            addListeners('../');
+            initFolders();
+            expandCurrentMenu('../', 'Common_Settings/Legend');
+            openFolders('../', open_folders);
+        };
+        anychartScriptIsLoad = typeof anychart !== 'undefined';
+        mainScriptIsLoad = typeof $ !== 'undefined';
+        if (anychartScriptIsLoad && mainScriptIsLoad){
+            updateSampleInit();
+        }else{
+            anychart_script.onload = function(){
+                anychartScriptIsLoad = true;
+                updateSampleInit();
+            };
+            main_script.onload = function(){
+                mainScriptIsLoad = true;
+                updateSampleInit();
+            };
+        }
+    };
+    tryUpdateSampleInit();
+</script>
+</body>
+</html>

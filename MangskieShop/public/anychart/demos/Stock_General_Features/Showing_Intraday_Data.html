@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Showing Intraday Data</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/csv-data/orcl-intraday.csv
+anychart.data.loadCsvFile('https://cdn.anychart.com/csv-data/orcl-intraday.csv', function (data) {
+    // create data table on loaded data
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    // map loaded data
+    var closeMapping = dataTable.mapAs({'value': 4});
+    var volumeMapping = dataTable.mapAs({'value': 5, 'type': 'average'});
+
+    // create stock chart
+    chart = anychart.stock();
+    chart.title().enabled(true).text('ORCL Intraday data');
+
+    // create value plot on the chart
+    var valuePlot = chart.plot(0);
+    valuePlot.yGrid(true)
+            .yMinorGrid(true);
+    valuePlot.line(closeMapping).name('Close');
+
+    // create volume plot on the chart
+    var volumePlot = chart.plot(1);
+    volumePlot.height('30%');
+    volumePlot.column(volumeMapping).name('Volume');
+    volumePlot.yAxis().labels().format('{%Value}{scale: (1000000)|(mln)}');
+
+    // create scroller series with mapped data
+    chart.scroller().line(closeMapping);
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+
+    // create range picker
+    rangePicker = anychart.ui.rangePicker();
+    // init range picker
+    rangePicker.render(chart);
+
+    // create range selector
+    rangeSelector = anychart.ui.rangeSelector();
+    // init range selector
+    rangeSelector.render(chart);
+});
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-table.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>LED with Bar Gauges</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// Create and return simple linear gauge
+function drawGauge(value, settings, inverse) {
+    // Create gauge with settings
+    var gauge = anychart.gauges.linear();
+    gauge.data([value, settings.critical]);
+    gauge.layout('horizontal')
+            .padding(0)
+            .margin([0, 20, 0, 20]);
+
+    // Set scale for gauge
+    var scale = anychart.scales.linear();
+    scale.minimum(0)
+            .maximum(settings.maximum)
+            .ticks({'interval': 1});
+
+    // Set axis for gauge
+    var axis = gauge.axis(0);
+    axis.width('1%')
+            .offset('43%')
+            .scale(scale)
+            .orientation('bottom');
+    axis.labels().format('{%Value} m');
+
+    // Create and set bar point
+    var barSeries = gauge.bar(0);
+    barSeries.offset('3%')
+            .scale(scale)
+            .width('3%')
+            .fill('#545f69')
+            .stroke('#545f69');
+
+    // Create and set LED point
+    var ledPointer = gauge.led(1);
+    ledPointer.offset('10%')
+            .width('30%')
+            .size(null)
+            .count(settings.count)
+            .scale(scale)
+            .gap(1)
+            .dimmer(function () {
+                return '#64b5f6'
+            });
+    ledPointer.colorScale().colors(['#ef6c00', '#ef6c00']);
+
+    if (inverse) {
+        ledPointer.dimmer(function () {
+            return '#ef6c00'
+        });
+        ledPointer.colorScale().colors(['#64b5f6', '#64b5f6']);
+    }
+
+    // Create and set label with actual data
+    var labelBar = barSeries.labels();
+    labelBar.enabled(true)
+            .position('center')
+            .offsetY('-20px')
+            .fontColor('#455a64')
+            .fontSize('21px')
+            .format('${%Value} millions');
+
+    // Set gauge tooltip
+    gauge.tooltip()
+            .useHtml(true)
+            .titleFormat('${%Value} millions')
+            .format('Acceptable: ${%Value}  millions<br/>' +
+                    'Maximum on scale: $' + settings.maximum + ' millions');
+
+    return gauge
+}
+
+// Create gauges
+var revenueGauge = drawGauge(12.45, {'maximum': 20, 'critical': 10, 'count': 20});
+var expensesGauge = drawGauge(8.86, {'maximum': 10, 'critical': 8, 'count': 10}, true);
+var profitGauge = drawGauge(3.5, {'maximum': 5, 'critical': 3, 'count': 5});
+
+// Create stand alone legend
+var legend = anychart.standalones.legend();
+legend.position('left')
+        .fontSize(14)
+        .items([
+            {'text': 'Actual', 'iconFill': '#545f69'},
+            {'text': 'Acceptable', 'iconFill': '#64b5f6'},
+            {'text': 'Critical', 'iconFill': '#ef6c00'}
+        ]);
+
+// Create table to place gauges
+var layoutTable = anychart.standalones.table();
+layoutTable.hAlign('right')
+        .vAlign('middle')
+        .useHtml(true)
+        .fontSize(16)
+        .cellBorder(null);
+
+// Put gauges into the layout table
+layoutTable.contents([
+    [null, 'Key Metrics (Brick = $1 million)'],
+    [null, legend],
+    ['Revenue', revenueGauge],
+    ['Expenses', expensesGauge],
+    ['Profit', profitGauge]
+]);
+
+// Set height for first row in layout table
+layoutTable.getRow(0)
+        .height(50)
+        .fontSize(22)
+        .hAlign('left')
+        .fontColor('#212121');
+layoutTable.getRow(1)
+        .height(40)
+        .fontSize(16);
+layoutTable.getCol(0).width(100);
+
+// Set container id and initiate drawing
+layoutTable.container('container');
+layoutTable.draw();
+    });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/geodata/custom/world/world.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/anychart-loader.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>35 Most Amazing National Parks on Earth</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var stage = acgraph.create('container');
+
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/maps-point-maps-dot-maps/35-most-amazing-national-parks-on-earth/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/maps-point-maps-dot-maps/35-most-amazing-national-parks-on-earth/data.json', function (data) {
+    var image_link = 'https://static.anychart.com/images/parks_of_the_world/';
+    var beachesData = data;
+
+    var preloader = anychart.ui.preloader();
+    preloader.render(document.getElementById('container'));
+    // Set visible preloader
+    preloader.visible(true);
+
+    var images = [];
+    for (var i = 0; i < beachesData.length; i++) {
+        images.push(image_link + beachesData[i].number + '.jpg');
+    }
+    preload(images, function () {
+        preloader.visible(false);
+
+        // creates map chart and sets setting for map
+        map = anychart.map();
+        map.scale().gap(0.05);
+        map.padding(0);
+
+        map.unboundRegions()
+                .enabled(true)
+                .fill('#E1E1E1')
+                .stroke('#D2D2D2');
+
+        // credits for data for this sample
+        map.credits()
+                .enabled(true)
+                .url('http://www.huffingtonpost.com/minube/the-35-most-amazing-natio_b_5439362.html')
+                .logoSrc('https://s.m.huffpost.com/assets/favicon-7dbb4d55ca85abd9f84197a1c3525e38.ico')
+                .text('Data source: http://www.huffingtonpost.com/minube/the-35-most-amazing-natio_b_5439362.html');
+
+        // sets geodata using https://cdn.anychart.com/releases/8.0.1/geodata/custom/world/world.js
+        map.geoData('anychart.maps.world');
+
+        // sets Chart Title
+        map.title()
+                .enabled(true)
+                .useHtml(true)
+                .padding([10, 0, 20, 0])
+                .text('35 Most Amazing National Parks on Earth<br/>' +
+                        '<span style="color:#212121; font-size:12px">According to Huffingtonpost.com</span>');
+
+        // creates marker series
+        var series = map.marker(anychart.data.set(beachesData));
+        series.stroke('2 #212121')
+                .fill(function () {
+                    if (this.index >= 0) {
+                        return {
+                            src: image_link + beachesData[this.index].number + '.jpg'
+                        }
+                    }
+                })
+                .size(15)
+                .type('square')
+                .selectionMode('none')
+                .labels(false)
+                .tooltip(false);
+
+        series.hovered()
+                .stroke('2 #212121')
+                .fill(function () {
+                    if (this.index >= 0) {
+                        return {
+                            src: image_link + beachesData[this.index].number + '.jpg'
+                        }
+                    }
+                })
+                .size(50)
+                .type('square');
+
+        series.hovered().labels()
+                .enabled(true)
+                .width(310)
+                .position('right')
+                .anchor('left-top')
+                .offsetX(50)
+                .offsetY(-51)
+                .padding(15)
+                .useHtml(true)
+                .fontWeight('normal')
+                .format(function () {
+                    return '<span style="font-size: 14px; color: #929292">#' +
+                            this.getData('number') + '. ' + this.getData('name') +
+                            '</span><br/><br/>' +
+                            '<span style="font-size: 11px; color: #212121">' +
+                            this.getData('description') + '</span>';
+                });
+
+        series.hovered().labels().background()
+                .enabled(true)
+                .fill('#fff')
+                .stroke('2 #212121')
+                .corners(0)
+                .cornerType('ROUND');
+
+        // create zoom controls
+        var zoomController = anychart.ui.zoom();
+        zoomController.render(map);
+
+        // sets container id for the chart
+        map.container(stage);
+
+        // initiates chart drawing
+        map.draw();
+    });
+});
+    });
+
+    function preload(pictureUrls, callback) {
+var i, j, loaded = 0;
+for (i = 0, j = pictureUrls.length; i < j; i++) {
+    (function (img, src) {
+        img.onload = function () {
+            if (++loaded == pictureUrls.length && callback) {
+                callback();
+            }
+        };
+        img.onerror = function () {
+            callback();
+        };
+        img.onabort = function () {
+            callback();
+        };
+        img.src = src;
+    }(new Image(), pictureUrls[i]));
+}
+    }
+        </script>
+    </body>
+</html>

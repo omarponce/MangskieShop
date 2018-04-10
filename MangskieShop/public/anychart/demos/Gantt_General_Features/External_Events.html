@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>External Events</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-general-features/external-events/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-general-features/external-events/data.json', function (data) {
+    // create data tree on raw data
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create resource gantt chart
+    chart = anychart.ganttResource();
+
+    chart.title('External events');
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // set pixel position of the main splitter
+    chart.splitterPosition(120);
+
+    // getting chart's data grid
+    var dataGrid = chart.dataGrid();
+
+    // disabling default 0-column
+    dataGrid.column(0, false);
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+
+    // External events
+    chart.listen('rowSelect', function (e) {
+        var msg = e['item'].get('name');
+        log(e.type, msg);
+    });
+    chart.listen('rowClick', callback);
+    chart.listen('rowDblClick', callback);
+    chart.listen('rowMouseOver', callback);
+    chart.listen('rowMouseMove', callback);
+    chart.listen('rowMouseOut', callback);
+    chart.listen('rowMouseUp', callback);
+    chart.listen('rowMouseDown', callback);
+});
+    });
+
+    function callback(e) {
+var msg = e['item'].get('name');
+if (e['period']) msg += ', Period #' + (e['periodIndex'] + 1);
+log(e.type, msg);
+    }
+
+    // logs actions to textarea
+    function log(eventType, message) {
+chart.title(eventType + '. ' + message)
+    }
+        </script>
+    </body>
+</html>

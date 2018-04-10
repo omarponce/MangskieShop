@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-gantt.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Styling Labels</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/gantt-general-features/styling-labels/data.json
+anychart.data.loadJsonFile('https://cdn.anychart.com/samples-data/gantt-general-features/styling-labels/data.json', function (data) {
+    // create data tree on raw data
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create project gantt chart
+    chart = anychart.ganttProject();
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // get chart data grid link to set column settings
+    var dataGrid = chart.dataGrid();
+    // set column width
+    dataGrid.column(1).width(275);
+
+    // set the splitter position
+    chart.splitterPosition(328);
+
+    // set default row height
+    chart.defaultRowHeight(40);
+
+    // create palette
+    var palette = anychart.palettes.distinctColors();
+    palette.items(['#64b5f6', '#ef6c00', '#fff', '#00838f']);
+
+    // get chart timeline
+    var timeLine = chart.getTimeline();
+
+    // set base labels settings
+    timeLine.baseLabels()
+            .format('{%Name}')
+            .fontColor(palette.itemAt(0))
+            .position('left-center')
+            .anchor('right-center')
+            .offsetX(5);
+
+    // set parent labels settings
+    timeLine.parentLabels()
+            .format('Group: {%Name}')
+            .fontColor(palette.itemAt(1))
+            .fontWeight('bold')
+            .position('right-center')
+            .anchor('left-center');
+
+    // set milestones labels settings
+    var milestonesLabels = timeLine.milestoneLabels()
+            .format('{%actualStart}{dateTimeFormat:d.MM.yy (HH:mm)}: {%Name}')
+            .position('left-center')
+            .anchor('right-center');
+    milestonesLabels.background()
+            .enabled(true)
+            .fill('orange 0.3')
+            .stroke('none');
+
+    // set progress labels settings
+    var progressLabels = timeLine.progressLabels();
+    progressLabels.enabled(true)
+            .padding(2)
+            .position('right-center')
+            .anchor('center')
+            .fontColor(palette.itemAt(2))
+            .fontSize(8);
+    progressLabels.background()
+            .enabled(true)
+            .fill('#333')
+            .stroke('none');
+
+    // set base line labels settings
+    timeLine.baselineLabels()
+            .enabled(true)
+            .fontColor(palette.itemAt(3))
+            .position('left-bottom')
+            .anchor('right-bottom')
+            .hAlign('middle')
+            .fontSize(7)
+            .format('Planned: {%baselineStart}{dateTimeFormat:d.MM} - {%baselineEnd}{dateTimeFormat:d.MM}');
+
+    // set scale maximum and minimum
+    chart.xScale().minimum(Date.UTC(2009, 11));
+    chart.xScale().maximum(Date.UTC(2010, 4));
+
+    // set container id for the chart
+    chart.container('container');
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+});
+    });
+        </script>
+    </body>
+</html>

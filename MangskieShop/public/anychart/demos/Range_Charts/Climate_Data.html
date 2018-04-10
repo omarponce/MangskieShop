@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Climate Data</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create stage
+var stage = anychart.graphics.create('container');
+
+// create column chart first
+chartFirst = anychart.column();
+// set chart bounds
+chartFirst.bounds(0, 0, '100%', '75%');
+// set chart title text settings
+chartFirst.title('Average max and min Temperatures in (?F) ' +
+        '\nand Precipitation Totals in mm.');
+// enable the grid
+chartFirst.yGrid(true)
+        .yMinorGrid(true);
+
+// create range-data with passed data
+var temperatureData = anychart.data.set(getTemperatureData());
+// sets mapping for range-bar series
+var temperatures = temperatureData.mapAs({'x': 'month'});
+
+// create series
+var seriesTemperature = chartFirst.rangeColumn(temperatures);
+// set name
+seriesTemperature.name('Temperatures')
+        // set color series
+        .color('#DB5854');
+// format labels
+seriesTemperature.labels()
+        .enabled(true)
+        .fontColor('#DB5854')
+        .fontWeight('bold')
+        .format('{%low} - {%high}');
+// format tooltip
+seriesTemperature.tooltip().titleFormat('Temperature in {%X}');
+
+// create column chart second
+chartSecond = anychart.column();
+chartSecond.bounds(0, '75%', '100%', '25%');
+// create column-data with passed data
+var precipitationData = anychart.data.set(getPrecipitationData());
+// sets mapping for column-bar series
+var precipitations = precipitationData.mapAs({'x': 0, 'value': 1});
+
+// create series
+var seriesPrecipitation = chartSecond.column(precipitations);
+// set name
+seriesPrecipitation.name('Precipitation');
+// format labels
+seriesPrecipitation.labels()
+        .enabled(true)
+        .format('{%Value}mm');
+// format tooltip
+seriesPrecipitation.tooltip().format('Precipitation: {%Value}mm');
+
+// set the max and min values on the axes
+chartSecond.yScale()
+        .minimum(0)
+        .maximum(6);
+
+// set container stage for the chart and initiate chart drawing
+chartFirst.container(stage).draw();
+// set container stage for the chart and initiate chart drawing
+chartSecond.container(stage).draw();
+    });
+
+    function getTemperatureData() {
+return [
+    {low: 22, high: 36, month: 'Jan'},
+    {low: 24, high: 40, month: 'Feb'},
+    {low: 30, high: 48, month: 'Mar'},
+    {low: 40, high: 59, month: 'Apr'},
+    {low: 50, high: 69, month: 'May'},
+    {low: 59, high: 78, month: 'June'},
+    {low: 65, high: 82, month: 'July'},
+    {low: 64, high: 81, month: 'Aug'},
+    {low: 56, high: 73, month: 'Sep'},
+    {low: 45, high: 62, month: 'Oct'}
+]
+    }
+
+    function getPrecipitationData() {
+return [
+    ['Jan', 3.6],
+    ['Feb', 2.8],
+    ['Mar', 4.2],
+    ['Apr', 4.5],
+    ['May', 4.2],
+    ['June', 4.3],
+    ['July', 3.7],
+    ['Aug', 4],
+    ['Sep', 4.6],
+    ['Oct', 4.4]
+]
+    }
+        </script>
+    </body>
+</html>

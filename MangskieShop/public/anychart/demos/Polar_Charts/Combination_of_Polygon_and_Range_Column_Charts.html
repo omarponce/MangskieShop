@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Combination of Polygon and Range Column Charts</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {'name': 'Lip gloss', 'value': 19998},
+    {'name': 'Eyeliner', 'value': 12321},
+    {'name': 'Eyeshadows', 'value': 12998, 'low': 11454, 'high': 17845},
+    {'name': 'Powder', 'value': 10261},
+    {'name': 'Mascara', 'value': 11261},
+    {'name': 'Foundation', 'value': 10342, 'low': 11545, 'high': 19578},
+    {'name': 'Rouge', 'value': 11624},
+    {'name': 'Lipstick', 'value': 8814, 'low': 7050, 'high': 17323},
+    {'name': 'Eyebrow pencil', 'value': 11012},
+    {'name': 'Nail polish', 'value': 9814, 'low': 3054, 'high': 14032}
+];
+
+chart = anychart.polar();
+
+// set title settings
+chart.title()
+        .enabled(true)
+        .text('Combination of Polygon and Range Column Series')
+        .padding({bottom: 20});
+
+// setup chart appearance settings
+chart.innerRadius('10%')
+        .background('#FEFEFE')
+        .sortPointsByX(true)
+        .xScale('ordinal')
+        .yAxis(false);
+
+// setup chart scales settings
+chart.xScale().names('name');
+
+// format chart tooltip
+chart.tooltip().displayMode('union')
+        .titleFormat('{%Name}')
+        .format(function () {
+            if (this.value) {
+                return 'Fact: $' + this.value
+            } else if (this.high && this.low) {
+                return 'Plain High: $' + this.high + '\nPlain Low: $' + this.low
+            }
+        });
+
+// set chart grid settings
+chart.yGrid().fill('#fefefe');
+chart.xGrid(true);
+
+// set chart x-axis settings
+chart.xAxis()
+        .fill('#EDECEF')
+        .stroke('none')
+        .overlapMode('auto-width');
+
+// set chart x-axis ticks settings
+chart.xAxis().ticks()
+        .length('100%')
+        .stroke('#FEFEFE');
+
+// set chart x-axis labels settings
+chart.xAxis().labels()
+        .padding(15)
+        .fontSize(12)
+        .hAlign('center');
+
+// set legend settings
+chart.legend()
+        .enabled(true)
+        .positionMode('outside')
+        .itemsLayout('vertical')
+        .position('center-bottom')
+        .align('left')
+        .itemsSpacing(5)
+        .margin({'top': -30});
+
+// create ploygon series
+var polygon = chart.polygon(data);
+polygon.name('Polygon')
+        .color('#CD4A2D')
+        .fill('rgba(180, 180, 180, 0.3)')
+        .zIndex(31);
+polygon.hovered().markers().fill('#CD4A2D');
+polygon.legendItem()
+        .iconFill('#CD4A2D')
+        .iconType('line')
+        .iconStroke('6 #CD4A2D');
+
+// create range column series
+var rangeColumn = chart.rangeColumn(data);
+rangeColumn.name('Range Column')
+        .pointWidth('85%')
+        .color('#E2DFE0');
+
+// workaround to make even/odd xAxis labels coloring
+chart.listen('chartDraw', function () {
+    var count = chart.xAxis().labels().getLabelsCount();
+    for (var i = 0; i < count; i++) {
+        var color = i % 2 ? '#CD4A2D' : '#4C4C4C';
+        var label = chart.xAxis().labels().getLabel(i);
+        if (label) {
+            label.fontColor(color);
+            label.draw();
+        }
+    }
+});
+
+// set chart container id
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

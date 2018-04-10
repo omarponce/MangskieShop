@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Range Bar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create area series with passed data
+var data = anychart.data.set([
+    {low: 13, high: 40, x: 'SureTalk S1'},
+    {low: 17, high: 41, x: 'SureTalk S2.05'},
+    {low: 10, high: 39, x: 'Eclipse Mobile'},
+    {low: 12, high: 55, x: 'Blazen Mobile'},
+    {low: 13, high: 46, x: 'Globular S435'},
+    {low: 12, high: 38, x: 'Globular I775'},
+    {low: 15, high: 44, x: 'Initech'},
+    {low: 14, high: 50, x: 'MusiCone'}
+]);
+
+// create column chart
+chart = anychart.bar();
+
+// set chart title text settings
+chart.title('Phone battery discharging average quickness (hours)');
+
+var series = chart.rangeBar(data);
+// set the selection color
+series.selected()
+        .fill('navy 0.7')
+        .stroke('navy');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

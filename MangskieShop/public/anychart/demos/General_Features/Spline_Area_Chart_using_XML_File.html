@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Spline Area Chart using XML File</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+// https://cdn.anychart.com/js/8.0.1/data-adapter.min.js
+
+// Load XML data and create a chart by XML data
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/general-features/load-xml-data/data.xml
+anychart.data.loadXmlFile('https://cdn.anychart.com/samples-data/general-features/load-xml-data/data.xml', function (data) {
+    // create area chart
+    chart = anychart.area();
+
+    // set chart title text settings
+    chart.title()
+            .enabled(true)
+            .useHtml(true)
+            .text('AVERAGE MONTHLY HOURS OF SUNSHINE OVER THE YEAR<br/>' +
+                    '<span style="color:#212121; font-size: 13px;">the monthly total of sunhours over the year in Ottawa, Canada.</span>')
+            .padding([0, 0, 20, 0]);
+
+    // set minimum
+    chart.yScale().minimum(0);
+
+    // create bar series
+    var series = chart.splineArea();
+    // set chart name
+    series.name('Sunhours')
+            // set chart data
+            .data(data)
+            .color('Gold 0.75');
+
+    // set markers settings
+    series.markers()
+            .enabled(true)
+            .type('circle')
+            .size(4)
+            .stroke('1.5 #fff')
+            .zIndex(100);
+
+    // turn on the crosshair
+    var crosshair = chart.crosshair();
+    crosshair.enabled(true)
+            .yStroke(null)
+            .xStroke('#fff')
+            .zIndex(99)
+            .yLabel(false)
+            .xLabel(false);
+
+    // chart grids
+    chart.yGrid(true)
+            .xGrid(true);
+
+    // set tooltip settings
+    series.tooltip().format('Sun hours: {%Value}h');
+
+    // set titles for axises
+    chart.yAxis().title('Sunhours');
+    chart.yAxis().labels().format('{%Value} hrs');
+
+    // set container id for the chart
+    chart.container('container');
+    // initiate chart drawing
+    chart.draw();
+});
+    });
+        </script>
+    </body>
+</html>

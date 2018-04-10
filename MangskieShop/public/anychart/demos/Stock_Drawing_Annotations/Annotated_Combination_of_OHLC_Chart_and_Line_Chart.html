@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-stock.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-annotations.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/orcl-daily-short.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/csco-daily-short.js"></script>
+        
+        <script src="https://cdn.anychart.com/csv-data/empty_data(2009-2010).js"></script>
+        
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/playground-css/annotated/annotated-title.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Annotated Combination of OHLC Chart and Line Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// The data that have been used for this sample can be taken from the CDN
+// https://cdn.anychart.com/csv-data/orcl-daily-short.js
+// https://cdn.anychart.com/csv-data/csco-daily-short.js
+// https://cdn.anychart.com/csv-data/empty_data(2009-2010).js
+
+$('#container').append('<div class="container-title">' +
+        '<h1>Annotated Combination of OHLC Chart and Line Chart</h1>' +
+        '<p>See also <a href="' +
+        'https://www.anychart.com/products/' +
+        'anystock/drawing_tools/"' +
+        'target="_blank">Drawing Tools and ' +
+        'Annotations Demo</a></p>' + '</div>');
+
+// create data tables on loaded data
+var orclDataTable = anychart.data.table();
+orclDataTable.addData(get_orcl_daily_short_data());
+
+var cscoDataTable = anychart.data.table();
+cscoDataTable.addData(get_csco_daily_short_data());
+
+var emptyDataTable = anychart.data.table();
+emptyDataTable.addData(get_empty_data());
+
+// create stock chart
+chart = anychart.stock();
+chart.padding([75, 50, 57, 50]);
+chart.tooltip().useHtml(true);
+
+// create plot
+var plot = chart.plot();
+// set grid settings
+plot.yGrid(true)
+        .xGrid(true)
+        .yMinorGrid(true)
+        .xMinorGrid(true);
+
+plot.legend().itemsFormatter(function (items) {
+    items.splice(2, 1);
+    // return items array
+    return items;
+});
+
+// create step line series with mapped data on the plot
+var ORCL = plot.ohlc(orclDataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4})).name('ORCL');
+ORCL.tooltip().format(function () {
+    if (this.open === 0 && isNaN(this.close)) {
+        return '<span>' + this.seriesName + '</span><br/>' +
+                '<span style="color: #ccc">Open</span>: ' + 'undefined' +
+                '<br/><span style="color: #ccc">High</span>: ' + 'undefined' +
+                '<br/><span style="color: #ccc">Low</span>: ' + 'undefined' +
+                '<br/><span style="color: #ccc">Close</span>: ' + 'undefined' + '<br/><br/>';
+    } else {
+        return '<span>' + this.seriesName + '</span><br/>' +
+                '<span style="color: #ccc">Open</span>: ' + this.open +
+                '<br/><span style="color: #ccc">High</span>: ' + this.high +
+                '<br/><span style="color: #ccc">Low</span>: ' + this.low +
+                '<br/><span style="color: #ccc">Close</span>: ' + this.close + '<br/><br/>';
+    }
+});
+
+// create step line series with mapped data on the plot
+var csco = plot.line(cscoDataTable.mapAs({'value': 4})).name('CSCO');
+csco.tooltip().format(function () {
+    var value = this.value;
+    if (isNaN(this.value)) {
+        value = 'undefined';
+    }
+    return this.seriesName + ': ' + value
+});
+
+// create plot empty series with mapped data
+plot.line()
+        .data(emptyDataTable.mapAs({'value': 1}))
+        .stroke('none')
+        .tooltip(false);
+
+// create annotation
+var annotation = plot.annotations();
+// create annotation fibonacci Arc
+annotation.fibonacciArc({
+    // X - part of the first anchor
+    xAnchor: '2007-12-23',
+    // Y - part of the first anchor
+    valueAnchor: 23.31,
+    // X - part of the second anchor
+    secondXAnchor: '2008-04-20',
+    // Y - part of the second anchor
+    secondValueAnchor: 22.28,
+    // set stroke settings
+    stroke: '1.5 #76BF72'
+    // disable interaction with Annotation
+}).allowEdit(false);
+// create annotation fibonacci Fan
+annotation.fibonacciFan({
+    // X - part of the first anchor
+    xAnchor: '2009-03-08',
+    // Y - part of the first anchor
+    valueAnchor: 13.8,
+    // X - part of the second anchor
+    secondXAnchor: '2009-06-28',
+    // Y - part of the second anchor
+    secondValueAnchor: 22,
+    // set levels
+    levels: [0, 0.57, 0.87, 1],
+    // set time levels
+    timeLevels: [0, 1],
+    // set stroke settings
+    stroke: '1.5 #FA8072'
+    // disable interaction with Annotation
+}).allowEdit(false);
+
+// set chart selected date/time range
+chart.selectRange('2007-08-05', '2010-06-20');
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+
+// create range picker
+rangePicker = anychart.ui.rangePicker();
+// init range picker
+rangePicker.render(chart);
+
+// create range selector
+rangeSelector = anychart.ui.rangeSelector();
+// init range selector
+rangeSelector.render(chart);
+    });
+        </script>
+    </body>
+</html>

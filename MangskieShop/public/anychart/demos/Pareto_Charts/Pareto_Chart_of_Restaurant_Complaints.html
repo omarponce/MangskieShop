@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pareto.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Pareto Chart of Restaurant Complaints</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {x: 'Food is tasteless', value: 65},
+    {x: 'Wait time', value: 109},
+    {x: 'Unfriendly staff', value: 12.5},
+    {x: 'Not clean', value: 45},
+    {x: 'Overpriced', value: 250},
+    {x: 'To noisy', value: 27},
+    {x: 'Food not fresh', value: 35},
+    {x: 'Small portions', value: 170},
+    {x: 'Not atmosphere', value: 35},
+    {x: 'Food is to salty', value: 35}
+];
+
+// create pareto chart with data
+chart = anychart.pareto(data);
+// set chart title text settings
+chart.title('Pareto Chart of Restaurant Complaints');
+// set measure y axis title
+chart.yAxis(0).title('Defect frequency');
+// cumulative percentage y axis title
+chart.yAxis(1).title('Cumulative Percentage');
+// turn on chart animation
+chart.animation(true);
+
+// create horizontal line marker
+chart.lineMarker()
+        .value(80)
+        .axis(chart.yAxis(1))
+        .stroke('#A5B3B3', 1, '5 2', 'round'); // sets stroke
+
+// get pareto column series and set settings
+var column = chart.getSeriesAt(0);
+column.tooltip().format('Value: {%Value}');
+
+// get pareto line series and set settings
+var line = chart.getSeriesAt(1);
+line.seriesType('spline')
+        .markers(true);
+line.yScale().ticks().interval(10);
+line.labels()
+        .enabled(true)
+        .anchor('right-bottom')
+        .format('{%CF}%');
+line.tooltip().format('Cumulative Frequency: {%CF}% \n Relative Frequency: {%RF}%');
+
+// turn on the crosshair and set settings
+chart.crosshair()
+        .enabled(true)
+        .xLabel(false);
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

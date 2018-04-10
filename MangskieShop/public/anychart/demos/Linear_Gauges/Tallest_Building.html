@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/linear-gauges/tallest-building/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-linear-gauge.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Tallest Building</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// Set gauge type
+var gauge = anychart.gauges.linear();
+// The data used in this sample can be obtained from the CDN
+// https://cdn.anychart.com/samples-data/linear-gauges/tallest-building/data.js
+var data = getData();
+
+// Set credits
+gauge.credits()
+        .enabled(true)
+        .url('https://en.wikipedia.org/wiki/List_of_tallest_buildings_and_structures')
+        .text('Data source: https://en.wikipedia.org/wiki/List_of_tallest_buildings_and_structures')
+        .logoSrc('https://en.wikipedia.org/static/favicon/wikipedia.ico');
+
+// Creates data set on our data
+gauge.data(data);
+gauge.padding([0, 0, 50, 0]);
+
+// Set Chart Title
+var title = gauge.title();
+title.enabled(true)
+        .useHtml(true)
+        .padding([10, 0, 15, 0])
+        .text('Tallest Building by Function<br>' +
+                '<span style="color: #212121; font-size: 12px">(According to Wikipedia.org)</span>');
+
+// Helper function to create Bar Series
+function createBar(i, color) {
+    // Create bar pointer
+    var bar = gauge.bar(i);
+    bar.color(color)
+            // Set pointer offset of the width gauge
+            .offset((i * 13) - 10)
+            // Set pointer width
+            .width('9%')
+            .name(data[i].name + '<br/><span style="color: #212121; font-size: 10px">'
+                    + data[i].country + ',<br/>' + data[i].city + '</span>');
+
+    // Set pointer label
+    bar.labels()
+            .enabled(true)
+            .position('center')
+            .anchor('center')
+            .rotation(-90)
+            .fontSize(11)
+            .fontColor('white')
+            .format(function () {
+                return this.getData('category')
+            });
+    bar.hovered().labels()
+            .enabled(true)
+            .fontColor('#212121')
+            .fontWeight('600');
+    bar.selected().labels()
+            .enabled(true)
+            .fontColor('white')
+            .fontWeight('600');
+
+    // Set marker pointer
+    var marker = gauge.marker(i);
+    marker.color(color)
+            .offset('-14%');
+    marker.labels()
+            .enabled(true)
+            .position('left-center')
+            .offsetX(-5)
+            .anchor('right-center')
+            .format('{%Value} m.');
+    marker.hovered().labels()
+            .enabled(true)
+            .fontColor('#212121')
+            .fontWeight('600');
+    marker.selected().labels()
+            .enabled(true)
+            .fontColor('#212121')
+            .fontWeight('600');
+    marker.legendItem(false);
+    marker.type('arrowhead');
+}
+
+// Create series
+createBar(0, '#024174');
+createBar(1, '#02579A');
+createBar(2, '#1976D3');
+createBar(3, '#42A5F6');
+createBar(4, '#90CAF8');
+createBar(5, '#b3e5fc');
+
+var legend = gauge.legend();
+// Turn on legend and sets settings
+legend.enabled(true)
+        .useHtml(true)
+        .padding([0, 30, 0, 30])
+        .fontSize(12)
+        .position('left')
+        .align('top')
+        .itemsLayout('vertical');
+
+// Set paginator in the bottom position
+legend.paginator().orientation('bottom');
+
+// remove all listeners for legend
+legend.removeAllListeners();
+
+// Set axis scale settings
+var scale = gauge.scale();
+scale.ticks([0, 1000]);
+
+// Enable axis
+var axis = gauge.axis();
+axis.offset('-11%')
+        .width('0%');
+// Set axis labels formatter
+axis.labels()
+        .useHtml(true)
+        .format('{%Value} m.');
+
+// Set tooltip formatter
+gauge.tooltip()
+        .useHtml(true)
+        .format(function () {
+            return '<span style="color: #EAEAEA;">' + this.getData('country') + ', ' +
+                    this.getData('city') + '<br/><span style="font-size: 14px">' +
+                    this.value + ' m.</span></span>'
+        });
+gauge.tooltip().titleFormat(function () {
+    return this.getData('name')
+});
+
+// Set container id and initiate drawing
+gauge.container('container');
+gauge.draw();
+    });
+        </script>
+    </body>
+</html>

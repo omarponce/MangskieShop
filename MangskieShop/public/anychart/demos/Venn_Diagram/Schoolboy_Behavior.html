@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/samples-data/venn-charts/cooking-bacon-by-venn-chart/data.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-venn.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Schoolboy Behavior</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+var data = [
+    {
+        x: 'A',
+        name: 'Play computer games',
+        value: 100
+    },
+    {
+        x: 'B',
+        name: 'Too much homework',
+        value: 100
+    },
+    {
+        x: 'A&B',
+        name: 'Late nights',
+        value: 25,
+        // set hover fill settings
+        hovered: {
+            fill: anychart.color.lighten('#3a444d')
+        }
+    }
+];
+
+// create venn diagram
+chart = anychart.venn(data);
+
+// set chart title
+chart.title()
+        .enabled(true)
+        .padding({bottom: 35})
+        .text('Schoolboy Behavior');
+
+// set chart labels format
+chart.labels().format('{%Name}');
+
+// set intersections labels settings
+chart.intersections().labels()
+        .fontWeight('bold')
+        .format('{%Name}');
+
+// set legend padding
+chart.legend().padding({top: 35});
+
+// set tooltip settings
+chart.tooltip().titleFormat('{%Name}');
+
+// set container id for the chart
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

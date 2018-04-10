@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-polar.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>Polyline Polar Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create polar chart
+chart = anychart.polar();
+
+var data = anychart.data.mapAsTable([
+    ['Nail polish', 12814, 3054, 4376, 4229],
+    ['Eyebrow pencil', 13012, 5067, 3987, 3932],
+    ['Rouge', 11624, 7004, 3574, 5221],
+    ['Lipstick', 8814, 9054, 4376, 9256],
+    ['Eyeshadows', 12998, 12043, 4572, 3308],
+    ['Eyeliner', 12321, 15067, 3417, 5432],
+    ['Foundation', 10342, 10119, 5231, 13701],
+    ['Lip gloss', 22998, 12043, 4572, 4008],
+    ['Mascara', 11261, 10419, 6134, 18712],
+    ['Powder', 10261, 14419, 5134, 25712]
+]);
+
+// set title settings
+chart.title()
+        .enabled(true)
+        .text('Cosmetic Products by Revenue')
+        .padding({bottom: 20});
+
+// set series type
+chart.defaultSeriesType('polyline')
+        // disable y-axis
+        .yAxis(false)
+        // set x-scale
+        .xScale('ordinal');
+
+// add series to chart
+chart.addSeries.apply(chart, data);
+
+// set chart container id
+chart.container('container');
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>

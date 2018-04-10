@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        
+        
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+        
+        <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-cartesian-3d.min.js"></script>
+        
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
+        
+        <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/fonts/css/anychart-font.min.css" />
+        
+        <title>3D Column Chart with Negative Values</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+             anychart.onDocumentReady(function () {
+// create data set on our data
+chartData = {
+    title: 'Company Profit Dynamic in Regions by Year',
+    header: ['#', 'Florida', 'Texas', 'Nevada', 'Arizona'],
+    rows: [
+        ['2001', 128.14, -90.54, -43.76, -122.56],
+        ['2002', 112.61, 104.19, 61.34, -87.12],
+        ['2003', -123.21, 135.12, -34.17, 54.32]
+    ]
+};
+
+// create column chart
+chart = anychart.column3d();
+
+// set chart data
+chart.data(chartData);
+
+// set chart title text settings
+chart.interactivity().hoverMode('single');
+
+chart.xAxis(0).stroke(null)
+        .title('Profit in Dollars');
+chart.xAxis(1).stroke(null)
+        .orientation('top');
+chart.yAxis().labels().format('{%Value}k');
+
+// turn on legend
+chart.legend()
+        .enabled(true)
+        .fontSize(13)
+        .padding([0, 0, 20, 0]);
+
+// set tooltip settings
+chart.tooltip().format('{%SeriesName} : {%Value}{groupsSeparator: }k.');
+
+chart.labels()
+        .enabled(true)
+        .fontColor('#393838');
+
+// set bars settings
+chart.barsPadding(0.1)
+        .barGroupsPadding(0.9);
+
+// set container id for the chart
+chart.container('container');
+
+// initiate chart drawing
+chart.draw();
+    });
+        </script>
+    </body>
+</html>
